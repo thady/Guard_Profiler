@@ -1,0 +1,862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ProjectGuid>{E9BF597D-89E2-4A37-825D-88BC0902EF46}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>Guard_profiler</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>pdbonly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="LarcomAndYoung.Windows.Forms.ReSize, Version=4.1.1130.7807, Culture=neutral, PublicKeyToken=2ccc9fa17f463fce">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Guard_profilerReferences\ReSize.NET.4.1\LarcomAndYoung.Windows.Forms.ReSize.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System.Xml" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <None Include="App.config" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Archieve_Lists.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Clients.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Finance_Reports.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Guard_deployment.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Guard_Employment_Records.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\HeadShotEngine.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\ole_db_conn.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Payroll_Engine.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Position_Codes.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Salary_scales.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Set_Report_logons.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\sg_Profiles.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\sg_Reports.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\SystemConst.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\System_lookups.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\Users.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_active_guards_by_station.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_active_guards_by_station.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_all_guards_list.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_all_guards_list.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_archived_guard_lists.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_archived_guard_lists.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_deployment_client_guard_mapping_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_deployment_client_guard_mapping_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_deployment_guard_client_mapping_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_deployment_guard_client_mapping_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_deployment_summary_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_deployment_summary_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_guard_large_img.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_guard_large_img.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_kampala_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedcr_kampala_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_guard_profile.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_guard_profileTableAdapters\Q_OFFICER_REPORTTableAdapter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_guard_profileTableAdapters\TableAdapterManager.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_set_sg_profile_single.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_set_sg_profile_singleTableAdapters\Tbl_sg_profilesTableAdapter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\dt_set_sg_profile_singleTableAdapters\TableAdapterManager.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\finance_bank_salary_payment_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedfinance_bank_salary_payment_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\finance_detailed_guard_pay_roll_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedfinance_detailed_guard_pay_roll_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\finance_employee_nssf_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedfinance_employee_nssf_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\finance_employee_paye_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedfinance_employee_paye_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\finance_local_service_tax_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedfinance_local_service_tax_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet1.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet1TableAdapters\Tbl_sg_profilesTableAdapter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet1TableAdapters\TableAdapterManager.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet2.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet2TableAdapters\Tbl_sg_profilesTableAdapter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet2TableAdapters\TableAdapterManager.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_single_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedguard_single_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Program.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\sg_list_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedsg_list_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_employment_record_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\Cachedguard_employment_record_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSet.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSetTableAdapters\Tbl_sg_profilesTableAdapter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\guard_profiles_dbDataSetTableAdapters\TableAdapterManager.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\Properties\Resources.Designer.cs">
+      <AutoGen>true</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTimeSharedInput>true</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\Properties\Settings.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_deployment_guard_client_mapping_report_selector.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_deployment_periods.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_deployment_reports_.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_edit_guard_deployment_record.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_edit_guard_number.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_education_history.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_employment_record.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_employment_record_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_father_details.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_finance_bank_salary_payment_sheet_report_selector.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_finance_detailed_guard_pay_roll_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_finance_reports_dashboard.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_finance_reports_parameter_selector.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_free_guard_number.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guards_salary_scale_mapping_dashboard.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_bank_details.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_deployment_additional_data.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_deployment_summary.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmMain.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmcrystal_report_single.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmImages.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_deployment_summary_batch.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmLogin.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_lists.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_accounts_panel.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_active_guards_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_home_adress_of_origin.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_archieved_guards.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_hr_panel.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_archieved_guard_list_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_kampala_active_guards_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_kampal_guards_filter.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_archieve_lists.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_lookups.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_assign_salary_scales_to_guards.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_bank_branches.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_manage_clients.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_bank_lookups.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_manage_client_locations.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_children.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_manage_public_holidays.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_clients_guards_mapping_report_selector.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_officer_img_large.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_officer_large_img_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_current_residential_adress.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_prev_employer.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_other_info.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_pre_login.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_referees.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_relatives.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_salary_scale_guards.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_setup_payroll.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_sg_list_report.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_transfer_guards.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_update_guard_position_codes.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_users.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_wages_panel.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\sg_profiles.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\test_ole_db_conn.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\update_first_last_names.cs">
+      <AutoGen>false</AutoGen>
+      <DesignTimeSharedInput>false</DesignTimeSharedInput>
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="Guard_profiler\frm_deployment_guard_client_mapping_report_selector.resx">
+      <DependentUpon>frm_deployment_guard_client_mapping_report_selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_deployment_periods.resx">
+      <DependentUpon>frm_deployment_periods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_deployment_reports_.resx">
+      <DependentUpon>frm_deployment_reports_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_edit_guard_deployment_record.resx">
+      <DependentUpon>frm_edit_guard_deployment_record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_edit_guard_number.resx">
+      <DependentUpon>frm_edit_guard_number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_education_history.resx">
+      <DependentUpon>frm_education_history.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_employment_record.resx">
+      <DependentUpon>frm_employment_record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_employment_record_report.resx">
+      <DependentUpon>frm_employment_record_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_father_details.resx">
+      <DependentUpon>frm_father_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_finance_bank_salary_payment_sheet_report_selector.resx">
+      <DependentUpon>frm_finance_bank_salary_payment_sheet_report_selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_finance_detailed_guard_pay_roll_report.resx">
+      <DependentUpon>frm_finance_detailed_guard_pay_roll_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_finance_reports_dashboard.resx">
+      <DependentUpon>frm_finance_reports_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_finance_reports_parameter_selector.resx">
+      <DependentUpon>frm_finance_reports_parameter_selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_free_guard_number.resx">
+      <DependentUpon>frm_free_guard_number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guards_salary_scale_mapping_dashboard.resx">
+      <DependentUpon>frm_guards_salary_scale_mapping_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_bank_details.resx">
+      <DependentUpon>frm_guard_bank_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_deployment_additional_data.resx">
+      <DependentUpon>frm_guard_deployment_additional_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_deployment_summary.resx">
+      <DependentUpon>frm_guard_deployment_summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmcrystal_report_single.resx">
+      <DependentUpon>frmcrystal_report_single.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmImages.resx">
+      <DependentUpon>frmImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_deployment_summary_batch.resx">
+      <DependentUpon>frm_guard_deployment_summary_batch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_lists.resx">
+      <DependentUpon>frm_guard_lists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_accounts_panel.resx">
+      <DependentUpon>frm_accounts_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_active_guards_report.resx">
+      <DependentUpon>frm_active_guards_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_home_adress_of_origin.resx">
+      <DependentUpon>frm_home_adress_of_origin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_archieved_guards.resx">
+      <DependentUpon>frm_archieved_guards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_hr_panel.resx">
+      <DependentUpon>frm_hr_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_archieved_guard_list_report.resx">
+      <DependentUpon>frm_archieved_guard_list_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_kampala_active_guards_report.resx">
+      <DependentUpon>frm_kampala_active_guards_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_kampal_guards_filter.resx">
+      <DependentUpon>frm_kampal_guards_filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_archieve_lists.resx">
+      <DependentUpon>frm_archieve_lists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_lookups.resx">
+      <DependentUpon>frm_lookups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_assign_salary_scales_to_guards.resx">
+      <DependentUpon>frm_assign_salary_scales_to_guards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_bank_branches.resx">
+      <DependentUpon>frm_bank_branches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_manage_clients.resx">
+      <DependentUpon>frm_manage_clients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_bank_lookups.resx">
+      <DependentUpon>frm_bank_lookups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_manage_client_locations.resx">
+      <DependentUpon>frm_manage_client_locations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_children.resx">
+      <DependentUpon>frm_children.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_manage_public_holidays.resx">
+      <DependentUpon>frm_manage_public_holidays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_clients_guards_mapping_report_selector.resx">
+      <DependentUpon>frm_clients_guards_mapping_report_selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_officer_img_large.resx">
+      <DependentUpon>frm_officer_img_large.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_officer_large_img_report.resx">
+      <DependentUpon>frm_officer_large_img_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_current_residential_adress.resx">
+      <DependentUpon>frm_current_residential_adress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_prev_employer.resx">
+      <DependentUpon>frm_prev_employer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_other_info.resx">
+      <DependentUpon>frm_other_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_pre_login.resx">
+      <DependentUpon>frm_pre_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_referees.resx">
+      <DependentUpon>frm_referees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_relatives.resx">
+      <DependentUpon>frm_relatives.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_salary_scale_guards.resx">
+      <DependentUpon>frm_salary_scale_guards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_setup_payroll.resx">
+      <DependentUpon>frm_setup_payroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_sg_list_report.resx">
+      <DependentUpon>frm_sg_list_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_transfer_guards.resx">
+      <DependentUpon>frm_transfer_guards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_update_guard_position_codes.resx">
+      <DependentUpon>frm_update_guard_position_codes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_users.resx">
+      <DependentUpon>frm_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_wages_panel.resx">
+      <DependentUpon>frm_wages_panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\sg_profiles.resx">
+      <DependentUpon>sg_profiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\test_ole_db_conn.resx">
+      <DependentUpon>test_ole_db_conn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\update_first_last_names.resx">
+      <DependentUpon>update_first_last_names.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler.cr_active_guards_by_station.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_all_guards_list.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_archived_guard_lists.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_deployment_client_guard_mapping_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_deployment_guard_client_mapping_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_deployment_summary_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_guard_large_img.rpt" />
+    <EmbeddedResource Include="Guard_profiler.cr_kampala_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.finance_bank_salary_payment_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.finance_detailed_guard_pay_roll_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.finance_employee_nssf_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.finance_employee_paye_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.finance_local_service_tax_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.guard_employment_record_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.guard_single_report.rpt" />
+    <EmbeddedResource Include="Guard_profiler.sg_list_report.rpt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
