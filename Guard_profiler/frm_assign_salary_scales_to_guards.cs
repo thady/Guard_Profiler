@@ -764,10 +764,14 @@ namespace Guard_profiler
 			{
 				if (Convert.ToBoolean(this.gdv_guard_salaries.Rows[i].Cells[0].Value))
 				{
-					int guard_auto_id = Convert.ToInt32(this.gdv_guard_salaries.Rows[i].Cells[1].Value.ToString());
+                    int previous_scale_id = 0;
+                    int guard_auto_id = Convert.ToInt32(this.gdv_guard_salaries.Rows[i].Cells[1].Value.ToString());
 					string guard_number = this.gdv_guard_salaries.Rows[i].Cells[3].Value.ToString();
-					int previous_scale_id = Convert.ToInt32(this.gdv_guard_salaries.Rows[i].Cells[7].Value.ToString());
-					int scale_id = Convert.ToInt32(this.txt_auto_id.Text);
+
+                    if (this.gdv_guard_salaries.Rows[i].Cells[7].Value.ToString() == string.Empty) { previous_scale_id = Convert.ToInt32(this.txt_auto_id.Text);  }
+                    else { previous_scale_id = Convert.ToInt32(this.gdv_guard_salaries.Rows[i].Cells[7].Value.ToString()); }
+                     
+                    int scale_id = Convert.ToInt32(this.txt_auto_id.Text);
 					Salary_scales.Salary_scale_manual_assigment_query("salary_scale_manual_assigment_query", guard_auto_id, guard_number, scale_id, SystemConst._username, previous_scale_id);
 				}
 			}

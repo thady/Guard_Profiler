@@ -64,7 +64,7 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable Return_client_location_list(string myQuery, string client_code)
+		public static DataTable Return_client_location_list(string myQuery, int client_code)
 		{
 			DataTable dt = new DataTable();
 			try
@@ -80,8 +80,9 @@ namespace Guard_profiler.App_code
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@QueryName"].Value = myQuery;
 							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@client_code", SqlDbType.NVarChar, 50);
-							cmd.Parameters["@client_code"].Value = client_code;
+
+							cmd.Parameters.Add("@client_id", SqlDbType.Int);
+							cmd.Parameters["@client_id"].Value = client_code;
 							if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
@@ -111,7 +112,64 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable Return_list_of_clients(string myQuery)
+
+        public static string Return_client_code(string myQuery, int client_id)
+        {
+            DataTable dt = new DataTable();
+            string id = string.Empty;
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Customers", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@client_id", SqlDbType.Int);
+                            cmd.Parameters["@client_id"].Value = client_id;
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                DataRow dtrow = dt.Rows[0];
+                                id = dtrow["client_code"].ToString();
+                            }
+
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Clients.conn.State == ConnectionState.Open)
+                {
+                    Clients.conn.Close();
+                }
+            }
+            return id;
+        }
+
+        public static DataTable Return_list_of_clients(string myQuery)
 		{
 			DataTable dt = new DataTable();
 			try

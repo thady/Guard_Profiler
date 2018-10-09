@@ -82,11 +82,11 @@ namespace Guard_profiler
 		private Button btnaccounts;
         private LarcomAndYoung.Windows.Forms.ReSize reSize1;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem guardProfilesToolStripMenuItem;
+        private ToolStripMenuItem ToolstripHumanResource;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
-        private ToolStripMenuItem toolStripMenuItem4;
-        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem ToolstripWages;
+        private ToolStripMenuItem ToolstripAccounts;
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
         private ToolStripSeparator toolStripSeparator1;
@@ -250,11 +250,11 @@ namespace Guard_profiler
             this.updatePositionCodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.guardProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolstripHumanResource = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolstripWages = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolstripAccounts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -286,9 +286,9 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.btnaccounts);
             this.panel1.Controls.Add(this.btnwages);
             this.panel1.Controls.Add(this.btnhr);
-            this.panel1.Location = new System.Drawing.Point(0, 69);
+            this.panel1.Location = new System.Drawing.Point(0, 64);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1345, 734);
+            this.panel1.Size = new System.Drawing.Size(1345, 674);
             this.panel1.TabIndex = 0;
             this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
             // 
@@ -586,9 +586,9 @@ namespace Guard_profiler
             this.menuStrip1.BackColor = System.Drawing.Color.MediumAquamarine;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.guardProfilesToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
+            this.ToolstripHumanResource,
+            this.ToolstripWages,
+            this.ToolstripAccounts,
             this.toolStripMenuItem6,
             this.adminToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -596,15 +596,16 @@ namespace Guard_profiler
             this.menuStrip1.Size = new System.Drawing.Size(1348, 61);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Enter += new System.EventHandler(this.menuStrip1_Enter);
             // 
-            // guardProfilesToolStripMenuItem
+            // ToolstripHumanResource
             // 
-            this.guardProfilesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolstripHumanResource.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
-            this.guardProfilesToolStripMenuItem.Name = "guardProfilesToolStripMenuItem";
-            this.guardProfilesToolStripMenuItem.Size = new System.Drawing.Size(148, 57);
-            this.guardProfilesToolStripMenuItem.Text = "Human Resources";
+            this.ToolstripHumanResource.Name = "ToolstripHumanResource";
+            this.ToolstripHumanResource.Size = new System.Drawing.Size(148, 57);
+            this.ToolstripHumanResource.Text = "Human Resources";
             // 
             // toolStripMenuItem1
             // 
@@ -619,19 +620,19 @@ namespace Guard_profiler
             this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 26);
             this.toolStripMenuItem2.Text = "Other Staff Profiles";
             // 
-            // toolStripMenuItem4
+            // ToolstripWages
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(68, 57);
-            this.toolStripMenuItem4.Text = "Wages";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click_1);
+            this.ToolstripWages.Name = "ToolstripWages";
+            this.ToolstripWages.Size = new System.Drawing.Size(68, 57);
+            this.ToolstripWages.Text = "Wages";
+            this.ToolstripWages.Click += new System.EventHandler(this.toolStripMenuItem4_Click_1);
             // 
-            // toolStripMenuItem5
+            // ToolstripAccounts
             // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(85, 57);
-            this.toolStripMenuItem5.Text = "Accounts";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            this.ToolstripAccounts.Name = "ToolstripAccounts";
+            this.ToolstripAccounts.Size = new System.Drawing.Size(85, 57);
+            this.ToolstripAccounts.Text = "Accounts";
+            this.ToolstripAccounts.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -792,9 +793,9 @@ namespace Guard_profiler
 				{
 					this.toolstrip_admin.Enabled = true;
 				}
-				this.toolstrip_accounts.Enabled = true;
-				this.toolstrip_hr.Enabled = false;
-				this.toolstrip_wages.Enabled = false;
+				this.ToolstripAccounts.Enabled = true;
+				this.ToolstripHumanResource.Enabled = false;
+				this.ToolstripWages.Enabled = false;
 				this.toolstripreports.Enabled = false;
 				this.btnhr.Enabled = false;
 				this.btnaccounts.Enabled = true;
@@ -811,9 +812,9 @@ namespace Guard_profiler
 				{
 					this.toolstrip_admin.Enabled = true;
 				}
-				this.toolstrip_accounts.Enabled = false;
-				this.toolstrip_hr.Enabled = false;
-				this.toolstrip_wages.Enabled = true;
+				this.ToolstripAccounts.Enabled = false;
+				this.ToolstripHumanResource.Enabled = false;
+				this.ToolstripWages.Enabled = true;
 				this.toolstripreports.Enabled = false;
 				this.btnhr.Enabled = false;
 				this.btnaccounts.Enabled = false;
@@ -830,9 +831,9 @@ namespace Guard_profiler
 				{
 					this.toolstrip_admin.Enabled = true;
 				}
-				this.toolstrip_accounts.Enabled = false;
-				this.toolstrip_hr.Enabled = true;
-				this.toolstrip_wages.Enabled = false;
+				this.ToolstripAccounts.Enabled = false;
+				this.ToolstripHumanResource.Enabled = true;
+				this.ToolstripWages.Enabled = false;
 				this.toolstripreports.Enabled = true;
 				this.btnhr.Enabled = true;
 				this.btnaccounts.Enabled = false;
@@ -853,63 +854,63 @@ namespace Guard_profiler
 		{
 			this.WELCOME_GREET_USER();
 			this.StartTimer();
-			if (SystemConst._user_department == "Accounts")
-			{
-				if (!SystemConst.is_admin)
-				{
-					this.toolstrip_admin.Enabled = false;
-				}
-				else
-				{
-					this.toolstrip_admin.Enabled = true;
-				}
-				this.toolstrip_accounts.Enabled = true;
-				this.toolstrip_hr.Enabled = false;
-				this.toolstrip_wages.Enabled = false;
-				this.toolstripreports.Enabled = false;
-				this.btnhr.Enabled = false;
-				this.btnaccounts.Enabled = true;
-				this.btnwages.Enabled = false;
-				return;
-			}
-			if (SystemConst._user_department == "Wages")
-			{
-				if (!SystemConst.is_admin)
-				{
-					this.toolstrip_admin.Enabled = false;
-				}
-				else
-				{
-					this.toolstrip_admin.Enabled = true;
-				}
-				this.toolstrip_accounts.Enabled = false;
-				this.toolstrip_hr.Enabled = false;
-				this.toolstrip_wages.Enabled = true;
-				this.toolstripreports.Enabled = false;
-				this.btnhr.Enabled = false;
-				this.btnaccounts.Enabled = false;
-				this.btnwages.Enabled = true;
-				return;
-			}
-			if (SystemConst._user_department == "Human Resource")
-			{
-				if (!SystemConst.is_admin)
-				{
-					this.toolstrip_admin.Enabled = false;
-				}
-				else
-				{
-					this.toolstrip_admin.Enabled = true;
-				}
-				this.toolstrip_accounts.Enabled = false;
-				this.toolstrip_hr.Enabled = true;
-				this.toolstrip_wages.Enabled = false;
-				this.toolstripreports.Enabled = true;
-				this.btnhr.Enabled = true;
-				this.btnaccounts.Enabled = false;
-				this.btnwages.Enabled = false;
-			}
-		}
+            if (SystemConst._user_department == "Accounts")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = true;
+                this.ToolstripHumanResource.Enabled = false;
+                this.ToolstripWages.Enabled = false;
+                this.toolstripreports.Enabled = false;
+                this.btnhr.Enabled = false;
+                this.btnaccounts.Enabled = true;
+                this.btnwages.Enabled = false;
+                return;
+            }
+            if (SystemConst._user_department == "Wages")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = false;
+                this.ToolstripHumanResource.Enabled = false;
+                this.ToolstripWages.Enabled = true;
+                this.toolstripreports.Enabled = false;
+                this.btnhr.Enabled = false;
+                this.btnaccounts.Enabled = false;
+                this.btnwages.Enabled = true;
+                return;
+            }
+            if (SystemConst._user_department == "Human Resource")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = false;
+                this.ToolstripHumanResource.Enabled = true;
+                this.ToolstripWages.Enabled = false;
+                this.toolstripreports.Enabled = true;
+                this.btnhr.Enabled = true;
+                this.btnaccounts.Enabled = false;
+                this.btnwages.Enabled = false;
+            }
+        }
 
 		private void removeNumberFromGuardToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1018,8 +1019,8 @@ namespace Guard_profiler
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            frm_guard_lists lists = new frm_guard_lists();
-            lists.ShowDialog();
+            frm_guard_lists list = new frm_guard_lists();
+            list.ShowDialog();
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
@@ -1056,6 +1057,11 @@ namespace Guard_profiler
         {
             frm_update_guard_position_codes codes = new frm_update_guard_position_codes();
             codes.ShowDialog();
+        }
+
+        private void menuStrip1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -110,7 +110,10 @@ namespace Guard_profiler
 		private void cbo_customer_name_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			this.txt_client_code.Text = (this.cbo_customer_name.Text != string.Empty ? this.cbo_customer_name.SelectedValue.ToString() : string.Empty);
-			this.Return_client_locations(this.cbo_customer_name.SelectedValue.ToString());
+            if (cbo_customer_name.Text != string.Empty)
+            {
+                this.Return_client_locations(Convert.ToInt32(this.cbo_customer_name.SelectedValue.ToString()));
+            }	
 		}
 
 		protected override void Dispose(bool disposing)
@@ -124,10 +127,10 @@ namespace Guard_profiler
 
 		private void frm_edit_guard_deployment_record_Load(object sender, EventArgs e)
 		{
-			this.Return_list_of_clients();
-			this.Get_guard_shift_types();
-			this.Set_static_deploy_variables();
-		}
+            this.Return_list_of_clients();
+            this.Get_guard_shift_types();
+            this.Set_static_deploy_variables();
+        }
 
 		protected void Get_guard_shift_types()
 		{
@@ -389,7 +392,7 @@ namespace Guard_profiler
 			base.ResumeLayout(false);
 		}
 
-		protected void Return_client_locations(string client_code)
+		protected void Return_client_locations(int client_code)
 		{
 			DataTable dt = Clients.Return_client_location_list("return_client_location_list_by_client_code", client_code);
 			if (dt.Rows.Count > 0)
@@ -411,26 +414,30 @@ namespace Guard_profiler
 			{
 				DataRow dtRow = dt.NewRow();
 				dtRow["client_name"] = string.Empty;
-				dtRow["client_code"] = string.Empty;
+                dtRow["client_id"] = -1;
 				dt.Rows.InsertAt(dtRow, 0);
 				this.cbo_customer_name.DataSource = dt;
 				this.cbo_customer_name.DisplayMember = "client_name";
-				this.cbo_customer_name.ValueMember = "client_code";
-			}
+				this.cbo_customer_name.ValueMember = "client_id";
+
+                this.cbo_customer_name.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                this.cbo_customer_name.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
 		}
 
 		protected void Set_static_deploy_variables()
 		{
-			this.lbl_record_guid.Text = SystemConst._record_guid;
-			this.cbo_customer_name.SelectedValue = SystemConst._client_codee;
-			this.cbo_customer_location.Text = SystemConst._client_location;
-			this.cbo_working_shift.Text = SystemConst._shift_type;
-			this.txt_fire_arm_serial.Text = SystemConst._fire_arm_serial.ToString();
-			this.txt_ammunition_count.Text = SystemConst._ammunition_count.ToString();
-			this.chk_public_holiday.Checked = SystemConst._is_public_holiday;
-			this.chk_leave.Checked = SystemConst._is_leave_day_for_guard;
-			this.lbl_branch.Text = SystemConst._branch;
-			this.lbl_name.Text = SystemConst._guard_name;
-		}
+            this.lbl_record_guid.Text = SystemConst._record_guid;
+            //this.cbo_customer_name.SelectedValue = SystemConst._client_codee;
+            this.cbo_customer_name.SelectedValue = SystemConst._client_ids;
+            this.cbo_customer_location.Text = SystemConst._client_location;
+            this.cbo_working_shift.Text = SystemConst._shift_type;
+            this.txt_fire_arm_serial.Text = SystemConst._fire_arm_serial.ToString();
+            this.txt_ammunition_count.Text = SystemConst._ammunition_count.ToString();
+            this.chk_public_holiday.Checked = SystemConst._is_public_holiday;
+            this.chk_leave.Checked = SystemConst._is_leave_day_for_guard;
+            this.lbl_branch.Text = SystemConst._branch;
+            this.lbl_name.Text = SystemConst._guard_name;
+        }
 	}
 }

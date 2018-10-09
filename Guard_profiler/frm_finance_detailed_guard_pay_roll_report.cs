@@ -47,215 +47,240 @@ namespace Guard_profiler
 			{
 				this.Text = "New Uganda Securiko Ltd-Finance Reporting";
 			}
-			if (SystemConst._finance_crystal_report_type == "Detailed")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					finance_detailed_guard_pay_roll_report report = new finance_detailed_guard_pay_roll_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_guard_payroll_summary_details_by_station("select_guard_payroll_summary_details_by_station", Convert.ToInt32(SystemConst._active_deployment_id), SystemConst._station_code, SystemConst._station_name));
-					report.SetParameterValue("QueryName", "select_guard_payroll_summary_details_by_station");
-					report.SetParameterValue("guard_number", string.Empty);
-					report.SetParameterValue("station_code", SystemConst._station_code);
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
-					this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
-                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
-				}
-				catch (Exception exception)
-				{
-					MessageBox.Show(exception.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "bank_payment")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					finance_bank_salary_payment_report report = new finance_bank_salary_payment_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField1 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue1 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_bank_payment_report("select_bank_payment_report", SystemConst._station_name, Convert.ToInt32(SystemConst._active_deployment_id)));
-					report.SetParameterValue("QueryName", "select_bank_payment_report");
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
-					report.SetParameterValue("bank_branch", SystemConst._bank_branch);
-					this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
-					this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
-				}
-				catch (Exception exception1)
-				{
-					MessageBox.Show(exception1.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "LST")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					finance_local_service_tax_report report = new finance_local_service_tax_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField2 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue2 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_local_service_tax_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
-					report.SetParameterValue("QueryName", "select_local_service_tax_report");
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+            if (SystemConst._finance_crystal_report_type == "Detailed")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_detailed_guard_pay_roll_report report = new finance_detailed_guard_pay_roll_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_guard_payroll_summary_details_by_station("select_guard_payroll_summary_details_by_station", Convert.ToInt32(SystemConst._active_deployment_id), SystemConst._station_code, SystemConst._station_name));
+                    report.SetParameterValue("QueryName", "select_guard_payroll_summary_details_by_station");
+                    report.SetParameterValue("guard_number", string.Empty);
+                    report.SetParameterValue("station_code", SystemConst._station_code);
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception2)
-				{
-					MessageBox.Show(exception2.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "NSSF")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					finance_employee_nssf_report report = new finance_employee_nssf_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField3 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue3 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_nssf_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
-					report.SetParameterValue("QueryName", "select_nssf_report");
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "bank_payment")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_bank_salary_payment_report report = new finance_bank_salary_payment_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField1 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue1 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_bank_payment_report("select_bank_payment_report", SystemConst._station_name, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_bank_payment_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("bank_branch", SystemConst._bank_branch);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception3)
-				{
-					MessageBox.Show(exception3.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "PAYE")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					finance_employee_paye_report report = new finance_employee_paye_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField4 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue4 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_paye_tax_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
-					report.SetParameterValue("QueryName", "select_paye_tax_report");
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                catch (Exception exception1)
+                {
+                    MessageBox.Show(exception1.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "LST")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_local_service_tax_report report = new finance_local_service_tax_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField2 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue2 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_local_service_tax_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_local_service_tax_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception4)
-				{
-					MessageBox.Show(exception4.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "DEPLOY")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					cr_deployment_summary_report report = new cr_deployment_summary_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField5 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue5 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_deployment_summary_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
-					report.SetParameterValue("QueryName", "select_paye_tax_report");
-					report.SetParameterValue("station_name", SystemConst._station_name);
-					report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                catch (Exception exception2)
+                {
+                    MessageBox.Show(exception2.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "NSSF")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_employee_nssf_report report = new finance_employee_nssf_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField3 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue3 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_nssf_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_nssf_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception5)
-				{
-					MessageBox.Show(exception5.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "CLIENT")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					cr_deployment_client_guard_mapping_report report = new cr_deployment_client_guard_mapping_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField6 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue6 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_client_guard_mapping_report("select_client_guard_mapping_report", SystemConst._client_code, SystemConst._deployment_start_date, SystemConst._deployment_end_date));
-					report.SetParameterValue("QueryName", "select_client_guard_mapping_report");
-					report.SetParameterValue("client_code", SystemConst._client_code);
-					report.SetParameterValue("deploy_date_from", SystemConst._deployment_start_date);
-					report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
-					report.SetParameterValue("date_from", SystemConst._deployment_start_date);
-					report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                catch (Exception exception3)
+                {
+                    MessageBox.Show(exception3.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "PAYE")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_employee_paye_report report = new finance_employee_paye_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField4 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue4 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_paye_tax_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_paye_tax_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception6)
-				{
-					MessageBox.Show(exception6.ToString());
-				}
-			}
-			else if (SystemConst._finance_crystal_report_type == "GUARD")
-			{
-				try
-				{
-					base.WindowState = FormWindowState.Maximized;
-					cr_deployment_guard_client_mapping_report report = new cr_deployment_guard_client_mapping_report();
-					ParameterFields paramFields = new ParameterFields();
-					ParameterField parameterField7 = new ParameterField();
-					ParameterDiscreteValue parameterDiscreteValue7 = new ParameterDiscreteValue();
-					foreach (Table tbCurrent in report.Database.Tables)
-					{
-						Set_Report_logons.SetTableLogin(tbCurrent);
-					}
-					report.SetDataSource(Finance_Reports.select_guard_client_mapping_report("select_guard_client_mapping_report", SystemConst.guard_number, SystemConst._deployment_start_date, SystemConst._deployment_end_date));
-					report.SetParameterValue("QueryName", "select_guard_client_mapping_report");
-					report.SetParameterValue("guard_number", SystemConst.guard_number);
-					report.SetParameterValue("deploy_date_from", SystemConst._deployment_start_date);
-					report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
-					report.SetParameterValue("date_from", SystemConst._deployment_start_date);
-					report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                catch (Exception exception4)
+                {
+                    MessageBox.Show(exception4.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "DEPLOY")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    cr_deployment_summary_report report = new cr_deployment_summary_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField5 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue5 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_deployment_summary_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_paye_tax_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                 }
-				catch (Exception exception7)
-				{
-					MessageBox.Show(exception7.ToString());
-				}
-			}
+                catch (Exception exception5)
+                {
+                    MessageBox.Show(exception5.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "CLIENT")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    cr_deployment_client_guard_mapping_report report = new cr_deployment_client_guard_mapping_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField6 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue6 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_client_guard_mapping_report("select_client_guard_mapping_report", SystemConst._client_code, SystemConst._deployment_start_date, SystemConst._deployment_end_date));
+                    report.SetParameterValue("QueryName", "select_client_guard_mapping_report");
+                    report.SetParameterValue("client_code", SystemConst._client_code);
+                    report.SetParameterValue("deploy_date_from", SystemConst._deployment_start_date);
+                    report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
+                    report.SetParameterValue("date_from", SystemConst._deployment_start_date);
+                    report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+                }
+                catch (Exception exception6)
+                {
+                    MessageBox.Show(exception6.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "GUARD")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    cr_deployment_guard_client_mapping_report report = new cr_deployment_guard_client_mapping_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField7 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue7 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_guard_client_mapping_report("select_guard_client_mapping_report", SystemConst.guard_number, SystemConst._deployment_start_date, SystemConst._deployment_end_date));
+                    report.SetParameterValue("QueryName", "select_guard_client_mapping_report");
+                    report.SetParameterValue("guard_number", SystemConst.guard_number);
+                    report.SetParameterValue("deploy_date_from", SystemConst._deployment_start_date);
+                    report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
+                    report.SetParameterValue("date_from", SystemConst._deployment_start_date);
+                    report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+                }
+                catch (Exception exception7)
+                {
+                    MessageBox.Show(exception7.ToString());
+                }
+            }
+            else if (SystemConst._finance_crystal_report_type == "DEPLOYMENT_SCHEDULE")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    cr_guard_deployment_schedule_report report = new cr_guard_deployment_schedule_report();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField7 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue7 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Finance_Reports.select_guard_deployment_schedule_report("select_deployment_schedule_report_by_branch", SystemConst._station_name, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_deployment_schedule_report_by_branch");
+                    report.SetParameterValue("branch_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+                }
+                catch (Exception exception7)
+                {
+                    MessageBox.Show(exception7.ToString());
+                }
+            }
 		}
 
 		private void InitializeComponent()

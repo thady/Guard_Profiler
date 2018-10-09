@@ -54,8 +54,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="cr_guard_deployment_schedule_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_guard_deployment_schedule_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeployguards_single.resx">
+      <DependentUpon>frmDeployguards_single.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeploymentscheduleReport.resx">
+      <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <None Include="App.config" />
+    <Compile Include="cr_guard_deployment_schedule_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_guard_deployment_schedule_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmDeployguards_single.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeployguards_single.Designer.cs">
+      <DependentUpon>frmDeployguards_single.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeploymentscheduleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeploymentscheduleReport.Designer.cs">
+      <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>
       <DesignTimeSharedInput>false</DesignTimeSharedInput>
@@ -857,6 +885,9 @@
     <EmbeddedResource Include="Guard_profiler.guard_employment_record_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.guard_single_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.sg_list_report.rpt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

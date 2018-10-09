@@ -333,26 +333,34 @@ namespace Guard_profiler
 		protected decimal Calculate_PAYE(decimal gross_amt)
 		{
 			decimal PAYE_amt = new decimal(0);
-			if (gross_amt < new decimal(235000))
+            decimal exceed_amt = 0;
+
+            if (gross_amt < new decimal(235000))
 			{
 				PAYE_amt = new decimal(0);
 			}
-			else if (gross_amt >= new decimal(235000) && gross_amt <= new decimal(335000))
+			else if (gross_amt > new decimal(235000) && gross_amt <= new decimal(335000))
 			{
-				PAYE_amt = new decimal(1, 0, 0, false, 1) * gross_amt;
+                exceed_amt = gross_amt - 235000;
+                PAYE_amt = 0.1M * exceed_amt;
 			}
-			else if (gross_amt >= new decimal(335000) && gross_amt <= new decimal(410000))
+			else if (gross_amt > new decimal(335000) && gross_amt <= new decimal(410000))
 			{
-				PAYE_amt = new decimal(2, 0, 0, false, 1) * gross_amt;
+                exceed_amt = gross_amt - 335000;
+                PAYE_amt = 0.2M * exceed_amt;
+                PAYE_amt = PAYE_amt + 10000;
 			}
-			else if (gross_amt >= new decimal(410000) && gross_amt <= new decimal(10000000))
+			else if (gross_amt > new decimal(410000) && gross_amt <= new decimal(10000000))
 			{
-				PAYE_amt = new decimal(3, 0, 0, false, 1) * gross_amt;
-			}
+                exceed_amt = gross_amt - 410000;
+                PAYE_amt = 0.3M * exceed_amt;
+                PAYE_amt = PAYE_amt + 25000;
+            }
 			else if (gross_amt > new decimal(10000000))
 			{
-				PAYE_amt = new decimal(4, 0, 0, false, 1) * gross_amt;
-			}
+                exceed_amt = gross_amt - 10000000;
+                PAYE_amt = 0.1M * exceed_amt;
+            }
 			return PAYE_amt;
 		}
 

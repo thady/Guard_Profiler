@@ -1062,6 +1062,17 @@ namespace Guard_profiler
             // 
             this.cbo_guard_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_guard_status.FormattingEnabled = true;
+            this.cbo_guard_status.Items.AddRange(new object[] {
+            "",
+            "Active",
+            "Confined",
+            "Deserted",
+            "Died",
+            "Dismissed",
+            "Resigned",
+            "Retired",
+            "Sick",
+            "Terminated"});
             this.cbo_guard_status.Location = new System.Drawing.Point(2, 7);
             this.cbo_guard_status.Name = "cbo_guard_status";
             this.cbo_guard_status.Size = new System.Drawing.Size(117, 24);

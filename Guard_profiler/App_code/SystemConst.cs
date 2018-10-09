@@ -51,8 +51,9 @@ namespace Guard_profiler.App_code
 		public static DateTime _deployment_end_date;
 
 		public static string _client_codee;
+        public static int _client_ids;
 
-		public static string _client_location;
+        public static string _client_location;
 
 		public static string _fire_arm_serial;
 

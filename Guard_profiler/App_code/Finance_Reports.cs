@@ -282,5 +282,58 @@ namespace Guard_profiler.App_code
 			}
 			return dt;
 		}
-	}
+
+        public static DataTable select_guard_deployment_schedule_report(string myQuery, string station_name, int deploy_period_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@deploy_id", SqlDbType.Int);
+                            cmd.Parameters["@deploy_id"].Value = deploy_period_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 500);
+                            cmd.Parameters["@branch_name"].Value = station_name;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Finance_Reports.conn.State == ConnectionState.Open)
+                {
+                    Finance_Reports.conn.Close();
+                }
+            }
+            return dt;
+        }
+    }
 }

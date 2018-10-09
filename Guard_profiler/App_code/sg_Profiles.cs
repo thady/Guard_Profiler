@@ -370,9 +370,11 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@QueryName"].Value = myQuery;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@sg_search_name", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@sg_search_name"].Value = sg_full_name;
+
 							if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();

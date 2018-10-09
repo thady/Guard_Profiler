@@ -170,7 +170,11 @@ namespace Guard_profiler
 			{
 				e.Control.KeyPress += new KeyPressEventHandler(this.gvAppSummary_KeyPress);
 			}
-		}
+            if (this.gdv_guards.CurrentCell.ColumnIndex == 5)
+            {
+                e.Control.KeyPress += new KeyPressEventHandler(this.gvAppSummary_KeyPress);
+            }
+        }
 
 		protected void GET_BRANCHES()
 		{
@@ -212,7 +216,7 @@ namespace Guard_profiler
 			this.gdv_guards.Columns["branch"].ReadOnly = true;
 			this.gdv_guards.Columns["guard_number"].ReadOnly = true;
 			this.gdv_guards.Columns["days_worked"].ReadOnly = true;
-			this.gdv_guards.Columns["overtime"].ReadOnly = true;
+			//this.gdv_guards.Columns["overtime"].ReadOnly = true;
 			this.gdv_guards.Columns["days_absent"].ReadOnly = true;
 			this.gdv_guards.Columns["full_name"].ReadOnly = true;
 			this.gdv_guards.Columns["guard_number"].HeaderText = "Guard No.";
