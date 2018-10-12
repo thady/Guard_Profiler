@@ -168,9 +168,10 @@ namespace Guard_profiler
 				return;
 			}
             //SystemConst._client_codee = this.gdv_deployment_summary.CurrentRow.Cells[4].Value.ToString();
-            SystemConst._client_ids = Convert.ToInt32(this.gdv_deployment_summary.CurrentRow.Cells[4].Value.ToString());
+            SystemConst._client_ids = this.gdv_deployment_summary.CurrentRow.Cells[4].Value.ToString();
             SystemConst._client_location = this.gdv_deployment_summary.CurrentRow.Cells[5].Value.ToString();
             SystemConst._fire_arm_serial = this.gdv_deployment_summary.CurrentRow.Cells[10].Value.ToString();
+
             SystemConst._ammunition_count = Convert.ToInt32(this.gdv_deployment_summary.CurrentRow.Cells[11].Value.ToString());
             SystemConst._shift_type = this.gdv_deployment_summary.CurrentRow.Cells[6].Value.ToString();
             SystemConst._is_leave_day_for_guard = Convert.ToBoolean(this.gdv_deployment_summary.CurrentRow.Cells[12].Value);

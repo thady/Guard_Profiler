@@ -429,7 +429,7 @@ namespace Guard_profiler
 		{
             this.lbl_record_guid.Text = SystemConst._record_guid;
             //this.cbo_customer_name.SelectedValue = SystemConst._client_codee;
-            this.cbo_customer_name.SelectedValue = SystemConst._client_ids;
+            //this.cbo_customer_name.SelectedValue = SystemConst._client_ids;
             this.cbo_customer_location.Text = SystemConst._client_location;
             this.cbo_working_shift.Text = SystemConst._shift_type;
             this.txt_fire_arm_serial.Text = SystemConst._fire_arm_serial.ToString();

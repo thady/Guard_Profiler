@@ -118,7 +118,7 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static void save_or_update_guard_payroll_details(string QueryName, string record_guid, string user_id, string station_code, int deploy_period_id, string station_name, string guard_number, string guard_name, string salary_scale_code, string bank_code, string bank_name, string bank_branch, string bank_account_number, string grade, string nssf_number, decimal basic_amt, decimal transport_amt, decimal housing_amt, decimal resident_amt, decimal bonus_amt, decimal leave_amt, decimal uniform_amt, decimal local_service_tax_amt, decimal overtime_amt, decimal special_amt, decimal arrears_amt, decimal advance_amt, decimal penalty_amt, decimal absentism_amt, int total_days_worked, int total_overtime_days_worked, int total_resident_days, int total_penalty_days, decimal total_tax_relief_for_guard, decimal gross_pay_amt, decimal total_paye_amt, decimal total_nssf_amt, decimal total_deductions, decimal guard_net_pay_amt, bool pay_salary, bool pay_paye, bool pay_nssf, bool pay_advance)
+		public static void save_or_update_guard_payroll_details(string QueryName, string record_guid, string user_id, string station_code, int deploy_period_id, string station_name, string guard_number, string guard_name, string salary_scale_code, string bank_code, string bank_name, string bank_branch, string bank_account_number, string grade, string nssf_number, decimal basic_amt, decimal transport_amt, decimal housing_amt, decimal resident_amt, decimal bonus_amt, decimal leave_amt, decimal uniform_amt, decimal local_service_tax_amt, decimal overtime_amt, decimal special_amt, decimal arrears_amt, decimal advance_amt, decimal penalty_amt, decimal absentism_amt, int total_days_worked, int total_overtime_days_worked, int total_resident_days, int total_penalty_days, decimal total_tax_relief_for_guard, decimal gross_pay_amt, decimal total_paye_amt, decimal total_nssf_amt, decimal total_deductions, decimal guard_net_pay_amt, bool pay_salary, bool pay_paye, bool pay_nssf, bool pay_advance,bool print_bank_schedule)
 		{
 			try
 			{
@@ -132,9 +132,11 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@QueryName"].Value = QueryName;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@record_guid", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@record_guid"].Value = record_guid;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@user_id"].Value = user_id;
@@ -255,10 +257,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@pay_nssf", SqlDbType.Bit);
 							cmd.Parameters["@pay_nssf"].Value = pay_nssf;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@pay_advance", SqlDbType.Bit);
 							cmd.Parameters["@pay_advance"].Value = pay_advance;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@print_bank_schedule", SqlDbType.Bit);
+                            cmd.Parameters["@print_bank_schedule"].Value = print_bank_schedule;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
