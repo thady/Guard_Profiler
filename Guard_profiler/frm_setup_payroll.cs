@@ -481,7 +481,24 @@ namespace Guard_profiler
 					decimal num13 = decimal.Parse(dtrow["absentism_amt"].ToString());
 					txtAbsentismAmt.Text = num13.ToString();
                     chk_print_bank_schedule.Checked = Convert.ToBoolean(dtrow["print_bank_schedule"]);
-					this.GET_OFFICER_HEADSHOT("select_officer_headshot_by_guard_number", guard_number);
+                    decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
+                    txt_leave_amt.Text = leave_amt.ToString();
+
+                    #region Bank details
+                    DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_number);
+                    if (dt_bank_details.Rows.Count > 0)
+                    {
+                        DataRow dtRowbank_details = dt_bank_details.Rows[0];
+                        this.txt_bank_code.Text = dtRowbank_details["bank_code"].ToString();
+                        this.txt_bank_name.Text = dtRowbank_details["bank_name"].ToString();
+                        this.txt_bank_branch.Text = dtRowbank_details["branch_name"].ToString();
+                        this.txt_account_number.Text = dtRowbank_details["account_number"].ToString();
+                        this.txt_nssf.Text = dtRowbank_details["nssf_number"].ToString();
+                    }
+                    this.Calculate_guard_salary_amounts();
+                    #endregion Bank details
+
+                    this.GET_OFFICER_HEADSHOT("select_officer_headshot_by_guard_number", guard_number);
 					return;
 				}
 				this.clear_fields();
@@ -2243,7 +2260,9 @@ namespace Guard_profiler
 				TextBox txtAbsentismAmt = this.txt_absentism_amt;
 				float single10 = float.Parse(dtrow["absentism_amt"].ToString());
 				txtAbsentismAmt.Text = single10.ToString();
-				DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_number);
+                decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
+                txt_leave_amt.Text = leave_amt.ToString();
+                DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_number);
 				if (dt_bank_details.Rows.Count > 0)
 				{
 					DataRow dtRowbank_details = dt_bank_details.Rows[0];
