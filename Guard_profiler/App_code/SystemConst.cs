@@ -69,6 +69,8 @@ namespace Guard_profiler.App_code
 
 		public static string _guard_name;
 
+        public static string finance_report_type;
+
 		static SystemConst()
 		{
 			SystemConst.OfficerID = string.Empty;

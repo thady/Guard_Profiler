@@ -592,10 +592,13 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@QueryName"].Value = myQuery;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@branch"].Value = branch_name;
-							if (conn.State == ConnectionState.Closed)
+
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
@@ -625,7 +628,66 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable SELECT_GUARD_F_L_NAMES(string myQuery)
+
+        public static DataTable hr_SEARCH_GUARDS_BY_BRANCH(string myQuery, string branch_name, string guard_full_name, string guard_number)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("Q_SG_PROFILES", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@branch", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@branch"].Value = branch_name;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_full_name", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@guard_full_name"].Value = guard_full_name;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@guard_number"].Value = guard_number;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            int count = dt.Rows.Count;
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (sg_Profiles.conn.State == ConnectionState.Open)
+                {
+                    sg_Profiles.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable SELECT_GUARD_F_L_NAMES(string myQuery)
 		{
 			DataTable dt = new DataTable();
 			try

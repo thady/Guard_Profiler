@@ -39,8 +39,8 @@ namespace Guard_profiler
 		private Label label4;
 
 		private ComboBox cbo_bank_name;
-
-		private ComboBox cbo_bank_branch;
+        private Label lblreportType;
+        private ComboBox cbo_bank_branch;
 
 		static frm_finance_bank_salary_payment_sheet_report_selector()
 		{
@@ -53,12 +53,23 @@ namespace Guard_profiler
 
 		private void btnextract_Click(object sender, EventArgs e)
 		{
-			if (!(this.cbo_bank_branch.Text == string.Empty) && !(this.cbo_bank_name.Text == string.Empty) && !(this.cbo_deploy_period.Text == string.Empty))
-			{
-				this.generate_report();
-				return;
-			}
-			MessageBox.Show("All values are required", "Generate report", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            
+            if (SystemConst.finance_report_type == "bank_payment")
+            {
+                
+                if (!(this.cbo_bank_branch.Text == string.Empty) && !(this.cbo_bank_name.Text == string.Empty) && !(this.cbo_deploy_period.Text == string.Empty))
+                {
+                    this.generate_report();
+                    return;
+                }
+                MessageBox.Show("All values are required", "Generate report", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else if (SystemConst.finance_report_type == "paye_payment")
+            {
+                this.generate_report();
+                return;
+            }
+			
 		}
 
 		private void cbo_bank_name_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,7 +107,20 @@ namespace Guard_profiler
 			this.GET_BRANCHES();
 			this.get_bank_list();
 			this.return_deployment_periods();
-		}
+            lblreportType.Text = string.Empty;
+            lblreportType.Text = SystemConst.finance_report_type;
+            if (SystemConst.finance_report_type == "paye_payment")
+            {
+                cbo_bank_branch.Enabled = false;
+                cbo_bank_name.Enabled = false;
+            }
+            else
+            {
+                cbo_bank_branch.Enabled = true;
+                cbo_bank_name.Enabled = true;
+            }
+
+        }
 
 		protected void generate_report()
 		{
@@ -120,10 +144,25 @@ namespace Guard_profiler
 				string.Join(",", (
 					from x in branch_list.Split(chrArray)
 					select string.Format("'{0}'", x)).ToList<string>());
-				SystemConst._station_name = branch_list;
-				SystemConst._finance_crystal_report_type = "bank_payment";
-				SystemConst._bank_branch = this.cbo_bank_branch.Text;
-				(new frm_finance_detailed_guard_pay_roll_report()).Show();
+                #region Report by bank or paye
+                if (SystemConst.finance_report_type == "bank_payment")
+                {
+                    SystemConst._station_name = branch_list;
+                    SystemConst._finance_crystal_report_type = "bank_payment";
+                    SystemConst._bank_branch = this.cbo_bank_branch.Text;
+                    (new frm_finance_detailed_guard_pay_roll_report()).Show();
+                }
+                else if (SystemConst.finance_report_type == "paye_payment")
+                {
+                    SystemConst._station_code = branch_list;
+                    SystemConst._station_name = branch_list;
+                    SystemConst._active_deployment_id = this.cbo_deploy_period.SelectedValue.ToString();
+                    SystemConst._finance_crystal_report_type = "PAYE";
+                    (new frm_finance_detailed_guard_pay_roll_report()).Show();
+                    return;
+                }
+                #endregion
+               
 			}
 		}
 
@@ -189,6 +228,7 @@ namespace Guard_profiler
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chklist_branches = new System.Windows.Forms.CheckedListBox();
+            this.lblreportType = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -196,6 +236,7 @@ namespace Guard_profiler
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.lblreportType);
             this.panel1.Controls.Add(this.cbo_bank_branch);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbo_bank_name);
@@ -206,17 +247,19 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(3, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 355);
+            this.panel1.Size = new System.Drawing.Size(639, 437);
             this.panel1.TabIndex = 0;
             // 
             // cbo_bank_branch
             // 
             this.cbo_bank_branch.FormattingEnabled = true;
-            this.cbo_bank_branch.Location = new System.Drawing.Point(219, 215);
+            this.cbo_bank_branch.Location = new System.Drawing.Point(292, 265);
+            this.cbo_bank_branch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_bank_branch.Name = "cbo_bank_branch";
-            this.cbo_bank_branch.Size = new System.Drawing.Size(139, 21);
+            this.cbo_bank_branch.Size = new System.Drawing.Size(184, 24);
             this.cbo_bank_branch.TabIndex = 10;
             // 
             // label4
@@ -224,18 +267,20 @@ namespace Guard_profiler
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Yellow;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(216, 197);
+            this.label4.Location = new System.Drawing.Point(288, 242);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 15);
+            this.label4.Size = new System.Drawing.Size(93, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Bank Branch";
             // 
             // cbo_bank_name
             // 
             this.cbo_bank_name.FormattingEnabled = true;
-            this.cbo_bank_name.Location = new System.Drawing.Point(219, 173);
+            this.cbo_bank_name.Location = new System.Drawing.Point(292, 213);
+            this.cbo_bank_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_bank_name.Name = "cbo_bank_name";
-            this.cbo_bank_name.Size = new System.Drawing.Size(139, 21);
+            this.cbo_bank_name.Size = new System.Drawing.Size(184, 24);
             this.cbo_bank_name.TabIndex = 8;
             this.cbo_bank_name.SelectedIndexChanged += new System.EventHandler(this.cbo_bank_name_SelectedIndexChanged);
             // 
@@ -244,17 +289,19 @@ namespace Guard_profiler
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Yellow;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(216, 155);
+            this.label3.Location = new System.Drawing.Point(288, 191);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
+            this.label3.Size = new System.Drawing.Size(86, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Bank Name";
             // 
             // btnextract
             // 
-            this.btnextract.Location = new System.Drawing.Point(260, 242);
+            this.btnextract.Location = new System.Drawing.Point(347, 298);
+            this.btnextract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnextract.Name = "btnextract";
-            this.btnextract.Size = new System.Drawing.Size(98, 24);
+            this.btnextract.Size = new System.Drawing.Size(131, 56);
             this.btnextract.TabIndex = 6;
             this.btnextract.Text = "Generate Report";
             this.btnextract.UseVisualStyleBackColor = true;
@@ -265,9 +312,10 @@ namespace Guard_profiler
             this.chk_current_period.AutoSize = true;
             this.chk_current_period.Checked = true;
             this.chk_current_period.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_current_period.Location = new System.Drawing.Point(364, 117);
+            this.chk_current_period.Location = new System.Drawing.Point(485, 144);
+            this.chk_current_period.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chk_current_period.Name = "chk_current_period";
-            this.chk_current_period.Size = new System.Drawing.Size(112, 30);
+            this.chk_current_period.Size = new System.Drawing.Size(147, 38);
             this.chk_current_period.TabIndex = 5;
             this.chk_current_period.Text = "use current \r\ndeployment period";
             this.chk_current_period.UseVisualStyleBackColor = true;
@@ -276,9 +324,10 @@ namespace Guard_profiler
             // cbo_deploy_period
             // 
             this.cbo_deploy_period.FormattingEnabled = true;
-            this.cbo_deploy_period.Location = new System.Drawing.Point(219, 122);
+            this.cbo_deploy_period.Location = new System.Drawing.Point(292, 150);
+            this.cbo_deploy_period.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbo_deploy_period.Name = "cbo_deploy_period";
-            this.cbo_deploy_period.Size = new System.Drawing.Size(139, 21);
+            this.cbo_deploy_period.Size = new System.Drawing.Size(184, 24);
             this.cbo_deploy_period.TabIndex = 4;
             // 
             // label2
@@ -286,9 +335,10 @@ namespace Guard_profiler
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Yellow;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(216, 104);
+            this.label2.Location = new System.Drawing.Point(288, 128);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 15);
+            this.label2.Size = new System.Drawing.Size(113, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Payment Period";
             // 
@@ -297,9 +347,10 @@ namespace Guard_profiler
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Yellow;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 3);
+            this.label1.Location = new System.Drawing.Point(13, 4);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 15);
+            this.label1.Size = new System.Drawing.Size(205, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select Stations for your report";
             // 
@@ -307,27 +358,39 @@ namespace Guard_profiler
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Controls.Add(this.chklist_branches);
-            this.panel2.Location = new System.Drawing.Point(10, 21);
+            this.panel2.Location = new System.Drawing.Point(13, 26);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 327);
+            this.panel2.Size = new System.Drawing.Size(267, 402);
             this.panel2.TabIndex = 0;
             // 
             // chklist_branches
             // 
             this.chklist_branches.FormattingEnabled = true;
-            this.chklist_branches.Location = new System.Drawing.Point(3, 3);
+            this.chklist_branches.Location = new System.Drawing.Point(4, 4);
+            this.chklist_branches.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chklist_branches.Name = "chklist_branches";
-            this.chklist_branches.Size = new System.Drawing.Size(194, 319);
+            this.chklist_branches.Size = new System.Drawing.Size(257, 378);
             this.chklist_branches.TabIndex = 1;
+            // 
+            // lblreportType
+            // 
+            this.lblreportType.AutoSize = true;
+            this.lblreportType.Location = new System.Drawing.Point(315, 17);
+            this.lblreportType.Name = "lblreportType";
+            this.lblreportType.Size = new System.Drawing.Size(92, 17);
+            this.lblreportType.TabIndex = 11;
+            this.lblreportType.Text = "lblreportType";
             // 
             // frm_finance_bank_salary_payment_sheet_report_selector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(482, 360);
+            this.ClientSize = new System.Drawing.Size(643, 443);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frm_finance_bank_salary_payment_sheet_report_selector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

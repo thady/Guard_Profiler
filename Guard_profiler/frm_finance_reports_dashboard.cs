@@ -38,8 +38,11 @@ namespace Guard_profiler
 
 		private void btnbank_payment_report_Click(object sender, EventArgs e)
 		{
-			(new frm_finance_bank_salary_payment_sheet_report_selector()).ShowDialog();
-		}
+            SystemConst.finance_report_type = string.Empty;
+            SystemConst.finance_report_type = "bank_payment";
+            (new frm_finance_bank_salary_payment_sheet_report_selector()).ShowDialog();
+           
+        }
 
 		private void btnlst_Click(object sender, EventArgs e)
 		{
@@ -55,8 +58,13 @@ namespace Guard_profiler
 
 		private void btnpaye_Click(object sender, EventArgs e)
 		{
-			SystemConst._finance_report_type = "PAYE Report";
-			(new frm_finance_reports_parameter_selector()).ShowDialog();
+            SystemConst.finance_report_type = string.Empty;
+            SystemConst.finance_report_type = "paye_payment";
+            (new frm_finance_bank_salary_payment_sheet_report_selector()).ShowDialog();
+            
+
+           // SystemConst._finance_report_type = "PAYE Report";
+			//(new frm_finance_reports_parameter_selector()).ShowDialog();
 		}
 
 		protected override void Dispose(bool disposing)
