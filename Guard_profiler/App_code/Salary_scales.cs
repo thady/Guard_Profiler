@@ -699,9 +699,11 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@QueryName"].Value = myQuery;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@branch_name"].Value = branch;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@guard_number"].Value = guard_number;

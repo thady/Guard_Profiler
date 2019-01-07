@@ -69,7 +69,21 @@ namespace Guard_profiler
 		private void frm_deployment_periods_Load(object sender, EventArgs e)
 		{
 			this.return_deployment_periods();
-		}
+            set_user_access_permissions();
+
+        }
+
+        protected void set_user_access_permissions()
+        {
+            if (SystemConst.Get_username() == "jimjohn" || SystemConst.Get_username() == "thad")
+            {
+                btnsave.Enabled = true;
+            }
+            else
+            {
+                btnsave.Enabled = false;
+            }
+        }
 
 		private void gdv_deployment_periods_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
@@ -84,149 +98,207 @@ namespace Guard_profiler
 
 		private void InitializeComponent()
 		{
-			ComponentResourceManager resources = new ComponentResourceManager(typeof(frm_deployment_periods));
-			this.panel1 = new Panel();
-			this.gdv_deployment_periods = new DataGridView();
-			this.panel2 = new Panel();
-			this.chk_active = new CheckBox();
-			this.label2 = new Label();
-			this.dt_end_date = new DateTimePicker();
-			this.dt_start_date = new DateTimePicker();
-			this.label1 = new Label();
-			this.panel3 = new Panel();
-			this.btnsave = new Button();
-			this.btn_new = new Button();
-			this.panel4 = new Panel();
-			this.lbl_guid = new Label();
-			this.panel1.SuspendLayout();
-			((ISupportInitialize)this.gdv_deployment_periods).BeginInit();
-			this.panel2.SuspendLayout();
-			this.panel3.SuspendLayout();
-			this.panel4.SuspendLayout();
-			base.SuspendLayout();
-			this.panel1.BackColor = Color.Azure;
-			this.panel1.Controls.Add(this.gdv_deployment_periods);
-			this.panel1.Location = new Point(2, 120);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(605, 362);
-			this.panel1.TabIndex = 0;
-			this.gdv_deployment_periods.AllowUserToAddRows = false;
-			this.gdv_deployment_periods.AllowUserToDeleteRows = false;
-			this.gdv_deployment_periods.AllowUserToResizeColumns = false;
-			this.gdv_deployment_periods.AllowUserToResizeRows = false;
-			this.gdv_deployment_periods.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-			this.gdv_deployment_periods.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.gdv_deployment_periods.Location = new Point(0, 3);
-			this.gdv_deployment_periods.Name = "gdv_deployment_periods";
-			this.gdv_deployment_periods.ReadOnly = true;
-			this.gdv_deployment_periods.Size = new System.Drawing.Size(599, 368);
-			this.gdv_deployment_periods.TabIndex = 0;
-			this.gdv_deployment_periods.CellClick += new DataGridViewCellEventHandler(this.gdv_deployment_periods_CellClick);
-			this.panel2.BackColor = SystemColors.GradientInactiveCaption;
-			this.panel2.Controls.Add(this.panel3);
-			this.panel2.Controls.Add(this.chk_active);
-			this.panel2.Controls.Add(this.label2);
-			this.panel2.Controls.Add(this.dt_end_date);
-			this.panel2.Controls.Add(this.dt_start_date);
-			this.panel2.Controls.Add(this.label1);
-			this.panel2.Location = new Point(2, 2);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(602, 84);
-			this.panel2.TabIndex = 1;
-			this.chk_active.AutoSize = true;
-			this.chk_active.BackColor = Color.Yellow;
-			this.chk_active.Location = new Point(270, 24);
-			this.chk_active.Name = "chk_active";
-			this.chk_active.Size = new System.Drawing.Size(145, 17);
-			this.chk_active.TabIndex = 7;
-			this.chk_active.Text = "Active deployment period";
-			this.chk_active.UseVisualStyleBackColor = false;
-			this.label2.AutoSize = true;
-			this.label2.BackColor = Color.FromArgb(255, 192, 128);
-			this.label2.Location = new Point(10, 42);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(108, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Deployment end date";
-			this.dt_end_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9f, FontStyle.Regular, GraphicsUnit.Point, 0);
-			this.dt_end_date.Location = new Point(13, 58);
-			this.dt_end_date.Name = "dt_end_date";
-			this.dt_end_date.ShowCheckBox = true;
-			this.dt_end_date.Size = new System.Drawing.Size(225, 21);
-			this.dt_end_date.TabIndex = 5;
-			this.dt_start_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9f, FontStyle.Regular, GraphicsUnit.Point, 0);
-			this.dt_start_date.Location = new Point(13, 20);
-			this.dt_start_date.Name = "dt_start_date";
-			this.dt_start_date.ShowCheckBox = true;
-			this.dt_start_date.Size = new System.Drawing.Size(227, 21);
-			this.dt_start_date.TabIndex = 4;
-			this.label1.AutoSize = true;
-			this.label1.BackColor = Color.FromArgb(255, 192, 128);
-			this.label1.Location = new Point(10, 4);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(110, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Deployment start date";
-			this.panel3.BackColor = Color.FromArgb(255, 192, 128);
-			this.panel3.Controls.Add(this.btn_new);
-			this.panel3.Controls.Add(this.btnsave);
-			this.panel3.Location = new Point(421, 4);
-			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(178, 77);
-			this.panel3.TabIndex = 8;
-			this.btnsave.BackColor = Color.FromArgb(192, 255, 255);
-			this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
-			this.btnsave.Location = new Point(3, 3);
-			this.btnsave.Name = "btnsave";
-			this.btnsave.Size = new System.Drawing.Size(170, 34);
-			this.btnsave.TabIndex = 0;
-			this.btnsave.Text = "SAVE DEPLOYMENT PERIOD";
-			this.btnsave.UseVisualStyleBackColor = false;
-			this.btnsave.Click += new EventHandler(this.btnsave_Click);
-			this.btn_new.BackColor = Color.FromArgb(192, 255, 192);
-			this.btn_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
-			this.btn_new.Location = new Point(3, 38);
-			this.btn_new.Name = "btn_new";
-			this.btn_new.Size = new System.Drawing.Size(170, 34);
-			this.btn_new.TabIndex = 1;
-			this.btn_new.Text = "NEW DEPLOYMENT PERIOD";
-			this.btn_new.UseVisualStyleBackColor = false;
-			this.btn_new.Click += new EventHandler(this.btn_new_Click);
-			this.panel4.BackColor = Color.White;
-			this.panel4.Controls.Add(this.lbl_guid);
-			this.panel4.Location = new Point(2, 87);
-			this.panel4.Name = "panel4";
-			this.panel4.Size = new System.Drawing.Size(602, 27);
-			this.panel4.TabIndex = 1;
-			this.lbl_guid.AutoSize = true;
-			this.lbl_guid.ForeColor = Color.Blue;
-			this.lbl_guid.Location = new Point(245, 7);
-			this.lbl_guid.Name = "lbl_guid";
-			this.lbl_guid.Size = new System.Drawing.Size(43, 13);
-			this.lbl_guid.TabIndex = 0;
-			this.lbl_guid.Text = "lbl_guid";
-			base.AutoScaleDimensions = new SizeF(6f, 13f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = Color.FromArgb(255, 224, 192);
-			base.ClientSize = new System.Drawing.Size(608, 483);
-			base.Controls.Add(this.panel4);
-			base.Controls.Add(this.panel2);
-			base.Controls.Add(this.panel1);
-			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-			base.MaximizeBox = false;
-			base.Name = "frm_deployment_periods";
-			base.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "Manage deployment periods";
-			base.Load += new EventHandler(this.frm_deployment_periods_Load);
-			this.panel1.ResumeLayout(false);
-			((ISupportInitialize)this.gdv_deployment_periods).EndInit();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
-			this.panel3.ResumeLayout(false);
-			this.panel4.ResumeLayout(false);
-			this.panel4.PerformLayout();
-			base.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_deployment_periods));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.gdv_deployment_periods = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_new = new System.Windows.Forms.Button();
+            this.btnsave = new System.Windows.Forms.Button();
+            this.chk_active = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dt_end_date = new System.Windows.Forms.DateTimePicker();
+            this.dt_start_date = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbl_guid = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gdv_deployment_periods)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.gdv_deployment_periods);
+            this.panel1.Location = new System.Drawing.Point(3, 148);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(807, 446);
+            this.panel1.TabIndex = 0;
+            // 
+            // gdv_deployment_periods
+            // 
+            this.gdv_deployment_periods.AllowUserToAddRows = false;
+            this.gdv_deployment_periods.AllowUserToDeleteRows = false;
+            this.gdv_deployment_periods.AllowUserToResizeColumns = false;
+            this.gdv_deployment_periods.AllowUserToResizeRows = false;
+            this.gdv_deployment_periods.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdv_deployment_periods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdv_deployment_periods.Location = new System.Drawing.Point(0, 4);
+            this.gdv_deployment_periods.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gdv_deployment_periods.Name = "gdv_deployment_periods";
+            this.gdv_deployment_periods.ReadOnly = true;
+            this.gdv_deployment_periods.Size = new System.Drawing.Size(799, 453);
+            this.gdv_deployment_periods.TabIndex = 0;
+            this.gdv_deployment_periods.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_deployment_periods_CellClick);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.chk_active);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.dt_end_date);
+            this.panel2.Controls.Add(this.dt_start_date);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(803, 103);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel3.Controls.Add(this.btn_new);
+            this.panel3.Controls.Add(this.btnsave);
+            this.panel3.Location = new System.Drawing.Point(561, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(237, 95);
+            this.panel3.TabIndex = 8;
+            // 
+            // btn_new
+            // 
+            this.btn_new.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_new.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_new.Location = new System.Drawing.Point(4, 47);
+            this.btn_new.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_new.Name = "btn_new";
+            this.btn_new.Size = new System.Drawing.Size(227, 42);
+            this.btn_new.TabIndex = 1;
+            this.btn_new.Text = "NEW DEPLOYMENT PERIOD";
+            this.btn_new.UseVisualStyleBackColor = false;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
+            // 
+            // btnsave
+            // 
+            this.btnsave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnsave.Enabled = false;
+            this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsave.Location = new System.Drawing.Point(4, 4);
+            this.btnsave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsave.Name = "btnsave";
+            this.btnsave.Size = new System.Drawing.Size(227, 42);
+            this.btnsave.TabIndex = 0;
+            this.btnsave.Text = "SAVE DEPLOYMENT PERIOD";
+            this.btnsave.UseVisualStyleBackColor = false;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
+            // 
+            // chk_active
+            // 
+            this.chk_active.AutoSize = true;
+            this.chk_active.BackColor = System.Drawing.Color.Yellow;
+            this.chk_active.Location = new System.Drawing.Point(360, 30);
+            this.chk_active.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chk_active.Name = "chk_active";
+            this.chk_active.Size = new System.Drawing.Size(189, 21);
+            this.chk_active.TabIndex = 7;
+            this.chk_active.Text = "Active deployment period";
+            this.chk_active.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label2.Location = new System.Drawing.Point(13, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Deployment end date";
+            // 
+            // dt_end_date
+            // 
+            this.dt_end_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_end_date.Location = new System.Drawing.Point(17, 71);
+            this.dt_end_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dt_end_date.Name = "dt_end_date";
+            this.dt_end_date.ShowCheckBox = true;
+            this.dt_end_date.Size = new System.Drawing.Size(299, 24);
+            this.dt_end_date.TabIndex = 5;
+            // 
+            // dt_start_date
+            // 
+            this.dt_start_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_start_date.Location = new System.Drawing.Point(17, 25);
+            this.dt_start_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dt_start_date.Name = "dt_start_date";
+            this.dt_start_date.ShowCheckBox = true;
+            this.dt_start_date.Size = new System.Drawing.Size(301, 24);
+            this.dt_start_date.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(13, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Deployment start date";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbl_guid);
+            this.panel4.Location = new System.Drawing.Point(3, 107);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(803, 33);
+            this.panel4.TabIndex = 1;
+            // 
+            // lbl_guid
+            // 
+            this.lbl_guid.AutoSize = true;
+            this.lbl_guid.ForeColor = System.Drawing.Color.Blue;
+            this.lbl_guid.Location = new System.Drawing.Point(327, 9);
+            this.lbl_guid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_guid.Name = "lbl_guid";
+            this.lbl_guid.Size = new System.Drawing.Size(57, 17);
+            this.lbl_guid.TabIndex = 0;
+            this.lbl_guid.Text = "lbl_guid";
+            // 
+            // frm_deployment_periods
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(811, 594);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.Name = "frm_deployment_periods";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Manage deployment periods";
+            this.Load += new System.EventHandler(this.frm_deployment_periods_Load);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gdv_deployment_periods)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.ResumeLayout(false);
+
 		}
 
 		protected void return_deployment_periods()

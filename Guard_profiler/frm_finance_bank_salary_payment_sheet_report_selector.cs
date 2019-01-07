@@ -150,6 +150,7 @@ namespace Guard_profiler
                     SystemConst._station_name = branch_list;
                     SystemConst._finance_crystal_report_type = "bank_payment";
                     SystemConst._bank_branch = this.cbo_bank_branch.Text;
+                    SystemConst._payment_deployment_id = cbo_deploy_period.SelectedValue.ToString();
                     (new frm_finance_detailed_guard_pay_roll_report()).Show();
                 }
                 else if (SystemConst.finance_report_type == "paye_payment")

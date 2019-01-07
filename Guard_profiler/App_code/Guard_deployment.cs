@@ -782,7 +782,57 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable select_list_of_guards_by_branch_and_date_for_batch_deployment(string myQuery, string branch_name)
+        public static DataTable Select_accounts_active_deployment_period(string myQuery,int deploy_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_guard_payroll_queries", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@deploy_period_id", SqlDbType.Int);
+                            cmd.Parameters["@deploy_period_id"].Value = deploy_id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Guard_deployment.conn.State == ConnectionState.Open)
+                {
+                    Guard_deployment.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable select_list_of_guards_by_branch_and_date_for_batch_deployment(string myQuery, string branch_name)
 		{
 			DataTable dt = new DataTable();
 			try

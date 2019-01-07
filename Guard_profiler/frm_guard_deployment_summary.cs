@@ -163,11 +163,11 @@ namespace Guard_profiler
             //this.cbo_branch.Text = string.Empty;
             //this.cbo_customer_name.Text = string.Empty;
             this.cbo_customer_location.Text = string.Empty;
-            this.cbo_guard_name.Text = string.Empty;
+            //this.cbo_guard_name.Text = string.Empty;
             this.txt_ammunition_count.Text = string.Empty;
             this.txt_fire_arm_serial.Clear();
             this.cbo_working_shift.Text = string.Empty;
-            this.txt_guard_number.Clear();
+           // this.txt_guard_number.Clear();
             this.txt_deploy_details_id.Clear();
             this.panel_deploy_details.Enabled = true;
         }

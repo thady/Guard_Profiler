@@ -58,11 +58,58 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_guard_deployment_schedule_report.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="cr_staff_bank_schedule.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_staff_bank_schedule.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cr_staff_local_service_tax_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_staff_local_service_tax_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cr_staff_paye_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_staff_paye_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cr_staff_payroll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_staff_payroll.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDeployguards_single.resx">
       <DependentUpon>frmDeployguards_single.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeploymentscheduleReport.resx">
       <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\cr_staff_nssf_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_staff_nssf_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_guard_payroll_summary.resx">
+      <DependentUpon>frm_guard_payroll_summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_reports_dashboard.resx">
+      <DependentUpon>frm_staff_payroll_reports_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmstaffAdvance.resx">
+      <DependentUpon>frmstaffAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_setup_payroll_staff.resx">
+      <DependentUpon>frm_setup_payroll_staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staffprofiles.resx">
+      <DependentUpon>frm_staffprofiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_report_export.resx">
+      <DependentUpon>frm_staff_payroll_report_export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_report_selector.resx">
+      <DependentUpon>frm_staff_payroll_report_selector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_summary.resx">
+      <DependentUpon>frm_staff_payroll_summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_summary_view.resx">
+      <DependentUpon>frm_staff_payroll_summary_view.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <None Include="App.config" />
@@ -70,6 +117,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>cr_guard_deployment_schedule_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cr_staff_bank_schedule.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_staff_bank_schedule.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cr_staff_local_service_tax_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_staff_local_service_tax_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cr_staff_paye_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_staff_paye_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cr_staff_payroll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_staff_payroll.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmDeployguards_single.cs">
@@ -83,6 +154,68 @@
     </Compile>
     <Compile Include="frmDeploymentscheduleReport.Designer.cs">
       <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\cr_staff_nssf_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_staff_nssf_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_payroll_summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_guard_payroll_summary.Designer.cs">
+      <DependentUpon>frm_guard_payroll_summary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_reports_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_reports_dashboard.Designer.cs">
+      <DependentUpon>frm_staff_payroll_reports_dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\App_code\StaffPayrollReports.cs" />
+    <Compile Include="Guard_profiler\App_code\StaffProfiles.cs" />
+    <Compile Include="Guard_profiler\frmstaffAdvance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmstaffAdvance.Designer.cs">
+      <DependentUpon>frmstaffAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_setup_payroll_staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_setup_payroll_staff.Designer.cs">
+      <DependentUpon>frm_setup_payroll_staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staffprofiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staffprofiles.Designer.cs">
+      <DependentUpon>frm_staffprofiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_report_export.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_report_export.Designer.cs">
+      <DependentUpon>frm_staff_payroll_report_export.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_report_selector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_report_selector.Designer.cs">
+      <DependentUpon>frm_staff_payroll_report_selector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_summary.Designer.cs">
+      <DependentUpon>frm_staff_payroll_summary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_summary_view.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_staff_payroll_summary_view.Designer.cs">
+      <DependentUpon>frm_staff_payroll_summary_view.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>false</AutoGen>

@@ -86,7 +86,16 @@ namespace Guard_profiler
 				SystemConst._finance_crystal_report_type = "DEPLOY";
 				(new frm_finance_detailed_guard_pay_roll_report()).Show();
 			}
-		}
+            if (this.lblreport_type.Text == "Preview summary")
+            {
+               
+                SystemConst._station_name = this.cbo_station.Text;
+                SystemConst._active_deployment_id = this.cbo_deploy_period.SelectedValue.ToString();
+
+                frm_guard_payroll_summary summ = new frm_guard_payroll_summary();
+                summ.ShowDialog();
+            }
+        }
 
 		private void chk_current_period_CheckedChanged(object sender, EventArgs e)
 		{
@@ -115,6 +124,11 @@ namespace Guard_profiler
 			this.lblreport_type.Text = SystemConst._finance_report_type;
 			this.GET_BRANCHES();
 			this.return_deployment_periods();
+
+            if (SystemConst._finance_report_type == "Preview summary")
+            {
+                btn_execute.Text = "Preview Payroll";
+            }
 		}
 
 		protected void GET_BRANCHES()

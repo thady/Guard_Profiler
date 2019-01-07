@@ -87,10 +87,10 @@ namespace Guard_profiler
                     {
                         Set_Report_logons.SetTableLogin(tbCurrent);
                     }
-                    report.SetDataSource(Finance_Reports.select_bank_payment_report("select_bank_payment_report", SystemConst._station_name, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetDataSource(Finance_Reports.select_bank_payment_report("select_bank_payment_report", SystemConst._station_name, Convert.ToInt32(SystemConst._payment_deployment_id)));
                     report.SetParameterValue("QueryName", "select_bank_payment_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
-                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._payment_deployment_id));
                     report.SetParameterValue("bank_branch", SystemConst._bank_branch);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;

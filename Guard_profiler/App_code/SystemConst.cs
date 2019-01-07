@@ -45,12 +45,17 @@ namespace Guard_profiler.App_code
 		public static bool is_admin;
 
 		public static string _active_deployment_id;
+        public static string _payment_deployment_id;
 
-		public static DateTime _deployment_start_date;
+        public static DateTime _deployment_start_date;
 
 		public static DateTime _deployment_end_date;
 
-		public static string _client_codee;
+        public static DateTime _Accounts_deployment_start_date;
+
+        public static DateTime _Accounts_deployment_end_date;
+
+        public static string _client_codee;
         public static string _client_ids;
 
         public static string _client_location;

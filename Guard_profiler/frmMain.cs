@@ -96,7 +96,7 @@ namespace Guard_profiler
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem toolStripMenuItem10;
         private ToolStripMenuItem adminToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem11;
+        private ToolStripMenuItem toolstripManageUsers;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem toolStripMenuItem12;
         private ToolStripSeparator toolStripSeparator5;
@@ -187,7 +187,9 @@ namespace Guard_profiler
 			base.WindowState = FormWindowState.Maximized;
 			(new frmLogin()).ShowDialog();
 			this.Set_current_deployment_periods();
-		}
+            Set_user_access_permissions();
+
+        }
 
 		private void frmMain_MouseHover(object sender, EventArgs e)
 		{
@@ -264,7 +266,7 @@ namespace Guard_profiler
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstripManageUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -410,6 +412,7 @@ namespace Guard_profiler
             this.btnadmin.TabIndex = 8;
             this.btnadmin.Text = "System Admin";
             this.btnadmin.UseVisualStyleBackColor = true;
+            this.btnadmin.Click += new System.EventHandler(this.btnadmin_Click);
             // 
             // btnaccounts
             // 
@@ -585,6 +588,7 @@ namespace Guard_profiler
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.MediumAquamarine;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolstripHumanResource,
             this.ToolstripWages,
@@ -694,7 +698,7 @@ namespace Guard_profiler
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem11,
+            this.toolstripManageUsers,
             this.toolStripSeparator4,
             this.toolStripMenuItem12,
             this.toolStripSeparator5,
@@ -703,12 +707,13 @@ namespace Guard_profiler
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(68, 57);
             this.adminToolStripMenuItem.Text = "Admin";
             // 
-            // toolStripMenuItem11
+            // toolstripManageUsers
             // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(366, 26);
-            this.toolStripMenuItem11.Text = "Manage users";
-            this.toolStripMenuItem11.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
+            this.toolstripManageUsers.Enabled = false;
+            this.toolstripManageUsers.Name = "toolstripManageUsers";
+            this.toolstripManageUsers.Size = new System.Drawing.Size(366, 26);
+            this.toolstripManageUsers.Text = "Manage users";
+            this.toolstripManageUsers.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // toolStripSeparator4
             // 
@@ -840,6 +845,75 @@ namespace Guard_profiler
 				this.btnwages.Enabled = false;
 			}
 		}
+
+        protected void Set_user_access_permissions()
+        {
+            if (SystemConst._user_department == "Accounts")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = true;
+                this.ToolstripHumanResource.Enabled = false;
+                this.ToolstripWages.Enabled = false;
+                this.toolstripreports.Enabled = false;
+                this.btnhr.Enabled = false;
+                this.btnaccounts.Enabled = true;
+                this.btnwages.Enabled = false;
+                return;
+            }
+            if (SystemConst._user_department == "Wages")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = false;
+                this.ToolstripHumanResource.Enabled = false;
+                this.ToolstripWages.Enabled = true;
+                this.toolstripreports.Enabled = false;
+                this.btnhr.Enabled = false;
+                this.btnaccounts.Enabled = false;
+                this.btnwages.Enabled = true;
+                return;
+            }
+            if (SystemConst._user_department == "Human Resource")
+            {
+                if (!SystemConst.is_admin)
+                {
+                    this.toolstrip_admin.Enabled = false;
+                }
+                else
+                {
+                    this.toolstrip_admin.Enabled = true;
+                }
+                this.ToolstripAccounts.Enabled = false;
+                this.ToolstripHumanResource.Enabled = true;
+                this.ToolstripWages.Enabled = false;
+                this.toolstripreports.Enabled = true;
+                this.btnhr.Enabled = true;
+                this.btnaccounts.Enabled = false;
+                this.btnwages.Enabled = false;
+            }
+
+            if (SystemConst.Get_username() == "jimjohn" || SystemConst.Get_username() == "thad")
+            {
+                toolstripManageUsers.Enabled = true;
+            }
+            else
+            {
+                toolstripManageUsers.Enabled = false;
+            }
+        }
 
 		private void nonGuardProfilesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -1060,6 +1134,11 @@ namespace Guard_profiler
         }
 
         private void menuStrip1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnadmin_Click(object sender, EventArgs e)
         {
 
         }

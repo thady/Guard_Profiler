@@ -1,3 +1,4 @@
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -118,25 +119,29 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.btn_transfer_guards);
             this.panel1.Controls.Add(this.btn_emp_records);
             this.panel1.Controls.Add(this.btn_guard_profiles);
-            this.panel1.Location = new System.Drawing.Point(12, 27);
+            this.panel1.Location = new System.Drawing.Point(16, 33);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(619, 281);
+            this.panel1.Size = new System.Drawing.Size(825, 346);
             this.panel1.TabIndex = 0;
             // 
             // btn_non_guard_profiles
             // 
-            this.btn_non_guard_profiles.Location = new System.Drawing.Point(206, 14);
+            this.btn_non_guard_profiles.Location = new System.Drawing.Point(275, 17);
+            this.btn_non_guard_profiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_non_guard_profiles.Name = "btn_non_guard_profiles";
-            this.btn_non_guard_profiles.Size = new System.Drawing.Size(190, 52);
+            this.btn_non_guard_profiles.Size = new System.Drawing.Size(253, 64);
             this.btn_non_guard_profiles.TabIndex = 4;
             this.btn_non_guard_profiles.Text = "Non-Guard Profiles";
             this.btn_non_guard_profiles.UseVisualStyleBackColor = true;
+            this.btn_non_guard_profiles.Click += new System.EventHandler(this.btn_non_guard_profiles_Click);
             // 
             // btn_archived_guards
             // 
-            this.btn_archived_guards.Location = new System.Drawing.Point(10, 188);
+            this.btn_archived_guards.Location = new System.Drawing.Point(13, 231);
+            this.btn_archived_guards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_archived_guards.Name = "btn_archived_guards";
-            this.btn_archived_guards.Size = new System.Drawing.Size(190, 52);
+            this.btn_archived_guards.Size = new System.Drawing.Size(253, 64);
             this.btn_archived_guards.TabIndex = 3;
             this.btn_archived_guards.Text = "View Arhived Guards(Guard History)";
             this.btn_archived_guards.UseVisualStyleBackColor = true;
@@ -144,9 +149,10 @@ namespace Guard_profiler
             // 
             // btn_transfer_guards
             // 
-            this.btn_transfer_guards.Location = new System.Drawing.Point(10, 130);
+            this.btn_transfer_guards.Location = new System.Drawing.Point(13, 160);
+            this.btn_transfer_guards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_transfer_guards.Name = "btn_transfer_guards";
-            this.btn_transfer_guards.Size = new System.Drawing.Size(190, 52);
+            this.btn_transfer_guards.Size = new System.Drawing.Size(253, 64);
             this.btn_transfer_guards.TabIndex = 2;
             this.btn_transfer_guards.Text = "Transfer Guards";
             this.btn_transfer_guards.UseVisualStyleBackColor = true;
@@ -154,9 +160,10 @@ namespace Guard_profiler
             // 
             // btn_emp_records
             // 
-            this.btn_emp_records.Location = new System.Drawing.Point(10, 72);
+            this.btn_emp_records.Location = new System.Drawing.Point(13, 89);
+            this.btn_emp_records.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_emp_records.Name = "btn_emp_records";
-            this.btn_emp_records.Size = new System.Drawing.Size(190, 52);
+            this.btn_emp_records.Size = new System.Drawing.Size(253, 64);
             this.btn_emp_records.TabIndex = 1;
             this.btn_emp_records.Text = "Manage Guard Employment Records";
             this.btn_emp_records.UseVisualStyleBackColor = true;
@@ -164,9 +171,10 @@ namespace Guard_profiler
             // 
             // btn_guard_profiles
             // 
-            this.btn_guard_profiles.Location = new System.Drawing.Point(10, 14);
+            this.btn_guard_profiles.Location = new System.Drawing.Point(13, 17);
+            this.btn_guard_profiles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_guard_profiles.Name = "btn_guard_profiles";
-            this.btn_guard_profiles.Size = new System.Drawing.Size(190, 52);
+            this.btn_guard_profiles.Size = new System.Drawing.Size(253, 64);
             this.btn_guard_profiles.TabIndex = 0;
             this.btn_guard_profiles.Text = "Manage Guard Profiles";
             this.btn_guard_profiles.UseVisualStyleBackColor = true;
@@ -208,6 +216,7 @@ namespace Guard_profiler
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem3,
@@ -216,53 +225,55 @@ namespace Guard_profiler
             this.toolStripMenuItem6});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(631, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(841, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(191, 20);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 24);
             this.toolStripMenuItem2.Text = "Active Guards by branch Reports";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 20);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(185, 24);
             this.toolStripMenuItem3.Text = "Kampala Guards Reports";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(111, 20);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(138, 24);
             this.toolStripMenuItem4.Text = "All Guards Report";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(12, 20);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(12, 24);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(149, 20);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(184, 24);
             this.toolStripMenuItem6.Text = "Archived Guards Reports";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // frm_hr_panel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(631, 309);
+            this.ClientSize = new System.Drawing.Size(841, 380);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frm_hr_panel";
@@ -303,6 +314,11 @@ namespace Guard_profiler
         {
             frm_archieve_lists archieve = new frm_archieve_lists();
             archieve.ShowDialog();
+        }
+
+        private void btn_non_guard_profiles_Click(object sender, EventArgs e)
+        {
+            frm_staffprofiles frm = new frm_staffprofiles();
         }
     }
 }
