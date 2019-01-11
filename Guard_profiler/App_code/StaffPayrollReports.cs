@@ -17,6 +17,7 @@ namespace Guard_profiler.App_code
         public static int _payment_period_id = -1;
         public static string _branch_id = string.Empty;
         public static string _payment_month = string.Empty;
+        public static string branch_name = string.Empty;
         public static string bank_name = string.Empty;
 
         public static DataTable select_staff_payroll(string myQuery,int payment_period_id,string branch_id,string payment_month)

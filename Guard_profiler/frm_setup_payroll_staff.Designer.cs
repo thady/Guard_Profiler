@@ -416,9 +416,9 @@
             this.label27.Location = new System.Drawing.Point(391, 5);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(42, 15);
+            this.label27.Size = new System.Drawing.Size(53, 15);
             this.label27.TabIndex = 69;
-            this.label27.Text = "Bonus";
+            this.label27.Text = "Housing";
             // 
             // txt_special_amt
             // 
@@ -443,9 +443,9 @@
             this.label26.Location = new System.Drawing.Point(168, 63);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(48, 15);
+            this.label26.Size = new System.Drawing.Size(46, 15);
             this.label26.TabIndex = 67;
-            this.label26.Text = "Special";
+            this.label26.Text = "Arrears";
             // 
             // txt_transport_amt
             // 

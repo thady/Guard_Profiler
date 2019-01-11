@@ -98,6 +98,7 @@ namespace Guard_profiler
                 StaffPayrollReports._payment_period_id = Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString());
                 StaffPayrollReports._branch_id = generate_branch_list();
                 StaffPayrollReports._payment_month = cbo_payment_month.Text;
+                
 
                 #region set bank name
                 if (grpboxBank_schedule.Visible == true)
