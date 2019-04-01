@@ -124,7 +124,7 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static void insert_update_guard_account_details(string myQuery, string guard_number, int bank_id, int branch_id, string account_number, string nssf_number)
+		public static void insert_update_guard_account_details(string myQuery, string guard_number, int bank_id, int branch_id, string account_number, string nssf_number,string tin_number)
 		{
 			DataTable dataTable = new DataTable();
 			try
@@ -151,10 +151,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@account_number", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@account_number"].Value = account_number;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@nssf_number", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@nssf_number"].Value = nssf_number;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@tin_number", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@tin_number"].Value = tin_number;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}

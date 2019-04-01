@@ -63,6 +63,8 @@ namespace Guard_profiler
 
 		private Label label10;
         private ReSize reSize1;
+        private TextBox txtTin;
+        private Label label11;
         private TextBox txt_guard_number;
 
 		public frm_guard_bank_details()
@@ -77,7 +79,7 @@ namespace Guard_profiler
 				MessageBox.Show("Fields with (*) are required", "save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
-			Salary_scales.insert_update_guard_account_details("insert_update_guard_account_details", this.txt_guard_number.Text, Convert.ToInt32(this.cbo_bank.SelectedValue.ToString()), Convert.ToInt32(this.cbo_branch_name.SelectedValue.ToString()), this.txt_account_number.Text, this.txt_nssf_number.Text);
+			Salary_scales.insert_update_guard_account_details("insert_update_guard_account_details", this.txt_guard_number.Text, Convert.ToInt32(this.cbo_bank.SelectedValue.ToString()), Convert.ToInt32(this.cbo_branch_name.SelectedValue.ToString()), this.txt_account_number.Text, this.txt_nssf_number.Text,txtTin.Text);
 			MessageBox.Show("Success", "save", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 			this.get_guard_bank_mapping();
 		}
@@ -138,6 +140,7 @@ namespace Guard_profiler
                 this.cbo_branch_name.Text = this.gdv_guards.CurrentRow.Cells[4].Value.ToString();
                 this.txt_account_number.Text = this.gdv_guards.CurrentRow.Cells[5].Value.ToString();
                 this.txt_nssf_number.Text = this.gdv_guards.CurrentRow.Cells[6].Value.ToString();
+                this.txtTin.Text = this.gdv_guards.CurrentRow.Cells[7].Value.ToString();
             }
 		}
 
@@ -241,6 +244,8 @@ namespace Guard_profiler
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtTin = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_guards)).BeginInit();
@@ -260,7 +265,7 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(937, 572);
             this.panel1.TabIndex = 0;
@@ -268,7 +273,7 @@ namespace Guard_profiler
             // btnsearch
             // 
             this.btnsearch.Location = new System.Drawing.Point(632, 167);
-            this.btnsearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnsearch.Name = "btnsearch";
             this.btnsearch.Size = new System.Drawing.Size(100, 28);
             this.btnsearch.TabIndex = 11;
@@ -280,7 +285,7 @@ namespace Guard_profiler
             // 
             this.txt_guard_number_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_guard_number_search.Location = new System.Drawing.Point(437, 162);
-            this.txt_guard_number_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_guard_number_search.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number_search.Name = "txt_guard_number_search";
             this.txt_guard_number_search.Size = new System.Drawing.Size(185, 30);
             this.txt_guard_number_search.TabIndex = 11;
@@ -301,7 +306,7 @@ namespace Guard_profiler
             this.cbo_branch_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_branch_search.FormattingEnabled = true;
             this.cbo_branch_search.Location = new System.Drawing.Point(67, 166);
-            this.cbo_branch_search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_branch_search.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_branch_search.Name = "cbo_branch_search";
             this.cbo_branch_search.Size = new System.Drawing.Size(231, 28);
             this.cbo_branch_search.TabIndex = 11;
@@ -332,7 +337,7 @@ namespace Guard_profiler
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel3.Controls.Add(this.gdv_guards);
             this.panel3.Location = new System.Drawing.Point(7, 202);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(927, 367);
             this.panel3.TabIndex = 2;
@@ -346,7 +351,7 @@ namespace Guard_profiler
             this.gdv_guards.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdv_guards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdv_guards.Location = new System.Drawing.Point(7, 4);
-            this.gdv_guards.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gdv_guards.Margin = new System.Windows.Forms.Padding(4);
             this.gdv_guards.Name = "gdv_guards";
             this.gdv_guards.Size = new System.Drawing.Size(916, 359);
             this.gdv_guards.TabIndex = 0;
@@ -366,6 +371,8 @@ namespace Guard_profiler
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel2.Controls.Add(this.txtTin);
+            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.txt_guard_number);
             this.panel2.Controls.Add(this.btnnew);
@@ -380,7 +387,7 @@ namespace Guard_profiler
             this.panel2.Controls.Add(this.cbo_bank);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(7, 21);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(927, 123);
             this.panel2.TabIndex = 0;
@@ -401,7 +408,7 @@ namespace Guard_profiler
             this.txt_guard_number.Enabled = false;
             this.txt_guard_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_guard_number.Location = new System.Drawing.Point(625, 21);
-            this.txt_guard_number.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_guard_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number.Name = "txt_guard_number";
             this.txt_guard_number.Size = new System.Drawing.Size(172, 30);
             this.txt_guard_number.TabIndex = 11;
@@ -409,7 +416,7 @@ namespace Guard_profiler
             // btnnew
             // 
             this.btnnew.Location = new System.Drawing.Point(827, 81);
-            this.btnnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnnew.Margin = new System.Windows.Forms.Padding(4);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(96, 28);
             this.btnnew.TabIndex = 10;
@@ -420,7 +427,7 @@ namespace Guard_profiler
             // btnedit
             // 
             this.btnedit.Location = new System.Drawing.Point(723, 81);
-            this.btnedit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnedit.Margin = new System.Windows.Forms.Padding(4);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(100, 28);
             this.btnedit.TabIndex = 9;
@@ -430,7 +437,7 @@ namespace Guard_profiler
             // btnsave
             // 
             this.btnsave.Location = new System.Drawing.Point(615, 81);
-            this.btnsave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsave.Margin = new System.Windows.Forms.Padding(4);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(100, 28);
             this.btnsave.TabIndex = 8;
@@ -442,9 +449,9 @@ namespace Guard_profiler
             // 
             this.txt_nssf_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nssf_number.Location = new System.Drawing.Point(325, 78);
-            this.txt_nssf_number.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_nssf_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nssf_number.Name = "txt_nssf_number";
-            this.txt_nssf_number.Size = new System.Drawing.Size(280, 30);
+            this.txt_nssf_number.Size = new System.Drawing.Size(147, 30);
             this.txt_nssf_number.TabIndex = 7;
             // 
             // label6
@@ -461,7 +468,7 @@ namespace Guard_profiler
             // 
             this.txt_account_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_account_number.Location = new System.Drawing.Point(11, 78);
-            this.txt_account_number.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_account_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_account_number.Name = "txt_account_number";
             this.txt_account_number.Size = new System.Drawing.Size(280, 30);
             this.txt_account_number.TabIndex = 5;
@@ -481,7 +488,7 @@ namespace Guard_profiler
             this.cbo_branch_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_branch_name.FormattingEnabled = true;
             this.cbo_branch_name.Location = new System.Drawing.Point(325, 25);
-            this.cbo_branch_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_branch_name.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_branch_name.Name = "cbo_branch_name";
             this.cbo_branch_name.Size = new System.Drawing.Size(280, 28);
             this.cbo_branch_name.TabIndex = 3;
@@ -501,7 +508,7 @@ namespace Guard_profiler
             this.cbo_bank.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_bank.FormattingEnabled = true;
             this.cbo_bank.Location = new System.Drawing.Point(11, 25);
-            this.cbo_bank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbo_bank.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_bank.Name = "cbo_bank";
             this.cbo_bank.Size = new System.Drawing.Size(280, 28);
             this.cbo_bank.TabIndex = 1;
@@ -538,6 +545,25 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 941D;
             this.reSize1.Tag = null;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(480, 58);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 17);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Tin Number";
+            // 
+            // txtTin
+            // 
+            this.txtTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTin.Location = new System.Drawing.Point(480, 79);
+            this.txtTin.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTin.Name = "txtTin";
+            this.txtTin.Size = new System.Drawing.Size(127, 30);
+            this.txtTin.TabIndex = 14;
+            // 
             // frm_guard_bank_details
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -546,7 +572,7 @@ namespace Guard_profiler
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_guard_bank_details";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bank & NSSF Details";
@@ -593,6 +619,7 @@ namespace Guard_profiler
             cbo_branch_name.Text = string.Empty;
             txt_account_number.Clear();
             txt_nssf_number.Clear();
+            txtTin.Clear();
         }
     }
 }

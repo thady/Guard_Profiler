@@ -47,6 +47,7 @@ namespace Guard_profiler
                         report.SetDataSource(StaffPayrollReports.select_staff_payroll("select_staff_payroll", StaffPayrollReports._payment_period_id, StaffPayrollReports._branch_id, StaffPayrollReports._payment_month));
                         report.SetParameterValue("QueryName", "select_staff_payroll");
                         report.SetParameterValue("branch_id", StaffPayrollReports._branch_id);
+                        report.SetParameterValue("branch_name", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
 
@@ -101,6 +102,7 @@ namespace Guard_profiler
                         report.SetDataSource(StaffPayrollReports.select_staff_payroll("select_staff_nssf_report", StaffPayrollReports._payment_period_id, StaffPayrollReports._branch_id, StaffPayrollReports._payment_month));
                         report.SetParameterValue("QueryName", "select_staff_nssf_report");
                         report.SetParameterValue("branch_id", StaffPayrollReports._branch_id);
+                        report.SetParameterValue("branch_name", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
                        

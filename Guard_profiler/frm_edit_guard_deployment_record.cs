@@ -409,7 +409,7 @@ namespace Guard_profiler
 
 		protected void Return_list_of_clients()
 		{
-			DataTable dt = Clients.Return_list_of_clients("return_list_of_clients");
+			DataTable dt = Clients.Return_list_of_clients("return_list_of_clients_for_deploy");
 			if (dt.Rows.Count > 0)
 			{
 				DataRow dtRow = dt.NewRow();

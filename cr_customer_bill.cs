@@ -16,14 +16,14 @@ using System.ComponentModel;
 
 
 
-public class cr_staff_payroll : ReportClass {
+public class cr_customer_bill : ReportClass {
     
-    public cr_staff_payroll() {
+    public cr_customer_bill() {
     }
     
     public override string ResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_customer_bill.rpt";
         }
         set {
             // Do nothing
@@ -41,7 +41,7 @@ public class cr_staff_payroll : ReportClass {
     
     public override string FullResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_customer_bill.rpt";
         }
         set {
             // Do nothing
@@ -87,52 +87,12 @@ public class cr_staff_payroll : ReportClass {
             return this.ReportDefinition.Sections[4];
         }
     }
-    
-    [Browsable(false)]
-    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_QueryName {
-        get {
-            return this.DataDefinition.ParameterFields[0];
-        }
-    }
-    
-    [Browsable(false)]
-    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_branch_id {
-        get {
-            return this.DataDefinition.ParameterFields[1];
-        }
-    }
-    
-    [Browsable(false)]
-    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_payment_month {
-        get {
-            return this.DataDefinition.ParameterFields[2];
-        }
-    }
-    
-    [Browsable(false)]
-    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_payment_period_id {
-        get {
-            return this.DataDefinition.ParameterFields[3];
-        }
-    }
-    
-    [Browsable(false)]
-    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_branch_name {
-        get {
-            return this.DataDefinition.ParameterFields[4];
-        }
-    }
 }
 
 [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-public class Cachedcr_staff_payroll : Component, ICachedReport {
+public class Cachedcr_customer_bill : Component, ICachedReport {
     
-    public Cachedcr_staff_payroll() {
+    public Cachedcr_customer_bill() {
     }
     
     [Browsable(false)]
@@ -169,7 +129,7 @@ public class Cachedcr_staff_payroll : Component, ICachedReport {
     }
     
     public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-        cr_staff_payroll rpt = new cr_staff_payroll();
+        cr_customer_bill rpt = new cr_customer_bill();
         rpt.Site = this.Site;
         return rpt;
     }

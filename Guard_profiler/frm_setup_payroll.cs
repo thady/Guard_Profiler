@@ -423,8 +423,8 @@ namespace Guard_profiler
 
         private void frm_setup_payroll_Load(object sender, EventArgs e)
         {
-            this.dt_start_date.Value = SystemConst._deployment_start_date;
-            this.dt_end_date.Value = SystemConst._deployment_end_date;
+            //this.dt_start_date.Value = SystemConst._deployment_start_date;
+            //this.dt_end_date.Value = SystemConst._deployment_end_date;
             this.GET_BRANCHES();
             return_deployment_periods();
 
@@ -449,7 +449,7 @@ namespace Guard_profiler
                     this.txt_station_code.Text = dtrow["station_code"].ToString();
                     this.txt_station_name.Text = dtrow["station_name"].ToString();
                     this.txt_guard_num.Text = dtrow["guard_number"].ToString();
-                    this.txt_guard_name.Text = dtrow["guard_name"].ToString();
+                    this.txt_guard_name.Text = this.gdv_guards.CurrentRow.Cells[0].Value.ToString();
                     this.txt_salary_scale_code.Text = dtrow["salary_scale_code"].ToString();
                     this.txt_record_guid.Text = dtrow["record_guid"].ToString();
                     this.txt_bank_code.Text = dtrow["bank_code"].ToString();
@@ -586,6 +586,7 @@ namespace Guard_profiler
             this.chk_print_bank_schedule = new System.Windows.Forms.CheckBox();
             this.label48 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.btnpreview = new System.Windows.Forms.Button();
             this.btn_report = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -685,7 +686,6 @@ namespace Guard_profiler
             this.panel11 = new System.Windows.Forms.Panel();
             this.picBoxImage = new System.Windows.Forms.PictureBox();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.btnpreview = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -723,6 +723,7 @@ namespace Guard_profiler
             this.chk_current_period.AutoSize = true;
             this.chk_current_period.Checked = true;
             this.chk_current_period.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_current_period.Enabled = false;
             this.chk_current_period.Location = new System.Drawing.Point(1062, 7);
             this.chk_current_period.Margin = new System.Windows.Forms.Padding(4);
             this.chk_current_period.Name = "chk_current_period";
@@ -914,6 +915,21 @@ namespace Guard_profiler
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(433, 53);
             this.panel10.TabIndex = 46;
+            // 
+            // btnpreview
+            // 
+            this.btnpreview.BackColor = System.Drawing.Color.Silver;
+            this.btnpreview.ForeColor = System.Drawing.Color.Blue;
+            this.btnpreview.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnpreview.Location = new System.Drawing.Point(162, 3);
+            this.btnpreview.Margin = new System.Windows.Forms.Padding(4);
+            this.btnpreview.Name = "btnpreview";
+            this.btnpreview.Size = new System.Drawing.Size(114, 47);
+            this.btnpreview.TabIndex = 3;
+            this.btnpreview.Text = "PREVIEW PAYROLL";
+            this.btnpreview.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnpreview.UseVisualStyleBackColor = false;
+            this.btnpreview.Click += new System.EventHandler(this.btnpreview_Click);
             // 
             // btn_report
             // 
@@ -2229,21 +2245,6 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 1339D;
             this.reSize1.Tag = null;
             // 
-            // btnpreview
-            // 
-            this.btnpreview.BackColor = System.Drawing.Color.Silver;
-            this.btnpreview.ForeColor = System.Drawing.Color.Blue;
-            this.btnpreview.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnpreview.Location = new System.Drawing.Point(162, 3);
-            this.btnpreview.Margin = new System.Windows.Forms.Padding(4);
-            this.btnpreview.Name = "btnpreview";
-            this.btnpreview.Size = new System.Drawing.Size(114, 47);
-            this.btnpreview.TabIndex = 3;
-            this.btnpreview.Text = "PREVIEW PAYROLL";
-            this.btnpreview.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnpreview.UseVisualStyleBackColor = false;
-            this.btnpreview.Click += new System.EventHandler(this.btnpreview_Click);
-            // 
             // frm_setup_payroll
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2375,7 +2376,7 @@ namespace Guard_profiler
             }
             else
             {
-                Payroll_Engine.update_guard_payroll_details("update_guard_payroll_details", this.txt_record_guid.Text, SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(SystemConst._active_deployment_id), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
+                Payroll_Engine.update_guard_payroll_details("update_guard_payroll_details", this.txt_record_guid.Text, SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
                 MessageBox.Show(string.Concat("Successfully updated payroll details for ", this.txt_guard_name.Text), "Payroll setup", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.clear_fields();
             }
@@ -2610,22 +2611,22 @@ namespace Guard_profiler
                 this.cbo_deploy_period.DisplayMember = "period";
                 this.cbo_deploy_period.ValueMember = "deploy_id";
                 this.cbo_deploy_period.DataSource = dt;
-                this.cbo_deploy_period.SelectedValue = SystemConst._active_deployment_id;
-                this.cbo_deploy_period.Enabled = false;
+               // this.cbo_deploy_period.SelectedValue = SystemConst._active_deployment_id;
+                //this.cbo_deploy_period.Enabled = false;
             }
         }
 
         private void chk_current_period_CheckedChanged(object sender, EventArgs e)
         {
-            if (!this.chk_current_period.Checked)
-            {
-                this.cbo_deploy_period.Text = string.Empty;
-                this.cbo_deploy_period.Enabled = true;
-                return;
-            }
-            this.Set_current_deployment_periods();
-            this.cbo_deploy_period.SelectedValue = SystemConst._active_deployment_id;
-            this.cbo_deploy_period.Enabled = false;
+            //if (!this.chk_current_period.Checked)
+            //{
+            //    this.cbo_deploy_period.Text = string.Empty;
+            //    this.cbo_deploy_period.Enabled = true;
+            //    return;
+            //}
+            //this.Set_current_deployment_periods();
+            //this.cbo_deploy_period.SelectedValue = SystemConst._active_deployment_id;
+            //this.cbo_deploy_period.Enabled = false;
         }
 
         protected void Set_current_deployment_periods()

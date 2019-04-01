@@ -41,6 +41,9 @@ namespace Guard_profiler
                 gdv_staff.Columns["st_position"].Visible = false;
                 gdv_staff.Columns["bank_id"].Visible = false;
                 gdv_staff.Columns["bank_branch_id"].Visible = false;
+                gdv_staff.Columns["basic_amt"].Visible = false;
+                gdv_staff.Columns["transport_amt"].Visible = false;
+                gdv_staff.Columns["housing_amt"].Visible = false;
 
                 gdv_staff.Columns["st_name"].HeaderText = "Name";
                 gdv_staff.Columns["st_number"].HeaderText = "Personal Number";
@@ -72,7 +75,9 @@ namespace Guard_profiler
 
         protected void select_staff_payroll(string st_id,int payment_period_id,string pay_month)
         {
+            
             DataTable dt = StaffProfiles.Return_staff_payroll("select_staff_payroll_details", st_id, payment_period_id, pay_month);
+            
             if (dt.Rows.Count > 0)
             {
                 DataRow dtrow = dt.Rows[0];
@@ -85,7 +90,7 @@ namespace Guard_profiler
                 txt_bank_branch.Text = dtrow["branch_name"].ToString();
                 txt_account_number.Text = dtrow["bank_acc_number"].ToString();
                 txt_nssf.Text = dtrow["nss_number"].ToString();
-
+               
                 string payment_month = dtrow["payment_month"].ToString();
                 if (payment_month != string.Empty)
                 {
@@ -93,7 +98,7 @@ namespace Guard_profiler
                     cbo_payment_month.Text = dtrow["payment_month"].ToString();
                     txt_basic_amt.Text = decimal.Parse(dtrow["basic_amt"].ToString()).ToString();
                     txt_transport_amt.Text = decimal.Parse(dtrow["transport_amt"].ToString()).ToString();
-                    txt_bonus_amt.Text = decimal.Parse(dtrow["bonus_amt"].ToString()).ToString();
+                    txt_housing_amt.Text = decimal.Parse(dtrow["HousingAmt"].ToString()).ToString();
                     txt_over_time_amt.Text = decimal.Parse(dtrow["overtime_amt"].ToString()).ToString();
                     txt_special_amt.Text = decimal.Parse(dtrow["special_amt"].ToString()).ToString();
                     txt_leave_amt.Text = decimal.Parse(dtrow["leave_amt"].ToString()).ToString();
@@ -118,7 +123,7 @@ namespace Guard_profiler
                     cbo_payment_month.Text = string.Empty;
                     txt_basic_amt.Clear();
                     txt_transport_amt.Clear();
-                    txt_bonus_amt.Clear();
+                    txt_housing_amt.Clear();
                     txt_over_time_amt.Clear();
                     txt_special_amt.Clear();
                     txt_leave_amt.Clear();
@@ -139,6 +144,7 @@ namespace Guard_profiler
             }
             else
             {
+               
                 DataTable _dt = StaffProfiles.select_staff_details_payroll_setup("select_staff_details_payroll_setup",st_id);
                 if (_dt.Rows.Count > 0)
                 {
@@ -151,14 +157,18 @@ namespace Guard_profiler
                     txt_bank_branch.Text = _dtRow["branch_name"].ToString();
                     txt_account_number.Text = _dtRow["bank_acc_number"].ToString();
                     txt_nssf.Text = _dtRow["nss_number"].ToString();
+                   // MessageBox.Show(_dtRow["basicAmt"].ToString());
+                    txt_basic_amt.Text = decimal.Parse(_dtRow["basicAmt"].ToString()).ToString();
+                    txt_transport_amt.Text = decimal.Parse(_dtRow["TransportAmt"].ToString()).ToString();
+                    txt_housing_amt.Text = decimal.Parse(_dtRow["HousingAmt"].ToString()).ToString();
                 }
 
                 txt_record_guid.Clear();
                 cbo_deploy_period.SelectedValue = -1;
                 cbo_payment_month.Text = string.Empty;
-                txt_basic_amt.Clear();
-                txt_transport_amt.Clear();
-                txt_bonus_amt.Clear();
+                //txt_basic_amt.Clear();
+                //txt_transport_amt.Clear();
+                //txt_housing_amt.Clear();
                 txt_over_time_amt.Clear();
                 txt_special_amt.Clear();
                 txt_leave_amt.Clear();
@@ -203,8 +213,12 @@ namespace Guard_profiler
             {
                 string st_id = gdv_staff.CurrentRow.Cells[0].Value.ToString();
                 staff_id = st_id;
+               
                 select_staff_payroll(st_id,Convert.ToInt32(cbo_deploy_period_search.SelectedValue.ToString()),cbo_payment_month_search.Text);
+               
                 select_staff_advance(st_id);
+
+               
             }
         }
 
@@ -213,7 +227,7 @@ namespace Guard_profiler
             bool flag;
             decimal basic_amt = (this.txt_basic_amt.Text != string.Empty ? decimal.Parse(this.txt_basic_amt.Text) : new decimal(0, 0, 0, false, 1));
             decimal transport_amt = (this.txt_transport_amt.Text != string.Empty ? decimal.Parse(this.txt_transport_amt.Text) : new decimal(0, 0, 0, false, 1));
-            decimal bonus_amt = (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal bonus_amt = (this.txt_housing_amt.Text != string.Empty ? decimal.Parse(this.txt_housing_amt.Text) : new decimal(0, 0, 0, false, 1));
             decimal leave_amt = (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1));
             decimal over_time_amt = (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1));            
             decimal special_amt = (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1));
@@ -509,7 +523,7 @@ namespace Guard_profiler
         {
             if (txt_record_guid.Text == string.Empty)
             {
-                StaffProfiles.save_staff_payroll("save_staff_payroll", staff_id, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_bonus_amt.Text != string.Empty ? decimal.Parse(txt_bonus_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
+                StaffProfiles.save_staff_payroll("save_staff_payroll", staff_id, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_housing_amt.Text != string.Empty ? decimal.Parse(txt_housing_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
                 , txt_lst_amt.Text != string.Empty ? decimal.Parse(txt_lst_amt.Text) : 0, txt_loan_amt.Text != string.Empty ? decimal.Parse(txt_loan_amt.Text) : 0, txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(txt_advance_amt_paid.Text) : 0, txt_nssf_amt.Text != string.Empty ? decimal.Parse(txt_nssf_amt.Text) : 0, txt_paye_amt.Text != string.Empty ? decimal.Parse(txt_paye_amt.Text) : 0, txt_gross_amt.Text != string.Empty ? decimal.Parse(txt_gross_amt.Text) : 0, txt_total_deductions.Text != string.Empty ? decimal.Parse(txt_total_deductions.Text) : 0, txt_net_pay.Text != string.Empty ? decimal.Parse(txt_net_pay.Text) : 0, chk_pay_salary.Checked == true ? true : false, chk_pay_paye.Checked == true ? true : false
                 , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
 
@@ -526,7 +540,7 @@ namespace Guard_profiler
             }
             else
             {
-                StaffProfiles.update_staff_payroll("update_staff_payroll", txt_record_guid.Text, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_bonus_amt.Text != string.Empty ? decimal.Parse(txt_bonus_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
+                StaffProfiles.update_staff_payroll("update_staff_payroll", txt_record_guid.Text, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_housing_amt.Text != string.Empty ? decimal.Parse(txt_housing_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
                 , txt_lst_amt.Text != string.Empty ? decimal.Parse(txt_lst_amt.Text) : 0, txt_loan_amt.Text != string.Empty ? decimal.Parse(txt_loan_amt.Text) : 0, txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(txt_advance_amt_paid.Text) : 0, txt_nssf_amt.Text != string.Empty ? decimal.Parse(txt_nssf_amt.Text) : 0, txt_paye_amt.Text != string.Empty ? decimal.Parse(txt_paye_amt.Text) : 0, txt_gross_amt.Text != string.Empty ? decimal.Parse(txt_gross_amt.Text) : 0, txt_total_deductions.Text != string.Empty ? decimal.Parse(txt_total_deductions.Text) : 0, txt_net_pay.Text != string.Empty ? decimal.Parse(txt_net_pay.Text) : 0, chk_pay_salary.Checked == true ? true : false, chk_pay_paye.Checked == true ? true : false
                 , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
 
@@ -651,6 +665,37 @@ namespace Guard_profiler
         {
             frm_staff_payroll_summary summ = new frm_staff_payroll_summary();
             summ.ShowDialog();
+        }
+
+        private void gdv_staff_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txt_ovt_days_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_ovt_days.Text != string.Empty)
+            {
+                decimal ovt = (decimal.Parse(txt_basic_amt.Text) / 30) * decimal.Parse(txt_ovt_days.Text);
+                txt_over_time_amt.Text = Math.Round(ovt, 2).ToString();
+            }
+            else
+            {
+                decimal ovt = 0;
+                txt_over_time_amt.Text = ovt.ToString();
+            }
+        }
+
+        private void txt_ovt_days_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

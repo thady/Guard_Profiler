@@ -27,9 +27,7 @@ namespace Guard_profiler
 
 		private Button btn_fire_arms;
 
-		private Button btn_fire_arm_guard_assign;
-
-		private Button btn_clients;
+		private Button btnActiveDeployment;
 
 		private Label label1;
 
@@ -45,6 +43,7 @@ namespace Guard_profiler
 
 		private Button btnclientreport;
         private Button btndeploymentschedule;
+        private Button btn_clients;
         private Button btnguard_clientreport;
 
 		public frm_wages_panel()
@@ -118,7 +117,7 @@ namespace Guard_profiler
             this.btn_deployment_periods = new System.Windows.Forms.Button();
             this.btn_lst = new System.Windows.Forms.Button();
             this.btn_clients = new System.Windows.Forms.Button();
-            this.btn_fire_arm_guard_assign = new System.Windows.Forms.Button();
+            this.btnActiveDeployment = new System.Windows.Forms.Button();
             this.btn_fire_arms = new System.Windows.Forms.Button();
             this.btn_public_holidays = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -142,7 +141,7 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.btn_deployment_periods);
             this.panel1.Controls.Add(this.btn_lst);
             this.panel1.Controls.Add(this.btn_clients);
-            this.panel1.Controls.Add(this.btn_fire_arm_guard_assign);
+            this.panel1.Controls.Add(this.btnActiveDeployment);
             this.panel1.Controls.Add(this.btn_fire_arms);
             this.panel1.Controls.Add(this.btn_public_holidays);
             this.panel1.Controls.Add(this.splitter2);
@@ -228,6 +227,7 @@ namespace Guard_profiler
             // 
             // btn_clients
             // 
+            this.btn_clients.Enabled = false;
             this.btn_clients.Location = new System.Drawing.Point(216, 249);
             this.btn_clients.Margin = new System.Windows.Forms.Padding(4);
             this.btn_clients.Name = "btn_clients";
@@ -237,16 +237,16 @@ namespace Guard_profiler
             this.btn_clients.UseVisualStyleBackColor = true;
             this.btn_clients.Click += new System.EventHandler(this.btn_clients_Click);
             // 
-            // btn_fire_arm_guard_assign
+            // btnActiveDeployment
             // 
-            this.btn_fire_arm_guard_assign.Enabled = false;
-            this.btn_fire_arm_guard_assign.Location = new System.Drawing.Point(216, 186);
-            this.btn_fire_arm_guard_assign.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_fire_arm_guard_assign.Name = "btn_fire_arm_guard_assign";
-            this.btn_fire_arm_guard_assign.Size = new System.Drawing.Size(195, 55);
-            this.btn_fire_arm_guard_assign.TabIndex = 8;
-            this.btn_fire_arm_guard_assign.Text = "Assign fire arm to guards";
-            this.btn_fire_arm_guard_assign.UseVisualStyleBackColor = true;
+            this.btnActiveDeployment.Location = new System.Drawing.Point(216, 186);
+            this.btnActiveDeployment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActiveDeployment.Name = "btnActiveDeployment";
+            this.btnActiveDeployment.Size = new System.Drawing.Size(195, 55);
+            this.btnActiveDeployment.TabIndex = 8;
+            this.btnActiveDeployment.Text = "My Active Deployment";
+            this.btnActiveDeployment.UseVisualStyleBackColor = true;
+            this.btnActiveDeployment.Click += new System.EventHandler(this.btn_fire_arm_guard_assign_Click);
             // 
             // btn_fire_arms
             // 
@@ -377,6 +377,7 @@ namespace Guard_profiler
             this.Name = "frm_wages_panel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Securiko Uganda Ltd-Wage Managemet";
+            this.Load += new System.EventHandler(this.frm_wages_panel_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -393,6 +394,30 @@ namespace Guard_profiler
         {
             frmDeployguards_single r = new frmDeployguards_single();
             r.Show();
+        }
+
+        private void frm_wages_panel_Load(object sender, EventArgs e)
+        {
+            setDeploymentPeriod();
+        }
+
+        protected void setDeploymentPeriod()
+        {
+            if (SystemConst._active_deployment_id == string.Empty)
+            {
+                MessageBox.Show("You havent set any deployment period yet.You will not be able to deploy any guards if you haven't set a deployment period.You can do this from your active deployments panel.", "Message Center", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnActiveDeployment.ForeColor = Color.Red;
+            }
+            else
+            {
+                btnActiveDeployment.ForeColor = Color.Black;
+            }
+        }
+
+        private void btn_fire_arm_guard_assign_Click(object sender, EventArgs e)
+        {
+            frmMyActiveDeployment fnew = new frmMyActiveDeployment();
+            fnew.ShowDialog();
         }
     }
 }

@@ -130,6 +130,14 @@ namespace Guard_profiler
 
 		private TextBox txt_guard_number_search;
         private ReSize reSize1;
+        private Label label22;
+        private Label label21;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private Label label24;
+        private Label label23;
+        private Label label28;
         private Button btnsearch;
 
 		public frm_guard_deployment_summary()
@@ -298,13 +306,36 @@ namespace Guard_profiler
 			this.GET_ACTIVE_GUARDS();
 			this.Return_list_of_clients();
 			this.Get_guard_shift_types();
-			this.return_deployment_periods();
+			
 			this.Return_list_of_deployments_by_deploy_id("Return_list_of_deployments_by_deploy_id", (this.cbo_deploy_period.Text != string.Empty ? Convert.ToInt32(this.cbo_deploy_period.SelectedValue.ToString()) : -1), this.cbo_branch_search.Text, this.txt_guard_number_search.Text);
 			this.cbo_deploy_type.Text = "Normal";
 			base.WindowState = FormWindowState.Maximized;
-			this.dt_start_date.Value = SystemConst._deployment_start_date;
-			this.dt_end_date.Value = SystemConst._deployment_end_date;
-		}
+
+            setDeploymentPeriod();
+
+
+        }
+
+        protected void setDeploymentPeriod()
+        {
+            if (SystemConst._active_deployment_id == string.Empty)
+            {
+                MessageBox.Show("You havent set any deployment period yet.You will not be able to deploy any guards if you haven't set a deployment period.You can do this from your active deployments panel.", "Message Center", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_save.Enabled = false;
+                btn_save_and_new.Enabled = false;
+                btn_edit.Enabled = false;
+            }
+            else
+            {
+                this.return_deployment_periods();
+                this.dt_start_date.Value = SystemConst._deployment_start_date;
+                this.dt_end_date.Value = SystemConst._deployment_end_date;
+
+                btn_save.Enabled = true;
+                btn_save_and_new.Enabled = true;
+                btn_edit.Enabled = true;
+            }
+        }
 
 		private void gdv_deployment_summary_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
@@ -453,6 +484,13 @@ namespace Guard_profiler
             this.panel4 = new System.Windows.Forms.Panel();
             this.gdv_deployment_summary = new System.Windows.Forms.DataGridView();
             this.panel_deploy_details = new System.Windows.Forms.Panel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.txt_deploy_details_id = new System.Windows.Forms.TextBox();
             this.chk_weekend = new System.Windows.Forms.CheckBox();
             this.txt_client_code = new System.Windows.Forms.TextBox();
@@ -491,6 +529,7 @@ namespace Guard_profiler
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
+            this.label28 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -756,6 +795,14 @@ namespace Guard_profiler
             // 
             this.panel_deploy_details.BackColor = System.Drawing.Color.LightCyan;
             this.panel_deploy_details.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_deploy_details.Controls.Add(this.label28);
+            this.panel_deploy_details.Controls.Add(this.label27);
+            this.panel_deploy_details.Controls.Add(this.label26);
+            this.panel_deploy_details.Controls.Add(this.label25);
+            this.panel_deploy_details.Controls.Add(this.label24);
+            this.panel_deploy_details.Controls.Add(this.label23);
+            this.panel_deploy_details.Controls.Add(this.label22);
+            this.panel_deploy_details.Controls.Add(this.label21);
             this.panel_deploy_details.Controls.Add(this.txt_deploy_details_id);
             this.panel_deploy_details.Controls.Add(this.chk_weekend);
             this.panel_deploy_details.Controls.Add(this.txt_client_code);
@@ -791,6 +838,76 @@ namespace Guard_profiler
             this.panel_deploy_details.Name = "panel_deploy_details";
             this.panel_deploy_details.Size = new System.Drawing.Size(663, 545);
             this.panel_deploy_details.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(296, 312);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(13, 17);
+            this.label27.TabIndex = 40;
+            this.label27.Text = "*";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(296, 258);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(13, 17);
+            this.label26.TabIndex = 39;
+            this.label26.Text = "*";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.Location = new System.Drawing.Point(299, 206);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(13, 17);
+            this.label25.TabIndex = 38;
+            this.label25.Text = "*";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(180, 153);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(13, 17);
+            this.label24.TabIndex = 37;
+            this.label24.Text = "*";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.Red;
+            this.label23.Location = new System.Drawing.Point(315, 124);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 17);
+            this.label23.TabIndex = 36;
+            this.label23.Text = "*";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(190, 443);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(13, 17);
+            this.label22.TabIndex = 35;
+            this.label22.Text = "*";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(313, 391);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(13, 17);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "*";
             // 
             // txt_deploy_details_id
             // 
@@ -1226,6 +1343,17 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 1224D;
             this.reSize1.Tag = null;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(149, 14);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(497, 17);
+            this.label28.TabIndex = 41;
+            this.label28.Text = "Always confirm that your are working in the right deployment period";
+            // 
             // frm_guard_deployment_summary
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1302,7 +1430,7 @@ namespace Guard_profiler
 
 		protected void Return_list_of_clients()
 		{
-			DataTable dt = Clients.Return_list_of_clients("return_list_of_clients");
+			DataTable dt = Clients.Return_list_of_clients("return_list_of_clients_for_deploy");
 			if (dt.Rows.Count > 0)
 			{
 				DataRow dtRow = dt.NewRow();
@@ -1320,7 +1448,7 @@ namespace Guard_profiler
 
 		protected void Return_list_of_deployments_by_deploy_id(string myQuery, int deploy_period_id, string branch_name, string guard_number)
 		{
-			DataTable dt = Guard_deployment.Return_list_of_deployments_by_deploy_id(myQuery, deploy_period_id, branch_name, guard_number);
+			DataTable dt = Guard_deployment.Return_list_of_deployments_by_deploy_id(myQuery, deploy_period_id, branch_name, guard_number,SystemConst._user_id);
 			this.gdv_deployment_summary.DataSource = dt;
 			this.gdv_deployment_summary.Columns["deploy_details_id"].Visible = false;
 			this.gdv_deployment_summary.Columns["guard_name"].HeaderText = "Guard";
@@ -1345,7 +1473,7 @@ namespace Guard_profiler
 
 		protected void Save_guard_deployment_record()
 		{
-			if (!this.dt_start_date.Checked || !this.dt_end_date.Checked || !this.dt_deployment_date.Checked || this.cbo_deploy_type.Text == string.Empty || this.cbo_branch.Text == string.Empty || this.cbo_customer_name.Text == string.Empty || this.cbo_customer_location.Text == string.Empty || this.cbo_guard_name.Text == string.Empty || this.cbo_working_shift.Text == string.Empty)
+			if (!this.dt_start_date.Checked || !this.dt_end_date.Checked || !this.dt_deployment_date.Checked || this.cbo_deploy_type.Text == string.Empty || this.cbo_branch.Text == string.Empty || this.cbo_customer_name.Text == string.Empty || this.cbo_customer_location.Text == string.Empty || this.cbo_guard_name.Text == string.Empty || this.cbo_working_shift.Text == string.Empty || txt_fire_arm_serial.Text == string.Empty || txt_ammunition_count.Text == string.Empty)
 			{
 				MessageBox.Show("Fill in all required values", "Client Locations", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
@@ -1359,14 +1487,14 @@ namespace Guard_profiler
             
 			if (this.txt_deploy_details_id.Text == string.Empty)
 			{
-				Guard_deployment.Save_new_deployment_record("save_new_deployment_record", this.dt_start_date.Value.Date, this.dt_end_date.Value.Date, SystemConst._username, this.txt_guard_number.Text, this.dt_deployment_date.Value.Date, this.cbo_deploy_type.Text, this.cbo_branch.Text, cbo_customer_name.SelectedValue.ToString(), this.cbo_customer_location.Text, this.cbo_guard_name.Text, this.txt_fire_arm_serial.Text, (this.txt_ammunition_count.Text != string.Empty ? Convert.ToInt32(this.txt_ammunition_count.Text) : 0), this.cbo_working_shift.Text, (this.chk_leave.Checked ? true : false), (this.chk_public_holiday.Checked ? true : false), (this.chk_weekend.Checked ? true : false));
+				Guard_deployment.Save_new_deployment_record("save_new_deployment_record", this.dt_start_date.Value.Date, this.dt_end_date.Value.Date, SystemConst._username, this.txt_guard_number.Text, this.dt_deployment_date.Value.Date, this.cbo_deploy_type.Text, this.cbo_branch.Text, cbo_customer_name.SelectedValue.ToString(), this.cbo_customer_location.Text, this.cbo_guard_name.Text, this.txt_fire_arm_serial.Text, (this.txt_ammunition_count.Text != string.Empty ? Convert.ToInt32(this.txt_ammunition_count.Text) : 0), this.cbo_working_shift.Text, (this.chk_leave.Checked ? true : false), (this.chk_public_holiday.Checked ? true : false), (this.chk_weekend.Checked ? true : false),SystemConst._user_id);
 				MessageBox.Show("Successfully deployed guard for this date", "Guard Deployments", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 				this.Return_list_of_deployments_by_deploy_id("Return_list_of_deployments_by_deploy_id", (this.cbo_deploy_period.Text != string.Empty ? Convert.ToInt32(this.cbo_deploy_period.SelectedValue.ToString()) : -1), this.cbo_branch_search.Text, this.txt_guard_number_search.Text);
                 Guard_deployment.Save_deployment_schedule(dt_deployment_date.Value, Convert.ToInt32( SystemConst._active_deployment_id),cbo_guard_name.SelectedValue.ToString());
                 Clear();
                 return;
 			}
-			Guard_deployment.update_deployment_record_single_deploy("update_deployment_record_single_deploy", Convert.ToInt32(this.txt_deploy_details_id.Text), this.dt_start_date.Value.Date, this.dt_end_date.Value.Date, SystemConst._username, this.txt_guard_number.Text, this.dt_deployment_date.Value.Date, this.cbo_deploy_type.Text, this.cbo_branch.Text,cbo_customer_name.SelectedValue.ToString(), this.cbo_customer_location.Text, this.cbo_guard_name.Text, this.txt_fire_arm_serial.Text, (this.txt_ammunition_count.Text != string.Empty ? Convert.ToInt32(this.txt_ammunition_count.Text) : 0), this.cbo_working_shift.Text, (this.chk_leave.Checked ? true : false), (this.chk_public_holiday.Checked ? true : false), (this.chk_weekend.Checked ? true : false));
+			Guard_deployment.update_deployment_record_single_deploy("update_deployment_record_single_deploy", Convert.ToInt32(this.txt_deploy_details_id.Text), this.dt_start_date.Value.Date, this.dt_end_date.Value.Date, SystemConst._username, this.txt_guard_number.Text, this.dt_deployment_date.Value.Date, this.cbo_deploy_type.Text, this.cbo_branch.Text,cbo_customer_name.SelectedValue.ToString(), this.cbo_customer_location.Text, this.cbo_guard_name.Text, this.txt_fire_arm_serial.Text, (this.txt_ammunition_count.Text != string.Empty ? Convert.ToInt32(this.txt_ammunition_count.Text) : 0), this.cbo_working_shift.Text, (this.chk_leave.Checked ? true : false), (this.chk_public_holiday.Checked ? true : false), (this.chk_weekend.Checked ? true : false),SystemConst._user_id);
 			MessageBox.Show("Successfully updated deployment record", "Guard Deployments", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 			this.Return_list_of_deployments_by_deploy_id("Return_list_of_deployments_by_deploy_id", (this.cbo_deploy_period.Text != string.Empty ? Convert.ToInt32(this.cbo_deploy_period.SelectedValue.ToString()) : -1), this.cbo_branch_search.Text, this.txt_guard_number_search.Text);
             Guard_deployment.Save_deployment_schedule(dt_deployment_date.Value, Convert.ToInt32(SystemConst._active_deployment_id), cbo_guard_name.SelectedValue.ToString());

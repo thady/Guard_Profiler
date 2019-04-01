@@ -331,7 +331,109 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable Return_list_of_deployments_by_deploy_id(string myQuery, int deploy_period_id, string branch_name, string guard_number)
+        public static DataTable select_my_active_deployment_period(string myQuery,string user_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Guard_deployment.conn.State == ConnectionState.Open)
+                {
+                    Guard_deployment.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+        public static void save_update_my_current_deployment_period(string myQuery,int deploy_id,string user_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@deploy_id", SqlDbType.Int);
+                            cmd.Parameters["@deploy_id"].Value = deploy_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Guard_deployment.conn.State == ConnectionState.Open)
+                {
+                    Guard_deployment.conn.Close();
+                }
+            }
+        }
+
+        public static DataTable Return_list_of_deployments_by_deploy_id(string myQuery, int deploy_period_id, string branch_name, string guard_number,string user_id)
 		{
 			DataTable dt = new DataTable();
 			try
@@ -352,10 +454,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@branch_name"].Value = branch_name;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@guard_number"].Value = guard_number;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
@@ -475,7 +583,7 @@ namespace Guard_profiler.App_code
 			}
 		}
 
-		public static void Save_new_deployment_record(string QueryName, DateTime deploy_start_date, DateTime deploy_end_date, string created_by, string guard_number, DateTime deploy_date, string deploy_type, string branch_name, string client_code, string client_location, string guard_name, string firearm_serial, int number_of_ammunitions, string shift_type, bool is_leave_day_for_guard, bool is_public_holiday, bool is_weekend)
+		public static void Save_new_deployment_record(string QueryName, DateTime deploy_start_date, DateTime deploy_end_date, string created_by, string guard_number, DateTime deploy_date, string deploy_type, string branch_name, string client_code, string client_location, string guard_name, string firearm_serial, int number_of_ammunitions, string shift_type, bool is_leave_day_for_guard, bool is_public_holiday, bool is_weekend,string user_id)
 		{
 			try
 			{
@@ -534,10 +642,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@is_public_holiday", SqlDbType.Bit);
 							cmd.Parameters["@is_public_holiday"].Value = is_public_holiday;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@is_weekend", SqlDbType.Bit);
 							cmd.Parameters["@is_weekend"].Value = is_weekend;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.VarChar,50);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
@@ -832,7 +946,7 @@ namespace Guard_profiler.App_code
             return dt;
         }
 
-        public static DataTable select_list_of_guards_by_branch_and_date_for_batch_deployment(string myQuery, string branch_name)
+        public static DataTable select_list_of_guards_by_branch_and_date_for_batch_deployment(string myQuery, string branch_name,string user_id)
 		{
 			DataTable dt = new DataTable();
 			try
@@ -847,10 +961,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 200);
 							cmd.Parameters["@QueryName"].Value = myQuery;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@branch_name"].Value = branch_name;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
@@ -981,7 +1101,7 @@ namespace Guard_profiler.App_code
             return dt;
         }
 
-        public static DataTable select_list_of_guards_for_additional_deployment_data_entry(string myQuery, string branch_name, string guard_number, DateTime deploy_start_date, DateTime deploy_end_date)
+        public static DataTable select_list_of_guards_for_additional_deployment_data_entry(string myQuery, string branch_name, string guard_number, DateTime deploy_start_date, DateTime deploy_end_date,string user_id)
 		{
 			DataTable dt = new DataTable();
 			try
@@ -996,21 +1116,28 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@QueryName"].Value = myQuery;
-							cmd.CommandType = CommandType.StoredProcedure;
 
+							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@branch_name"].Value = branch_name;
-							cmd.CommandType = CommandType.StoredProcedure;
 
+							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@guard_number"].Value = guard_number;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@deploy_start_date", SqlDbType.Date);
 							cmd.Parameters["@deploy_start_date"].Value = deploy_start_date;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@deploy_end_date", SqlDbType.Date);
 							cmd.Parameters["@deploy_end_date"].Value = deploy_end_date;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}
@@ -1183,7 +1310,7 @@ namespace Guard_profiler.App_code
         }
 
 
-        public static void update_deployment_record_single_deploy(string QueryName, int deploy_details_id, DateTime deploy_start_date, DateTime deploy_end_date, string created_by, string guard_number, DateTime deploy_date, string deploy_type, string branch_name, string client_code, string client_location, string guard_name, string firearm_serial, int number_of_ammunitions, string shift_type, bool is_leave_day_for_guard, bool is_public_holiday, bool is_weekend)
+        public static void update_deployment_record_single_deploy(string QueryName, int deploy_details_id, DateTime deploy_start_date, DateTime deploy_end_date, string created_by, string guard_number, DateTime deploy_date, string deploy_type, string branch_name, string client_code, string client_location, string guard_name, string firearm_serial, int number_of_ammunitions, string shift_type, bool is_leave_day_for_guard, bool is_public_holiday, bool is_weekend,string user_id)
 		{
 			try
 			{
@@ -1245,10 +1372,16 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@is_public_holiday", SqlDbType.Bit);
 							cmd.Parameters["@is_public_holiday"].Value = is_public_holiday;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@is_weekend", SqlDbType.Bit);
 							cmd.Parameters["@is_weekend"].Value = is_weekend;
-							if (conn.State == ConnectionState.Closed)
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@user_id", SqlDbType.VarChar,50);
+                            cmd.Parameters["@user_id"].Value = user_id;
+
+                            if (conn.State == ConnectionState.Closed)
 							{
 								conn.Open();
 							}

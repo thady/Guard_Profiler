@@ -46,15 +46,22 @@ namespace Guard_profiler
 
 		private void btnlst_Click(object sender, EventArgs e)
 		{
-			SystemConst._finance_report_type = "Local Service Tax Report";
-			(new frm_finance_reports_parameter_selector()).ShowDialog();
-		}
+            SystemConst.finance_report_type = string.Empty;
+            SystemConst.finance_report_type = "Local Service Tax Report";
+            (new frm_finance_bank_salary_payment_sheet_report_selector()).ShowDialog();
+
+
+            //SystemConst._finance_report_type = "Local Service Tax Report";
+            //(new frm_finance_reports_parameter_selector()).ShowDialog();
+        }
 
 		private void btnNssf_Click(object sender, EventArgs e)
 		{
-			SystemConst._finance_report_type = "NSSF Report";
-			(new frm_finance_reports_parameter_selector()).ShowDialog();
-		}
+            SystemConst.finance_report_type = string.Empty;
+            SystemConst.finance_report_type = "NSSF_Report";
+            (new frm_finance_bank_salary_payment_sheet_report_selector()).ShowDialog();
+            //(new frm_finance_reports_parameter_selector()).ShowDialog();
+        }
 
 		private void btnpaye_Click(object sender, EventArgs e)
 		{

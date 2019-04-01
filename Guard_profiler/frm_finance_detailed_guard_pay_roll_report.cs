@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Guard_profiler
 {
@@ -37,7 +38,24 @@ namespace Guard_profiler
 			base.Dispose(disposing);
 		}
 
-		private void frm_finance_detailed_guard_pay_roll_report_Load(object sender, EventArgs e)
+        protected void Set_current_deployment_periods()
+        {
+            DataTable dt = Guard_deployment.select_my_active_deployment_period("select_my_active_deployment_period", SystemConst._user_id);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow dtRow = dt.Rows[0];
+                int num = Convert.ToInt32(dtRow["deploy_id"].ToString());
+                SystemConst._active_deployment_id = num.ToString();
+                SystemConst._deployment_start_date = Convert.ToDateTime(dtRow["deploy_start_date"]);
+                SystemConst._deployment_end_date = Convert.ToDateTime(dtRow["deploy_end_date"]);
+            }
+            else
+            {
+                SystemConst._active_deployment_id = string.Empty;
+            }
+        }
+
+        private void frm_finance_detailed_guard_pay_roll_report_Load(object sender, EventArgs e)
 		{
 			if (SystemConst._finance_crystal_report_type == "DEPLOY" || SystemConst._finance_crystal_report_type == "CLIENT" || SystemConst._finance_crystal_report_type == "GUARD")
 			{
@@ -60,14 +78,19 @@ namespace Guard_profiler
                     {
                         Set_Report_logons.SetTableLogin(tbCurrent);
                     }
-                    report.SetDataSource(Finance_Reports.select_guard_payroll_summary_details_by_station("select_guard_payroll_summary_details_by_station", Convert.ToInt32(SystemConst._active_deployment_id), SystemConst._station_code, SystemConst._station_name));
+                    report.SetDataSource(Finance_Reports.select_guard_payroll_summary_details_by_station("select_guard_payroll_summary_details_by_station", Convert.ToInt32(SystemConst._active_deployment_id), SystemConst._station_code, SystemConst._station_name, SystemConst._guard_rank));
                     report.SetParameterValue("QueryName", "select_guard_payroll_summary_details_by_station");
                     report.SetParameterValue("guard_number", string.Empty);
                     report.SetParameterValue("station_code", SystemConst._station_code);
                     report.SetParameterValue("station_name", SystemConst._station_name);
+                   
+                    report.SetParameterValue("guard_rank", SystemConst._guard_rank);
+                    report.SetParameterValue("rank_name", SystemConst._rank_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception)
                 {
@@ -91,9 +114,11 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_bank_payment_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._payment_deployment_id));
-                    report.SetParameterValue("bank_branch", SystemConst._bank_branch);
+                    report.SetParameterValue("bank_branch", "STANBIC BANK-" +  SystemConst._bank_branch);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception1)
                 {
@@ -119,6 +144,8 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception2)
                 {
@@ -141,9 +168,12 @@ namespace Guard_profiler
                     report.SetDataSource(Finance_Reports.select_local_service_tax_nssf_andpaye_report("select_nssf_report", SystemConst._station_name, SystemConst._station_code, Convert.ToInt32(SystemConst._active_deployment_id)));
                     report.SetParameterValue("QueryName", "select_nssf_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("branch_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception3)
                 {
@@ -169,6 +199,8 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception4)
                 {
@@ -194,6 +226,8 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception5)
                 {
@@ -222,6 +256,8 @@ namespace Guard_profiler
                     report.SetParameterValue("date_to", SystemConst._deployment_end_date);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception6)
                 {
@@ -250,6 +286,8 @@ namespace Guard_profiler
                     report.SetParameterValue("date_to", SystemConst._deployment_end_date);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception7)
                 {
@@ -275,13 +313,43 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_id", Convert.ToInt32(SystemConst._active_deployment_id));
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
                 }
                 catch (Exception exception7)
                 {
                     MessageBox.Show(exception7.ToString());
                 }
             }
-		}
+            else if (SystemConst._finance_crystal_report_type == "customer_bill")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    cr_client_billing report = new cr_client_billing();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField7 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue7 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+
+                    report.SetDataSource(Finance_Reports.select_client_billing_report("select_client_billing_report", SystemConst._station_name, Convert.ToInt32(SystemConst._active_deployment_id)));
+                    report.SetParameterValue("QueryName", "select_client_billing_report");
+                    report.SetParameterValue("station_name", SystemConst._station_name);
+                    report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    Set_current_deployment_periods();
+                }
+                catch (Exception exception7)
+                {
+                    MessageBox.Show(exception7.ToString());
+                }
+            }
+        }
 
 		private void InitializeComponent()
 		{

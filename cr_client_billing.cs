@@ -16,14 +16,14 @@ using System.ComponentModel;
 
 
 
-public class cr_staff_payroll : ReportClass {
+public class cr_client_billing : ReportClass {
     
-    public cr_staff_payroll() {
+    public cr_client_billing() {
     }
     
     public override string ResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_client_billing.rpt";
         }
         set {
             // Do nothing
@@ -41,7 +41,7 @@ public class cr_staff_payroll : ReportClass {
     
     public override string FullResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_client_billing.rpt";
         }
         set {
             // Do nothing
@@ -66,7 +66,7 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+    public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
         get {
             return this.ReportDefinition.Sections[2];
         }
@@ -74,7 +74,7 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+    public CrystalDecisions.CrystalReports.Engine.Section Section3 {
         get {
             return this.ReportDefinition.Sections[3];
         }
@@ -82,9 +82,25 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+    public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
         get {
             return this.ReportDefinition.Sections[4];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        get {
+            return this.ReportDefinition.Sections[5];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        get {
+            return this.ReportDefinition.Sections[6];
         }
     }
     
@@ -98,7 +114,7 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_branch_id {
+    public CrystalDecisions.Shared.IParameterField Parameter_guard_number {
         get {
             return this.DataDefinition.ParameterFields[1];
         }
@@ -106,7 +122,7 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_payment_month {
+    public CrystalDecisions.Shared.IParameterField Parameter_deploy_period_id {
         get {
             return this.DataDefinition.ParameterFields[2];
         }
@@ -114,7 +130,7 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_payment_period_id {
+    public CrystalDecisions.Shared.IParameterField Parameter_station_code {
         get {
             return this.DataDefinition.ParameterFields[3];
         }
@@ -122,17 +138,49 @@ public class cr_staff_payroll : ReportClass {
     
     [Browsable(false)]
     [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public CrystalDecisions.Shared.IParameterField Parameter_branch_name {
+    public CrystalDecisions.Shared.IParameterField Parameter_station_name {
         get {
             return this.DataDefinition.ParameterFields[4];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.Shared.IParameterField Parameter_deploy_date_from {
+        get {
+            return this.DataDefinition.ParameterFields[5];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.Shared.IParameterField Parameter_deploy_date_to {
+        get {
+            return this.DataDefinition.ParameterFields[6];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.Shared.IParameterField Parameter_client_code {
+        get {
+            return this.DataDefinition.ParameterFields[7];
+        }
+    }
+    
+    [Browsable(false)]
+    [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    public CrystalDecisions.Shared.IParameterField Parameter_guard_rank {
+        get {
+            return this.DataDefinition.ParameterFields[8];
         }
     }
 }
 
 [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-public class Cachedcr_staff_payroll : Component, ICachedReport {
+public class Cachedcr_client_billing : Component, ICachedReport {
     
-    public Cachedcr_staff_payroll() {
+    public Cachedcr_client_billing() {
     }
     
     [Browsable(false)]
@@ -169,7 +217,7 @@ public class Cachedcr_staff_payroll : Component, ICachedReport {
     }
     
     public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-        cr_staff_payroll rpt = new cr_staff_payroll();
+        cr_client_billing rpt = new cr_client_billing();
         rpt.Site = this.Site;
         return rpt;
     }

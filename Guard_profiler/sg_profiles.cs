@@ -767,6 +767,7 @@ namespace Guard_profiler
             this.panel_guard_status = new System.Windows.Forms.Panel();
             this.cbo_guard_status = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txt_guard_number_search = new System.Windows.Forms.RichTextBox();
             this.label54 = new System.Windows.Forms.Label();
             this.btn_large_img_rpt = new System.Windows.Forms.Button();
@@ -909,7 +910,6 @@ namespace Guard_profiler
             this.txt_sg_f_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel_guard_status.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1080,6 +1080,16 @@ namespace Guard_profiler
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(649, 123);
             this.panel3.TabIndex = 57;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(229, 74);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(150, 45);
+            this.btnSearch.TabIndex = 66;
+            this.btnSearch.Text = "Search ";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txt_guard_number_search
             // 
@@ -2406,6 +2416,7 @@ namespace Guard_profiler
             // 
             // txt_nssf_number
             // 
+            this.txt_nssf_number.Enabled = false;
             this.txt_nssf_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nssf_number.Location = new System.Drawing.Point(20, 153);
             this.txt_nssf_number.Margin = new System.Windows.Forms.Padding(4);
@@ -2427,6 +2438,7 @@ namespace Guard_profiler
             // 
             // txt_account_number
             // 
+            this.txt_account_number.Enabled = false;
             this.txt_account_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_account_number.Location = new System.Drawing.Point(20, 96);
             this.txt_account_number.Margin = new System.Windows.Forms.Padding(4);
@@ -2949,16 +2961,6 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerHeight = 897D;
             this.reSize1.InitialHostContainerWidth = 1539D;
             this.reSize1.Tag = null;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(229, 74);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(150, 45);
-            this.btnSearch.TabIndex = 66;
-            this.btnSearch.Text = "Search ";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // sg_profiles
             // 

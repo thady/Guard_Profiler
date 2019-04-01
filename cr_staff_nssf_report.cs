@@ -16,14 +16,14 @@ using System.ComponentModel;
 
 
 
-public class cr_staff_payroll : ReportClass {
+public class cr_staff_nssf_report : ReportClass {
     
-    public cr_staff_payroll() {
+    public cr_staff_nssf_report() {
     }
     
     public override string ResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_staff_nssf_report.rpt";
         }
         set {
             // Do nothing
@@ -41,7 +41,7 @@ public class cr_staff_payroll : ReportClass {
     
     public override string FullResourceName {
         get {
-            return "cr_staff_payroll.rpt";
+            return "cr_staff_nssf_report.rpt";
         }
         set {
             // Do nothing
@@ -130,9 +130,9 @@ public class cr_staff_payroll : ReportClass {
 }
 
 [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-public class Cachedcr_staff_payroll : Component, ICachedReport {
+public class Cachedcr_staff_nssf_report : Component, ICachedReport {
     
-    public Cachedcr_staff_payroll() {
+    public Cachedcr_staff_nssf_report() {
     }
     
     [Browsable(false)]
@@ -169,7 +169,7 @@ public class Cachedcr_staff_payroll : Component, ICachedReport {
     }
     
     public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-        cr_staff_payroll rpt = new cr_staff_payroll();
+        cr_staff_nssf_report rpt = new cr_staff_nssf_report();
         rpt.Site = this.Site;
         return rpt;
     }

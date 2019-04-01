@@ -35,14 +35,16 @@ namespace Guard_profiler.App_code
 		public static string _station_code;
 
 		public static string _station_name;
-
-		public static string _finance_crystal_report_type;
+        public static string _guard_rank;
+        public static string _rank_name;
+        public static string _finance_crystal_report_type;
 
 		public static string _bank_branch;
 
 		public static string _user_department;
-
-		public static bool is_admin;
+        public static string _user_id;
+        public static string _name;
+        public static bool is_admin;
 
 		public static string _active_deployment_id;
         public static string _payment_deployment_id;

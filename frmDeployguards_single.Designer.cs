@@ -332,6 +332,7 @@
             this.btn_update.TabIndex = 32;
             this.btn_update.Text = "Save or Update Batch Deployment";
             this.btn_update.UseVisualStyleBackColor = false;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // label5
             // 

@@ -65,7 +65,24 @@ namespace Guard_profiler
 			this.LOGIN_USER();
 		}
 
-		protected override void Dispose(bool disposing)
+        protected void Set_current_deployment_periods()
+        {
+            DataTable dt = Guard_deployment.select_my_active_deployment_period("select_my_active_deployment_period", SystemConst._user_id);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow dtRow = dt.Rows[0];
+                int num = Convert.ToInt32(dtRow["deploy_id"].ToString());
+                SystemConst._active_deployment_id = num.ToString();
+                SystemConst._deployment_start_date = Convert.ToDateTime(dtRow["deploy_start_date"]);
+                SystemConst._deployment_end_date = Convert.ToDateTime(dtRow["deploy_end_date"]);
+            }
+            else
+            {
+                SystemConst._active_deployment_id = string.Empty;
+            }
+        }
+
+        protected override void Dispose(bool disposing)
 		{
 			if (disposing && this.components != null)
 			{
@@ -236,7 +253,9 @@ namespace Guard_profiler
 			DataRow dtRow = dt.Rows[0];
 			int user_count = Convert.ToInt32(dtRow["user_id"]);
 			string user_department = dtRow["user_department"].ToString();
-			bool is_admin = (bool)dtRow["is_admin"];
+            string user_id = dtRow["auto_id"].ToString();
+            string name = dtRow["name"].ToString();
+            bool is_admin = (bool)dtRow["is_admin"];
 			if (user_count <= 0)
 			{
 				MessageBox.Show("Wrong username or password!!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Hand);
@@ -244,8 +263,13 @@ namespace Guard_profiler
 			}
 			base.Visible = false;
 			SystemConst._username = this.txtuser.Text;
-			SystemConst._user_department = user_department;
-			SystemConst.is_admin = is_admin;
-		}
+            SystemConst._name = name;
+            SystemConst._user_department = user_department;
+            SystemConst._user_id = user_id;
+            SystemConst.is_admin = is_admin;
+
+            Set_current_deployment_periods();
+
+        }
 	}
 }

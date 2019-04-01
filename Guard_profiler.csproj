@@ -54,6 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="cr_client_billing.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_client_billing.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cr_customer_bill.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cr_customer_bill.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="cr_guard_deployment_schedule_report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_guard_deployment_schedule_report.cs</LastGenOutput>
@@ -74,15 +82,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_staff_payroll.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomerManagement.resx">
+      <DependentUpon>frmCustomerManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDeployguards_single.resx">
       <DependentUpon>frmDeployguards_single.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeploymentscheduleReport.resx">
       <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Guard_profiler\cr_staff_nssf_report.rpt">
+    <EmbeddedResource Include="cr_staff_nssf_report.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_staff_nssf_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmMyActiveDeployment.resx">
+      <DependentUpon>frmMyActiveDeployment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frm_guard_payroll_summary.resx">
       <DependentUpon>frm_guard_payroll_summary.cs</DependentUpon>
@@ -113,6 +127,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <None Include="App.config" />
+    <Compile Include="cr_client_billing.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_client_billing.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cr_customer_bill.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cr_customer_bill.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="cr_guard_deployment_schedule_report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +169,12 @@
       <DependentUpon>cr_staff_payroll.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="frmCustomerManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomerManagement.Designer.cs">
+      <DependentUpon>frmCustomerManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDeployguards_single.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,11 +187,17 @@
     <Compile Include="frmDeploymentscheduleReport.Designer.cs">
       <DependentUpon>frmDeploymentscheduleReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Guard_profiler\cr_staff_nssf_report.cs">
+    <Compile Include="cr_staff_nssf_report.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>cr_staff_nssf_report.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmMyActiveDeployment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmMyActiveDeployment.Designer.cs">
+      <DependentUpon>frmMyActiveDeployment.cs</DependentUpon>
     </Compile>
     <Compile Include="Guard_profiler\frm_guard_payroll_summary.cs">
       <SubType>Form</SubType>

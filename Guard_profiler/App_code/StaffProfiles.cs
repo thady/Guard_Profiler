@@ -16,7 +16,7 @@ namespace Guard_profiler.App_code
         public static string staff_name = string.Empty;
         public static string staff_id = string.Empty;
 
-        public static void save_staff_details(string myQuery,string st_id, string st_number, string branch_id, string st_name, string st_gender, string st_status, string st_position, string nss_number, string bank_acc_number, string bank_id, string bank_branch_id, string tin_number, string usr_id_create)
+        public static void save_staff_details(string myQuery,string st_id, string st_number, string branch_id, string st_name, string st_gender, string st_status, string st_position, string nss_number, string bank_acc_number, string bank_id, string bank_branch_id, string tin_number, string usr_id_create,decimal basic,decimal transport,decimal housing)
         {
             try
             {
@@ -82,6 +82,18 @@ namespace Guard_profiler.App_code
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@usr_id_create", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@usr_id_create"].Value = usr_id_create;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@basic_amt", SqlDbType.Decimal);
+                            cmd.Parameters["@basic_amt"].Value = basic;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@transport_amt", SqlDbType.Decimal);
+                            cmd.Parameters["@transport_amt"].Value = transport;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@housing_amt", SqlDbType.Decimal);
+                            cmd.Parameters["@housing_amt"].Value = housing;
 
                             if (conn.State == ConnectionState.Closed)
                             {
@@ -221,6 +233,112 @@ namespace Guard_profiler.App_code
                 }
             }
             return dt;
+        }
+
+
+        public static DataTable Return_staff_list_search(string myQuery, string st_name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_staff_profiles", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@st_name", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@st_name"].Value = st_name;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+
+
+        public static string AccountsCode(string myQuery,string record_guid)
+        {
+            DataTable dt = new DataTable();
+            string code = string.Empty;
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_staff_profiles", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@record_guid", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@record_guid"].Value = record_guid;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            if (dt.Rows.Count > 0)
+                            {
+                                DataRow dtRow = dt.Rows[0];
+                                code = dtRow["accounts_code"].ToString();
+                            }
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return code;
         }
 
         public static DataTable Return_advance_list(string myQuery,string st_id)

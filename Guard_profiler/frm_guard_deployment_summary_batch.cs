@@ -68,6 +68,7 @@ namespace Guard_profiler
 
 		private CheckBox chk_apply_to_all;
         private ReSize reSize1;
+        private Label label9;
         private CheckBox chk_save_status;
 
 		static frm_guard_deployment_summary_batch()
@@ -153,14 +154,35 @@ namespace Guard_profiler
 
 		private void frm_guard_deployment_summary_batch_Load(object sender, EventArgs e)
 		{
-			this.dt_start_date.Value = SystemConst._deployment_start_date;
-			this.dt_end_date.Value = SystemConst._deployment_end_date;
-			this.Get_guard_shift_types();
+            
+            this.Get_guard_shift_types();
 			this.GET_BRANCHES();
 			base.WindowState = FormWindowState.Maximized;
-		}
+            setDeploymentPeriod();
+        }
 
-		private void gdv_deployment_summary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        protected void setDeploymentPeriod()
+        {
+            if (SystemConst._active_deployment_id == string.Empty)
+            {
+                MessageBox.Show("You havent set any deployment period yet.You will not be able to deploy any guards if you haven't set a deployment period.You can do this from your active deployments panel.", "Message Center", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_guard_list.Enabled = false;
+                btn_update.Enabled = false;
+                button3.Enabled = false;
+            }
+            else
+            {
+               
+                this.dt_start_date.Value = SystemConst._deployment_start_date;
+                this.dt_end_date.Value = SystemConst._deployment_end_date;
+
+                btn_guard_list.Enabled = true;
+                btn_update.Enabled = true;
+                button3.Enabled = true;
+            }
+        }
+
+        private void gdv_deployment_summary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (!this.chk_save_status.Checked)
 			{
@@ -217,7 +239,7 @@ namespace Guard_profiler
 
 		protected void get_list_of_guards_for_batch_deploy()
 		{
-			DataTable dt = Guard_deployment.select_list_of_guards_by_branch_and_date_for_batch_deployment("select_list_of_guards_by_branch_and_date_for_batch_deployment", this.cbo_branch.Text);
+			DataTable dt = Guard_deployment.select_list_of_guards_by_branch_and_date_for_batch_deployment("select_list_of_guards_by_branch_and_date_for_batch_deployment", this.cbo_branch.Text,SystemConst._user_id);
 			if (dt.Rows.Count <= 0)
 			{
 				this.gdv_deployment_summary.DataSource = dt;
@@ -389,6 +411,7 @@ namespace Guard_profiler
             this.dt_deployment_date = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_deployment_summary)).BeginInit();
@@ -398,6 +421,7 @@ namespace Guard_profiler
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.chk_save_status);
             this.panel1.Controls.Add(this.btn_search);
             this.panel1.Controls.Add(this.txt_guard_number);
@@ -421,7 +445,7 @@ namespace Guard_profiler
             this.chk_save_status.AutoSize = true;
             this.chk_save_status.BackColor = System.Drawing.Color.LightSteelBlue;
             this.chk_save_status.ForeColor = System.Drawing.Color.Black;
-            this.chk_save_status.Location = new System.Drawing.Point(916, 107);
+            this.chk_save_status.Location = new System.Drawing.Point(952, 107);
             this.chk_save_status.Margin = new System.Windows.Forms.Padding(4);
             this.chk_save_status.Name = "chk_save_status";
             this.chk_save_status.Size = new System.Drawing.Size(205, 21);
@@ -719,6 +743,16 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 1169D;
             this.reSize1.Tag = null;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(527, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(418, 17);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Always update the customer,Firearm serial and ammunition count";
+            // 
             // frm_guard_deployment_summary_batch
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -763,7 +797,7 @@ namespace Guard_profiler
 						bool is_leave_day_for_guard = Convert.ToBoolean(this.gdv_deployment_summary.Rows[i].Cells[13].Value);
 						DateTime date = this.dt_start_date.Value.Date;
 						DateTime value = this.dt_end_date.Value;
-						Guard_deployment.Save_new_deployment_record("save_new_deployment_record", date, value.Date, SystemConst._username, guard_number, deployment_date, deploy_type, branch_name, client_code, client_location, guard_name, fire_arm_serial, ammunition_count, shift_type, is_leave_day_for_guard, frm_guard_deployment_summary_batch._is_public_holiday, frm_guard_deployment_summary_batch._is_weekend);
+						Guard_deployment.Save_new_deployment_record("save_new_deployment_record", date, value.Date, SystemConst._username, guard_number, deployment_date, deploy_type, branch_name, client_code, client_location, guard_name, fire_arm_serial, ammunition_count, shift_type, is_leave_day_for_guard, frm_guard_deployment_summary_batch._is_public_holiday, frm_guard_deployment_summary_batch._is_weekend,SystemConst._user_id);
                         Guard_deployment.Save_deployment_schedule(deployment_date, Convert.ToInt32(SystemConst._active_deployment_id), guard_number);
                     }
 				}

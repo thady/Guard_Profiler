@@ -123,13 +123,31 @@ namespace Guard_profiler
 
 		private void frm_guard_deployment_additional_data_Load(object sender, EventArgs e)
 		{
-			this.dt_start_date.Value = SystemConst._deployment_start_date;
-			this.dt_end_date.Value = SystemConst._deployment_end_date;
-			this.GET_BRANCHES();
+            this.GET_BRANCHES();
 			base.WindowState = FormWindowState.Maximized;
-		}
+            setDeploymentPeriod();
+        }
 
-		private void gdv_guards_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        protected void setDeploymentPeriod()
+        {
+            if (SystemConst._active_deployment_id == string.Empty)
+            {
+                MessageBox.Show("You havent set any deployment period yet.You will not be able to deploy any guards if you haven't set a deployment period.You can do this from your active deployments panel.", "Message Center", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_save.Enabled = false;
+                btn_search.Enabled = false;
+            }
+            else
+            {
+
+                this.dt_start_date.Value = SystemConst._deployment_start_date;
+                this.dt_end_date.Value = SystemConst._deployment_end_date;
+
+                btn_save.Enabled = true;
+                btn_search.Enabled = true;
+            }
+        }
+
+        private void gdv_guards_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
 		{
 			if (this.gdv_guards.CurrentCell.ColumnIndex == 8)
 			{
@@ -204,7 +222,7 @@ namespace Guard_profiler
 			string str = this.txt_guard_number.Text;
 			DateTime date = this.dt_start_date.Value.Date;
 			DateTime value = this.dt_end_date.Value;
-			DataTable dt = Guard_deployment.select_list_of_guards_for_additional_deployment_data_entry("select_list_of_guards_for_additional_deployment_data_entry", text, str, date, value.Date);
+			DataTable dt = Guard_deployment.select_list_of_guards_for_additional_deployment_data_entry("select_list_of_guards_for_additional_deployment_data_entry", text, str, date, value.Date,SystemConst._user_id);
 			if (dt.Rows.Count <= 0)
 			{
 				this.gdv_guards.DataSource = null;

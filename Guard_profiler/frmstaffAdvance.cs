@@ -40,7 +40,7 @@ namespace Guard_profiler
                     }
                     else
                     {
-                        StaffProfiles.save_staff_advance("save_staff_advance", lblstaffid.Text, dtAdvanceDate.Value.Date, Convert.ToDecimal(txtamount.Text), Convert.ToDecimal(txtamountPaid.Text), Convert.ToDecimal(txtAmountBalance.Text), txtAmountBalance.Text == "0" ? false : true);
+                        StaffProfiles.save_staff_advance("save_staff_advance", lblstaffid.Text, dtAdvanceDate.Value.Date, Convert.ToDecimal(txtamount.Text), Convert.ToDecimal(txtamountPaid.Text), Convert.ToDecimal(txtAmountBalance.Text), txtAmountBalance.Text == "0" ? true : false);
                         MessageBox.Show("Success!", "save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

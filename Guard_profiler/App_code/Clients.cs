@@ -213,7 +213,59 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static void Save_client_location_details(string QueryName, int client_id, string location_name)
+
+        public static DataTable SearchClients(string myQuery,string client_name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Customers", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@client_name", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@client_name"].Value = client_name;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Clients.conn.State == ConnectionState.Open)
+                {
+                    Clients.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+
+        public static void Save_client_location_details(string QueryName, int client_id, string location_name)
 		{
 			try
 			{
