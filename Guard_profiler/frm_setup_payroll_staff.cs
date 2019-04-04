@@ -116,6 +116,7 @@ namespace Guard_profiler
                     chk_pay_advance.Checked = Convert.ToBoolean(dtrow["pay_advance"]);
                     chk_print_bank_schedule.Checked = Convert.ToBoolean(dtrow["print_bank_schedule"]);
                     chk_print_payroll.Checked = Convert.ToBoolean(dtrow["print_pay_roll"]);
+                    txt_ovt_days.Text = dtrow["over_time_days"].ToString();
                 }
                 else
                 {
@@ -140,6 +141,7 @@ namespace Guard_profiler
                     chk_pay_advance.Checked = false;
                     chk_print_bank_schedule.Checked = true;
                     chk_print_payroll.Checked = true;
+                    txt_ovt_days.Clear();
                 }
             }
             else
@@ -185,7 +187,7 @@ namespace Guard_profiler
                 chk_pay_advance.Checked = false;
                 chk_print_bank_schedule.Checked = true;
                 chk_print_payroll.Checked = true;
-                
+                txt_ovt_days.Clear();
             }
         }
 
@@ -242,6 +244,47 @@ namespace Guard_profiler
             _Total_cash_deductions = ((((loan_amt + lst_amt)) + advance_amt)); 
             decimal PAYE_amt = this.Calculate_PAYE(_Gross_amount);
             decimal Nssf_amt = this.Calculate_NSSF(_Gross_amount);
+            _Total_cash_deductions = (_Total_cash_deductions + PAYE_amt) + Nssf_amt;
+            decimal _Net_Pay = _Gross_amount - _Total_cash_deductions;
+            this.txt_gross_amt.Text = _Gross_amount.ToString();
+            this.txt_paye_amt.Text = PAYE_amt.ToString();
+            this.txt_nssf_amt.Text = Nssf_amt.ToString();
+            this.txt_total_deductions.Text = _Total_cash_deductions.ToString();
+            this.txt_net_pay.Text = _Net_Pay.ToString();
+            CheckBox chkPayAdvance = this.chk_pay_advance;
+            if (this.txt_advance_amt_paid.Text != string.Empty)
+            {
+                flag = (float.Parse(this.txt_advance_amt_paid.Text) > 0f ? true : false);
+            }
+            else
+            {
+                flag = false;
+            }
+            chkPayAdvance.Checked = flag;
+            this.chk_pay_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
+            this.chk_pay_paye.Checked = (PAYE_amt > new decimal(0) ? true : false);
+        }
+
+        protected void Calculate_guard_salary_amounts_exclude_nssf()
+        {
+            bool flag;
+            decimal basic_amt = (this.txt_basic_amt.Text != string.Empty ? decimal.Parse(this.txt_basic_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal transport_amt = (this.txt_transport_amt.Text != string.Empty ? decimal.Parse(this.txt_transport_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal bonus_amt = (this.txt_housing_amt.Text != string.Empty ? decimal.Parse(this.txt_housing_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal leave_amt = (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal over_time_amt = (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal special_amt = (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1));
+
+            decimal _Gross_amount = ((((((basic_amt + transport_amt)) + bonus_amt) + leave_amt) + over_time_amt)) + special_amt;
+
+
+            decimal lst_amt = (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal advance_amt = (this.txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(this.txt_advance_amt_paid.Text) : new decimal(0, 0, 0, false, 1));
+            decimal loan_amt = (this.txt_loan_amt.Text != string.Empty ? decimal.Parse(this.txt_loan_amt.Text) : new decimal(0, 0, 0, false, 1));
+
+            _Total_cash_deductions = ((((loan_amt + lst_amt)) + advance_amt));
+            decimal PAYE_amt = this.Calculate_PAYE(_Gross_amount);
+            decimal Nssf_amt = 0;
             _Total_cash_deductions = (_Total_cash_deductions + PAYE_amt) + Nssf_amt;
             decimal _Net_Pay = _Gross_amount - _Total_cash_deductions;
             this.txt_gross_amt.Text = _Gross_amount.ToString();
@@ -525,7 +568,7 @@ namespace Guard_profiler
             {
                 StaffProfiles.save_staff_payroll("save_staff_payroll", staff_id, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_housing_amt.Text != string.Empty ? decimal.Parse(txt_housing_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
                 , txt_lst_amt.Text != string.Empty ? decimal.Parse(txt_lst_amt.Text) : 0, txt_loan_amt.Text != string.Empty ? decimal.Parse(txt_loan_amt.Text) : 0, txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(txt_advance_amt_paid.Text) : 0, txt_nssf_amt.Text != string.Empty ? decimal.Parse(txt_nssf_amt.Text) : 0, txt_paye_amt.Text != string.Empty ? decimal.Parse(txt_paye_amt.Text) : 0, txt_gross_amt.Text != string.Empty ? decimal.Parse(txt_gross_amt.Text) : 0, txt_total_deductions.Text != string.Empty ? decimal.Parse(txt_total_deductions.Text) : 0, txt_net_pay.Text != string.Empty ? decimal.Parse(txt_net_pay.Text) : 0, chk_pay_salary.Checked == true ? true : false, chk_pay_paye.Checked == true ? true : false
-                , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
+                , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false,txt_ovt_days.Text);
 
                
                 //update advance payment
@@ -542,7 +585,7 @@ namespace Guard_profiler
             {
                 StaffProfiles.update_staff_payroll("update_staff_payroll", txt_record_guid.Text, SystemConst._username, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), cbo_payment_month.Text, txt_basic_amt.Text != string.Empty ? decimal.Parse(txt_basic_amt.Text) : 0, txt_transport_amt.Text != string.Empty ? decimal.Parse(txt_transport_amt.Text) : 0, txt_housing_amt.Text != string.Empty ? decimal.Parse(txt_housing_amt.Text) : 0, txt_leave_amt.Text != string.Empty ? decimal.Parse(txt_leave_amt.Text) : 0, txt_over_time_amt.Text != string.Empty ? decimal.Parse(txt_over_time_amt.Text) : 0, txt_special_amt.Text != string.Empty ? decimal.Parse(txt_special_amt.Text) : 0
                 , txt_lst_amt.Text != string.Empty ? decimal.Parse(txt_lst_amt.Text) : 0, txt_loan_amt.Text != string.Empty ? decimal.Parse(txt_loan_amt.Text) : 0, txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(txt_advance_amt_paid.Text) : 0, txt_nssf_amt.Text != string.Empty ? decimal.Parse(txt_nssf_amt.Text) : 0, txt_paye_amt.Text != string.Empty ? decimal.Parse(txt_paye_amt.Text) : 0, txt_gross_amt.Text != string.Empty ? decimal.Parse(txt_gross_amt.Text) : 0, txt_total_deductions.Text != string.Empty ? decimal.Parse(txt_total_deductions.Text) : 0, txt_net_pay.Text != string.Empty ? decimal.Parse(txt_net_pay.Text) : 0, chk_pay_salary.Checked == true ? true : false, chk_pay_paye.Checked == true ? true : false
-                , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
+                , chk_pay_nssf.Checked == true ? true : false, chk_pay_advance.Checked == true ? true : false, chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false,txt_ovt_days.Text);
 
                 //update advance payment
                 if (txt_advance_amt_paid.Text != "0")
@@ -695,6 +738,18 @@ namespace Guard_profiler
             if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
             {
                 e.Handled = true;
+            }
+        }
+
+        private void chk_pay_nssf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_pay_nssf.Checked == true)
+            {
+                Calculate_guard_salary_amounts();
+            }
+            else
+            {
+                Calculate_guard_salary_amounts_exclude_nssf();
             }
         }
     }

@@ -101,7 +101,7 @@
             this.btnbank_payment_report.Name = "btnbank_payment_report";
             this.btnbank_payment_report.Size = new System.Drawing.Size(223, 47);
             this.btnbank_payment_report.TabIndex = 8;
-            this.btnbank_payment_report.Text = "Bankl Schedule Reports";
+            this.btnbank_payment_report.Text = "Bank Schedule Reports";
             this.btnbank_payment_report.UseVisualStyleBackColor = true;
             this.btnbank_payment_report.Click += new System.EventHandler(this.btnbank_payment_report_Click);
             // 

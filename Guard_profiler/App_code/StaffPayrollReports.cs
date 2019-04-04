@@ -42,7 +42,7 @@ namespace Guard_profiler.App_code
                             cmd.Parameters["@payment_period_id"].Value = payment_period_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add("@branch_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters.Add("@branch_id", SqlDbType.NVarChar, 100000);
                             cmd.Parameters["@branch_id"].Value = branch_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;
@@ -101,7 +101,7 @@ namespace Guard_profiler.App_code
                             cmd.Parameters["@payment_period_id"].Value = payment_period_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add("@branch_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters.Add("@branch_id", SqlDbType.NVarChar, 10000);
                             cmd.Parameters["@branch_id"].Value = branch_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;

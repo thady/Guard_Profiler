@@ -46,6 +46,7 @@
             this.txt_lst_amt = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.txt_ovt_days = new System.Windows.Forms.TextBox();
             this.txt_leave_amt = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -349,6 +350,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Silver;
+            this.panel6.Controls.Add(this.label13);
             this.panel6.Controls.Add(this.txt_ovt_days);
             this.panel6.Controls.Add(this.txt_leave_amt);
             this.panel6.Controls.Add(this.label29);
@@ -367,6 +369,18 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(607, 127);
             this.panel6.TabIndex = 39;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(4, 63);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(106, 18);
+            this.label13.TabIndex = 76;
+            this.label13.Text = "Overtime Days";
             // 
             // txt_ovt_days
             // 
@@ -514,7 +528,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(101, 63);
+            this.label22.Location = new System.Drawing.Point(129, 63);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(98, 18);
@@ -706,7 +720,6 @@
             // 
             this.chk_pay_nssf.AutoSize = true;
             this.chk_pay_nssf.BackColor = System.Drawing.Color.Gray;
-            this.chk_pay_nssf.Enabled = false;
             this.chk_pay_nssf.Location = new System.Drawing.Point(251, 4);
             this.chk_pay_nssf.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_nssf.Name = "chk_pay_nssf";
@@ -714,6 +727,7 @@
             this.chk_pay_nssf.TabIndex = 2;
             this.chk_pay_nssf.Text = "Pay NSSF";
             this.chk_pay_nssf.UseVisualStyleBackColor = false;
+            this.chk_pay_nssf.CheckedChanged += new System.EventHandler(this.chk_pay_nssf_CheckedChanged);
             // 
             // chk_pay_paye
             // 
@@ -1550,5 +1564,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnpayroll_summary;
         private System.Windows.Forms.TextBox txt_ovt_days;
+        private System.Windows.Forms.Label label13;
     }
 }

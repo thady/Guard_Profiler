@@ -696,7 +696,7 @@ namespace Guard_profiler.App_code
         #region payroll
         public static void save_staff_payroll(string myQuery,string st_id,string user_id,int payment_period_id,string payment_month,decimal basic_amt,decimal transport_amt,decimal bonus_amt,decimal leave_amt,decimal overtime_amt ,decimal special_amt
         ,decimal local_service_tax_amt ,decimal loan_amt,decimal advance_amt,decimal total_nssf_amt,decimal total_paye_amt,decimal gross_pay_amt,decimal total_deductions,decimal staff_net_pay_amt,bool pay_salary,bool pay_paye
-        ,bool pay_nssf,bool pay_advance,bool print_bank_schedule,bool print_payroll)
+        ,bool pay_nssf,bool pay_advance,bool print_bank_schedule,bool print_payroll, string over_time_days)
         {
             try
             {
@@ -807,6 +807,10 @@ namespace Guard_profiler.App_code
                             cmd.Parameters.Add("@print_payroll", SqlDbType.Bit);
                             cmd.Parameters["@print_payroll"].Value = print_payroll;
 
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@over_time_days", SqlDbType.VarChar, 10);
+                            cmd.Parameters["@over_time_days"].Value = over_time_days;
+
                             if (conn.State == ConnectionState.Closed)
                             {
                                 conn.Open();
@@ -838,7 +842,7 @@ namespace Guard_profiler.App_code
 
         public static void update_staff_payroll(string myQuery, string record_guid, string user_id, int payment_period_id, string payment_month, decimal basic_amt, decimal transport_amt, decimal bonus_amt, decimal leave_amt, decimal overtime_amt, decimal special_amt
        , decimal local_service_tax_amt, decimal loan_amt, decimal advance_amt, decimal total_nssf_amt, decimal total_paye_amt, decimal gross_pay_amt, decimal total_deductions, decimal staff_net_pay_amt, bool pay_salary, bool pay_paye
-       , bool pay_nssf, bool pay_advance, bool print_bank_schedule, bool print_payroll)
+       , bool pay_nssf, bool pay_advance, bool print_bank_schedule, bool print_payroll,string over_time_days)
         {
             try
             {
@@ -948,6 +952,10 @@ namespace Guard_profiler.App_code
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@print_payroll", SqlDbType.Bit);
                             cmd.Parameters["@print_payroll"].Value = print_payroll;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@over_time_days", SqlDbType.VarChar,10);
+                            cmd.Parameters["@over_time_days"].Value = over_time_days;
 
                             if (conn.State == ConnectionState.Closed)
                             {
