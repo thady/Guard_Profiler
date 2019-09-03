@@ -303,7 +303,7 @@ namespace Guard_profiler
             {
                 StaffProfiles.staff_id = lblstaffid.Text;
                 StaffProfiles.staff_name = txt_staff_name.Text;
-
+                SystemConst.staff_advance_action = "Profiles";
                 frmstaffAdvance ad = new frmstaffAdvance();
                 ad.ShowDialog();
             }

@@ -50,6 +50,7 @@ namespace Guard_profiler
                         report.SetParameterValue("branch_name", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
+                        report.SetParameterValue("client_name", SystemConst.ClientName);
 
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
@@ -78,6 +79,7 @@ namespace Guard_profiler
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
                         report.SetParameterValue("bank_name", StaffPayrollReports.bank_name);
+                        report.SetParameterValue("client_name", SystemConst.ClientName);
 
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
@@ -105,7 +107,8 @@ namespace Guard_profiler
                         report.SetParameterValue("branch_name", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
-                       
+                        report.SetParameterValue("client_name", SystemConst.ClientName);
+
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                     }
@@ -131,6 +134,7 @@ namespace Guard_profiler
                         report.SetParameterValue("branch_id", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
+                        report.SetParameterValue("client_name", SystemConst.ClientName);
 
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
@@ -157,7 +161,7 @@ namespace Guard_profiler
                         report.SetParameterValue("branch_id", StaffPayrollReports._branch_id);
                         report.SetParameterValue("payment_month", StaffPayrollReports._payment_month);
                         report.SetParameterValue("payment_period_id", StaffPayrollReports._payment_period_id);
-
+                        report.SetParameterValue("client_name", SystemConst.ClientName);
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                     }

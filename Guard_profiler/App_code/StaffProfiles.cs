@@ -547,6 +547,60 @@ namespace Guard_profiler.App_code
             return dt;
         }
 
+        public static string select_staff_loan_balance(string myQuery, string st_id)
+        {
+            DataTable dt = new DataTable();
+            int LoanBalance = 0;
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_staff_profiles", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@st_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@st_id"].Value = st_id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+
+                            LoanBalance = Convert.ToInt32(cmd.ExecuteScalar());
+                            
+                            
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return String.Format("{0:n0}", LoanBalance); ;
+        }
+
         public static DataTable Return_staff_advance(string myQuery, string st_id)
         {
             DataTable dt = new DataTable();
@@ -985,7 +1039,7 @@ namespace Guard_profiler.App_code
             }
         }
 
-        public static void update_staff_advance_payment(string myQuery, string st_id, decimal ad_paid_amount, decimal ad_balance_amount)
+        public static void update_staff_advance_payment(string myQuery, string st_id,string ad_id, decimal ad_paid_amount, decimal ad_balance_amount)
         {
             try
             {
@@ -1003,6 +1057,10 @@ namespace Guard_profiler.App_code
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@st_id", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@st_id"].Value = st_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@ad_id", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@ad_id"].Value = ad_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@ad_paid_amount", SqlDbType.Decimal);

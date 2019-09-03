@@ -533,7 +533,7 @@ namespace Guard_profiler
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_guard_deployment_additional_data";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-Additional guard deployment details";
+            this.Text = "Additional guard deployment details";
             this.Load += new System.EventHandler(this.frm_guard_deployment_additional_data_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

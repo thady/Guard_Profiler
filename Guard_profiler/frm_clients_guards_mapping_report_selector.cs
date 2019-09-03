@@ -164,7 +164,7 @@ namespace Guard_profiler
 				dtRow["client_name"] = string.Empty;
 				dt.Rows.InsertAt(dtRow, 0);
 				this.cbo_clients.DisplayMember = "client_name";
-				this.cbo_clients.ValueMember = "client_code";
+				this.cbo_clients.ValueMember = "client_id";
 				this.cbo_clients.DataSource = dt;
 			}
 		}

@@ -124,7 +124,7 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static void insert_update_guard_account_details(string myQuery, string guard_number, int bank_id, int branch_id, string account_number, string nssf_number,string tin_number)
+		public static void insert_update_guard_account_details(string myQuery, string guard_number, int bank_id, int branch_id, string account_number, string nssf_number,string tin_number,string auto_id)
 		{
 			DataTable dataTable = new DataTable();
 			try
@@ -139,15 +139,19 @@ namespace Guard_profiler.App_code
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@QueryName"].Value = myQuery;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
 							cmd.Parameters["@guard_number"].Value = guard_number;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@bank_id", SqlDbType.Int);
 							cmd.Parameters["@bank_id"].Value = bank_id;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@branch_id", SqlDbType.Int);
 							cmd.Parameters["@branch_id"].Value = branch_id;
+
 							cmd.CommandType = CommandType.StoredProcedure;
 							cmd.Parameters.Add("@account_number", SqlDbType.NVarChar, 100);
 							cmd.Parameters["@account_number"].Value = account_number;
@@ -159,6 +163,10 @@ namespace Guard_profiler.App_code
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@tin_number", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@tin_number"].Value = tin_number;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@auto_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@auto_id"].Value = auto_id;
 
                             if (conn.State == ConnectionState.Closed)
 							{

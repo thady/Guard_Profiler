@@ -93,6 +93,9 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.txt_record_guid = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lblTotalLoansBalance = new System.Windows.Forms.Label();
+            this.lblloanid = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.chk_print_payroll = new System.Windows.Forms.CheckBox();
             this.chk_print_bank_schedule = new System.Windows.Forms.CheckBox();
@@ -100,6 +103,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnLoadAdvance = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_advance_amt_paid = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -148,7 +152,7 @@
             this.txt_loan_amt.Location = new System.Drawing.Point(9, 79);
             this.txt_loan_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_loan_amt.Name = "txt_loan_amt";
-            this.txt_loan_amt.Size = new System.Drawing.Size(258, 30);
+            this.txt_loan_amt.Size = new System.Drawing.Size(258, 26);
             this.txt_loan_amt.TabIndex = 84;
             this.txt_loan_amt.Text = "0";
             this.txt_loan_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -164,7 +168,7 @@
             this.txt_nssf.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nssf.Name = "txt_nssf";
             this.txt_nssf.ReadOnly = true;
-            this.txt_nssf.Size = new System.Drawing.Size(217, 30);
+            this.txt_nssf.Size = new System.Drawing.Size(217, 26);
             this.txt_nssf.TabIndex = 57;
             this.txt_nssf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -190,6 +194,7 @@
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bank Details";
+            this.groupBox2.MouseHover += new System.EventHandler(this.groupBox2_MouseHover);
             // 
             // label19
             // 
@@ -200,7 +205,7 @@
             this.label19.Location = new System.Drawing.Point(884, 20);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(105, 18);
+            this.label19.Size = new System.Drawing.Size(87, 15);
             this.label19.TabIndex = 56;
             this.label19.Text = "NSSF Number";
             // 
@@ -213,7 +218,7 @@
             this.txt_account_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_account_number.Name = "txt_account_number";
             this.txt_account_number.ReadOnly = true;
-            this.txt_account_number.Size = new System.Drawing.Size(265, 30);
+            this.txt_account_number.Size = new System.Drawing.Size(265, 26);
             this.txt_account_number.TabIndex = 53;
             this.txt_account_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -226,7 +231,7 @@
             this.label17.Location = new System.Drawing.Point(392, 20);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(93, 18);
+            this.label17.Size = new System.Drawing.Size(77, 15);
             this.label17.TabIndex = 52;
             this.label17.Text = "Bank Branch";
             // 
@@ -239,7 +244,7 @@
             this.txt_bank_branch.Margin = new System.Windows.Forms.Padding(4);
             this.txt_bank_branch.Name = "txt_bank_branch";
             this.txt_bank_branch.ReadOnly = true;
-            this.txt_bank_branch.Size = new System.Drawing.Size(209, 30);
+            this.txt_bank_branch.Size = new System.Drawing.Size(209, 26);
             this.txt_bank_branch.TabIndex = 49;
             this.txt_bank_branch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -252,7 +257,7 @@
             this.label16.Location = new System.Drawing.Point(608, 20);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(127, 18);
+            this.label16.Size = new System.Drawing.Size(104, 15);
             this.label16.TabIndex = 51;
             this.label16.Text = "Bank A/C Number";
             // 
@@ -265,7 +270,7 @@
             this.txt_bank_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_bank_name.Name = "txt_bank_name";
             this.txt_bank_name.ReadOnly = true;
-            this.txt_bank_name.Size = new System.Drawing.Size(255, 30);
+            this.txt_bank_name.Size = new System.Drawing.Size(255, 26);
             this.txt_bank_name.TabIndex = 49;
             this.txt_bank_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -278,7 +283,7 @@
             this.label15.Location = new System.Drawing.Point(132, 20);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 18);
+            this.label15.Size = new System.Drawing.Size(72, 15);
             this.label15.TabIndex = 50;
             this.label15.Text = "Bank Name";
             // 
@@ -291,7 +296,7 @@
             this.txt_bank_code.Margin = new System.Windows.Forms.Padding(4);
             this.txt_bank_code.Name = "txt_bank_code";
             this.txt_bank_code.ReadOnly = true;
-            this.txt_bank_code.Size = new System.Drawing.Size(88, 30);
+            this.txt_bank_code.Size = new System.Drawing.Size(88, 26);
             this.txt_bank_code.TabIndex = 49;
             this.txt_bank_code.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -304,7 +309,7 @@
             this.label14.Location = new System.Drawing.Point(8, 20);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(82, 18);
+            this.label14.Size = new System.Drawing.Size(67, 15);
             this.label14.TabIndex = 49;
             this.label14.Text = "Bank Code";
             // 
@@ -316,7 +321,7 @@
             this.label35.Location = new System.Drawing.Point(5, 60);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(64, 18);
+            this.label35.Size = new System.Drawing.Size(53, 15);
             this.label35.TabIndex = 83;
             this.label35.Text = "Advance";
             // 
@@ -328,7 +333,7 @@
             this.txt_lst_amt.Location = new System.Drawing.Point(9, 27);
             this.txt_lst_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lst_amt.Name = "txt_lst_amt";
-            this.txt_lst_amt.Size = new System.Drawing.Size(258, 30);
+            this.txt_lst_amt.Size = new System.Drawing.Size(258, 26);
             this.txt_lst_amt.TabIndex = 82;
             this.txt_lst_amt.Text = "0";
             this.txt_lst_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -343,7 +348,7 @@
             this.label34.Location = new System.Drawing.Point(5, 5);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(125, 18);
+            this.label34.Size = new System.Drawing.Size(103, 15);
             this.label34.TabIndex = 81;
             this.label34.Text = "Local Service Tax";
             // 
@@ -369,6 +374,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(607, 127);
             this.panel6.TabIndex = 39;
+            this.panel6.MouseEnter += new System.EventHandler(this.panel6_MouseEnter);
             // 
             // label13
             // 
@@ -378,7 +384,7 @@
             this.label13.Location = new System.Drawing.Point(4, 63);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(106, 18);
+            this.label13.Size = new System.Drawing.Size(86, 15);
             this.label13.TabIndex = 76;
             this.label13.Text = "Overtime Days";
             // 
@@ -390,7 +396,7 @@
             this.txt_ovt_days.Location = new System.Drawing.Point(7, 85);
             this.txt_ovt_days.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ovt_days.Name = "txt_ovt_days";
-            this.txt_ovt_days.Size = new System.Drawing.Size(85, 30);
+            this.txt_ovt_days.Size = new System.Drawing.Size(85, 26);
             this.txt_ovt_days.TabIndex = 75;
             this.txt_ovt_days.Text = "0";
             this.txt_ovt_days.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -405,7 +411,7 @@
             this.txt_leave_amt.Location = new System.Drawing.Point(445, 85);
             this.txt_leave_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_leave_amt.Name = "txt_leave_amt";
-            this.txt_leave_amt.Size = new System.Drawing.Size(156, 30);
+            this.txt_leave_amt.Size = new System.Drawing.Size(156, 26);
             this.txt_leave_amt.TabIndex = 74;
             this.txt_leave_amt.Text = "0";
             this.txt_leave_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -420,7 +426,7 @@
             this.label29.Location = new System.Drawing.Point(442, 63);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(47, 18);
+            this.label29.Size = new System.Drawing.Size(40, 15);
             this.label29.TabIndex = 73;
             this.label29.Text = "Leave";
             // 
@@ -433,7 +439,7 @@
             this.txt_housing_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_housing_amt.Name = "txt_housing_amt";
             this.txt_housing_amt.ReadOnly = true;
-            this.txt_housing_amt.Size = new System.Drawing.Size(210, 30);
+            this.txt_housing_amt.Size = new System.Drawing.Size(210, 26);
             this.txt_housing_amt.TabIndex = 70;
             this.txt_housing_amt.Text = "0";
             this.txt_housing_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -448,7 +454,7 @@
             this.label27.Location = new System.Drawing.Point(391, 5);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(63, 18);
+            this.label27.Size = new System.Drawing.Size(53, 15);
             this.label27.TabIndex = 69;
             this.label27.Text = "Housing";
             // 
@@ -460,7 +466,7 @@
             this.txt_special_amt.Location = new System.Drawing.Point(260, 85);
             this.txt_special_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_special_amt.Name = "txt_special_amt";
-            this.txt_special_amt.Size = new System.Drawing.Size(177, 30);
+            this.txt_special_amt.Size = new System.Drawing.Size(177, 26);
             this.txt_special_amt.TabIndex = 68;
             this.txt_special_amt.Text = "0";
             this.txt_special_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -475,7 +481,7 @@
             this.label26.Location = new System.Drawing.Point(257, 63);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(56, 18);
+            this.label26.Size = new System.Drawing.Size(46, 15);
             this.label26.TabIndex = 67;
             this.label26.Text = "Arrears";
             // 
@@ -488,7 +494,7 @@
             this.txt_transport_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_transport_amt.Name = "txt_transport_amt";
             this.txt_transport_amt.ReadOnly = true;
-            this.txt_transport_amt.Size = new System.Drawing.Size(218, 30);
+            this.txt_transport_amt.Size = new System.Drawing.Size(218, 26);
             this.txt_transport_amt.TabIndex = 62;
             this.txt_transport_amt.Text = "0";
             this.txt_transport_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -503,7 +509,7 @@
             this.label23.Location = new System.Drawing.Point(168, 5);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(102, 18);
+            this.label23.Size = new System.Drawing.Size(83, 15);
             this.label23.TabIndex = 61;
             this.label23.Text = "Transport Amt";
             // 
@@ -516,7 +522,7 @@
             this.txt_over_time_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_over_time_amt.Name = "txt_over_time_amt";
             this.txt_over_time_amt.ReadOnly = true;
-            this.txt_over_time_amt.Size = new System.Drawing.Size(152, 30);
+            this.txt_over_time_amt.Size = new System.Drawing.Size(152, 26);
             this.txt_over_time_amt.TabIndex = 60;
             this.txt_over_time_amt.Text = "0";
             this.txt_over_time_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -531,7 +537,7 @@
             this.label22.Location = new System.Drawing.Point(129, 63);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(98, 18);
+            this.label22.Size = new System.Drawing.Size(80, 15);
             this.label22.TabIndex = 59;
             this.label22.Text = "Overtime Amt";
             // 
@@ -544,7 +550,7 @@
             this.txt_basic_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_basic_amt.Name = "txt_basic_amt";
             this.txt_basic_amt.ReadOnly = true;
-            this.txt_basic_amt.Size = new System.Drawing.Size(152, 30);
+            this.txt_basic_amt.Size = new System.Drawing.Size(152, 26);
             this.txt_basic_amt.TabIndex = 49;
             this.txt_basic_amt.Text = "0";
             this.txt_basic_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -559,7 +565,7 @@
             this.label21.Location = new System.Drawing.Point(8, 5);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 18);
+            this.label21.Size = new System.Drawing.Size(61, 15);
             this.label21.TabIndex = 58;
             this.label21.Text = "Basic Amt";
             // 
@@ -572,7 +578,7 @@
             this.txt_advance_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_advance_amt.Name = "txt_advance_amt";
             this.txt_advance_amt.ReadOnly = true;
-            this.txt_advance_amt.Size = new System.Drawing.Size(192, 30);
+            this.txt_advance_amt.Size = new System.Drawing.Size(231, 26);
             this.txt_advance_amt.TabIndex = 76;
             this.txt_advance_amt.Text = "0";
             this.txt_advance_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -587,7 +593,7 @@
             this.label30.Location = new System.Drawing.Point(7, 18);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(96, 18);
+            this.label30.Size = new System.Drawing.Size(80, 15);
             this.label30.TabIndex = 75;
             this.label30.Text = "Loan Amount";
             // 
@@ -621,7 +627,7 @@
             this.cbo_staff.Location = new System.Drawing.Point(97, 4);
             this.cbo_staff.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_staff.Name = "cbo_staff";
-            this.cbo_staff.Size = new System.Drawing.Size(301, 39);
+            this.cbo_staff.Size = new System.Drawing.Size(301, 34);
             this.cbo_staff.TabIndex = 15;
             // 
             // label9
@@ -632,7 +638,7 @@
             this.label9.Location = new System.Drawing.Point(4, 12);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 18);
+            this.label9.Size = new System.Drawing.Size(69, 15);
             this.label9.TabIndex = 14;
             this.label9.Text = "Staff name:";
             // 
@@ -665,6 +671,7 @@
             this.gdv_staff.TabIndex = 0;
             this.gdv_staff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_staff_CellClick);
             this.gdv_staff.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_staff_CellDoubleClick);
+            this.gdv_staff.MouseEnter += new System.EventHandler(this.gdv_staff_MouseEnter);
             // 
             // label2
             // 
@@ -674,7 +681,7 @@
             this.label2.Location = new System.Drawing.Point(4, 301);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 18);
+            this.label2.Size = new System.Drawing.Size(172, 15);
             this.label2.TabIndex = 27;
             this.label2.Text = "Set up payroll for selected staff";
             // 
@@ -686,7 +693,7 @@
             this.label41.Location = new System.Drawing.Point(12, 191);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(168, 18);
+            this.label41.Size = new System.Drawing.Size(138, 15);
             this.label41.TabIndex = 44;
             this.label41.Text = "Staff Payment Summary";
             // 
@@ -702,6 +709,7 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(607, 31);
             this.panel8.TabIndex = 43;
+            this.panel8.MouseEnter += new System.EventHandler(this.panel8_MouseEnter);
             // 
             // chk_pay_advance
             // 
@@ -711,7 +719,7 @@
             this.chk_pay_advance.Location = new System.Drawing.Point(359, 4);
             this.chk_pay_advance.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_advance.Name = "chk_pay_advance";
-            this.chk_pay_advance.Size = new System.Drawing.Size(113, 21);
+            this.chk_pay_advance.Size = new System.Drawing.Size(90, 17);
             this.chk_pay_advance.TabIndex = 3;
             this.chk_pay_advance.Text = "Pay Advance";
             this.chk_pay_advance.UseVisualStyleBackColor = false;
@@ -723,7 +731,7 @@
             this.chk_pay_nssf.Location = new System.Drawing.Point(251, 4);
             this.chk_pay_nssf.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_nssf.Name = "chk_pay_nssf";
-            this.chk_pay_nssf.Size = new System.Drawing.Size(94, 21);
+            this.chk_pay_nssf.Size = new System.Drawing.Size(75, 17);
             this.chk_pay_nssf.TabIndex = 2;
             this.chk_pay_nssf.Text = "Pay NSSF";
             this.chk_pay_nssf.UseVisualStyleBackColor = false;
@@ -737,7 +745,7 @@
             this.chk_pay_paye.Location = new System.Drawing.Point(135, 4);
             this.chk_pay_paye.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_paye.Name = "chk_pay_paye";
-            this.chk_pay_paye.Size = new System.Drawing.Size(94, 21);
+            this.chk_pay_paye.Size = new System.Drawing.Size(75, 17);
             this.chk_pay_paye.TabIndex = 1;
             this.chk_pay_paye.Text = "Pay PAYE";
             this.chk_pay_paye.UseVisualStyleBackColor = false;
@@ -752,7 +760,7 @@
             this.chk_pay_salary.Location = new System.Drawing.Point(12, 4);
             this.chk_pay_salary.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_salary.Name = "chk_pay_salary";
-            this.chk_pay_salary.Size = new System.Drawing.Size(98, 21);
+            this.chk_pay_salary.Size = new System.Drawing.Size(76, 17);
             this.chk_pay_salary.TabIndex = 0;
             this.chk_pay_salary.Text = "Pay Salary";
             this.chk_pay_salary.UseVisualStyleBackColor = false;
@@ -765,7 +773,7 @@
             this.label20.Location = new System.Drawing.Point(530, 191);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(105, 18);
+            this.label20.Size = new System.Drawing.Size(87, 15);
             this.label20.TabIndex = 29;
             this.label20.Text = "Total Additions";
             // 
@@ -777,7 +785,7 @@
             this.txt_net_pay.Location = new System.Drawing.Point(567, 30);
             this.txt_net_pay.Margin = new System.Windows.Forms.Padding(4);
             this.txt_net_pay.Name = "txt_net_pay";
-            this.txt_net_pay.Size = new System.Drawing.Size(124, 37);
+            this.txt_net_pay.Size = new System.Drawing.Size(124, 31);
             this.txt_net_pay.TabIndex = 95;
             this.txt_net_pay.Text = "0";
             this.txt_net_pay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -790,7 +798,7 @@
             this.label47.Location = new System.Drawing.Point(585, 7);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(70, 18);
+            this.label47.Size = new System.Drawing.Size(56, 15);
             this.label47.TabIndex = 94;
             this.label47.Text = "NET PAY";
             // 
@@ -803,7 +811,7 @@
             this.txt_total_deductions.Margin = new System.Windows.Forms.Padding(4);
             this.txt_total_deductions.Name = "txt_total_deductions";
             this.txt_total_deductions.ReadOnly = true;
-            this.txt_total_deductions.Size = new System.Drawing.Size(127, 37);
+            this.txt_total_deductions.Size = new System.Drawing.Size(127, 31);
             this.txt_total_deductions.TabIndex = 93;
             this.txt_total_deductions.Text = "0";
             this.txt_total_deductions.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -816,7 +824,7 @@
             this.label46.Location = new System.Drawing.Point(435, 7);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(97, 18);
+            this.label46.Size = new System.Drawing.Size(80, 15);
             this.label46.TabIndex = 92;
             this.label46.Text = "T-Deductions";
             // 
@@ -829,7 +837,7 @@
             this.txt_nssf_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nssf_amt.Name = "txt_nssf_amt";
             this.txt_nssf_amt.ReadOnly = true;
-            this.txt_nssf_amt.Size = new System.Drawing.Size(131, 37);
+            this.txt_nssf_amt.Size = new System.Drawing.Size(131, 31);
             this.txt_nssf_amt.TabIndex = 89;
             this.txt_nssf_amt.Text = "0";
             this.txt_nssf_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -842,7 +850,7 @@
             this.label44.Location = new System.Drawing.Point(303, 7);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(48, 18);
+            this.label44.Size = new System.Drawing.Size(39, 15);
             this.label44.TabIndex = 88;
             this.label44.Text = "NSSF";
             // 
@@ -855,7 +863,7 @@
             this.txt_paye_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_paye_amt.Name = "txt_paye_amt";
             this.txt_paye_amt.ReadOnly = true;
-            this.txt_paye_amt.Size = new System.Drawing.Size(137, 37);
+            this.txt_paye_amt.Size = new System.Drawing.Size(137, 31);
             this.txt_paye_amt.TabIndex = 87;
             this.txt_paye_amt.Text = "0";
             this.txt_paye_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -868,7 +876,7 @@
             this.label43.Location = new System.Drawing.Point(156, 6);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(46, 18);
+            this.label43.Size = new System.Drawing.Size(37, 15);
             this.label43.TabIndex = 86;
             this.label43.Text = "PAYE";
             // 
@@ -881,7 +889,7 @@
             this.txt_gross_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_gross_amt.Name = "txt_gross_amt";
             this.txt_gross_amt.ReadOnly = true;
-            this.txt_gross_amt.Size = new System.Drawing.Size(147, 37);
+            this.txt_gross_amt.Size = new System.Drawing.Size(147, 31);
             this.txt_gross_amt.TabIndex = 85;
             this.txt_gross_amt.Text = "0";
             this.txt_gross_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -894,7 +902,7 @@
             this.label42.Location = new System.Drawing.Point(13, 6);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(80, 18);
+            this.label42.Size = new System.Drawing.Size(63, 15);
             this.label42.TabIndex = 85;
             this.label42.Text = "Gross Amt";
             // 
@@ -916,6 +924,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(693, 86);
             this.panel9.TabIndex = 45;
+            this.panel9.MouseEnter += new System.EventHandler(this.panel9_MouseEnter);
             // 
             // btn_report
             // 
@@ -943,6 +952,7 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(433, 53);
             this.panel10.TabIndex = 46;
+            this.panel10.MouseEnter += new System.EventHandler(this.panel10_MouseEnter);
             // 
             // btnpayroll_summary
             // 
@@ -980,12 +990,15 @@
             this.txt_record_guid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_record_guid.Name = "txt_record_guid";
             this.txt_record_guid.ReadOnly = true;
-            this.txt_record_guid.Size = new System.Drawing.Size(375, 22);
+            this.txt_record_guid.Size = new System.Drawing.Size(375, 20);
             this.txt_record_guid.TabIndex = 29;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.LightCyan;
+            this.panel5.Controls.Add(this.label18);
+            this.panel5.Controls.Add(this.lblTotalLoansBalance);
+            this.panel5.Controls.Add(this.lblloanid);
             this.panel5.Controls.Add(this.panel12);
             this.panel5.Controls.Add(this.panel10);
             this.panel5.Controls.Add(this.panel9);
@@ -1003,6 +1016,40 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1327, 456);
             this.panel5.TabIndex = 28;
+            this.panel5.MouseEnter += new System.EventHandler(this.panel5_MouseEnter);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(892, 193);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(144, 15);
+            this.label18.TabIndex = 93;
+            this.label18.Text = "Overal Loan Balance:";
+            // 
+            // lblTotalLoansBalance
+            // 
+            this.lblTotalLoansBalance.AutoSize = true;
+            this.lblTotalLoansBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalLoansBalance.ForeColor = System.Drawing.Color.Blue;
+            this.lblTotalLoansBalance.Location = new System.Drawing.Point(1047, 193);
+            this.lblTotalLoansBalance.Name = "lblTotalLoansBalance";
+            this.lblTotalLoansBalance.Size = new System.Drawing.Size(16, 16);
+            this.lblTotalLoansBalance.TabIndex = 92;
+            this.lblTotalLoansBalance.Text = "..";
+            // 
+            // lblloanid
+            // 
+            this.lblloanid.AutoSize = true;
+            this.lblloanid.ForeColor = System.Drawing.Color.Red;
+            this.lblloanid.Location = new System.Drawing.Point(898, 338);
+            this.lblloanid.Name = "lblloanid";
+            this.lblloanid.Size = new System.Drawing.Size(41, 13);
+            this.lblloanid.TabIndex = 91;
+            this.lblloanid.Text = "loan_id";
             // 
             // panel12
             // 
@@ -1014,6 +1061,7 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(161, 54);
             this.panel12.TabIndex = 48;
+            this.panel12.MouseEnter += new System.EventHandler(this.panel12_MouseEnter);
             // 
             // chk_print_payroll
             // 
@@ -1024,7 +1072,7 @@
             this.chk_print_payroll.Location = new System.Drawing.Point(12, 29);
             this.chk_print_payroll.Margin = new System.Windows.Forms.Padding(4);
             this.chk_print_payroll.Name = "chk_print_payroll";
-            this.chk_print_payroll.Size = new System.Drawing.Size(106, 21);
+            this.chk_print_payroll.Size = new System.Drawing.Size(81, 17);
             this.chk_print_payroll.TabIndex = 1;
             this.chk_print_payroll.Text = "Print Payroll";
             this.chk_print_payroll.UseVisualStyleBackColor = false;
@@ -1038,7 +1086,7 @@
             this.chk_print_bank_schedule.Location = new System.Drawing.Point(12, 4);
             this.chk_print_bank_schedule.Margin = new System.Windows.Forms.Padding(4);
             this.chk_print_bank_schedule.Name = "chk_print_bank_schedule";
-            this.chk_print_bank_schedule.Size = new System.Drawing.Size(159, 21);
+            this.chk_print_bank_schedule.Size = new System.Drawing.Size(123, 17);
             this.chk_print_bank_schedule.TabIndex = 0;
             this.chk_print_bank_schedule.Text = "Print bank schedule ";
             this.chk_print_bank_schedule.UseVisualStyleBackColor = false;
@@ -1051,7 +1099,7 @@
             this.label40.Location = new System.Drawing.Point(9, 341);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(123, 18);
+            this.label40.Size = new System.Drawing.Size(102, 15);
             this.label40.TabIndex = 42;
             this.label40.Text = "Payment Settings";
             // 
@@ -1063,7 +1111,7 @@
             this.label31.Location = new System.Drawing.Point(1219, 191);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(120, 18);
+            this.label31.Size = new System.Drawing.Size(99, 15);
             this.label31.TabIndex = 41;
             this.label31.Text = "Total Deductions";
             // 
@@ -1080,10 +1128,12 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(698, 127);
             this.panel7.TabIndex = 40;
+            this.panel7.MouseEnter += new System.EventHandler(this.panel7_MouseEnter);
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.groupBox3.Controls.Add(this.btnLoadAdvance);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txt_advance_amt_paid);
             this.groupBox3.Controls.Add(this.label12);
@@ -1100,6 +1150,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Staff Loan Details";
             // 
+            // btnLoadAdvance
+            // 
+            this.btnLoadAdvance.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadAdvance.ForeColor = System.Drawing.Color.Red;
+            this.btnLoadAdvance.Location = new System.Drawing.Point(116, 12);
+            this.btnLoadAdvance.Name = "btnLoadAdvance";
+            this.btnLoadAdvance.Size = new System.Drawing.Size(121, 24);
+            this.btnLoadAdvance.TabIndex = 91;
+            this.btnLoadAdvance.Text = "Load Advance";
+            this.btnLoadAdvance.UseVisualStyleBackColor = true;
+            this.btnLoadAdvance.Click += new System.EventHandler(this.btnLoadAdvance_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -1109,7 +1171,7 @@
             this.label8.Location = new System.Drawing.Point(7, 71);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(181, 18);
+            this.label8.Size = new System.Drawing.Size(152, 15);
             this.label8.TabIndex = 88;
             this.label8.Text = "Outstanding Loan Balance";
             // 
@@ -1118,10 +1180,10 @@
             this.txt_advance_amt_paid.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_advance_amt_paid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_advance_amt_paid.ForeColor = System.Drawing.Color.White;
-            this.txt_advance_amt_paid.Location = new System.Drawing.Point(223, 88);
+            this.txt_advance_amt_paid.Location = new System.Drawing.Point(249, 88);
             this.txt_advance_amt_paid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_advance_amt_paid.Name = "txt_advance_amt_paid";
-            this.txt_advance_amt_paid.Size = new System.Drawing.Size(192, 30);
+            this.txt_advance_amt_paid.Size = new System.Drawing.Size(174, 26);
             this.txt_advance_amt_paid.TabIndex = 86;
             this.txt_advance_amt_paid.Text = "0";
             this.txt_advance_amt_paid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1134,10 +1196,10 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(220, 19);
+            this.label12.Location = new System.Drawing.Point(241, 20);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(129, 18);
+            this.label12.Size = new System.Drawing.Size(108, 15);
             this.label12.TabIndex = 90;
             this.label12.Text = "Loan Amount Paid";
             // 
@@ -1147,10 +1209,10 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(226, 73);
+            this.label3.Location = new System.Drawing.Point(247, 74);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 18);
+            this.label3.Size = new System.Drawing.Size(119, 15);
             this.label3.TabIndex = 85;
             this.label3.Text = "Loan to be deducted";
             // 
@@ -1163,7 +1225,7 @@
             this.txt_advace_amt_principle.Margin = new System.Windows.Forms.Padding(4);
             this.txt_advace_amt_principle.Name = "txt_advace_amt_principle";
             this.txt_advace_amt_principle.ReadOnly = true;
-            this.txt_advace_amt_principle.Size = new System.Drawing.Size(200, 30);
+            this.txt_advace_amt_principle.Size = new System.Drawing.Size(232, 26);
             this.txt_advace_amt_principle.TabIndex = 87;
             this.txt_advace_amt_principle.Text = "0";
             this.txt_advace_amt_principle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1173,11 +1235,11 @@
             this.txt_advance_paid.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_advance_paid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_advance_paid.ForeColor = System.Drawing.Color.White;
-            this.txt_advance_paid.Location = new System.Drawing.Point(223, 37);
+            this.txt_advance_paid.Location = new System.Drawing.Point(249, 37);
             this.txt_advance_paid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_advance_paid.Name = "txt_advance_paid";
             this.txt_advance_paid.ReadOnly = true;
-            this.txt_advance_paid.Size = new System.Drawing.Size(200, 30);
+            this.txt_advance_paid.Size = new System.Drawing.Size(174, 26);
             this.txt_advance_paid.TabIndex = 89;
             this.txt_advance_paid.Text = "0";
             this.txt_advance_paid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1202,6 +1264,7 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Staff Details";
+            this.groupBox1.MouseHover += new System.EventHandler(this.groupBox1_MouseHover);
             // 
             // cbo_payment_month
             // 
@@ -1225,7 +1288,7 @@
             this.cbo_payment_month.Location = new System.Drawing.Point(401, 54);
             this.cbo_payment_month.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_payment_month.Name = "cbo_payment_month";
-            this.cbo_payment_month.Size = new System.Drawing.Size(237, 33);
+            this.cbo_payment_month.Size = new System.Drawing.Size(237, 28);
             this.cbo_payment_month.TabIndex = 19;
             // 
             // label6
@@ -1237,7 +1300,7 @@
             this.label6.Location = new System.Drawing.Point(398, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 18);
+            this.label6.Size = new System.Drawing.Size(106, 15);
             this.label6.TabIndex = 46;
             this.label6.Text = "Payment Month";
             // 
@@ -1250,7 +1313,7 @@
             this.label5.Location = new System.Drawing.Point(5, 33);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 18);
+            this.label5.Size = new System.Drawing.Size(95, 15);
             this.label5.TabIndex = 45;
             this.label5.Text = "Payment Year";
             // 
@@ -1263,7 +1326,7 @@
             this.txt_staff_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_staff_name.Name = "txt_staff_name";
             this.txt_staff_name.ReadOnly = true;
-            this.txt_staff_name.Size = new System.Drawing.Size(290, 30);
+            this.txt_staff_name.Size = new System.Drawing.Size(290, 26);
             this.txt_staff_name.TabIndex = 44;
             this.txt_staff_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1276,7 +1339,7 @@
             this.label11.Location = new System.Drawing.Point(811, 34);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 18);
+            this.label11.Size = new System.Drawing.Size(68, 15);
             this.label11.TabIndex = 43;
             this.label11.Text = "Staff Name";
             // 
@@ -1289,7 +1352,7 @@
             this.txt_personal_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_personal_number.Name = "txt_personal_number";
             this.txt_personal_number.ReadOnly = true;
-            this.txt_personal_number.Size = new System.Drawing.Size(163, 30);
+            this.txt_personal_number.Size = new System.Drawing.Size(163, 26);
             this.txt_personal_number.TabIndex = 42;
             this.txt_personal_number.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1301,7 +1364,7 @@
             this.cbo_deploy_period.Location = new System.Drawing.Point(5, 52);
             this.cbo_deploy_period.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_deploy_period.Name = "cbo_deploy_period";
-            this.cbo_deploy_period.Size = new System.Drawing.Size(382, 33);
+            this.cbo_deploy_period.Size = new System.Drawing.Size(382, 28);
             this.cbo_deploy_period.TabIndex = 16;
             // 
             // label10
@@ -1313,7 +1376,7 @@
             this.label10.Location = new System.Drawing.Point(642, 34);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(124, 18);
+            this.label10.Size = new System.Drawing.Size(104, 15);
             this.label10.TabIndex = 41;
             this.label10.Text = "Personal Number";
             // 
@@ -1328,6 +1391,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1335, 780);
             this.panel2.TabIndex = 35;
+            this.panel2.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             // 
             // grpbox_staff
             // 
@@ -1349,7 +1413,7 @@
             this.cbo_deploy_period_search.Location = new System.Drawing.Point(116, 19);
             this.cbo_deploy_period_search.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_deploy_period_search.Name = "cbo_deploy_period_search";
-            this.cbo_deploy_period_search.Size = new System.Drawing.Size(124, 28);
+            this.cbo_deploy_period_search.Size = new System.Drawing.Size(124, 25);
             this.cbo_deploy_period_search.TabIndex = 47;
             // 
             // label1
@@ -1360,7 +1424,7 @@
             this.label1.Location = new System.Drawing.Point(4, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 18);
+            this.label1.Size = new System.Drawing.Size(86, 15);
             this.label1.TabIndex = 48;
             this.label1.Text = "Payment Year:";
             // 
@@ -1386,7 +1450,7 @@
             this.cbo_payment_month_search.Location = new System.Drawing.Point(379, 19);
             this.cbo_payment_month_search.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_payment_month_search.Name = "cbo_payment_month_search";
-            this.cbo_payment_month_search.Size = new System.Drawing.Size(219, 28);
+            this.cbo_payment_month_search.Size = new System.Drawing.Size(219, 25);
             this.cbo_payment_month_search.TabIndex = 49;
             // 
             // label4
@@ -1397,7 +1461,7 @@
             this.label4.Location = new System.Drawing.Point(248, 24);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 18);
+            this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 50;
             this.label4.Text = "Payment Month:";
             // 
@@ -1423,7 +1487,7 @@
             this.label7.Location = new System.Drawing.Point(-2, 0);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(187, 18);
+            this.label7.Size = new System.Drawing.Size(155, 15);
             this.label7.TabIndex = 30;
             this.label7.Text = "Select your payment period";
             // 
@@ -1437,8 +1501,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_setup_payroll_staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd- Staff Payroll Management";
+            this.Text = "Staff Payroll Management";
             this.Load += new System.EventHandler(this.frm_setup_payroll_staff_Load);
+            this.MouseEnter += new System.EventHandler(this.frm_setup_payroll_staff_MouseEnter);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -1488,7 +1553,7 @@
         private System.Windows.Forms.TextBox txt_lst_amt;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txt_advance_amt;
+        public System.Windows.Forms.TextBox txt_advance_amt;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txt_leave_amt;
         private System.Windows.Forms.Label label29;
@@ -1557,13 +1622,17 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txt_advace_amt_principle;
+        public System.Windows.Forms.TextBox txt_advace_amt_principle;
         private System.Windows.Forms.GroupBox grpbox_staff;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txt_advance_paid;
+        public System.Windows.Forms.TextBox txt_advance_paid;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnpayroll_summary;
         private System.Windows.Forms.TextBox txt_ovt_days;
         private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label lblloanid;
+        private System.Windows.Forms.Button btnLoadAdvance;
+        private System.Windows.Forms.Label lblTotalLoansBalance;
+        private System.Windows.Forms.Label label18;
     }
 }

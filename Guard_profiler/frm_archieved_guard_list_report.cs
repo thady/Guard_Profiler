@@ -54,6 +54,7 @@ namespace Guard_profiler
                 report.SetDataSource(Archieve_Lists.SELECT_ARCHIEVED_GUARD_LIST_REPORT_BY_STATUS("SELECT_ARCHIEVED_GUARD_LIST_ALL", _guard_status));
                 report.SetParameterValue("QueryName", "SELECT_ARCHIEVED_GUARD_LIST_ALL");
                 report.SetParameterValue("guard_status", SystemConst._guard_status);
+                report.SetParameterValue("client_name", SystemConst.ClientName);
                 this.cr_viewer_archieved_guards_report.ParameterFieldInfo = paramFields;
                 this.cr_viewer_archieved_guards_report.ReportSource = report;
             }

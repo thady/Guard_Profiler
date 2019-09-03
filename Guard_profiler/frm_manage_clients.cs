@@ -169,6 +169,9 @@ namespace Guard_profiler
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnsearch = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtClientsearch = new System.Windows.Forms.TextBox();
             this.panel_details = new System.Windows.Forms.Panel();
             this.txt_client_id = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -184,9 +187,6 @@ namespace Guard_profiler
             this.panel2 = new System.Windows.Forms.Panel();
             this.gdv_clients = new System.Windows.Forms.DataGridView();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.txtClientsearch = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnsearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -207,7 +207,7 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.panel_details);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(4, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1116, 640);
             this.panel1.TabIndex = 0;
@@ -218,7 +218,7 @@ namespace Guard_profiler
             this.panel5.Controls.Add(this.btn_locations);
             this.panel5.Controls.Add(this.panel3);
             this.panel5.Location = new System.Drawing.Point(584, 26);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(259, 105);
             this.panel5.TabIndex = 25;
@@ -227,7 +227,7 @@ namespace Guard_profiler
             // 
             this.btn_locations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btn_locations.Location = new System.Drawing.Point(4, 68);
-            this.btn_locations.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_locations.Margin = new System.Windows.Forms.Padding(4);
             this.btn_locations.Name = "btn_locations";
             this.btn_locations.Size = new System.Drawing.Size(251, 33);
             this.btn_locations.TabIndex = 27;
@@ -242,7 +242,7 @@ namespace Guard_profiler
             this.panel3.Controls.Add(this.btnsave);
             this.panel3.Controls.Add(this.btnnew);
             this.panel3.Location = new System.Drawing.Point(-3, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(261, 58);
             this.panel3.TabIndex = 26;
@@ -251,7 +251,7 @@ namespace Guard_profiler
             // 
             this.btnedit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnedit.Location = new System.Drawing.Point(7, 1);
-            this.btnedit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnedit.Margin = new System.Windows.Forms.Padding(4);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(83, 53);
             this.btnedit.TabIndex = 24;
@@ -263,7 +263,7 @@ namespace Guard_profiler
             // 
             this.btnsave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnsave.Location = new System.Drawing.Point(160, 4);
-            this.btnsave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsave.Margin = new System.Windows.Forms.Padding(4);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(97, 50);
             this.btnsave.TabIndex = 23;
@@ -275,7 +275,7 @@ namespace Guard_profiler
             // 
             this.btnnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnnew.Location = new System.Drawing.Point(89, 4);
-            this.btnnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnnew.Margin = new System.Windows.Forms.Padding(4);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(72, 50);
             this.btnnew.TabIndex = 25;
@@ -286,10 +286,10 @@ namespace Guard_profiler
             // txt_record_guid
             // 
             this.txt_record_guid.Location = new System.Drawing.Point(8, 612);
-            this.txt_record_guid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_record_guid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_record_guid.Name = "txt_record_guid";
             this.txt_record_guid.ReadOnly = true;
-            this.txt_record_guid.Size = new System.Drawing.Size(1103, 22);
+            this.txt_record_guid.Size = new System.Drawing.Size(1103, 20);
             this.txt_record_guid.TabIndex = 1;
             this.txt_record_guid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -301,7 +301,7 @@ namespace Guard_profiler
             this.label2.Location = new System.Drawing.Point(851, 5);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 20);
+            this.label2.Size = new System.Drawing.Size(134, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Search Clients Below";
             // 
@@ -313,7 +313,7 @@ namespace Guard_profiler
             this.label1.Location = new System.Drawing.Point(12, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 20);
+            this.label1.Size = new System.Drawing.Size(245, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Enter or Update Client Information below";
             // 
@@ -324,10 +324,43 @@ namespace Guard_profiler
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.txtClientsearch);
             this.panel4.Location = new System.Drawing.Point(851, 26);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(257, 105);
             this.panel4.TabIndex = 2;
+            // 
+            // btnsearch
+            // 
+            this.btnsearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnsearch.Location = new System.Drawing.Point(153, 66);
+            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(100, 33);
+            this.btnsearch.TabIndex = 28;
+            this.btnsearch.Text = "Search";
+            this.btnsearch.UseVisualStyleBackColor = false;
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(10, 14);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 15);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Client Name";
+            // 
+            // txtClientsearch
+            // 
+            this.txtClientsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClientsearch.Location = new System.Drawing.Point(13, 36);
+            this.txtClientsearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClientsearch.Name = "txtClientsearch";
+            this.txtClientsearch.Size = new System.Drawing.Size(240, 21);
+            this.txtClientsearch.TabIndex = 25;
             // 
             // panel_details
             // 
@@ -344,7 +377,7 @@ namespace Guard_profiler
             this.panel_details.Controls.Add(this.txt_client_name);
             this.panel_details.Controls.Add(this.label6);
             this.panel_details.Location = new System.Drawing.Point(8, 26);
-            this.panel_details.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_details.Margin = new System.Windows.Forms.Padding(4);
             this.panel_details.Name = "panel_details";
             this.panel_details.Size = new System.Drawing.Size(572, 105);
             this.panel_details.TabIndex = 1;
@@ -353,10 +386,10 @@ namespace Guard_profiler
             // 
             this.txt_client_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_client_id.Location = new System.Drawing.Point(444, 76);
-            this.txt_client_id.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_client_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_client_id.Name = "txt_client_id";
             this.txt_client_id.ReadOnly = true;
-            this.txt_client_id.Size = new System.Drawing.Size(123, 24);
+            this.txt_client_id.Size = new System.Drawing.Size(123, 21);
             this.txt_client_id.TabIndex = 24;
             // 
             // label7
@@ -367,7 +400,7 @@ namespace Guard_profiler
             this.label7.Location = new System.Drawing.Point(448, 54);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 18);
+            this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 23;
             this.label7.Text = "Client ID";
             // 
@@ -378,9 +411,9 @@ namespace Guard_profiler
             this.chk_client_active.Checked = true;
             this.chk_client_active.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_client_active.Location = new System.Drawing.Point(452, 30);
-            this.chk_client_active.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chk_client_active.Margin = new System.Windows.Forms.Padding(4);
             this.chk_client_active.Name = "chk_client_active";
-            this.chk_client_active.Size = new System.Drawing.Size(107, 21);
+            this.chk_client_active.Size = new System.Drawing.Size(85, 17);
             this.chk_client_active.TabIndex = 22;
             this.chk_client_active.Text = "Client Active";
             this.chk_client_active.UseVisualStyleBackColor = false;
@@ -389,9 +422,9 @@ namespace Guard_profiler
             // 
             this.txt_client_rate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_client_rate.Location = new System.Drawing.Point(308, 75);
-            this.txt_client_rate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_client_rate.Margin = new System.Windows.Forms.Padding(4);
             this.txt_client_rate.Name = "txt_client_rate";
-            this.txt_client_rate.Size = new System.Drawing.Size(123, 24);
+            this.txt_client_rate.Size = new System.Drawing.Size(123, 21);
             this.txt_client_rate.TabIndex = 21;
             // 
             // label5
@@ -402,7 +435,7 @@ namespace Guard_profiler
             this.label5.Location = new System.Drawing.Point(309, 54);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 18);
+            this.label5.Size = new System.Drawing.Size(33, 15);
             this.label5.TabIndex = 20;
             this.label5.Text = "Rate";
             // 
@@ -410,9 +443,9 @@ namespace Guard_profiler
             // 
             this.txt_adress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_adress.Location = new System.Drawing.Point(4, 75);
-            this.txt_adress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_adress.Margin = new System.Windows.Forms.Padding(4);
             this.txt_adress.Name = "txt_adress";
-            this.txt_adress.Size = new System.Drawing.Size(296, 24);
+            this.txt_adress.Size = new System.Drawing.Size(296, 21);
             this.txt_adress.TabIndex = 19;
             // 
             // label4
@@ -423,7 +456,7 @@ namespace Guard_profiler
             this.label4.Location = new System.Drawing.Point(4, 54);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 18);
+            this.label4.Size = new System.Drawing.Size(78, 15);
             this.label4.TabIndex = 18;
             this.label4.Text = "Client Adress";
             // 
@@ -431,9 +464,9 @@ namespace Guard_profiler
             // 
             this.txt_client_code.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_client_code.Location = new System.Drawing.Point(308, 25);
-            this.txt_client_code.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_client_code.Margin = new System.Windows.Forms.Padding(4);
             this.txt_client_code.Name = "txt_client_code";
-            this.txt_client_code.Size = new System.Drawing.Size(123, 24);
+            this.txt_client_code.Size = new System.Drawing.Size(123, 21);
             this.txt_client_code.TabIndex = 17;
             // 
             // label3
@@ -444,7 +477,7 @@ namespace Guard_profiler
             this.label3.Location = new System.Drawing.Point(309, 2);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 18);
+            this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 16;
             this.label3.Text = "Client Code";
             // 
@@ -452,9 +485,9 @@ namespace Guard_profiler
             // 
             this.txt_client_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_client_name.Location = new System.Drawing.Point(4, 25);
-            this.txt_client_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_client_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_client_name.Name = "txt_client_name";
-            this.txt_client_name.Size = new System.Drawing.Size(296, 24);
+            this.txt_client_name.Size = new System.Drawing.Size(296, 21);
             this.txt_client_name.TabIndex = 15;
             // 
             // label6
@@ -465,7 +498,7 @@ namespace Guard_profiler
             this.label6.Location = new System.Drawing.Point(4, 2);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 18);
+            this.label6.Size = new System.Drawing.Size(75, 15);
             this.label6.TabIndex = 6;
             this.label6.Text = "Client Name";
             // 
@@ -474,7 +507,7 @@ namespace Guard_profiler
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.gdv_clients);
             this.panel2.Location = new System.Drawing.Point(4, 138);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1108, 473);
             this.panel2.TabIndex = 0;
@@ -488,7 +521,7 @@ namespace Guard_profiler
             this.gdv_clients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdv_clients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdv_clients.Location = new System.Drawing.Point(4, 4);
-            this.gdv_clients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gdv_clients.Margin = new System.Windows.Forms.Padding(4);
             this.gdv_clients.Name = "gdv_clients";
             this.gdv_clients.ReadOnly = true;
             this.gdv_clients.Size = new System.Drawing.Size(1100, 465);
@@ -505,39 +538,6 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 1123D;
             this.reSize1.Tag = null;
             // 
-            // txtClientsearch
-            // 
-            this.txtClientsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClientsearch.Location = new System.Drawing.Point(13, 36);
-            this.txtClientsearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtClientsearch.Name = "txtClientsearch";
-            this.txtClientsearch.Size = new System.Drawing.Size(240, 24);
-            this.txtClientsearch.TabIndex = 25;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(10, 14);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 18);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Client Name";
-            // 
-            // btnsearch
-            // 
-            this.btnsearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnsearch.Location = new System.Drawing.Point(153, 66);
-            this.btnsearch.Margin = new System.Windows.Forms.Padding(4);
-            this.btnsearch.Name = "btnsearch";
-            this.btnsearch.Size = new System.Drawing.Size(100, 33);
-            this.btnsearch.TabIndex = 28;
-            this.btnsearch.Text = "Search";
-            this.btnsearch.UseVisualStyleBackColor = false;
-            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
-            // 
             // frm_manage_clients
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -546,10 +546,10 @@ namespace Guard_profiler
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_manage_clients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Securiko Uganda Ltd-Manage Client Profiles";
+            this.Text = "Manage Client Profiles";
             this.Load += new System.EventHandler(this.frm_manage_clients_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

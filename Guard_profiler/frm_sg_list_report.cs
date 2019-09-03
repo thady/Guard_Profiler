@@ -44,7 +44,8 @@ namespace Guard_profiler
 			}
 			report.SetDataSource(sg_Reports.SELECT_GUARD_LIST("SELECT_GUARD_LIST"));
 			report.SetParameterValue("QueryName", "SELECT_GUARD_LIST");
-			this.report_sg_lists.ParameterFieldInfo = paramFields;
+            report.SetParameterValue("client_name",SystemConst.ClientName);
+            this.report_sg_lists.ParameterFieldInfo = paramFields;
 			this.report_sg_lists.ReportSource = report;
 		}
 
@@ -86,7 +87,7 @@ namespace Guard_profiler
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_sg_list_report";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NEW SECURIKO UGANDA LTD-ALL GUARDS REPORT";
+            this.Text = "ALL GUARDS REPORT";
             this.Load += new System.EventHandler(this.frm_sg_list_report_Load);
             this.ResumeLayout(false);
 

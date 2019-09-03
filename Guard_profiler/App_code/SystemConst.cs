@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 
 namespace Guard_profiler.App_code
 {
@@ -77,8 +78,14 @@ namespace Guard_profiler.App_code
 		public static string _guard_name;
 
         public static string finance_report_type;
+        public static string staff_advance_action;
 
-		static SystemConst()
+        public static string advace_amt_principle = string.Empty;
+        public static string advance_paid = string.Empty;
+        public static string advance_amt = string.Empty;
+        public static string lblloanid = string.Empty;
+        public static string ClientName = string.Empty;
+        static SystemConst()
 		{
 			SystemConst.OfficerID = string.Empty;
 			SystemConst.OfficerName = string.Empty;
@@ -112,7 +119,8 @@ namespace Guard_profiler.App_code
 			SystemConst._is_public_holiday = false;
 			SystemConst._record_guid = string.Empty;
 			SystemConst._guard_name = string.Empty;
-		}
+            ClientName = ConfigurationManager.AppSettings["clientName"];
+        }
 
 		public static string Get_officer_branch()
 		{

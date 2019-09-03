@@ -50,6 +50,7 @@ namespace Guard_profiler
                 report.SetParameterValue("QueryName", "SELECT_GUARD_REPORT_SINGLE");
                 report.SetParameterValue("guard_number", SystemConst.guard_number);
                 report.SetParameterValue("guard_status", String.Empty);
+                report.SetParameterValue("client_name", SystemConst.ClientName);
                 crystalReportViewer1.ParameterFieldInfo = paramFields;
 
 
@@ -73,6 +74,7 @@ namespace Guard_profiler
                 report.SetParameterValue("QueryName", "SELECT_ARCHIEVED_GUARD_REPORT_SINGLE");
                 report.SetParameterValue("guard_number", SystemConst.guard_number);
                 report.SetParameterValue("guard_status", String.Empty);
+                report.SetParameterValue("client_name", SystemConst.ClientName);
                 crystalReportViewer1.ParameterFieldInfo = paramFields;
 
 
@@ -83,27 +85,34 @@ namespace Guard_profiler
 
 		private void InitializeComponent()
 		{
-			ComponentResourceManager resources = new ComponentResourceManager(typeof(frmcrystal_report_single));
-			this.crystalReportViewer1 = new CrystalReportViewer();
-			base.SuspendLayout();
-			//this.crystalReportViewer1.set_ActiveViewIndex(-1);
-			this.crystalReportViewer1.BorderStyle = BorderStyle.FixedSingle;
-			this.crystalReportViewer1.Cursor = Cursors.Default;
-			this.crystalReportViewer1.Dock = DockStyle.Fill;
-			this.crystalReportViewer1.Location = new Point(0, 0);
-			this.crystalReportViewer1.Name = "crystalReportViewer1";
-			this.crystalReportViewer1.Size = new System.Drawing.Size(828, 578);
-			this.crystalReportViewer1.TabIndex = 0;
-			base.AutoScaleDimensions = new SizeF(6f, 13f);
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new System.Drawing.Size(828, 578);
-			base.Controls.Add(this.crystalReportViewer1);
-			base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-			base.Name = "frmcrystal_report_single";
-			base.StartPosition = FormStartPosition.CenterScreen;
-			this.Text = "NEW SECURIKO UGANDA LTD-GUARD PROFILE REPORT";
-			base.Load += new EventHandler(this.frmcrystal_report_single_Load);
-			base.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmcrystal_report_single));
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.SuspendLayout();
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(828, 578);
+            this.crystalReportViewer1.TabIndex = 0;
+            // 
+            // frmcrystal_report_single
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(828, 578);
+            this.Controls.Add(this.crystalReportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmcrystal_report_single";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "GUARD PROFILE REPORT";
+            this.Load += new System.EventHandler(this.frmcrystal_report_single_Load);
+            this.ResumeLayout(false);
+
 		}
 
         protected void SET_CONNECTION_INFO(ConnectionInfo conn_info)

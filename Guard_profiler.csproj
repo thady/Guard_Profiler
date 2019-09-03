@@ -37,6 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Guard_profilerReferences\ReSize.NET.4.1\LarcomAndYoung.Windows.Forms.ReSize.dll</HintPath>
     </Reference>
+    <Reference Include="libzkfpcsharp">
+      <HintPath>Guard_profiler\resources\libzkfpcsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Services" />
@@ -54,6 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="cr_client_billing.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_client_billing.cs</LastGenOutput>
@@ -95,6 +103,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_staff_nssf_report.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmFingerPrintCapture.resx">
+      <DependentUpon>frmFingerPrintCapture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frmMyActiveDeployment.resx">
       <DependentUpon>frmMyActiveDeployment.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,7 +137,13 @@
       <DependentUpon>frm_staff_payroll_summary_view.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <None Include="App.config" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="cr_client_billing.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,6 +209,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cr_staff_nssf_report.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmFingerPrintCapture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFingerPrintCapture.Designer.cs">
+      <DependentUpon>frmFingerPrintCapture.cs</DependentUpon>
     </Compile>
     <Compile Include="Guard_profiler\frmMyActiveDeployment.cs">
       <SubType>Form</SubType>
@@ -1059,6 +1082,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Guard_profiler\resources\52-512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

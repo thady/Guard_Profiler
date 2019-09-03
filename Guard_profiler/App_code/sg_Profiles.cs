@@ -307,7 +307,160 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static DataTable RETURN_OFFICER_LIST_BY_GUARD_NUMBER(string myQuery, string guard_number)
+
+        public static DataTable search_archive(string myQuery,string guard_number,string name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("Q_SG_PROFILES", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@guard_number"].Value = guard_number;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_full_name", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@guard_full_name"].Value = name;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (sg_Profiles.conn.State == ConnectionState.Open)
+                {
+                    sg_Profiles.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+
+
+        public static int check_if_archived_guard_number_is_taken(string myQuery,string guard_number)
+        {
+            DataTable dt = new DataTable();
+            int count = 0;
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("Q_SG_PROFILES", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@guard_number"].Value = guard_number;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            count = Convert.ToInt32(cmd.ExecuteScalar());
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (sg_Profiles.conn.State == ConnectionState.Open)
+                {
+                    sg_Profiles.conn.Close();
+                }
+            }
+            return count;
+        }
+
+
+        public static void ActivateGuard(string QueryName,int auto_id)
+        {
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("Q_SG_PROFILES", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@QueryName"].Value = QueryName;
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.Add("@auto_id", SqlDbType.Int);
+                            cmd.Parameters["@auto_id"].Value = auto_id;
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                SqlConnection sqlConnection = sg_Profiles.conn;
+            }
+        }
+
+        public static DataTable RETURN_OFFICER_LIST_BY_GUARD_NUMBER(string myQuery, string guard_number)
 		{
 			DataTable dt = new DataTable();
 			try
@@ -731,7 +884,59 @@ namespace Guard_profiler.App_code
 			return dt;
 		}
 
-		public static void UN_ASSIGN_GUARD_NUMBER_AND_ARCHIVE_GUARD_DETAILS(string QueryName, string record_guid)
+
+        public static int Check_if_guard_already_delployed_before_archival(string myQuery,string guard_number)
+        {
+            DataTable dt = new DataTable();
+            int count = 0;
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("Q_SG_PROFILES", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@guard_number"].Value = guard_number;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            count = Convert.ToInt32(cmd.ExecuteScalar());
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (sg_Profiles.conn.State == ConnectionState.Open)
+                {
+                    sg_Profiles.conn.Close();
+                }
+            }
+            return count;
+        }
+
+        public static void UN_ASSIGN_GUARD_NUMBER_AND_ARCHIVE_GUARD_DETAILS(string QueryName, string record_guid)
 		{
 			try
 			{

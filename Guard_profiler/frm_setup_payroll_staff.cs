@@ -217,12 +217,15 @@ namespace Guard_profiler
                 staff_id = st_id;
                
                 select_staff_payroll(st_id,Convert.ToInt32(cbo_deploy_period_search.SelectedValue.ToString()),cbo_payment_month_search.Text);
-               
-                select_staff_advance(st_id);
+                ResetLoanDetails();
+                lblTotalLoansBalance.Text = StaffProfiles.select_staff_loan_balance("select_staff_loan_balance", st_id);
+               // select_staff_advance(st_id);
 
-               
+
             }
         }
+
+
 
         protected void Calculate_guard_salary_amounts()
         {
@@ -674,13 +677,13 @@ namespace Guard_profiler
             {
                 decimal advance_principle = decimal.Parse(txt_advace_amt_principle.Text);
                 decimal advance_current_balance = decimal.Parse(txt_advance_amt.Text);
-                decimal advance_amount_paid = decimal.Parse(txt_advance_amt_paid.Text);
+                decimal advance_amount_paid = txt_advance_amt_paid.Text != string.Empty? decimal.Parse(txt_advance_amt_paid.Text):0;
 
                 advance_amount_paid = advance_amount_paid + decimal.Parse(txt_advance_paid.Text);
 
                 decimal new_advance_balance = advance_principle - advance_amount_paid;
 
-                StaffProfiles.update_staff_advance_payment("update_staff_advance_payment", staff_id, advance_amount_paid, new_advance_balance);
+                StaffProfiles.update_staff_advance_payment("update_staff_advance_payment", staff_id,lblloanid.Text, advance_amount_paid, new_advance_balance);
             }
             else
             {
@@ -693,9 +696,27 @@ namespace Guard_profiler
                 decimal prev_total_advance_amt_paid = decimal.Parse(txt_advance_paid.Text) - advance_paid_amt_to_be_updated;
                 decimal current_total_advance_amt_paid = prev_total_advance_amt_paid + decimal.Parse(txt_advance_amt_paid.Text);
 
-                StaffProfiles.update_staff_advance_payment("update_staff_advance_payment", staff_id, current_total_advance_amt_paid, new_advance_balance);
+                StaffProfiles.update_staff_advance_payment("update_staff_advance_payment", staff_id,lblloanid.Text, current_total_advance_amt_paid, new_advance_balance);
+               
+               
             }
 
+        }
+
+        public void ResetLoanDetails()
+        {
+            #region ResetLoanDetails
+
+            SystemConst.advace_amt_principle = string.Empty;
+            SystemConst.advance_paid = string.Empty;
+            SystemConst.advance_amt = string.Empty;
+            SystemConst.lblloanid = string.Empty;
+
+            txt_advace_amt_principle.Text = string.Empty;
+            txt_advance_paid.Text = string.Empty;
+            txt_advance_amt.Text = string.Empty;
+            lblloanid.Text = string.Empty;
+            #endregion
         }
 
         private void btn_report_Click(object sender, EventArgs e)
@@ -750,6 +771,147 @@ namespace Guard_profiler
             else
             {
                 Calculate_guard_salary_amounts_exclude_nssf();
+            }
+        }
+
+        private void btnLoadAdvance_Click(object sender, EventArgs e)
+        {
+            StaffProfiles.staff_id = staff_id;
+            StaffProfiles.staff_name = txt_staff_name.Text;
+            SystemConst.staff_advance_action = "Payroll";
+            frmstaffAdvance ad = new frmstaffAdvance();
+            ad.ShowDialog();
+        }
+
+        private void frm_setup_payroll_staff_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel5_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void gdv_staff_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel2_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void groupBox1_MouseHover(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void groupBox2_MouseHover(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel7_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel6_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel9_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel8_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel12_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
+            }
+        }
+
+        private void panel10_MouseEnter(object sender, EventArgs e)
+        {
+            if (SystemConst.staff_advance_action == "Payroll")
+            {
+                txt_advace_amt_principle.Text = SystemConst.advace_amt_principle;
+                txt_advance_paid.Text = SystemConst.advance_paid;
+                txt_advance_amt.Text = SystemConst.advance_amt;
+                lblloanid.Text = SystemConst.lblloanid;
             }
         }
     }

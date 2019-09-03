@@ -65,6 +65,8 @@ namespace Guard_profiler
         private ReSize reSize1;
         private TextBox txtTin;
         private Label label11;
+        private TextBox txtAutoID;
+        private Label label12;
         private TextBox txt_guard_number;
 
 		public frm_guard_bank_details()
@@ -79,7 +81,7 @@ namespace Guard_profiler
 				MessageBox.Show("Fields with (*) are required", "save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
-			Salary_scales.insert_update_guard_account_details("insert_update_guard_account_details", this.txt_guard_number.Text, Convert.ToInt32(this.cbo_bank.SelectedValue.ToString()), Convert.ToInt32(this.cbo_branch_name.SelectedValue.ToString()), this.txt_account_number.Text, this.txt_nssf_number.Text,txtTin.Text);
+			Salary_scales.insert_update_guard_account_details("insert_update_guard_account_details", this.txt_guard_number.Text, Convert.ToInt32(this.cbo_bank.SelectedValue.ToString()), Convert.ToInt32(this.cbo_branch_name.SelectedValue.ToString()), this.txt_account_number.Text, this.txt_nssf_number.Text,txtTin.Text,txtAutoID.Text);
 			MessageBox.Show("Success", "save", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 			this.get_guard_bank_mapping();
 		}
@@ -141,6 +143,7 @@ namespace Guard_profiler
                 this.txt_account_number.Text = this.gdv_guards.CurrentRow.Cells[5].Value.ToString();
                 this.txt_nssf_number.Text = this.gdv_guards.CurrentRow.Cells[6].Value.ToString();
                 this.txtTin.Text = this.gdv_guards.CurrentRow.Cells[7].Value.ToString();
+                txtAutoID.Text = this.gdv_guards.CurrentRow.Cells[8].Value.ToString();
             }
 		}
 
@@ -229,6 +232,8 @@ namespace Guard_profiler
             this.gdv_guards = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTin = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_guard_number = new System.Windows.Forms.TextBox();
             this.btnnew = new System.Windows.Forms.Button();
@@ -244,8 +249,8 @@ namespace Guard_profiler
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtTin = new System.Windows.Forms.TextBox();
+            this.txtAutoID = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_guards)).BeginInit();
@@ -371,6 +376,8 @@ namespace Guard_profiler
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.txtAutoID);
             this.panel2.Controls.Add(this.txtTin);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
@@ -392,11 +399,30 @@ namespace Guard_profiler
             this.panel2.Size = new System.Drawing.Size(927, 123);
             this.panel2.TabIndex = 0;
             // 
+            // txtTin
+            // 
+            this.txtTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTin.Location = new System.Drawing.Point(480, 79);
+            this.txtTin.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTin.Name = "txtTin";
+            this.txtTin.Size = new System.Drawing.Size(127, 30);
+            this.txtTin.TabIndex = 14;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(480, 58);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 17);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Tin Number";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Yellow;
-            this.label10.Location = new System.Drawing.Point(621, 5);
+            this.label10.Location = new System.Drawing.Point(623, 5);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(102, 17);
@@ -407,7 +433,7 @@ namespace Guard_profiler
             // 
             this.txt_guard_number.Enabled = false;
             this.txt_guard_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_guard_number.Location = new System.Drawing.Point(625, 21);
+            this.txt_guard_number.Location = new System.Drawing.Point(624, 25);
             this.txt_guard_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number.Name = "txt_guard_number";
             this.txt_guard_number.Size = new System.Drawing.Size(172, 30);
@@ -545,24 +571,25 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 941D;
             this.reSize1.Tag = null;
             // 
-            // label11
+            // txtAutoID
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(480, 58);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 17);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Tin Number";
+            this.txtAutoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutoID.Location = new System.Drawing.Point(804, 25);
+            this.txtAutoID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAutoID.Name = "txtAutoID";
+            this.txtAutoID.Size = new System.Drawing.Size(119, 30);
+            this.txtAutoID.TabIndex = 15;
             // 
-            // txtTin
+            // label12
             // 
-            this.txtTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTin.Location = new System.Drawing.Point(480, 79);
-            this.txtTin.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTin.Name = "txtTin";
-            this.txtTin.Size = new System.Drawing.Size(127, 30);
-            this.txtTin.TabIndex = 14;
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Yellow;
+            this.label12.Location = new System.Drawing.Point(801, 5);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 17);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "AUTO ID";
             // 
             // frm_guard_bank_details
             // 

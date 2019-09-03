@@ -36,12 +36,23 @@ namespace Guard_profiler
                 {
                     if (StaffProfiles.check_if_staff_has_advance("check_if_staff_has_advance", lblstaffid.Text) > 0)
                     {
-                        MessageBox.Show("There is already an outstanding advance for " + txt_staff_name.Text , "save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        System.Windows.Forms.DialogResult dialogResult = MessageBox.Show("There is already an outstanding advance for " + txt_staff_name.Text + ".Are you sure you want to add another advance to this staff member", "Staff Advance", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            StaffProfiles.save_staff_advance("save_staff_advance", lblstaffid.Text, dtAdvanceDate.Value.Date, Convert.ToDecimal(txtamount.Text), Convert.ToDecimal(txtamountPaid.Text), Convert.ToDecimal(txtAmountBalance.Text), txtAmountBalance.Text == "0" ? true : false);
+                            MessageBox.Show("Success!", "save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadAdvances();
+                        }
+                        if (dialogResult == System.Windows.Forms.DialogResult.No)
+                        {
+                            base.Visible = true;
+                        }
                     }
                     else
                     {
                         StaffProfiles.save_staff_advance("save_staff_advance", lblstaffid.Text, dtAdvanceDate.Value.Date, Convert.ToDecimal(txtamount.Text), Convert.ToDecimal(txtamountPaid.Text), Convert.ToDecimal(txtAmountBalance.Text), txtAmountBalance.Text == "0" ? true : false);
                         MessageBox.Show("Success!", "save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadAdvances();
                     }
                 }
             }
@@ -89,7 +100,20 @@ namespace Guard_profiler
 
         private void gdvAdvanceList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Load_staffAdvance();
+            if (SystemConst.staff_advance_action == "Profiles")
+            {
+                Load_staffAdvance();
+            }
+            else
+            {
+                frm_setup_payroll_staff staff = new frm_setup_payroll_staff();
+                SystemConst.advace_amt_principle = gdvAdvanceList.CurrentRow.Cells[4].Value.ToString();
+                SystemConst.advance_paid = gdvAdvanceList.CurrentRow.Cells[5].Value.ToString();
+                SystemConst.advance_amt = gdvAdvanceList.CurrentRow.Cells[6].Value.ToString();
+                SystemConst.lblloanid = gdvAdvanceList.CurrentRow.Cells[0].Value.ToString();
+                this.Visible = false;
+            }
+            
         }
 
         protected void Load_staffAdvance()

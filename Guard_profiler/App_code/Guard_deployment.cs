@@ -666,6 +666,9 @@ namespace Guard_profiler.App_code
 				}
 				catch (SqlException sqlException)
 				{
+                    string err = guard_name;
+                    string query = QueryName;
+                    string guard_n = guard_number;
 					throw new Exception(sqlException.ToString());
 				}
 			}

@@ -386,6 +386,7 @@ namespace Guard_profiler
         private void btn_staff_payroll_Click(object sender, EventArgs e)
         {
             frm_setup_payroll_staff staff_payroll = new frm_setup_payroll_staff();
+            staff_payroll.ResetLoanDetails();
             staff_payroll.ShowDialog();
         }
 

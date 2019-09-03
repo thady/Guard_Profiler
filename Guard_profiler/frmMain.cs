@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Resources;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Guard_profiler
@@ -100,9 +101,16 @@ namespace Guard_profiler
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem toolStripMenuItem13;
         private Button btnFinance;
+        private Panel panelLicence;
+        private Label lblClient;
         private Panel panel4;
 
-		public frmMain()
+        private int xpos = 0, ypos = 0;
+        private Timer timer1;
+        private Panel panel5;
+        public string mode = "Left-to-Right";
+
+        public frmMain()
 		{
 			this.InitializeComponent();
 		}
@@ -182,15 +190,26 @@ namespace Guard_profiler
 
 		private void frmMain_Load(object sender, EventArgs e)
 		{
-			base.Visible = true;
+            this.Text = SystemConst.ClientName + " Guard Management System V.2";
+            lblClient.Text = SystemConst.ClientName + " Guard Management System V.2" + "  For quick help please call 0704098505 or 0705119900";
+            base.Visible = true;
 			base.WindowState = FormWindowState.Maximized;
 			(new frmLogin()).ShowDialog();
 			//this.Set_current_deployment_periods();
             Set_user_access_permissions();
-
+            Blink();
         }
 
-		private void frmMain_MouseHover(object sender, EventArgs e)
+        private async void Blink()
+        {
+            while (true)
+            {
+                await Task.Delay(500);
+                lblClient.BackColor = lblClient.BackColor == Color.Red ? Color.Green : Color.Red;
+            }
+        }
+
+        private void frmMain_MouseHover(object sender, EventArgs e)
 		{
 			this.WELCOME_GREET_USER();
 			this.StartTimer();
@@ -216,6 +235,13 @@ namespace Guard_profiler
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnhr = new System.Windows.Forms.Button();
+            this.btnwages = new System.Windows.Forms.Button();
+            this.btnFinance = new System.Windows.Forms.Button();
+            this.btnaccounts = new System.Windows.Forms.Button();
+            this.panelLicence = new System.Windows.Forms.Panel();
+            this.lblClient = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel_user = new System.Windows.Forms.Panel();
@@ -226,15 +252,8 @@ namespace Guard_profiler
             this.lbl_user_session_name = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnaccounts = new System.Windows.Forms.Button();
-            this.btnwages = new System.Windows.Forms.Button();
-            this.btnhr = new System.Windows.Forms.Button();
-            this.toolstrip_hr = new System.Windows.Forms.ToolStripMenuItem();
             this.guardProfilesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.nonGuardProfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolstrip_wages = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolstrip_accounts = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolstripreports = new System.Windows.Forms.ToolStripMenuItem();
             this.activeGuardsByBranchReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -242,7 +261,6 @@ namespace Guard_profiler
             this.allGuardsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.archievedGuardsReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolstrip_admin = new System.Windows.Forms.ToolStripMenuItem();
             this.manageUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.manageDepartmentsBranchesPositionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -269,8 +287,15 @@ namespace Guard_profiler
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFinance = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolstrip_hr = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstrip_wages = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstrip_accounts = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstripreports = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolstrip_admin = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panelLicence.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel_user.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -282,27 +307,111 @@ namespace Guard_profiler
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btnFinance);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panelLicence);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.btnaccounts);
-            this.panel1.Controls.Add(this.btnwages);
-            this.panel1.Controls.Add(this.btnhr);
             this.panel1.Location = new System.Drawing.Point(0, 64);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1345, 674);
             this.panel1.TabIndex = 0;
             this.panel1.MouseHover += new System.EventHandler(this.panel1_MouseHover);
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.btnhr);
+            this.panel5.Controls.Add(this.btnwages);
+            this.panel5.Controls.Add(this.btnFinance);
+            this.panel5.Controls.Add(this.btnaccounts);
+            this.panel5.Location = new System.Drawing.Point(3, 82);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1335, 148);
+            this.panel5.TabIndex = 12;
+            // 
+            // btnhr
+            // 
+            this.btnhr.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhr.Image = ((System.Drawing.Image)(resources.GetObject("btnhr.Image")));
+            this.btnhr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnhr.Location = new System.Drawing.Point(3, 1);
+            this.btnhr.Name = "btnhr";
+            this.btnhr.Size = new System.Drawing.Size(238, 70);
+            this.btnhr.TabIndex = 5;
+            this.btnhr.Text = "Human Resources";
+            this.btnhr.UseVisualStyleBackColor = true;
+            this.btnhr.Click += new System.EventHandler(this.btnhr_Click);
+            // 
+            // btnwages
+            // 
+            this.btnwages.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnwages.Location = new System.Drawing.Point(3, 71);
+            this.btnwages.Name = "btnwages";
+            this.btnwages.Size = new System.Drawing.Size(238, 70);
+            this.btnwages.TabIndex = 6;
+            this.btnwages.Text = "Wages and Deployments";
+            this.btnwages.UseVisualStyleBackColor = true;
+            this.btnwages.Click += new System.EventHandler(this.button1_Click_3);
+            // 
+            // btnFinance
+            // 
+            this.btnFinance.Enabled = false;
+            this.btnFinance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinance.Location = new System.Drawing.Point(247, 71);
+            this.btnFinance.Name = "btnFinance";
+            this.btnFinance.Size = new System.Drawing.Size(238, 70);
+            this.btnFinance.TabIndex = 10;
+            this.btnFinance.Text = "Customer Management";
+            this.btnFinance.UseVisualStyleBackColor = true;
+            this.btnFinance.Click += new System.EventHandler(this.btnFinance_Click);
+            // 
+            // btnaccounts
+            // 
+            this.btnaccounts.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnaccounts.Image")));
+            this.btnaccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnaccounts.Location = new System.Drawing.Point(247, 1);
+            this.btnaccounts.Name = "btnaccounts";
+            this.btnaccounts.Size = new System.Drawing.Size(238, 70);
+            this.btnaccounts.TabIndex = 7;
+            this.btnaccounts.Text = "Accounts Management";
+            this.btnaccounts.UseVisualStyleBackColor = true;
+            this.btnaccounts.Click += new System.EventHandler(this.btnaccounts_Click);
+            // 
+            // panelLicence
+            // 
+            this.panelLicence.BackColor = System.Drawing.Color.Black;
+            this.panelLicence.Controls.Add(this.lblClient);
+            this.panelLicence.Location = new System.Drawing.Point(-2, 640);
+            this.panelLicence.Name = "panelLicence";
+            this.panelLicence.Size = new System.Drawing.Size(1345, 32);
+            this.panelLicence.TabIndex = 11;
+            // 
+            // lblClient
+            // 
+            this.lblClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClient.AutoSize = true;
+            this.lblClient.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClient.ForeColor = System.Drawing.Color.White;
+            this.lblClient.Location = new System.Drawing.Point(378, 11);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(38, 15);
+            this.lblClient.TabIndex = 12;
+            this.lblClient.Text = "label2";
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Silver;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.richTextBox1);
             this.panel4.Controls.Add(this.panel_user);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1359, 71);
+            this.panel4.Size = new System.Drawing.Size(1335, 78);
             this.panel4.TabIndex = 9;
             // 
             // richTextBox1
@@ -316,7 +425,7 @@ namespace Guard_profiler
             this.richTextBox1.Size = new System.Drawing.Size(417, 64);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "Advanced Guard Security Management Software Systems.Designed by Skytel\nsoftware s" +
-    "ystems Inc\nFor quick help contact : 0704098505/0757596107.";
+    "ystems Inc\nFor quick help contact : 0704098505/0705119900.";
             // 
             // panel_user
             // 
@@ -336,7 +445,7 @@ namespace Guard_profiler
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 25);
+            this.label1.Size = new System.Drawing.Size(138, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "You are logged in";
             // 
@@ -347,7 +456,7 @@ namespace Guard_profiler
             this.lbl_name_message.ForeColor = System.Drawing.Color.White;
             this.lbl_name_message.Location = new System.Drawing.Point(6, 3);
             this.lbl_name_message.Name = "lbl_name_message";
-            this.lbl_name_message.Size = new System.Drawing.Size(182, 25);
+            this.lbl_name_message.Size = new System.Drawing.Size(144, 20);
             this.lbl_name_message.TabIndex = 0;
             this.lbl_name_message.Text = "lbl_name_message";
             // 
@@ -367,7 +476,7 @@ namespace Guard_profiler
             this.lbl_clock.ForeColor = System.Drawing.Color.White;
             this.lbl_clock.Location = new System.Drawing.Point(9, 30);
             this.lbl_clock.Name = "lbl_clock";
-            this.lbl_clock.Size = new System.Drawing.Size(70, 16);
+            this.lbl_clock.Size = new System.Drawing.Size(58, 14);
             this.lbl_clock.TabIndex = 1;
             this.lbl_clock.Text = "Waiting.....";
             // 
@@ -377,7 +486,7 @@ namespace Guard_profiler
             this.lbl_user_session_name.ForeColor = System.Drawing.Color.White;
             this.lbl_user_session_name.Location = new System.Drawing.Point(9, 10);
             this.lbl_user_session_name.Name = "lbl_user_session_name";
-            this.lbl_user_session_name.Size = new System.Drawing.Size(84, 16);
+            this.lbl_user_session_name.Size = new System.Drawing.Size(67, 14);
             this.lbl_user_session_name.TabIndex = 0;
             this.lbl_user_session_name.Text = "User Session:";
             // 
@@ -401,47 +510,6 @@ namespace Guard_profiler
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // btnaccounts
-            // 
-            this.btnaccounts.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaccounts.Location = new System.Drawing.Point(147, 78);
-            this.btnaccounts.Name = "btnaccounts";
-            this.btnaccounts.Size = new System.Drawing.Size(142, 57);
-            this.btnaccounts.TabIndex = 7;
-            this.btnaccounts.Text = "Accounts Management";
-            this.btnaccounts.UseVisualStyleBackColor = true;
-            this.btnaccounts.Click += new System.EventHandler(this.btnaccounts_Click);
-            // 
-            // btnwages
-            // 
-            this.btnwages.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnwages.Location = new System.Drawing.Point(3, 136);
-            this.btnwages.Name = "btnwages";
-            this.btnwages.Size = new System.Drawing.Size(142, 57);
-            this.btnwages.TabIndex = 6;
-            this.btnwages.Text = "Wages and Deployments";
-            this.btnwages.UseVisualStyleBackColor = true;
-            this.btnwages.Click += new System.EventHandler(this.button1_Click_3);
-            // 
-            // btnhr
-            // 
-            this.btnhr.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnhr.Location = new System.Drawing.Point(3, 78);
-            this.btnhr.Name = "btnhr";
-            this.btnhr.Size = new System.Drawing.Size(142, 57);
-            this.btnhr.TabIndex = 5;
-            this.btnhr.Text = "Human Resources";
-            this.btnhr.UseVisualStyleBackColor = true;
-            this.btnhr.Click += new System.EventHandler(this.btnhr_Click);
-            // 
-            // toolstrip_hr
-            // 
-            this.toolstrip_hr.Image = global::Guard_profiler.Properties.Resources.hr_icon;
-            this.toolstrip_hr.Name = "toolstrip_hr";
-            this.toolstrip_hr.Size = new System.Drawing.Size(164, 62);
-            this.toolstrip_hr.Text = "Human Resources";
-            this.toolstrip_hr.Click += new System.EventHandler(this.guardProfilesToolStripMenuItem_Click);
-            // 
             // guardProfilesToolStripMenuItem1
             // 
             this.guardProfilesToolStripMenuItem1.Name = "guardProfilesToolStripMenuItem1";
@@ -455,29 +523,6 @@ namespace Guard_profiler
             this.nonGuardProfilesToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.nonGuardProfilesToolStripMenuItem.Text = "Other Staff Profiles";
             this.nonGuardProfilesToolStripMenuItem.Click += new System.EventHandler(this.nonGuardProfilesToolStripMenuItem_Click);
-            // 
-            // toolstrip_wages
-            // 
-            this.toolstrip_wages.Image = global::Guard_profiler.Properties.Resources.wages;
-            this.toolstrip_wages.Name = "toolstrip_wages";
-            this.toolstrip_wages.Size = new System.Drawing.Size(85, 62);
-            this.toolstrip_wages.Text = "Wages";
-            this.toolstrip_wages.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
-            // 
-            // toolstrip_accounts
-            // 
-            this.toolstrip_accounts.Image = global::Guard_profiler.Properties.Resources.accounts;
-            this.toolstrip_accounts.Name = "toolstrip_accounts";
-            this.toolstrip_accounts.Size = new System.Drawing.Size(101, 62);
-            this.toolstrip_accounts.Text = "Accounts";
-            this.toolstrip_accounts.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // toolstripreports
-            // 
-            this.toolstripreports.Image = global::Guard_profiler.Properties.Resources.reports;
-            this.toolstripreports.Name = "toolstripreports";
-            this.toolstripreports.Size = new System.Drawing.Size(150, 62);
-            this.toolstripreports.Text = "General Reports";
             // 
             // activeGuardsByBranchReportToolStripMenuItem
             // 
@@ -521,13 +566,6 @@ namespace Guard_profiler
             this.archievedGuardsReportsToolStripMenuItem.Size = new System.Drawing.Size(307, 26);
             this.archievedGuardsReportsToolStripMenuItem.Text = "Archieved Guards Reports";
             this.archievedGuardsReportsToolStripMenuItem.Click += new System.EventHandler(this.archievedGuardsReportsToolStripMenuItem_Click);
-            // 
-            // toolstrip_admin
-            // 
-            this.toolstrip_admin.Image = global::Guard_profiler.Properties.Resources.user_admin_1;
-            this.toolstrip_admin.Name = "toolstrip_admin";
-            this.toolstrip_admin.Size = new System.Drawing.Size(84, 62);
-            this.toolstrip_admin.Text = "Admin";
             // 
             // manageUsersToolStripMenuItem
             // 
@@ -595,33 +633,33 @@ namespace Guard_profiler
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.ToolstripHumanResource.Name = "ToolstripHumanResource";
-            this.ToolstripHumanResource.Size = new System.Drawing.Size(178, 57);
+            this.ToolstripHumanResource.Size = new System.Drawing.Size(148, 57);
             this.ToolstripHumanResource.Text = "Human Resources";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(253, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 26);
             this.toolStripMenuItem1.Text = "Guard Profiles";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(253, 32);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 26);
             this.toolStripMenuItem2.Text = "Other Staff Profiles";
             // 
             // ToolstripWages
             // 
             this.ToolstripWages.Name = "ToolstripWages";
-            this.ToolstripWages.Size = new System.Drawing.Size(82, 57);
+            this.ToolstripWages.Size = new System.Drawing.Size(68, 57);
             this.ToolstripWages.Text = "Wages";
             this.ToolstripWages.Click += new System.EventHandler(this.toolStripMenuItem4_Click_1);
             // 
             // ToolstripAccounts
             // 
             this.ToolstripAccounts.Name = "ToolstripAccounts";
-            this.ToolstripAccounts.Size = new System.Drawing.Size(104, 57);
+            this.ToolstripAccounts.Size = new System.Drawing.Size(85, 57);
             this.ToolstripAccounts.Text = "Accounts";
             this.ToolstripAccounts.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -636,49 +674,49 @@ namespace Guard_profiler
             this.toolStripSeparator3,
             this.toolStripMenuItem10});
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(163, 57);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(134, 57);
             this.toolStripMenuItem6.Text = "General Reports";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem7.Text = "Active Guards by Branch Reports";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem8.Text = "Kampala Guards Reports";
             this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem9.Text = "All Guards Report";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem10.Text = "Archieved Guards Reports";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
@@ -691,56 +729,82 @@ namespace Guard_profiler
             this.toolStripSeparator5,
             this.toolStripMenuItem13});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(82, 57);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(68, 57);
             this.adminToolStripMenuItem.Text = "Admin";
             // 
             // toolstripManageUsers
             // 
             this.toolstripManageUsers.Enabled = false;
             this.toolstripManageUsers.Name = "toolstripManageUsers";
-            this.toolstripManageUsers.Size = new System.Drawing.Size(448, 32);
+            this.toolstripManageUsers.Size = new System.Drawing.Size(366, 26);
             this.toolstripManageUsers.Text = "Manage users";
             this.toolstripManageUsers.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(445, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(363, 6);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(448, 32);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(366, 26);
             this.toolStripMenuItem12.Text = "Manage Departments,Branches & Positions";
             this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(445, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(363, 6);
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(448, 32);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(366, 26);
             this.toolStripMenuItem13.Text = "Update Position Codes";
             this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
             // 
-            // btnFinance
+            // toolstrip_hr
             // 
-            this.btnFinance.Enabled = false;
-            this.btnFinance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinance.Location = new System.Drawing.Point(147, 136);
-            this.btnFinance.Name = "btnFinance";
-            this.btnFinance.Size = new System.Drawing.Size(142, 57);
-            this.btnFinance.TabIndex = 10;
-            this.btnFinance.Text = "Customer Management";
-            this.btnFinance.UseVisualStyleBackColor = true;
-            this.btnFinance.Click += new System.EventHandler(this.btnFinance_Click);
+            this.toolstrip_hr.Image = global::Guard_profiler.Properties.Resources.hr_icon;
+            this.toolstrip_hr.Name = "toolstrip_hr";
+            this.toolstrip_hr.Size = new System.Drawing.Size(164, 62);
+            this.toolstrip_hr.Text = "Human Resources";
+            this.toolstrip_hr.Click += new System.EventHandler(this.guardProfilesToolStripMenuItem_Click);
+            // 
+            // toolstrip_wages
+            // 
+            this.toolstrip_wages.Image = global::Guard_profiler.Properties.Resources.wages;
+            this.toolstrip_wages.Name = "toolstrip_wages";
+            this.toolstrip_wages.Size = new System.Drawing.Size(85, 62);
+            this.toolstrip_wages.Text = "Wages";
+            this.toolstrip_wages.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
+            // 
+            // toolstrip_accounts
+            // 
+            this.toolstrip_accounts.Image = global::Guard_profiler.Properties.Resources.accounts;
+            this.toolstrip_accounts.Name = "toolstrip_accounts";
+            this.toolstrip_accounts.Size = new System.Drawing.Size(101, 62);
+            this.toolstrip_accounts.Text = "Accounts";
+            this.toolstrip_accounts.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolstripreports
+            // 
+            this.toolstripreports.Image = global::Guard_profiler.Properties.Resources.reports;
+            this.toolstripreports.Name = "toolstripreports";
+            this.toolstripreports.Size = new System.Drawing.Size(150, 62);
+            this.toolstripreports.Text = "General Reports";
+            // 
+            // toolstrip_admin
+            // 
+            this.toolstrip_admin.Image = global::Guard_profiler.Properties.Resources.user_admin_1;
+            this.toolstrip_admin.Name = "toolstrip_admin";
+            this.toolstrip_admin.Size = new System.Drawing.Size(84, 62);
+            this.toolstrip_admin.Text = "Admin";
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1348, 741);
@@ -750,10 +814,13 @@ namespace Guard_profiler
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NEW UGANDA SECURIKO  LTD-HR Management system V.2";
+            this.Text = "DEMO-V.2";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.MouseHover += new System.EventHandler(this.frmMain_MouseHover);
             this.panel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panelLicence.ResumeLayout(false);
+            this.panelLicence.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel_user.ResumeLayout(false);
             this.panel_user.PerformLayout();
@@ -1213,6 +1280,7 @@ namespace Guard_profiler
         {
 
         }
+
 
         private void btnFinance_Click(object sender, EventArgs e)
         {

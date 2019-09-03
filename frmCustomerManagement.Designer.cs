@@ -39,18 +39,21 @@
             // 
             this.groupBox1.Controls.Add(this.btnBillingReport);
             this.groupBox1.Controls.Add(this.btnCustomerProfiles);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(637, 354);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(478, 288);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Profiles";
             // 
             // btnBillingReport
             // 
-            this.btnBillingReport.Location = new System.Drawing.Point(6, 71);
+            this.btnBillingReport.Location = new System.Drawing.Point(4, 58);
+            this.btnBillingReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBillingReport.Name = "btnBillingReport";
-            this.btnBillingReport.Size = new System.Drawing.Size(193, 44);
+            this.btnBillingReport.Size = new System.Drawing.Size(145, 36);
             this.btnBillingReport.TabIndex = 1;
             this.btnBillingReport.Text = "Customer Billing Reports";
             this.btnBillingReport.UseVisualStyleBackColor = true;
@@ -58,9 +61,10 @@
             // 
             // btnCustomerProfiles
             // 
-            this.btnCustomerProfiles.Location = new System.Drawing.Point(6, 21);
+            this.btnCustomerProfiles.Location = new System.Drawing.Point(4, 17);
+            this.btnCustomerProfiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCustomerProfiles.Name = "btnCustomerProfiles";
-            this.btnCustomerProfiles.Size = new System.Drawing.Size(193, 44);
+            this.btnCustomerProfiles.Size = new System.Drawing.Size(145, 36);
             this.btnCustomerProfiles.TabIndex = 0;
             this.btnCustomerProfiles.Text = "Customer Profiles";
             this.btnCustomerProfiles.UseVisualStyleBackColor = true;
@@ -68,14 +72,15 @@
             // 
             // frmCustomerManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 378);
+            this.ClientSize = new System.Drawing.Size(496, 307);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmCustomerManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-Customer Management";
+            this.Text = "Customer Management";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

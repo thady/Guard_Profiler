@@ -1260,7 +1260,7 @@ namespace Guard_profiler
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_employment_record";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NEW SECURIKO UGANDA LTD-GUARD EMPLOYMENT RECORDS";
+            this.Text = "GUARD EMPLOYMENT RECORDS";
             this.Load += new System.EventHandler(this.frm_employment_record_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

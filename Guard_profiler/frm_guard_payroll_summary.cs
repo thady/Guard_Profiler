@@ -31,7 +31,8 @@ namespace Guard_profiler
             {
                 gdv_staff.DataSource = dt;
 
-                gdv_staff.Columns[0].Width = 100;
+                gdv_staff.Columns[0].Width = 20;
+                gdv_staff.Columns[1].Width = 100;
                 //gdv_staff.Columns[2].Width = 150;
 
                 gdv_staff.DefaultCellStyle.SelectionBackColor = Color.White;

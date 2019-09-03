@@ -68,6 +68,7 @@ namespace Guard_profiler
                 report.SetParameterValue("QueryName", "SELECT_ACTIVE_GUARDS_KAMPALA_COMBINED");
                 report.SetParameterValue("branch", SystemConst._branch);
                 report.SetParameterValue("update_month", SystemConst._Report_update_month);
+                report.SetParameterValue("client_name", SystemConst.ClientName);
                 cr_active_kampala_guards_report.ParameterFieldInfo = paramFields;
 
 
@@ -78,6 +79,7 @@ namespace Guard_profiler
                 report.SetParameterValue("QueryName", "SELECT_ACTIVE_GUARDS_KAMPALA");
                 report.SetParameterValue("branch", SystemConst._branch);
                 report.SetParameterValue("update_month", SystemConst._Report_update_month);
+                report.SetParameterValue("client_name", SystemConst.ClientName);
                 cr_active_kampala_guards_report.ParameterFieldInfo = paramFields;
 
 

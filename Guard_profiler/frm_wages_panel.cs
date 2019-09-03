@@ -149,19 +149,17 @@ namespace Guard_profiler
             this.panel1.Controls.Add(this.btn_deploy_guards_batch);
             this.panel1.Controls.Add(this.btn_deployment_summary);
             this.panel1.Controls.Add(this.splitter1);
-            this.panel1.Location = new System.Drawing.Point(0, 55);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(753, 377);
+            this.panel1.Size = new System.Drawing.Size(565, 306);
             this.panel1.TabIndex = 1;
             // 
             // btndeploymentschedule
             // 
             this.btndeploymentschedule.ForeColor = System.Drawing.Color.Blue;
-            this.btndeploymentschedule.Location = new System.Drawing.Point(419, 186);
-            this.btndeploymentschedule.Margin = new System.Windows.Forms.Padding(4);
+            this.btndeploymentschedule.Location = new System.Drawing.Point(314, 151);
             this.btndeploymentschedule.Name = "btndeploymentschedule";
-            this.btndeploymentschedule.Size = new System.Drawing.Size(319, 55);
+            this.btndeploymentschedule.Size = new System.Drawing.Size(239, 45);
             this.btndeploymentschedule.TabIndex = 15;
             this.btndeploymentschedule.Text = "Guard Deployment Schedule Report";
             this.btndeploymentschedule.UseVisualStyleBackColor = true;
@@ -170,10 +168,9 @@ namespace Guard_profiler
             // btnguard_clientreport
             // 
             this.btnguard_clientreport.ForeColor = System.Drawing.Color.Blue;
-            this.btnguard_clientreport.Location = new System.Drawing.Point(419, 124);
-            this.btnguard_clientreport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnguard_clientreport.Location = new System.Drawing.Point(314, 101);
             this.btnguard_clientreport.Name = "btnguard_clientreport";
-            this.btnguard_clientreport.Size = new System.Drawing.Size(319, 55);
+            this.btnguard_clientreport.Size = new System.Drawing.Size(239, 45);
             this.btnguard_clientreport.TabIndex = 14;
             this.btnguard_clientreport.Text = "Guard--->Client Mapping Report";
             this.btnguard_clientreport.UseVisualStyleBackColor = true;
@@ -182,10 +179,9 @@ namespace Guard_profiler
             // btnclientreport
             // 
             this.btnclientreport.ForeColor = System.Drawing.Color.Red;
-            this.btnclientreport.Location = new System.Drawing.Point(419, 62);
-            this.btnclientreport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnclientreport.Location = new System.Drawing.Point(314, 50);
             this.btnclientreport.Name = "btnclientreport";
-            this.btnclientreport.Size = new System.Drawing.Size(319, 55);
+            this.btnclientreport.Size = new System.Drawing.Size(239, 45);
             this.btnclientreport.TabIndex = 13;
             this.btnclientreport.Text = "Client - Guard Mapping Report";
             this.btnclientreport.UseVisualStyleBackColor = true;
@@ -194,10 +190,9 @@ namespace Guard_profiler
             // btnreport
             // 
             this.btnreport.ForeColor = System.Drawing.Color.Blue;
-            this.btnreport.Location = new System.Drawing.Point(419, 4);
-            this.btnreport.Margin = new System.Windows.Forms.Padding(4);
+            this.btnreport.Location = new System.Drawing.Point(314, 3);
             this.btnreport.Name = "btnreport";
-            this.btnreport.Size = new System.Drawing.Size(319, 55);
+            this.btnreport.Size = new System.Drawing.Size(239, 45);
             this.btnreport.TabIndex = 12;
             this.btnreport.Text = "Deployment summary report";
             this.btnreport.UseVisualStyleBackColor = true;
@@ -205,10 +200,9 @@ namespace Guard_profiler
             // 
             // btn_deployment_periods
             // 
-            this.btn_deployment_periods.Location = new System.Drawing.Point(216, 4);
-            this.btn_deployment_periods.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_deployment_periods.Location = new System.Drawing.Point(162, 3);
             this.btn_deployment_periods.Name = "btn_deployment_periods";
-            this.btn_deployment_periods.Size = new System.Drawing.Size(195, 55);
+            this.btn_deployment_periods.Size = new System.Drawing.Size(146, 45);
             this.btn_deployment_periods.TabIndex = 11;
             this.btn_deployment_periods.Text = "Manage Deployment Periods";
             this.btn_deployment_periods.UseVisualStyleBackColor = true;
@@ -217,10 +211,9 @@ namespace Guard_profiler
             // btn_lst
             // 
             this.btn_lst.Enabled = false;
-            this.btn_lst.Location = new System.Drawing.Point(216, 311);
-            this.btn_lst.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_lst.Location = new System.Drawing.Point(162, 253);
             this.btn_lst.Name = "btn_lst";
-            this.btn_lst.Size = new System.Drawing.Size(195, 55);
+            this.btn_lst.Size = new System.Drawing.Size(146, 45);
             this.btn_lst.TabIndex = 10;
             this.btn_lst.Text = "Manage guard Local Service Tax payments";
             this.btn_lst.UseVisualStyleBackColor = true;
@@ -228,10 +221,9 @@ namespace Guard_profiler
             // btn_clients
             // 
             this.btn_clients.Enabled = false;
-            this.btn_clients.Location = new System.Drawing.Point(216, 249);
-            this.btn_clients.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_clients.Location = new System.Drawing.Point(162, 202);
             this.btn_clients.Name = "btn_clients";
-            this.btn_clients.Size = new System.Drawing.Size(195, 55);
+            this.btn_clients.Size = new System.Drawing.Size(146, 45);
             this.btn_clients.TabIndex = 9;
             this.btn_clients.Text = "Manage Client(Customer) data";
             this.btn_clients.UseVisualStyleBackColor = true;
@@ -239,10 +231,9 @@ namespace Guard_profiler
             // 
             // btnActiveDeployment
             // 
-            this.btnActiveDeployment.Location = new System.Drawing.Point(216, 186);
-            this.btnActiveDeployment.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActiveDeployment.Location = new System.Drawing.Point(162, 151);
             this.btnActiveDeployment.Name = "btnActiveDeployment";
-            this.btnActiveDeployment.Size = new System.Drawing.Size(195, 55);
+            this.btnActiveDeployment.Size = new System.Drawing.Size(146, 45);
             this.btnActiveDeployment.TabIndex = 8;
             this.btnActiveDeployment.Text = "My Active Deployment";
             this.btnActiveDeployment.UseVisualStyleBackColor = true;
@@ -251,20 +242,18 @@ namespace Guard_profiler
             // btn_fire_arms
             // 
             this.btn_fire_arms.Enabled = false;
-            this.btn_fire_arms.Location = new System.Drawing.Point(216, 127);
-            this.btn_fire_arms.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_fire_arms.Location = new System.Drawing.Point(162, 103);
             this.btn_fire_arms.Name = "btn_fire_arms";
-            this.btn_fire_arms.Size = new System.Drawing.Size(195, 55);
+            this.btn_fire_arms.Size = new System.Drawing.Size(146, 45);
             this.btn_fire_arms.TabIndex = 7;
             this.btn_fire_arms.Text = "Manage fire arms";
             this.btn_fire_arms.UseVisualStyleBackColor = true;
             // 
             // btn_public_holidays
             // 
-            this.btn_public_holidays.Location = new System.Drawing.Point(216, 63);
-            this.btn_public_holidays.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_public_holidays.Location = new System.Drawing.Point(162, 51);
             this.btn_public_holidays.Name = "btn_public_holidays";
-            this.btn_public_holidays.Size = new System.Drawing.Size(195, 55);
+            this.btn_public_holidays.Size = new System.Drawing.Size(146, 45);
             this.btn_public_holidays.TabIndex = 6;
             this.btn_public_holidays.Text = "Manage Public Hoildays";
             this.btn_public_holidays.UseVisualStyleBackColor = true;
@@ -274,19 +263,17 @@ namespace Guard_profiler
             // 
             this.splitter2.BackColor = System.Drawing.Color.LavenderBlush;
             this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter2.Location = new System.Drawing.Point(207, 0);
-            this.splitter2.Margin = new System.Windows.Forms.Padding(4);
+            this.splitter2.Location = new System.Drawing.Point(156, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(207, 377);
+            this.splitter2.Size = new System.Drawing.Size(156, 306);
             this.splitter2.TabIndex = 5;
             this.splitter2.TabStop = false;
             // 
             // btn_other_data
             // 
-            this.btn_other_data.Location = new System.Drawing.Point(4, 126);
-            this.btn_other_data.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_other_data.Location = new System.Drawing.Point(3, 102);
             this.btn_other_data.Name = "btn_other_data";
-            this.btn_other_data.Size = new System.Drawing.Size(195, 55);
+            this.btn_other_data.Size = new System.Drawing.Size(146, 45);
             this.btn_other_data.TabIndex = 3;
             this.btn_other_data.Text = "Guard additional monthly data";
             this.btn_other_data.UseVisualStyleBackColor = true;
@@ -294,10 +281,9 @@ namespace Guard_profiler
             // 
             // btn_deploy_guards_batch
             // 
-            this.btn_deploy_guards_batch.Location = new System.Drawing.Point(4, 63);
-            this.btn_deploy_guards_batch.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_deploy_guards_batch.Location = new System.Drawing.Point(3, 51);
             this.btn_deploy_guards_batch.Name = "btn_deploy_guards_batch";
-            this.btn_deploy_guards_batch.Size = new System.Drawing.Size(195, 55);
+            this.btn_deploy_guards_batch.Size = new System.Drawing.Size(146, 45);
             this.btn_deploy_guards_batch.TabIndex = 2;
             this.btn_deploy_guards_batch.Text = "Grouped Deploy";
             this.btn_deploy_guards_batch.UseVisualStyleBackColor = true;
@@ -305,10 +291,9 @@ namespace Guard_profiler
             // 
             // btn_deployment_summary
             // 
-            this.btn_deployment_summary.Location = new System.Drawing.Point(4, 4);
-            this.btn_deployment_summary.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_deployment_summary.Location = new System.Drawing.Point(3, 3);
             this.btn_deployment_summary.Name = "btn_deployment_summary";
-            this.btn_deployment_summary.Size = new System.Drawing.Size(195, 55);
+            this.btn_deployment_summary.Size = new System.Drawing.Size(146, 45);
             this.btn_deployment_summary.TabIndex = 1;
             this.btn_deployment_summary.Text = "Guard Deployment";
             this.btn_deployment_summary.UseVisualStyleBackColor = true;
@@ -319,9 +304,8 @@ namespace Guard_profiler
             this.splitter1.BackColor = System.Drawing.Color.PowderBlue;
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(4);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(207, 377);
+            this.splitter1.Size = new System.Drawing.Size(156, 306);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -330,10 +314,9 @@ namespace Guard_profiler
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Yellow;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(33, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Deployment";
             // 
@@ -342,10 +325,9 @@ namespace Guard_profiler
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Yellow;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(245, 36);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(184, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.Size = new System.Drawing.Size(101, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "Admin Lookups";
             // 
@@ -354,29 +336,27 @@ namespace Guard_profiler
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Yellow;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(419, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(314, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.Size = new System.Drawing.Size(56, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Reports";
             // 
             // frm_wages_panel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(753, 436);
+            this.ClientSize = new System.Drawing.Size(565, 354);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_wages_panel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Securiko Uganda Ltd-Wage Managemet";
+            this.Text = "Guard Wage Managemet Dashboard";
             this.Load += new System.EventHandler(this.frm_wages_panel_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

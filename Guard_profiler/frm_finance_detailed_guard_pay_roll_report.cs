@@ -59,11 +59,11 @@ namespace Guard_profiler
 		{
 			if (SystemConst._finance_crystal_report_type == "DEPLOY" || SystemConst._finance_crystal_report_type == "CLIENT" || SystemConst._finance_crystal_report_type == "GUARD")
 			{
-				this.Text = "New Uganda Securiko Ltd-Deployment Reporting";
+                this.Text = SystemConst.ClientName +  "-Deployment Reporting";
 			}
 			else
 			{
-				this.Text = "New Uganda Securiko Ltd-Finance Reporting";
+				this.Text = SystemConst.ClientName +  "-Finance Reporting";
 			}
             if (SystemConst._finance_crystal_report_type == "Detailed")
             {
@@ -87,6 +87,7 @@ namespace Guard_profiler
                     report.SetParameterValue("guard_rank", SystemConst._guard_rank);
                     report.SetParameterValue("rank_name", SystemConst._rank_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -115,6 +116,7 @@ namespace Guard_profiler
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._payment_deployment_id));
                     report.SetParameterValue("bank_branch", "STANBIC BANK-" +  SystemConst._bank_branch);
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -142,6 +144,7 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_local_service_tax_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -170,6 +173,7 @@ namespace Guard_profiler
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("branch_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -197,6 +201,7 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_paye_tax_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -224,6 +229,7 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_paye_tax_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -254,6 +260,7 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
                     report.SetParameterValue("date_from", SystemConst._deployment_start_date);
                     report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -284,6 +291,8 @@ namespace Guard_profiler
                     report.SetParameterValue("deploy_date_to", SystemConst._deployment_end_date);
                     report.SetParameterValue("date_from", SystemConst._deployment_start_date);
                     report.SetParameterValue("date_to", SystemConst._deployment_end_date);
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -311,6 +320,7 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_deployment_schedule_report_by_branch");
                     report.SetParameterValue("branch_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -339,6 +349,7 @@ namespace Guard_profiler
                     report.SetParameterValue("QueryName", "select_client_billing_report");
                     report.SetParameterValue("station_name", SystemConst._station_name);
                     report.SetParameterValue("deploy_period_id", Convert.ToInt32(SystemConst._active_deployment_id));
+                    report.SetParameterValue("client_name", SystemConst.ClientName);
                     this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                     this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
 
@@ -401,7 +412,7 @@ namespace Guard_profiler
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_finance_detailed_guard_pay_roll_report";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-Finance Reporting";
+            this.Text = "Finance Reporting";
             this.Load += new System.EventHandler(this.frm_finance_detailed_guard_pay_roll_report_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

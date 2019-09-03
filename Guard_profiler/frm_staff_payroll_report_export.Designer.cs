@@ -77,7 +77,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_staff_payroll_report_export";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-Finance Reporting";
+            this.Text = "Finance Reporting";
             this.Load += new System.EventHandler(this.frm_staff_payroll_report_export_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -439,7 +439,7 @@ namespace Guard_profiler
             if (this.gdv_guards.Rows.Count > 0)
             {
                 string guard_number = this.gdv_guards.CurrentRow.Cells[1].Value.ToString();
-                //MessageBox.Show(cbo_deploy_period.SelectedValue.ToString());
+                string guard_auto_id = this.gdv_guards.CurrentRow.Cells[4].Value.ToString();
                 DataTable dt_guard_pay_roll_details = Payroll_Engine.select_guard_payroll_details_by_deploy_id("select_guard_payroll_details_by_deploy_id", guard_number, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()));
                 if (dt_guard_pay_roll_details.Rows.Count > 0)
                 {
@@ -504,9 +504,9 @@ namespace Guard_profiler
                     chk_print_payroll.Checked = Convert.ToBoolean(dtrow["print_pay_roll"]);
                     decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
                     txt_leave_amt.Text = leave_amt.ToString();
-
+                    txt_lst_amt.Text = decimal.Parse(dtrow["local_service_tax_amt"].ToString()).ToString(); 
                     #region Bank details
-                    DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_number);
+                    DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_auto_id);
                     if (dt_bank_details.Rows.Count > 0)
                     {
                         DataRow dtRowbank_details = dt_bank_details.Rows[0];
@@ -523,7 +523,7 @@ namespace Guard_profiler
                     return;
                 }
                 this.clear_fields();
-                this.return_guard_details_for_payroll_setup(guard_number);
+                this.return_guard_details_for_payroll_setup(guard_number, guard_auto_id);
                 this.GET_OFFICER_HEADSHOT("select_officer_headshot_by_guard_number", guard_number);
             }
         }
@@ -1108,9 +1108,9 @@ namespace Guard_profiler
             this.label41.Location = new System.Drawing.Point(619, 319);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(138, 15);
+            this.label41.Size = new System.Drawing.Size(148, 15);
             this.label41.TabIndex = 44;
-            this.label41.Text = "Staff Payment Summary";
+            this.label41.Text = "Guard Payment Summary";
             // 
             // panel8
             // 
@@ -2259,7 +2259,7 @@ namespace Guard_profiler
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_setup_payroll";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-  Guard Payroll Management ";
+            this.Text = "Guard Payroll Management ";
             this.Load += new System.EventHandler(this.frm_setup_payroll_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2292,7 +2292,7 @@ namespace Guard_profiler
 
         }
 
-        protected void return_guard_details_for_payroll_setup(string guard_number)
+        protected void return_guard_details_for_payroll_setup(string guard_number,string guard_auto_id)
         {
             DateTime start_date = SystemConst._Accounts_deployment_start_date;
             DateTime end_date = SystemConst._Accounts_deployment_end_date;
@@ -2301,6 +2301,9 @@ namespace Guard_profiler
             if (dt.Rows.Count != 0)
             {
                 DataRow dtrow = dt.Rows[0];
+                string full_name = string.Empty;
+                full_name = dtrow["full_name"].ToString();
+
                 this.txt_station_code.Text = dtrow["branch_code"].ToString();
                 this.txt_station_name.Text = dtrow["branch"].ToString();
                 this.txt_guard_num.Text = dtrow["guard_number"].ToString();
@@ -2350,7 +2353,8 @@ namespace Guard_profiler
                 txtAbsentismAmt.Text = single10.ToString();
                 decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
                 txt_leave_amt.Text = leave_amt.ToString();
-                DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_number);
+                txt_lst_amt.Text = decimal.Parse(dtrow["local_service_tax_cost"].ToString()).ToString();
+                DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_auto_id);
                 if (dt_bank_details.Rows.Count > 0)
                 {
                     DataRow dtRowbank_details = dt_bank_details.Rows[0];
@@ -2359,6 +2363,19 @@ namespace Guard_profiler
                     this.txt_bank_branch.Text = dtRowbank_details["branch_name"].ToString();
                     this.txt_account_number.Text = dtRowbank_details["account_number"].ToString();
                     this.txt_nssf.Text = dtRowbank_details["nssf_number"].ToString();
+                }
+                else
+                {
+                    DataTable dtPrevious = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_details_from_previous_payroll", full_name);
+                    if (dtPrevious.Rows.Count > 0)
+                    {
+                        DataRow dtRowbank_details = dtPrevious.Rows[0];
+                        this.txt_bank_code.Text = dtRowbank_details["bank_code"].ToString();
+                        this.txt_bank_name.Text = dtRowbank_details["bank_name"].ToString();
+                        this.txt_bank_branch.Text = dtRowbank_details["bank_branch"].ToString();
+                        this.txt_account_number.Text = dtRowbank_details["bank_account_number"].ToString();
+                        this.txt_nssf.Text = dtRowbank_details["nssf_number"].ToString();
+                    }
                 }
                 this.Calculate_guard_salary_amounts();
             }

@@ -50,6 +50,7 @@ namespace Guard_profiler
 			report.SetParameterValue("QueryName", "SELECT_ACTIVE_GUARDS_BY_STATION");
 			report.SetParameterValue("branch", SystemConst._branch);
 			report.SetParameterValue("update_month", SystemConst._Report_update_month);
+            report.SetParameterValue("client_name", SystemConst.ClientName);
             this.cr_active_guards.ParameterFieldInfo = paramFields;
             this.cr_active_guards.ReportSource = report;
 		}

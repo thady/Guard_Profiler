@@ -987,7 +987,7 @@ namespace Guard_profiler
             this.chk_edit.Location = new System.Drawing.Point(1311, 878);
             this.chk_edit.Margin = new System.Windows.Forms.Padding(4);
             this.chk_edit.Name = "chk_edit";
-            this.chk_edit.Size = new System.Drawing.Size(218, 21);
+            this.chk_edit.Size = new System.Drawing.Size(165, 17);
             this.chk_edit.TabIndex = 66;
             this.chk_edit.Text = "You are Editing Guard Details";
             this.chk_edit.UseVisualStyleBackColor = false;
@@ -999,7 +999,7 @@ namespace Guard_profiler
             this.label50.Location = new System.Drawing.Point(879, 844);
             this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(100, 17);
+            this.label50.Size = new System.Drawing.Size(77, 13);
             this.label50.TabIndex = 65;
             this.label50.Text = "Action Tracker";
             // 
@@ -1011,7 +1011,7 @@ namespace Guard_profiler
             this.chk_add.Location = new System.Drawing.Point(1085, 876);
             this.chk_add.Margin = new System.Windows.Forms.Padding(4);
             this.chk_add.Name = "chk_add";
-            this.chk_add.Size = new System.Drawing.Size(213, 21);
+            this.chk_add.Size = new System.Drawing.Size(163, 17);
             this.chk_add.TabIndex = 64;
             this.chk_add.Text = "You are Adding a new Guard";
             this.chk_add.UseVisualStyleBackColor = false;
@@ -1024,7 +1024,7 @@ namespace Guard_profiler
             this.label45.Location = new System.Drawing.Point(697, 257);
             this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(154, 17);
+            this.label45.Size = new System.Drawing.Size(121, 13);
             this.label45.TabIndex = 63;
             this.label45.Text = "Select Guard Status";
             // 
@@ -1057,7 +1057,7 @@ namespace Guard_profiler
             this.cbo_guard_status.Location = new System.Drawing.Point(3, 9);
             this.cbo_guard_status.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_guard_status.Name = "cbo_guard_status";
-            this.cbo_guard_status.Size = new System.Drawing.Size(155, 28);
+            this.cbo_guard_status.Size = new System.Drawing.Size(155, 24);
             this.cbo_guard_status.TabIndex = 0;
             this.cbo_guard_status.SelectedIndexChanged += new System.EventHandler(this.cbo_guard_status_SelectedIndexChanged);
             // 
@@ -1108,7 +1108,7 @@ namespace Guard_profiler
             this.label54.Location = new System.Drawing.Point(217, 6);
             this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(102, 17);
+            this.label54.Size = new System.Drawing.Size(76, 13);
             this.label54.TabIndex = 64;
             this.label54.Text = "Guard Number";
             // 
@@ -1130,7 +1130,7 @@ namespace Guard_profiler
             this.label44.Location = new System.Drawing.Point(9, 63);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(171, 17);
+            this.label44.Size = new System.Drawing.Size(130, 13);
             this.label44.TabIndex = 62;
             this.label44.Text = "Select a Branch to search";
             // 
@@ -1141,7 +1141,7 @@ namespace Guard_profiler
             this.label43.Location = new System.Drawing.Point(9, 6);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(162, 17);
+            this.label43.Size = new System.Drawing.Size(120, 13);
             this.label43.TabIndex = 61;
             this.label43.Text = "Enter First or Last Name";
             // 
@@ -1165,7 +1165,7 @@ namespace Guard_profiler
             this.cbo_branch_search.Location = new System.Drawing.Point(9, 80);
             this.cbo_branch_search.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_branch_search.Name = "cbo_branch_search";
-            this.cbo_branch_search.Size = new System.Drawing.Size(212, 33);
+            this.cbo_branch_search.Size = new System.Drawing.Size(212, 28);
             this.cbo_branch_search.TabIndex = 58;
             // 
             // txt_name_search
@@ -1237,7 +1237,7 @@ namespace Guard_profiler
             this.txt_partners_name.Location = new System.Drawing.Point(316, 150);
             this.txt_partners_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_partners_name.Name = "txt_partners_name";
-            this.txt_partners_name.Size = new System.Drawing.Size(301, 29);
+            this.txt_partners_name.Size = new System.Drawing.Size(301, 24);
             this.txt_partners_name.TabIndex = 33;
             // 
             // label19
@@ -1248,7 +1248,7 @@ namespace Guard_profiler
             this.label19.Location = new System.Drawing.Point(315, 127);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(122, 20);
+            this.label19.Size = new System.Drawing.Size(98, 16);
             this.label19.TabIndex = 32;
             this.label19.Text = "Partners Name";
             // 
@@ -1263,7 +1263,7 @@ namespace Guard_profiler
             this.cbo_marital_status.Location = new System.Drawing.Point(319, 94);
             this.cbo_marital_status.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_marital_status.Name = "cbo_marital_status";
-            this.cbo_marital_status.Size = new System.Drawing.Size(301, 32);
+            this.cbo_marital_status.Size = new System.Drawing.Size(301, 26);
             this.cbo_marital_status.TabIndex = 31;
             this.cbo_marital_status.SelectedIndexChanged += new System.EventHandler(this.cbo_marital_status_SelectedIndexChanged);
             // 
@@ -1275,7 +1275,7 @@ namespace Guard_profiler
             this.label18.Location = new System.Drawing.Point(319, 70);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(113, 20);
+            this.label18.Size = new System.Drawing.Size(88, 16);
             this.label18.TabIndex = 30;
             this.label18.Text = "Marital Status";
             // 
@@ -1296,7 +1296,7 @@ namespace Guard_profiler
             this.cbo_religion.Location = new System.Drawing.Point(316, 37);
             this.cbo_religion.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_religion.Name = "cbo_religion";
-            this.cbo_religion.Size = new System.Drawing.Size(301, 32);
+            this.cbo_religion.Size = new System.Drawing.Size(301, 26);
             this.cbo_religion.TabIndex = 29;
             // 
             // label17
@@ -1307,7 +1307,7 @@ namespace Guard_profiler
             this.label17.Location = new System.Drawing.Point(319, 14);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 20);
+            this.label17.Size = new System.Drawing.Size(58, 16);
             this.label17.TabIndex = 28;
             this.label17.Text = "Religion";
             // 
@@ -1317,7 +1317,7 @@ namespace Guard_profiler
             this.txt_home_village.Location = new System.Drawing.Point(319, 206);
             this.txt_home_village.Margin = new System.Windows.Forms.Padding(4);
             this.txt_home_village.Name = "txt_home_village";
-            this.txt_home_village.Size = new System.Drawing.Size(301, 29);
+            this.txt_home_village.Size = new System.Drawing.Size(301, 24);
             this.txt_home_village.TabIndex = 27;
             // 
             // label16
@@ -1328,7 +1328,7 @@ namespace Guard_profiler
             this.label16.Location = new System.Drawing.Point(315, 186);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 20);
+            this.label16.Size = new System.Drawing.Size(116, 16);
             this.label16.TabIndex = 26;
             this.label16.Text = "Home Village LC1";
             // 
@@ -1338,7 +1338,7 @@ namespace Guard_profiler
             this.txt_home_parish.Location = new System.Drawing.Point(8, 206);
             this.txt_home_parish.Margin = new System.Windows.Forms.Padding(4);
             this.txt_home_parish.Name = "txt_home_parish";
-            this.txt_home_parish.Size = new System.Drawing.Size(301, 29);
+            this.txt_home_parish.Size = new System.Drawing.Size(301, 24);
             this.txt_home_parish.TabIndex = 25;
             // 
             // label15
@@ -1349,7 +1349,7 @@ namespace Guard_profiler
             this.label15.Location = new System.Drawing.Point(4, 186);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 20);
+            this.label15.Size = new System.Drawing.Size(86, 16);
             this.label15.TabIndex = 24;
             this.label15.Text = "Home Parish";
             // 
@@ -1359,7 +1359,7 @@ namespace Guard_profiler
             this.txt_home_subcounty.Location = new System.Drawing.Point(9, 150);
             this.txt_home_subcounty.Margin = new System.Windows.Forms.Padding(4);
             this.txt_home_subcounty.Name = "txt_home_subcounty";
-            this.txt_home_subcounty.Size = new System.Drawing.Size(301, 29);
+            this.txt_home_subcounty.Size = new System.Drawing.Size(301, 24);
             this.txt_home_subcounty.TabIndex = 23;
             // 
             // label14
@@ -1370,7 +1370,7 @@ namespace Guard_profiler
             this.label14.Location = new System.Drawing.Point(8, 127);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(151, 20);
+            this.label14.Size = new System.Drawing.Size(120, 16);
             this.label14.TabIndex = 22;
             this.label14.Text = "Home Sub- County";
             // 
@@ -1380,7 +1380,7 @@ namespace Guard_profiler
             this.txt_home_county.Location = new System.Drawing.Point(8, 94);
             this.txt_home_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_home_county.Name = "txt_home_county";
-            this.txt_home_county.Size = new System.Drawing.Size(301, 29);
+            this.txt_home_county.Size = new System.Drawing.Size(301, 24);
             this.txt_home_county.TabIndex = 20;
             // 
             // label13
@@ -1391,7 +1391,7 @@ namespace Guard_profiler
             this.label13.Location = new System.Drawing.Point(8, 70);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 20);
+            this.label13.Size = new System.Drawing.Size(89, 16);
             this.label13.TabIndex = 21;
             this.label13.Text = "Home County";
             // 
@@ -1516,7 +1516,7 @@ namespace Guard_profiler
             this.cbo_home_district.Location = new System.Drawing.Point(8, 37);
             this.cbo_home_district.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_home_district.Name = "cbo_home_district";
-            this.cbo_home_district.Size = new System.Drawing.Size(301, 32);
+            this.cbo_home_district.Size = new System.Drawing.Size(301, 26);
             this.cbo_home_district.TabIndex = 20;
             // 
             // label12
@@ -1527,7 +1527,7 @@ namespace Guard_profiler
             this.label12.Location = new System.Drawing.Point(5, 17);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 20);
+            this.label12.Size = new System.Drawing.Size(88, 16);
             this.label12.TabIndex = 20;
             this.label12.Text = "Home District";
             // 
@@ -1550,7 +1550,7 @@ namespace Guard_profiler
             this.txt_guard_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number.Name = "txt_guard_number";
             this.txt_guard_number.ReadOnly = true;
-            this.txt_guard_number.Size = new System.Drawing.Size(255, 26);
+            this.txt_guard_number.Size = new System.Drawing.Size(255, 22);
             this.txt_guard_number.TabIndex = 53;
             // 
             // label42
@@ -1562,7 +1562,7 @@ namespace Guard_profiler
             this.label42.Location = new System.Drawing.Point(5, 842);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(119, 20);
+            this.label42.Size = new System.Drawing.Size(96, 16);
             this.label42.TabIndex = 20;
             this.label42.Text = "Guard Number";
             // 
@@ -1573,7 +1573,7 @@ namespace Guard_profiler
             this.txt_guid.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guid.Name = "txt_guid";
             this.txt_guid.ReadOnly = true;
-            this.txt_guid.Size = new System.Drawing.Size(377, 26);
+            this.txt_guid.Size = new System.Drawing.Size(377, 22);
             this.txt_guid.TabIndex = 53;
             // 
             // panel10
@@ -1655,7 +1655,7 @@ namespace Guard_profiler
             this.label41.Location = new System.Drawing.Point(4, 404);
             this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(241, 20);
+            this.label41.Size = new System.Drawing.Size(192, 16);
             this.label41.TabIndex = 34;
             this.label41.Text = "Fill in more guard details below";
             // 
@@ -1678,10 +1678,10 @@ namespace Guard_profiler
             // 
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(840, 369);
+            this.tabPage1.Size = new System.Drawing.Size(840, 373);
             this.tabPage1.TabIndex = 5;
             this.tabPage1.Text = "Current residence";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1715,7 +1715,7 @@ namespace Guard_profiler
             this.cbo_current_residence_district.Location = new System.Drawing.Point(172, 27);
             this.cbo_current_residence_district.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_current_residence_district.Name = "cbo_current_residence_district";
-            this.cbo_current_residence_district.Size = new System.Drawing.Size(493, 32);
+            this.cbo_current_residence_district.Size = new System.Drawing.Size(493, 26);
             this.cbo_current_residence_district.TabIndex = 20;
             // 
             // txt_c_landlord
@@ -1724,7 +1724,7 @@ namespace Guard_profiler
             this.txt_c_landlord.Location = new System.Drawing.Point(172, 197);
             this.txt_c_landlord.Margin = new System.Windows.Forms.Padding(4);
             this.txt_c_landlord.Name = "txt_c_landlord";
-            this.txt_c_landlord.Size = new System.Drawing.Size(493, 26);
+            this.txt_c_landlord.Size = new System.Drawing.Size(493, 22);
             this.txt_c_landlord.TabIndex = 43;
             // 
             // label24
@@ -1733,7 +1733,7 @@ namespace Guard_profiler
             this.label24.Location = new System.Drawing.Point(65, 197);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(80, 20);
+            this.label24.Size = new System.Drawing.Size(65, 16);
             this.label24.TabIndex = 42;
             this.label24.Text = "LandLord";
             // 
@@ -1743,7 +1743,7 @@ namespace Guard_profiler
             this.txt_c_zone.Location = new System.Drawing.Point(172, 154);
             this.txt_c_zone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_c_zone.Name = "txt_c_zone";
-            this.txt_c_zone.Size = new System.Drawing.Size(493, 26);
+            this.txt_c_zone.Size = new System.Drawing.Size(493, 22);
             this.txt_c_zone.TabIndex = 41;
             // 
             // label25
@@ -1752,7 +1752,7 @@ namespace Guard_profiler
             this.label25.Location = new System.Drawing.Point(11, 158);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(129, 20);
+            this.label25.Size = new System.Drawing.Size(108, 16);
             this.label25.TabIndex = 40;
             this.label25.Text = "Residence Zone";
             // 
@@ -1762,7 +1762,7 @@ namespace Guard_profiler
             this.txt_c_parish.Location = new System.Drawing.Point(172, 112);
             this.txt_c_parish.Margin = new System.Windows.Forms.Padding(4);
             this.txt_c_parish.Name = "txt_c_parish";
-            this.txt_c_parish.Size = new System.Drawing.Size(493, 26);
+            this.txt_c_parish.Size = new System.Drawing.Size(493, 22);
             this.txt_c_parish.TabIndex = 39;
             // 
             // label26
@@ -1771,7 +1771,7 @@ namespace Guard_profiler
             this.label26.Location = new System.Drawing.Point(1, 116);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(141, 20);
+            this.label26.Size = new System.Drawing.Size(115, 16);
             this.label26.TabIndex = 38;
             this.label26.Text = "Residence Parish";
             // 
@@ -1781,7 +1781,7 @@ namespace Guard_profiler
             this.txt_c_subcounty.Location = new System.Drawing.Point(172, 69);
             this.txt_c_subcounty.Margin = new System.Windows.Forms.Padding(4);
             this.txt_c_subcounty.Name = "txt_c_subcounty";
-            this.txt_c_subcounty.Size = new System.Drawing.Size(493, 26);
+            this.txt_c_subcounty.Size = new System.Drawing.Size(493, 22);
             this.txt_c_subcounty.TabIndex = 37;
             // 
             // label27
@@ -1790,7 +1790,7 @@ namespace Guard_profiler
             this.label27.Location = new System.Drawing.Point(52, 76);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(96, 20);
+            this.label27.Size = new System.Drawing.Size(77, 16);
             this.label27.TabIndex = 36;
             this.label27.Text = "Sub-County";
             // 
@@ -1800,17 +1800,17 @@ namespace Guard_profiler
             this.label28.Location = new System.Drawing.Point(91, 33);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 20);
+            this.label28.Size = new System.Drawing.Size(48, 16);
             this.label28.TabIndex = 34;
             this.label28.Text = "District";
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.panel5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(840, 369);
+            this.tabPage3.Size = new System.Drawing.Size(840, 373);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Father\'s Details";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1968,7 +1968,7 @@ namespace Guard_profiler
             this.cbo_f_district.Location = new System.Drawing.Point(172, 70);
             this.cbo_f_district.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_f_district.Name = "cbo_f_district";
-            this.cbo_f_district.Size = new System.Drawing.Size(493, 32);
+            this.cbo_f_district.Size = new System.Drawing.Size(493, 26);
             this.cbo_f_district.TabIndex = 45;
             // 
             // txt_f_zone
@@ -1977,7 +1977,7 @@ namespace Guard_profiler
             this.txt_f_zone.Location = new System.Drawing.Point(172, 197);
             this.txt_f_zone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_f_zone.Name = "txt_f_zone";
-            this.txt_f_zone.Size = new System.Drawing.Size(493, 26);
+            this.txt_f_zone.Size = new System.Drawing.Size(493, 22);
             this.txt_f_zone.TabIndex = 43;
             // 
             // label20
@@ -1986,7 +1986,7 @@ namespace Guard_profiler
             this.label20.Location = new System.Drawing.Point(99, 201);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 20);
+            this.label20.Size = new System.Drawing.Size(39, 16);
             this.label20.TabIndex = 42;
             this.label20.Text = "Zone";
             // 
@@ -1996,7 +1996,7 @@ namespace Guard_profiler
             this.txt_f_village.Location = new System.Drawing.Point(172, 154);
             this.txt_f_village.Margin = new System.Windows.Forms.Padding(4);
             this.txt_f_village.Name = "txt_f_village";
-            this.txt_f_village.Size = new System.Drawing.Size(493, 26);
+            this.txt_f_village.Size = new System.Drawing.Size(493, 22);
             this.txt_f_village.TabIndex = 41;
             // 
             // label21
@@ -2005,7 +2005,7 @@ namespace Guard_profiler
             this.label21.Location = new System.Drawing.Point(80, 158);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(64, 20);
+            this.label21.Size = new System.Drawing.Size(53, 16);
             this.label21.TabIndex = 40;
             this.label21.Text = "Village ";
             // 
@@ -2015,7 +2015,7 @@ namespace Guard_profiler
             this.txt_f_county.Location = new System.Drawing.Point(172, 112);
             this.txt_f_county.Margin = new System.Windows.Forms.Padding(4);
             this.txt_f_county.Name = "txt_f_county";
-            this.txt_f_county.Size = new System.Drawing.Size(493, 26);
+            this.txt_f_county.Size = new System.Drawing.Size(493, 22);
             this.txt_f_county.TabIndex = 39;
             // 
             // label22
@@ -2024,7 +2024,7 @@ namespace Guard_profiler
             this.label22.Location = new System.Drawing.Point(80, 116);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(61, 20);
+            this.label22.Size = new System.Drawing.Size(49, 16);
             this.label22.TabIndex = 38;
             this.label22.Text = "County";
             // 
@@ -2034,7 +2034,7 @@ namespace Guard_profiler
             this.label23.Location = new System.Drawing.Point(87, 76);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(64, 20);
+            this.label23.Size = new System.Drawing.Size(48, 16);
             this.label23.TabIndex = 36;
             this.label23.Text = "District";
             // 
@@ -2044,7 +2044,7 @@ namespace Guard_profiler
             this.label29.Location = new System.Drawing.Point(91, 33);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(53, 20);
+            this.label29.Size = new System.Drawing.Size(45, 16);
             this.label29.TabIndex = 34;
             this.label29.Text = "Name";
             // 
@@ -2054,7 +2054,7 @@ namespace Guard_profiler
             this.txt_f_name.Location = new System.Drawing.Point(172, 26);
             this.txt_f_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_f_name.Name = "txt_f_name";
-            this.txt_f_name.Size = new System.Drawing.Size(493, 26);
+            this.txt_f_name.Size = new System.Drawing.Size(493, 22);
             this.txt_f_name.TabIndex = 35;
             // 
             // tabPage4
@@ -2062,10 +2062,10 @@ namespace Guard_profiler
             this.tabPage4.BackColor = System.Drawing.Color.Azure;
             this.tabPage4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(840, 369);
+            this.tabPage4.Size = new System.Drawing.Size(840, 373);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Previous Employer";
             // 
@@ -2109,7 +2109,7 @@ namespace Guard_profiler
             this.dtHire_date.Location = new System.Drawing.Point(32, 5);
             this.dtHire_date.Margin = new System.Windows.Forms.Padding(4);
             this.dtHire_date.Name = "dtHire_date";
-            this.dtHire_date.Size = new System.Drawing.Size(457, 29);
+            this.dtHire_date.Size = new System.Drawing.Size(457, 24);
             this.dtHire_date.TabIndex = 4;
             // 
             // chk_hiredate
@@ -2118,7 +2118,7 @@ namespace Guard_profiler
             this.chk_hiredate.Location = new System.Drawing.Point(4, 15);
             this.chk_hiredate.Margin = new System.Windows.Forms.Padding(4);
             this.chk_hiredate.Name = "chk_hiredate";
-            this.chk_hiredate.Size = new System.Drawing.Size(18, 17);
+            this.chk_hiredate.Size = new System.Drawing.Size(15, 14);
             this.chk_hiredate.TabIndex = 3;
             this.chk_hiredate.UseVisualStyleBackColor = true;
             // 
@@ -2128,7 +2128,7 @@ namespace Guard_profiler
             this.label30.Location = new System.Drawing.Point(143, 245);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(86, 20);
+            this.label30.Size = new System.Drawing.Size(67, 16);
             this.label30.TabIndex = 46;
             this.label30.Text = "Start Date";
             // 
@@ -2138,7 +2138,7 @@ namespace Guard_profiler
             this.txt_salary.Location = new System.Drawing.Point(264, 204);
             this.txt_salary.Margin = new System.Windows.Forms.Padding(4);
             this.txt_salary.Name = "txt_salary";
-            this.txt_salary.Size = new System.Drawing.Size(493, 26);
+            this.txt_salary.Size = new System.Drawing.Size(493, 22);
             this.txt_salary.TabIndex = 43;
             // 
             // label31
@@ -2147,7 +2147,7 @@ namespace Guard_profiler
             this.label31.Location = new System.Drawing.Point(55, 208);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(167, 20);
+            this.label31.Size = new System.Drawing.Size(133, 16);
             this.label31.TabIndex = 42;
             this.label31.Text = "Prev. Salary in words";
             // 
@@ -2157,7 +2157,7 @@ namespace Guard_profiler
             this.txt_tin_number.Location = new System.Drawing.Point(264, 161);
             this.txt_tin_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_tin_number.Name = "txt_tin_number";
-            this.txt_tin_number.Size = new System.Drawing.Size(493, 26);
+            this.txt_tin_number.Size = new System.Drawing.Size(493, 22);
             this.txt_tin_number.TabIndex = 41;
             // 
             // label32
@@ -2166,7 +2166,7 @@ namespace Guard_profiler
             this.label32.Location = new System.Drawing.Point(132, 165);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(93, 20);
+            this.label32.Size = new System.Drawing.Size(75, 16);
             this.label32.TabIndex = 40;
             this.label32.Text = "Tin number";
             // 
@@ -2176,7 +2176,7 @@ namespace Guard_profiler
             this.txt_departure_reason.Location = new System.Drawing.Point(264, 119);
             this.txt_departure_reason.Margin = new System.Windows.Forms.Padding(4);
             this.txt_departure_reason.Name = "txt_departure_reason";
-            this.txt_departure_reason.Size = new System.Drawing.Size(493, 26);
+            this.txt_departure_reason.Size = new System.Drawing.Size(493, 22);
             this.txt_departure_reason.TabIndex = 39;
             // 
             // label33
@@ -2185,7 +2185,7 @@ namespace Guard_profiler
             this.label33.Location = new System.Drawing.Point(67, 123);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(156, 20);
+            this.label33.Size = new System.Drawing.Size(124, 16);
             this.label33.TabIndex = 38;
             this.label33.Text = "Cause of Departure";
             // 
@@ -2195,7 +2195,7 @@ namespace Guard_profiler
             this.txt_e_adress.Location = new System.Drawing.Point(264, 76);
             this.txt_e_adress.Margin = new System.Windows.Forms.Padding(4);
             this.txt_e_adress.Name = "txt_e_adress";
-            this.txt_e_adress.Size = new System.Drawing.Size(493, 26);
+            this.txt_e_adress.Size = new System.Drawing.Size(493, 22);
             this.txt_e_adress.TabIndex = 37;
             // 
             // label34
@@ -2204,7 +2204,7 @@ namespace Guard_profiler
             this.label34.Location = new System.Drawing.Point(83, 80);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(137, 20);
+            this.label34.Size = new System.Drawing.Size(112, 16);
             this.label34.TabIndex = 36;
             this.label34.Text = "Employer Adress";
             // 
@@ -2214,7 +2214,7 @@ namespace Guard_profiler
             this.label35.Location = new System.Drawing.Point(172, 37);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(53, 20);
+            this.label35.Size = new System.Drawing.Size(45, 16);
             this.label35.TabIndex = 34;
             this.label35.Text = "Name";
             // 
@@ -2224,17 +2224,17 @@ namespace Guard_profiler
             this.txt_e_name.Location = new System.Drawing.Point(264, 33);
             this.txt_e_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_e_name.Name = "txt_e_name";
-            this.txt_e_name.Size = new System.Drawing.Size(493, 26);
+            this.txt_e_name.Size = new System.Drawing.Size(493, 22);
             this.txt_e_name.TabIndex = 35;
             // 
             // tabPage5
             // 
             this.tabPage5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage5.Controls.Add(this.groupBox6);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(840, 369);
+            this.tabPage5.Size = new System.Drawing.Size(840, 373);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Academic Records";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2276,7 +2276,7 @@ namespace Guard_profiler
             this.label36.Location = new System.Drawing.Point(143, 214);
             this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(82, 20);
+            this.label36.Size = new System.Drawing.Size(67, 16);
             this.label36.TabIndex = 51;
             this.label36.Text = "Refferees";
             // 
@@ -2297,7 +2297,7 @@ namespace Guard_profiler
             this.dt_i_to.Location = new System.Drawing.Point(32, 5);
             this.dt_i_to.Margin = new System.Windows.Forms.Padding(4);
             this.dt_i_to.Name = "dt_i_to";
-            this.dt_i_to.Size = new System.Drawing.Size(457, 29);
+            this.dt_i_to.Size = new System.Drawing.Size(457, 24);
             this.dt_i_to.TabIndex = 4;
             // 
             // chk_i_to
@@ -2306,7 +2306,7 @@ namespace Guard_profiler
             this.chk_i_to.Location = new System.Drawing.Point(4, 15);
             this.chk_i_to.Margin = new System.Windows.Forms.Padding(4);
             this.chk_i_to.Name = "chk_i_to";
-            this.chk_i_to.Size = new System.Drawing.Size(18, 17);
+            this.chk_i_to.Size = new System.Drawing.Size(15, 14);
             this.chk_i_to.TabIndex = 3;
             this.chk_i_to.UseVisualStyleBackColor = true;
             // 
@@ -2327,7 +2327,7 @@ namespace Guard_profiler
             this.dt_i_from.Location = new System.Drawing.Point(32, 5);
             this.dt_i_from.Margin = new System.Windows.Forms.Padding(4);
             this.dt_i_from.Name = "dt_i_from";
-            this.dt_i_from.Size = new System.Drawing.Size(457, 29);
+            this.dt_i_from.Size = new System.Drawing.Size(457, 24);
             this.dt_i_from.TabIndex = 4;
             // 
             // chk_i_from
@@ -2336,7 +2336,7 @@ namespace Guard_profiler
             this.chk_i_from.Location = new System.Drawing.Point(4, 15);
             this.chk_i_from.Margin = new System.Windows.Forms.Padding(4);
             this.chk_i_from.Name = "chk_i_from";
-            this.chk_i_from.Size = new System.Drawing.Size(18, 17);
+            this.chk_i_from.Size = new System.Drawing.Size(15, 14);
             this.chk_i_from.TabIndex = 3;
             this.chk_i_from.UseVisualStyleBackColor = true;
             // 
@@ -2346,7 +2346,7 @@ namespace Guard_profiler
             this.label37.Location = new System.Drawing.Point(199, 170);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(28, 20);
+            this.label37.Size = new System.Drawing.Size(25, 16);
             this.label37.TabIndex = 40;
             this.label37.Text = "To";
             // 
@@ -2356,7 +2356,7 @@ namespace Guard_profiler
             this.label38.Location = new System.Drawing.Point(180, 123);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(48, 20);
+            this.label38.Size = new System.Drawing.Size(39, 16);
             this.label38.TabIndex = 38;
             this.label38.Text = "From";
             // 
@@ -2366,7 +2366,7 @@ namespace Guard_profiler
             this.txt_i_award.Location = new System.Drawing.Point(264, 76);
             this.txt_i_award.Margin = new System.Windows.Forms.Padding(4);
             this.txt_i_award.Name = "txt_i_award";
-            this.txt_i_award.Size = new System.Drawing.Size(493, 26);
+            this.txt_i_award.Size = new System.Drawing.Size(493, 22);
             this.txt_i_award.TabIndex = 37;
             // 
             // label39
@@ -2375,7 +2375,7 @@ namespace Guard_profiler
             this.label39.Location = new System.Drawing.Point(99, 80);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(124, 20);
+            this.label39.Size = new System.Drawing.Size(100, 16);
             this.label39.TabIndex = 36;
             this.label39.Text = "Name of Award";
             // 
@@ -2385,7 +2385,7 @@ namespace Guard_profiler
             this.label40.Location = new System.Drawing.Point(96, 41);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(130, 20);
+            this.label40.Size = new System.Drawing.Size(102, 16);
             this.label40.TabIndex = 34;
             this.label40.Text = "Institution Name";
             // 
@@ -2395,7 +2395,7 @@ namespace Guard_profiler
             this.txt_i_name.Location = new System.Drawing.Point(264, 33);
             this.txt_i_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_i_name.Name = "txt_i_name";
-            this.txt_i_name.Size = new System.Drawing.Size(493, 26);
+            this.txt_i_name.Size = new System.Drawing.Size(493, 22);
             this.txt_i_name.TabIndex = 35;
             // 
             // tabPage2
@@ -2407,10 +2407,10 @@ namespace Guard_profiler
             this.tabPage2.Controls.Add(this.label51);
             this.tabPage2.Controls.Add(this.cbo_bank_name);
             this.tabPage2.Controls.Add(this.label52);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(840, 369);
+            this.tabPage2.Size = new System.Drawing.Size(840, 373);
             this.tabPage2.TabIndex = 6;
             this.tabPage2.Text = "Bank Acc. & NSSF";
             // 
@@ -2421,7 +2421,7 @@ namespace Guard_profiler
             this.txt_nssf_number.Location = new System.Drawing.Point(20, 153);
             this.txt_nssf_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nssf_number.Name = "txt_nssf_number";
-            this.txt_nssf_number.Size = new System.Drawing.Size(368, 29);
+            this.txt_nssf_number.Size = new System.Drawing.Size(368, 24);
             this.txt_nssf_number.TabIndex = 71;
             // 
             // label53
@@ -2432,7 +2432,7 @@ namespace Guard_profiler
             this.label53.Location = new System.Drawing.Point(16, 129);
             this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(117, 20);
+            this.label53.Size = new System.Drawing.Size(95, 16);
             this.label53.TabIndex = 70;
             this.label53.Text = "NSSF Number";
             // 
@@ -2443,7 +2443,7 @@ namespace Guard_profiler
             this.txt_account_number.Location = new System.Drawing.Point(20, 96);
             this.txt_account_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_account_number.Name = "txt_account_number";
-            this.txt_account_number.Size = new System.Drawing.Size(368, 29);
+            this.txt_account_number.Size = new System.Drawing.Size(368, 24);
             this.txt_account_number.TabIndex = 68;
             this.txt_account_number.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_account_number_KeyDown);
             // 
@@ -2455,7 +2455,7 @@ namespace Guard_profiler
             this.label51.Location = new System.Drawing.Point(20, 73);
             this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(134, 20);
+            this.label51.Size = new System.Drawing.Size(107, 16);
             this.label51.TabIndex = 69;
             this.label51.Text = "Account Number";
             // 
@@ -2469,7 +2469,7 @@ namespace Guard_profiler
             this.cbo_bank_name.Location = new System.Drawing.Point(20, 37);
             this.cbo_bank_name.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_bank_name.Name = "cbo_bank_name";
-            this.cbo_bank_name.Size = new System.Drawing.Size(365, 32);
+            this.cbo_bank_name.Size = new System.Drawing.Size(365, 26);
             this.cbo_bank_name.TabIndex = 68;
             // 
             // label52
@@ -2480,7 +2480,7 @@ namespace Guard_profiler
             this.label52.Location = new System.Drawing.Point(16, 14);
             this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(96, 20);
+            this.label52.Size = new System.Drawing.Size(79, 16);
             this.label52.TabIndex = 68;
             this.label52.Text = "Bank Name";
             // 
@@ -2580,7 +2580,7 @@ namespace Guard_profiler
             this.label49.Location = new System.Drawing.Point(283, 325);
             this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(78, 20);
+            this.label49.Size = new System.Drawing.Size(65, 16);
             this.label49.TabIndex = 66;
             this.label49.Text = "Assigned";
             // 
@@ -2592,7 +2592,7 @@ namespace Guard_profiler
             this.label48.Location = new System.Drawing.Point(428, 325);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(116, 20);
+            this.label48.Size = new System.Drawing.Size(93, 16);
             this.label48.TabIndex = 65;
             this.label48.Text = "Guard number";
             // 
@@ -2604,7 +2604,7 @@ namespace Guard_profiler
             this.label47.Location = new System.Drawing.Point(184, 322);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(43, 20);
+            this.label47.Size = new System.Drawing.Size(35, 16);
             this.label47.TabIndex = 64;
             this.label47.Text = "Auto";
             // 
@@ -2615,7 +2615,7 @@ namespace Guard_profiler
             this.txt_guard_number_complete.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number_complete.Name = "txt_guard_number_complete";
             this.txt_guard_number_complete.ReadOnly = true;
-            this.txt_guard_number_complete.Size = new System.Drawing.Size(157, 34);
+            this.txt_guard_number_complete.Size = new System.Drawing.Size(157, 29);
             this.txt_guard_number_complete.TabIndex = 23;
             // 
             // txt_guard_number_static_code
@@ -2624,7 +2624,7 @@ namespace Guard_profiler
             this.txt_guard_number_static_code.Location = new System.Drawing.Point(287, 345);
             this.txt_guard_number_static_code.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number_static_code.Name = "txt_guard_number_static_code";
-            this.txt_guard_number_static_code.Size = new System.Drawing.Size(139, 34);
+            this.txt_guard_number_static_code.Size = new System.Drawing.Size(139, 29);
             this.txt_guard_number_static_code.TabIndex = 22;
             this.txt_guard_number_static_code.TextAlignChanged += new System.EventHandler(this.txt_guard_number_static_code_TextAlignChanged);
             this.txt_guard_number_static_code.TextChanged += new System.EventHandler(this.txt_guard_number_static_code_TextChanged);
@@ -2637,7 +2637,7 @@ namespace Guard_profiler
             this.txt_guard_number_auto_code.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number_auto_code.Name = "txt_guard_number_auto_code";
             this.txt_guard_number_auto_code.ReadOnly = true;
-            this.txt_guard_number_auto_code.Size = new System.Drawing.Size(93, 34);
+            this.txt_guard_number_auto_code.Size = new System.Drawing.Size(93, 29);
             this.txt_guard_number_auto_code.TabIndex = 21;
             // 
             // label46
@@ -2649,7 +2649,7 @@ namespace Guard_profiler
             this.label46.Location = new System.Drawing.Point(12, 350);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(152, 25);
+            this.label46.Size = new System.Drawing.Size(126, 20);
             this.label46.TabIndex = 20;
             this.label46.Text = "Guard Number";
             // 
@@ -2664,7 +2664,7 @@ namespace Guard_profiler
             this.cbo_gender.Location = new System.Drawing.Point(435, 286);
             this.cbo_gender.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_gender.Name = "cbo_gender";
-            this.cbo_gender.Size = new System.Drawing.Size(193, 32);
+            this.cbo_gender.Size = new System.Drawing.Size(193, 26);
             this.cbo_gender.TabIndex = 19;
             // 
             // label11
@@ -2675,7 +2675,7 @@ namespace Guard_profiler
             this.label11.Location = new System.Drawing.Point(432, 257);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 20);
+            this.label11.Size = new System.Drawing.Size(53, 16);
             this.label11.TabIndex = 18;
             this.label11.Text = "Gender";
             // 
@@ -2686,7 +2686,7 @@ namespace Guard_profiler
             this.txt_age.Margin = new System.Windows.Forms.Padding(4);
             this.txt_age.Name = "txt_age";
             this.txt_age.ReadOnly = true;
-            this.txt_age.Size = new System.Drawing.Size(96, 29);
+            this.txt_age.Size = new System.Drawing.Size(96, 24);
             this.txt_age.TabIndex = 17;
             // 
             // label10
@@ -2697,7 +2697,7 @@ namespace Guard_profiler
             this.label10.Location = new System.Drawing.Point(323, 257);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 20);
+            this.label10.Size = new System.Drawing.Size(33, 16);
             this.label10.TabIndex = 16;
             this.label10.Text = "Age";
             // 
@@ -2719,7 +2719,7 @@ namespace Guard_profiler
             this.dt_birthdate.Location = new System.Drawing.Point(32, 7);
             this.dt_birthdate.Margin = new System.Windows.Forms.Padding(4);
             this.dt_birthdate.Name = "dt_birthdate";
-            this.dt_birthdate.Size = new System.Drawing.Size(272, 29);
+            this.dt_birthdate.Size = new System.Drawing.Size(272, 24);
             this.dt_birthdate.TabIndex = 4;
             this.dt_birthdate.ValueChanged += new System.EventHandler(this.dt_birthdate_ValueChanged);
             // 
@@ -2731,7 +2731,7 @@ namespace Guard_profiler
             this.chk_birthdate.Location = new System.Drawing.Point(4, 15);
             this.chk_birthdate.Margin = new System.Windows.Forms.Padding(4);
             this.chk_birthdate.Name = "chk_birthdate";
-            this.chk_birthdate.Size = new System.Drawing.Size(18, 17);
+            this.chk_birthdate.Size = new System.Drawing.Size(15, 14);
             this.chk_birthdate.TabIndex = 4;
             this.chk_birthdate.UseVisualStyleBackColor = true;
             // 
@@ -2743,7 +2743,7 @@ namespace Guard_profiler
             this.label9.Location = new System.Drawing.Point(12, 257);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 20);
+            this.label9.Size = new System.Drawing.Size(66, 16);
             this.label9.TabIndex = 15;
             this.label9.Text = "Birth Date";
             // 
@@ -2753,7 +2753,7 @@ namespace Guard_profiler
             this.txt_place_of_birth.Location = new System.Drawing.Point(327, 222);
             this.txt_place_of_birth.Margin = new System.Windows.Forms.Padding(4);
             this.txt_place_of_birth.Name = "txt_place_of_birth";
-            this.txt_place_of_birth.Size = new System.Drawing.Size(301, 29);
+            this.txt_place_of_birth.Size = new System.Drawing.Size(301, 24);
             this.txt_place_of_birth.TabIndex = 14;
             // 
             // label8
@@ -2764,7 +2764,7 @@ namespace Guard_profiler
             this.label8.Location = new System.Drawing.Point(323, 192);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(111, 20);
+            this.label8.Size = new System.Drawing.Size(86, 16);
             this.label8.TabIndex = 13;
             this.label8.Text = "Place of Birth";
             // 
@@ -2776,7 +2776,7 @@ namespace Guard_profiler
             this.label7.Location = new System.Drawing.Point(12, 192);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(140, 20);
+            this.label7.Size = new System.Drawing.Size(112, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "Registration Date";
             // 
@@ -2798,7 +2798,7 @@ namespace Guard_profiler
             this.dt_registration_date.Location = new System.Drawing.Point(32, 7);
             this.dt_registration_date.Margin = new System.Windows.Forms.Padding(4);
             this.dt_registration_date.Name = "dt_registration_date";
-            this.dt_registration_date.Size = new System.Drawing.Size(272, 29);
+            this.dt_registration_date.Size = new System.Drawing.Size(272, 24);
             this.dt_registration_date.TabIndex = 4;
             // 
             // chk_registration_date
@@ -2809,7 +2809,7 @@ namespace Guard_profiler
             this.chk_registration_date.Location = new System.Drawing.Point(4, 15);
             this.chk_registration_date.Margin = new System.Windows.Forms.Padding(4);
             this.chk_registration_date.Name = "chk_registration_date";
-            this.chk_registration_date.Size = new System.Drawing.Size(18, 17);
+            this.chk_registration_date.Size = new System.Drawing.Size(15, 14);
             this.chk_registration_date.TabIndex = 4;
             this.chk_registration_date.UseVisualStyleBackColor = true;
             // 
@@ -2824,7 +2824,7 @@ namespace Guard_profiler
             this.cbo_dept.Location = new System.Drawing.Point(327, 156);
             this.cbo_dept.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_dept.Name = "cbo_dept";
-            this.cbo_dept.Size = new System.Drawing.Size(301, 32);
+            this.cbo_dept.Size = new System.Drawing.Size(301, 26);
             this.cbo_dept.TabIndex = 11;
             // 
             // label6
@@ -2835,7 +2835,7 @@ namespace Guard_profiler
             this.label6.Location = new System.Drawing.Point(323, 133);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.Size = new System.Drawing.Size(78, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "Department";
             // 
@@ -2850,7 +2850,7 @@ namespace Guard_profiler
             this.cbo_position.Location = new System.Drawing.Point(12, 156);
             this.cbo_position.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_position.Name = "cbo_position";
-            this.cbo_position.Size = new System.Drawing.Size(301, 32);
+            this.cbo_position.Size = new System.Drawing.Size(301, 26);
             this.cbo_position.TabIndex = 9;
             // 
             // label5
@@ -2861,7 +2861,7 @@ namespace Guard_profiler
             this.label5.Location = new System.Drawing.Point(8, 133);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 20);
+            this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Position";
             // 
@@ -2873,7 +2873,7 @@ namespace Guard_profiler
             this.cbo_branch.Location = new System.Drawing.Point(327, 96);
             this.cbo_branch.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_branch.Name = "cbo_branch";
-            this.cbo_branch.Size = new System.Drawing.Size(301, 32);
+            this.cbo_branch.Size = new System.Drawing.Size(301, 26);
             this.cbo_branch.TabIndex = 7;
             this.cbo_branch.SelectedIndexChanged += new System.EventHandler(this.cbo_branch_SelectedIndexChanged);
             // 
@@ -2885,7 +2885,7 @@ namespace Guard_profiler
             this.label4.Location = new System.Drawing.Point(323, 76);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.Size = new System.Drawing.Size(50, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Branch";
             // 
@@ -2895,7 +2895,7 @@ namespace Guard_profiler
             this.txt_sg_phone.Location = new System.Drawing.Point(12, 96);
             this.txt_sg_phone.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sg_phone.Name = "txt_sg_phone";
-            this.txt_sg_phone.Size = new System.Drawing.Size(301, 29);
+            this.txt_sg_phone.Size = new System.Drawing.Size(301, 24);
             this.txt_sg_phone.TabIndex = 5;
             // 
             // label3
@@ -2906,7 +2906,7 @@ namespace Guard_profiler
             this.label3.Location = new System.Drawing.Point(8, 76);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
+            this.label3.Size = new System.Drawing.Size(47, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Phone";
             // 
@@ -2916,7 +2916,7 @@ namespace Guard_profiler
             this.txt_sg_l_name.Location = new System.Drawing.Point(327, 43);
             this.txt_sg_l_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sg_l_name.Name = "txt_sg_l_name";
-            this.txt_sg_l_name.Size = new System.Drawing.Size(301, 29);
+            this.txt_sg_l_name.Size = new System.Drawing.Size(301, 24);
             this.txt_sg_l_name.TabIndex = 3;
             // 
             // label2
@@ -2927,7 +2927,7 @@ namespace Guard_profiler
             this.label2.Location = new System.Drawing.Point(323, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Last Name";
             // 
@@ -2937,7 +2937,7 @@ namespace Guard_profiler
             this.txt_sg_f_name.Location = new System.Drawing.Point(12, 43);
             this.txt_sg_f_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sg_f_name.Name = "txt_sg_f_name";
-            this.txt_sg_f_name.Size = new System.Drawing.Size(301, 29);
+            this.txt_sg_f_name.Size = new System.Drawing.Size(301, 24);
             this.txt_sg_f_name.TabIndex = 1;
             // 
             // label1
@@ -2948,7 +2948,7 @@ namespace Guard_profiler
             this.label1.Location = new System.Drawing.Point(8, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 20);
+            this.label1.Size = new System.Drawing.Size(73, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
@@ -3139,63 +3139,72 @@ namespace Guard_profiler
 			}
 			if (this.cbo_guard_status.Text == "Deserted" || this.cbo_guard_status.Text == "Died" || this.cbo_guard_status.Text == "Dismissed" || this.cbo_guard_status.Text == "Resigned" || this.cbo_guard_status.Text == "Retired" || this.cbo_guard_status.Text == "Terminated" || this.cbo_guard_status.Text == "Confined")
 			{
-				System.Windows.Forms.DialogResult dialogResult = MessageBox.Show(string.Concat("Setting guard status to ", this.cbo_guard_status.Text, " Will automatically archieve his/her details and will be removed from active guards.This cannot be undone.proceed??"), "Change Guard Status", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-				if (dialogResult == System.Windows.Forms.DialogResult.Yes)
-				{
-					try
-					{
-						string text = this.txt_sg_f_name.Text;
-						string str = this.txt_sg_l_name.Text;
-						string text1 = this.txt_sg_phone.Text;
-						string str1 = this.cbo_branch.Text;
-						string text2 = this.cbo_position.Text;
-						string str2 = this.cbo_dept.Text;
-						DateTime date = this.dt_registration_date.Value.Date;
-						string text3 = this.txt_place_of_birth.Text;
-						DateTime dateTime = this.dt_birthdate.Value.Date;
-						int num = Convert.ToInt32(this.txt_age.Text);
-						string str3 = this.cbo_gender.Text;
-						string text4 = this.cbo_home_district.Text;
-						string str4 = this.txt_home_county.Text;
-						string text5 = this.txt_home_subcounty.Text;
-						string str5 = this.txt_home_parish.Text;
-						string text6 = this.txt_home_village.Text;
-						string str6 = this.cbo_religion.Text;
-						string text7 = this.cbo_marital_status.Text;
-						string str7 = this.txt_partners_name.Text;
-						string text8 = this.cbo_current_residence_district.Text;
-						string str8 = this.txt_c_subcounty.Text;
-						string text9 = this.txt_c_parish.Text;
-						string str9 = this.txt_c_zone.Text;
-						string text10 = this.txt_c_landlord.Text;
-						string str10 = this.txt_f_name.Text;
-						string text11 = this.cbo_f_district.Text;
-						string str11 = this.txt_f_county.Text;
-						string text12 = this.txt_f_village.Text;
-						string str12 = this.txt_f_zone.Text;
-						string text13 = this.txt_e_name.Text;
-						string str13 = this.txt_e_adress.Text;
-						string text14 = this.txt_departure_reason.Text;
-						string str14 = this.txt_tin_number.Text;
-						string text15 = this.txt_salary.Text;
-						DateTime date1 = this.dtHire_date.Value.Date;
-						string str15 = this.txt_i_name.Text;
-						string text16 = this.txt_i_award.Text;
-						DateTime dateTime1 = this.dt_i_from.Value.Date;
-						DateTime value = this.dt_i_to.Value;
-						sg_Profiles.UPDATE_GUARD_DETAILS("UPDATE_GUARD_DETAILS", record_guid, text, str, text1, str1, text2, str2, date, text3, dateTime, num, str3, text4, str4, text5, str5, text6, str6, text7, str7, text8, str8, text9, str9, text10, str10, text11, str11, text12, str12, text13, str13, text14, str14, text15, date1, str15, text16, dateTime1, value.Date, this.txt_i_referees.Text, this.cbo_guard_status.Text, this.cbo_bank_name.Text, this.txt_account_number.Text, this.txt_nssf_number.Text);
-						this.ARCHIEVE_AND_UN_ASSIGN_NUMBER_FROM_GUARD();
-					}
-					catch (Exception exception)
-					{
-						MessageBox.Show(exception.ToString());
-					}
-				}
-				else if (dialogResult == System.Windows.Forms.DialogResult.No)
-				{
-					base.Visible = true;
-					return;
-				}
+                if (sg_Profiles.Check_if_guard_already_delployed_before_archival("Check_if_guard_already_delployed_before_archival", txt_guard_number_complete.Text) > 0)
+                {
+                    MessageBox.Show("You cannot archive this guard because he/she has already been deployed for the current deployment period,please contact the wages department to clarification,Operation failed!","Archive Guard",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                else
+                {
+                    System.Windows.Forms.DialogResult dialogResult = MessageBox.Show(string.Concat("Setting guard status to ", this.cbo_guard_status.Text, " Will automatically archieve his/her details and will be removed from active guards.This cannot be undone.proceed??"), "Change Guard Status", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        try
+                        {
+                            string text = this.txt_sg_f_name.Text;
+                            string str = this.txt_sg_l_name.Text;
+                            string text1 = this.txt_sg_phone.Text;
+                            string str1 = this.cbo_branch.Text;
+                            string text2 = this.cbo_position.Text;
+                            string str2 = this.cbo_dept.Text;
+                            DateTime date = this.dt_registration_date.Value.Date;
+                            string text3 = this.txt_place_of_birth.Text;
+                            DateTime dateTime = this.dt_birthdate.Value.Date;
+                            int num = Convert.ToInt32(this.txt_age.Text);
+                            string str3 = this.cbo_gender.Text;
+                            string text4 = this.cbo_home_district.Text;
+                            string str4 = this.txt_home_county.Text;
+                            string text5 = this.txt_home_subcounty.Text;
+                            string str5 = this.txt_home_parish.Text;
+                            string text6 = this.txt_home_village.Text;
+                            string str6 = this.cbo_religion.Text;
+                            string text7 = this.cbo_marital_status.Text;
+                            string str7 = this.txt_partners_name.Text;
+                            string text8 = this.cbo_current_residence_district.Text;
+                            string str8 = this.txt_c_subcounty.Text;
+                            string text9 = this.txt_c_parish.Text;
+                            string str9 = this.txt_c_zone.Text;
+                            string text10 = this.txt_c_landlord.Text;
+                            string str10 = this.txt_f_name.Text;
+                            string text11 = this.cbo_f_district.Text;
+                            string str11 = this.txt_f_county.Text;
+                            string text12 = this.txt_f_village.Text;
+                            string str12 = this.txt_f_zone.Text;
+                            string text13 = this.txt_e_name.Text;
+                            string str13 = this.txt_e_adress.Text;
+                            string text14 = this.txt_departure_reason.Text;
+                            string str14 = this.txt_tin_number.Text;
+                            string text15 = this.txt_salary.Text;
+                            DateTime date1 = this.dtHire_date.Value.Date;
+                            string str15 = this.txt_i_name.Text;
+                            string text16 = this.txt_i_award.Text;
+                            DateTime dateTime1 = this.dt_i_from.Value.Date;
+                            DateTime value = this.dt_i_to.Value;
+                            sg_Profiles.UPDATE_GUARD_DETAILS("UPDATE_GUARD_DETAILS", record_guid, text, str, text1, str1, text2, str2, date, text3, dateTime, num, str3, text4, str4, text5, str5, text6, str6, text7, str7, text8, str8, text9, str9, text10, str10, text11, str11, text12, str12, text13, str13, text14, str14, text15, date1, str15, text16, dateTime1, value.Date, this.txt_i_referees.Text, this.cbo_guard_status.Text, this.cbo_bank_name.Text, this.txt_account_number.Text, this.txt_nssf_number.Text);
+                            this.ARCHIEVE_AND_UN_ASSIGN_NUMBER_FROM_GUARD();
+                        }
+                        catch (Exception exception)
+                        {
+                            MessageBox.Show(exception.ToString());
+                        }
+                    }
+                    else if (dialogResult == System.Windows.Forms.DialogResult.No)
+                    {
+                        base.Visible = true;
+                        return;
+                    }
+                }
+
+
 			}
 			else
 			{

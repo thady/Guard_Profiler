@@ -69,6 +69,7 @@ namespace Guard_profiler
 		private CheckBox chk_apply_to_all;
         private ReSize reSize1;
         private Label label9;
+        private Label lblCount;
         private CheckBox chk_save_status;
 
 		static frm_guard_deployment_summary_batch()
@@ -279,6 +280,8 @@ namespace Guard_profiler
 			this.gdv_deployment_summary.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue;
 			this.gdv_deployment_summary.EnableHeadersVisualStyles = false;
 			this.chk_save_status.Checked = false;
+
+            lblCount.Text = dt.Rows.Count.ToString() + " Guards Loaded";
 		}
 
 		protected void Get_list_of_guards_for_selected_deploy_date()
@@ -329,7 +332,9 @@ namespace Guard_profiler
 			this.gdv_deployment_summary.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue;
 			this.gdv_deployment_summary.EnableHeadersVisualStyles = false;
 			this.chk_save_status.Checked = true;
-		}
+
+            lblCount.Text = dt.Rows.Count.ToString() + " Guards Loaded";
+        }
 
         protected void Search_Guards_by_guard_number()
         {
@@ -386,6 +391,8 @@ namespace Guard_profiler
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_guard_deployment_summary_batch));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.chk_save_status = new System.Windows.Forms.CheckBox();
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_guard_number = new System.Windows.Forms.TextBox();
@@ -411,7 +418,6 @@ namespace Guard_profiler
             this.dt_deployment_date = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_deployment_summary)).BeginInit();
@@ -421,6 +427,7 @@ namespace Guard_profiler
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.lblCount);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.chk_save_status);
             this.panel1.Controls.Add(this.btn_search);
@@ -440,6 +447,26 @@ namespace Guard_profiler
             this.panel1.Size = new System.Drawing.Size(1165, 703);
             this.panel1.TabIndex = 0;
             // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.ForeColor = System.Drawing.Color.Blue;
+            this.lblCount.Location = new System.Drawing.Point(152, 15);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(70, 13);
+            this.lblCount.TabIndex = 38;
+            this.lblCount.Text = "RecordCount";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(527, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(311, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Always update the customer,Firearm serial and ammunition count";
+            // 
             // chk_save_status
             // 
             this.chk_save_status.AutoSize = true;
@@ -448,7 +475,7 @@ namespace Guard_profiler
             this.chk_save_status.Location = new System.Drawing.Point(952, 107);
             this.chk_save_status.Margin = new System.Windows.Forms.Padding(4);
             this.chk_save_status.Name = "chk_save_status";
-            this.chk_save_status.Size = new System.Drawing.Size(205, 21);
+            this.chk_save_status.Size = new System.Drawing.Size(158, 17);
             this.chk_save_status.TabIndex = 36;
             this.chk_save_status.Text = "Records saved successfully";
             this.chk_save_status.UseVisualStyleBackColor = false;
@@ -471,7 +498,7 @@ namespace Guard_profiler
             this.txt_guard_number.Location = new System.Drawing.Point(279, 105);
             this.txt_guard_number.Margin = new System.Windows.Forms.Padding(4);
             this.txt_guard_number.Name = "txt_guard_number";
-            this.txt_guard_number.Size = new System.Drawing.Size(160, 24);
+            this.txt_guard_number.Size = new System.Drawing.Size(160, 21);
             this.txt_guard_number.TabIndex = 35;
             // 
             // label8
@@ -482,7 +509,7 @@ namespace Guard_profiler
             this.label8.Location = new System.Drawing.Point(152, 108);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 18);
+            this.label8.Size = new System.Drawing.Size(89, 15);
             this.label8.TabIndex = 34;
             this.label8.Text = "Guard Number";
             // 
@@ -494,7 +521,7 @@ namespace Guard_profiler
             this.label7.Location = new System.Drawing.Point(13, 108);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 20);
+            this.label7.Size = new System.Drawing.Size(98, 16);
             this.label7.TabIndex = 10;
             this.label7.Text = "Search Guards";
             // 
@@ -532,7 +559,7 @@ namespace Guard_profiler
             this.dt_end_date.Margin = new System.Windows.Forms.Padding(4);
             this.dt_end_date.Name = "dt_end_date";
             this.dt_end_date.ShowCheckBox = true;
-            this.dt_end_date.Size = new System.Drawing.Size(155, 24);
+            this.dt_end_date.Size = new System.Drawing.Size(155, 21);
             this.dt_end_date.TabIndex = 8;
             // 
             // label6
@@ -543,7 +570,7 @@ namespace Guard_profiler
             this.label6.Location = new System.Drawing.Point(841, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 20);
+            this.label6.Size = new System.Drawing.Size(25, 16);
             this.label6.TabIndex = 7;
             this.label6.Text = "To";
             // 
@@ -556,7 +583,7 @@ namespace Guard_profiler
             this.dt_start_date.Margin = new System.Windows.Forms.Padding(4);
             this.dt_start_date.Name = "dt_start_date";
             this.dt_start_date.ShowCheckBox = true;
-            this.dt_start_date.Size = new System.Drawing.Size(169, 24);
+            this.dt_start_date.Size = new System.Drawing.Size(169, 21);
             this.dt_start_date.TabIndex = 6;
             // 
             // label4
@@ -567,7 +594,7 @@ namespace Guard_profiler
             this.label4.Location = new System.Drawing.Point(429, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 20);
+            this.label4.Size = new System.Drawing.Size(158, 16);
             this.label4.TabIndex = 5;
             this.label4.Text = "Deployment Period From";
             // 
@@ -579,7 +606,7 @@ namespace Guard_profiler
             this.label2.Location = new System.Drawing.Point(9, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 20);
+            this.label2.Size = new System.Drawing.Size(99, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Deploy Guards";
             // 
@@ -610,7 +637,7 @@ namespace Guard_profiler
             this.chk_apply_to_all.Location = new System.Drawing.Point(520, 33);
             this.chk_apply_to_all.Margin = new System.Windows.Forms.Padding(4);
             this.chk_apply_to_all.Name = "chk_apply_to_all";
-            this.chk_apply_to_all.Size = new System.Drawing.Size(99, 21);
+            this.chk_apply_to_all.Size = new System.Drawing.Size(77, 17);
             this.chk_apply_to_all.TabIndex = 35;
             this.chk_apply_to_all.Text = "Apply to all";
             this.chk_apply_to_all.UseVisualStyleBackColor = false;
@@ -670,7 +697,7 @@ namespace Guard_profiler
             this.cbo_working_shift.Location = new System.Drawing.Point(411, 28);
             this.cbo_working_shift.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_working_shift.Name = "cbo_working_shift";
-            this.cbo_working_shift.Size = new System.Drawing.Size(107, 26);
+            this.cbo_working_shift.Size = new System.Drawing.Size(107, 23);
             this.cbo_working_shift.TabIndex = 30;
             this.cbo_working_shift.SelectedIndexChanged += new System.EventHandler(this.cbo_working_shift_SelectedIndexChanged);
             // 
@@ -682,7 +709,7 @@ namespace Guard_profiler
             this.label3.Location = new System.Drawing.Point(407, 6);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 18);
+            this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 14;
             this.label3.Text = "Select Shift";
             // 
@@ -693,7 +720,7 @@ namespace Guard_profiler
             this.cbo_branch.Location = new System.Drawing.Point(195, 26);
             this.cbo_branch.Margin = new System.Windows.Forms.Padding(4);
             this.cbo_branch.Name = "cbo_branch";
-            this.cbo_branch.Size = new System.Drawing.Size(207, 26);
+            this.cbo_branch.Size = new System.Drawing.Size(207, 23);
             this.cbo_branch.TabIndex = 13;
             this.cbo_branch.SelectedIndexChanged += new System.EventHandler(this.cbo_branch_SelectedIndexChanged);
             // 
@@ -705,7 +732,7 @@ namespace Guard_profiler
             this.label1.Location = new System.Drawing.Point(192, 4);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 18);
+            this.label1.Size = new System.Drawing.Size(45, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Station";
             // 
@@ -717,7 +744,7 @@ namespace Guard_profiler
             this.dt_deployment_date.Margin = new System.Windows.Forms.Padding(4);
             this.dt_deployment_date.Name = "dt_deployment_date";
             this.dt_deployment_date.ShowCheckBox = true;
-            this.dt_deployment_date.Size = new System.Drawing.Size(179, 24);
+            this.dt_deployment_date.Size = new System.Drawing.Size(179, 21);
             this.dt_deployment_date.TabIndex = 5;
             this.dt_deployment_date.ValueChanged += new System.EventHandler(this.dt_deployment_date_ValueChanged);
             // 
@@ -729,7 +756,7 @@ namespace Guard_profiler
             this.label5.Location = new System.Drawing.Point(4, 4);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 18);
+            this.label5.Size = new System.Drawing.Size(102, 15);
             this.label5.TabIndex = 3;
             this.label5.Text = "Deployment Date";
             // 
@@ -743,16 +770,6 @@ namespace Guard_profiler
             this.reSize1.InitialHostContainerWidth = 1169D;
             this.reSize1.Tag = null;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(527, 111);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(418, 17);
-            this.label9.TabIndex = 37;
-            this.label9.Text = "Always update the customer,Firearm serial and ammunition count";
-            // 
             // frm_guard_deployment_summary_batch
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -763,7 +780,7 @@ namespace Guard_profiler
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_guard_deployment_summary_batch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Uganda Securiko Ltd-Guard Deployment";
+            this.Text = "Guard Deployment(Multiple)";
             this.Load += new System.EventHandler(this.frm_guard_deployment_summary_batch_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

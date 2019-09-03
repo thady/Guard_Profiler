@@ -45,7 +45,8 @@ namespace Guard_profiler
 			report.SetDataSource(sg_Reports.SELECT_GUARD_LARGE_IMAGE_RPT("", SystemConst.guard_number));
 			report.SetParameterValue("QueryName", "SELECT_GUARD_LARGE_IMAGE_RPT");
 			report.SetParameterValue("guard_number", SystemConst.guard_number);
-			this.cr_large_image_report.ParameterFieldInfo = paramFields;
+            
+            this.cr_large_image_report.ParameterFieldInfo = paramFields;
             this.cr_large_image_report.ReportSource = report;
 		}
 
@@ -86,7 +87,7 @@ namespace Guard_profiler
             this.Controls.Add(this.cr_large_image_report);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_officer_large_img_report";
-            this.Text = "New Uganda Security Ltd- Export guard large photo";
+            this.Text = "Export guard large photo";
             this.Load += new System.EventHandler(this.frm_officer_large_img_report_Load);
             this.ResumeLayout(false);
 
