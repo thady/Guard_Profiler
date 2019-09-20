@@ -160,7 +160,7 @@ namespace Guard_profiler
             // btn_staff_payroll
             // 
             this.btn_staff_payroll.Location = new System.Drawing.Point(426, 69);
-            this.btn_staff_payroll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_staff_payroll.Margin = new System.Windows.Forms.Padding(2);
             this.btn_staff_payroll.Name = "btn_staff_payroll";
             this.btn_staff_payroll.Size = new System.Drawing.Size(149, 41);
             this.btn_staff_payroll.TabIndex = 18;
@@ -192,7 +192,7 @@ namespace Guard_profiler
             // btnstaff_profiles
             // 
             this.btnstaff_profiles.Location = new System.Drawing.Point(426, 22);
-            this.btnstaff_profiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnstaff_profiles.Margin = new System.Windows.Forms.Padding(2);
             this.btnstaff_profiles.Name = "btnstaff_profiles";
             this.btnstaff_profiles.Size = new System.Drawing.Size(149, 41);
             this.btnstaff_profiles.TabIndex = 15;
@@ -215,7 +215,7 @@ namespace Guard_profiler
             // 
             this.splitter3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.splitter3.Location = new System.Drawing.Point(420, 0);
-            this.splitter3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter3.Margin = new System.Windows.Forms.Padding(2);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(166, 365);
             this.splitter3.TabIndex = 13;
@@ -233,7 +233,7 @@ namespace Guard_profiler
             // 
             // btn_banks
             // 
-            this.btn_banks.Location = new System.Drawing.Point(151, 116);
+            this.btn_banks.Location = new System.Drawing.Point(151, 111);
             this.btn_banks.Name = "btn_banks";
             this.btn_banks.Size = new System.Drawing.Size(263, 41);
             this.btn_banks.TabIndex = 11;
@@ -243,7 +243,7 @@ namespace Guard_profiler
             // 
             // btn_bank_account_details
             // 
-            this.btn_bank_account_details.Location = new System.Drawing.Point(151, 163);
+            this.btn_bank_account_details.Location = new System.Drawing.Point(151, 158);
             this.btn_bank_account_details.Name = "btn_bank_account_details";
             this.btn_bank_account_details.Size = new System.Drawing.Size(263, 41);
             this.btn_bank_account_details.TabIndex = 10;
@@ -253,7 +253,7 @@ namespace Guard_profiler
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(151, 69);
+            this.button2.Location = new System.Drawing.Point(151, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(263, 41);
             this.button2.TabIndex = 9;
@@ -394,6 +394,11 @@ namespace Guard_profiler
         {
             frm_staff_payroll_reports_dashboard Payroll = new frm_staff_payroll_reports_dashboard();
             Payroll.ShowDialog();
+        }
+
+        private void btnAdditional_Click(object sender, EventArgs e)
+        {
+            (new frm_guard_deployment_additional_data()).Show();
         }
     }
 }

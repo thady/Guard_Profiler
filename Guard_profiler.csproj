@@ -57,6 +57,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Guard_profiler\frmDialogTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmDialogTest.Designer.cs">
+      <DependentUpon>frmDialogTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmWaitForm.Designer.cs">
+      <DependentUpon>frmWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmWaitScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmWaitScreen.Designer.cs">
+      <DependentUpon>frmWaitScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,8 +124,17 @@
     <EmbeddedResource Include="frmFingerPrintCapture.resx">
       <DependentUpon>frmFingerPrintCapture.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmDialogTest.resx">
+      <DependentUpon>frmDialogTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmWaitForm.resx">
+      <DependentUpon>frmWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frmMyActiveDeployment.resx">
       <DependentUpon>frmMyActiveDeployment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmWaitScreen.resx">
+      <DependentUpon>frmWaitScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frm_guard_payroll_summary.resx">
       <DependentUpon>frm_guard_payroll_summary.cs</DependentUpon>
@@ -1085,6 +1112,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Guard_profiler\resources\52-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VourcherManager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\waitDialog\waitDialog\waitDialog.csproj">
+      <Project>{cd06b79f-e3d6-4a92-bba8-fc3a3d9b0690}</Project>
+      <Name>waitDialog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

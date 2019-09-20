@@ -9,7 +9,8 @@ namespace Guard_profiler.App_code
 	internal static class Guard_deployment
 	{
 		private static SqlConnection conn;
-
+        public static DateTime deploy_start_date = DateTime.Today;
+        public static DateTime deploy_end_date = DateTime.Today;
 		static Guard_deployment()
 		{
 			Guard_deployment.conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString());
@@ -1104,72 +1105,220 @@ namespace Guard_profiler.App_code
             return dt;
         }
 
-        public static DataTable select_list_of_guards_for_additional_deployment_data_entry(string myQuery, string branch_name, string guard_number, DateTime deploy_start_date, DateTime deploy_end_date,string user_id)
-		{
-			DataTable dt = new DataTable();
-			try
-			{
-				try
-				{
-					using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
-					{
-						using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
-						{
-							cmd.CommandTimeout = 3600;
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
-							cmd.Parameters["@QueryName"].Value = myQuery;
+  //      public static DataTable select_list_of_guards_for_additional_deployment_data_entry(string myQuery, string branch_name, string guard_number, DateTime deploy_start_date, DateTime deploy_end_date,string user_id)
+		//{
+		//	DataTable dt = new DataTable();
+  //          SqlDataAdapter Adapt;
+  //          SqlDataReader rdr;
 
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 100);
-							cmd.Parameters["@branch_name"].Value = branch_name;
+		//		try
+		//		{
+		//			using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+		//			{
+		//				using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+		//				{
+		//					cmd.CommandTimeout = 3600;
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+		//					cmd.Parameters["@QueryName"].Value = myQuery;
 
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
-							cmd.Parameters["@guard_number"].Value = guard_number;
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					cmd.Parameters.Add("@branch_name", SqlDbType.NVarChar, 100);
+		//					cmd.Parameters["@branch_name"].Value = branch_name;
 
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@deploy_start_date", SqlDbType.Date);
-							cmd.Parameters["@deploy_start_date"].Value = deploy_start_date;
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					cmd.Parameters.Add("@guard_number", SqlDbType.NVarChar, 50);
+		//					cmd.Parameters["@guard_number"].Value = guard_number;
 
-							cmd.CommandType = CommandType.StoredProcedure;
-							cmd.Parameters.Add("@deploy_end_date", SqlDbType.Date);
-							cmd.Parameters["@deploy_end_date"].Value = deploy_end_date;
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					cmd.Parameters.Add("@deploy_start_date", SqlDbType.Date);
+		//					cmd.Parameters["@deploy_start_date"].Value = deploy_start_date;
+
+		//					cmd.CommandType = CommandType.StoredProcedure;
+		//					cmd.Parameters.Add("@deploy_end_date", SqlDbType.Date);
+		//					cmd.Parameters["@deploy_end_date"].Value = deploy_end_date;
+
+  //                          cmd.CommandType = CommandType.StoredProcedure;
+  //                          cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
+  //                          cmd.Parameters["@user_id"].Value = user_id;
+
+  //                          if (conn.State == ConnectionState.Closed)
+		//					{
+		//						conn.Open();
+		//					}
+		//					 cmd.Connection = conn;
+  //                           rdr = cmd.ExecuteReader();
+  //                           dt.Load(rdr);
+  //                          //Adapt = new SqlDataAdapter(cmd);
+  //                          //Adapt.Fill(dt);
+
+  //                          cmd.Parameters.Clear();
+		//					if (conn.State != ConnectionState.Closed)
+		//					{
+		//						conn.Close();
+		//					}
+		//				}
+		//			}
+		//		}
+		//		catch (SqlException sqlException)
+		//		{
+		//			throw new Exception(sqlException.ToString());
+		//		}
+  //              finally
+  //              {
+  //                  if (Guard_deployment.conn.State == ConnectionState.Open)
+  //                  {
+  //                      Guard_deployment.conn.Close();
+  //                  }
+  //              }
+  //              return dt;
+		//}
+
+        public static DataTable select_list_of_guards_for_additional_deployment_data_entry(string branch_name, string guard_number, DateTime deploy_start_date, DateTime deploy_end_date, string user_id)
+        {
+            DataTable dt = new DataTable();
+            SqlDataAdapter Adapt;
+            SqlDataReader rdr;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+                    {
+                        cmd.CommandTimeout = 3600;
+                        cmd.CommandType = CommandType.Text;
+                        string strSQL = @"--first check if the current deployment month has 31 days to get off the extra day as extra time
+	                        DECLARE @xtra_31st_day_of_month AS int = datediff(day, dateadd(day, 1-day('{0}'), '{0}'),
+                                      dateadd(month, 1, dateadd(day, 1-day('{0}'), '{0}')));
+	                        DECLARE @extra_overtime_day AS int = 0
+	                        DECLARE @_deploy_id AS int = 0 
+	                        SET @_deploy_id =  (SELECT deploy_period_id FROM Tbl_user_deploy_period_mapping hh WHERE user_id = '{1}')
+	                        IF @xtra_31st_day_of_month = 31
+	                        BEGIN
+	                        SET @extra_overtime_day = 1
+                        END
+	                        ;With Cte_over_time_days AS(
+		                        SELECT guard_number,COUNT(guard_number) AS overtime
+		                        FROM Tbl_guard_deployment_summary_details 
+	                            WHERE (is_public_holiday = 1 OR is_weekend = 1)
+		                        AND deploy_main_id = @_deploy_id
+		                        AND ('{2}' IS NULL OR branch_name = '{2}')
+		                        AND ('{3}' IS NULL OR guard_number LIKE '%' + '{3}' + '%')
+		                        GROUP BY guard_number
+	                        )
+	                        SELECT D.branch_name AS branch, P.auto_id,P.guard_number,P.full_name,S.total_days_worked as days_worked,ISNULL(A.over_time_days_worked,Cte_over_time_days.overtime + @extra_overtime_day) AS overtime,A.payment_month,
+	                        (30 - S.total_days_worked) As days_absent,
+	                        A.total_advance_in_month,A.total_arrears_in_month,A.special_cash_additions,A.residential_cost,A.uniform_costs,A.local_service_tax_cost,A.other_penalties_cost,
+	                        A.other_refunds
+	                        FROM Tbl_sg_profiles P
+	                        LEFT JOIN Tbl_guard_deployment_summary_details D ON P.guard_number = D.guard_number
+	                        LEFT JOIN Cte_over_time_days ON P.guard_number = Cte_over_time_days.guard_number
+	                        LEFT JOIN Tbl_guard_deployment_summary_additional_information A ON (D.guard_number = A.guard_number AND D.deploy_main_id = A.deploy_period_id)
+	                        LEFT JOIN TblDeployment_schedule S ON (P.auto_id = S.guard_auto_id AND S.deploy_id = @_deploy_id)
+	                        WHERE  D.deploy_date >= '{0}' AND D.deploy_date <= '{4}'
+	                        AND D.deploy_main_id = @_deploy_id
+	                        AND ('{2}' IS NULL OR '{2}' = '' OR D.branch_name = '{2}')
+	                        AND ('{2}' IS NULL OR '{2}' = '' OR D.branch_name = '{2}')
+	                        AND ('{3}' IS NULL OR '{3}' = '' OR D.guard_number LIKE '%' + '{3}' + '%') 
+	                        --AND D.guard_number = COALESCE(D.guard_number,@guard_number)
+	                        GROUP BY D.branch_name, P.auto_id,P.guard_number,P.full_name,S.total_days_worked,ISNULL(A.over_time_days_worked,Cte_over_time_days.overtime + @extra_overtime_day),payment_month,A.total_advance_in_month,
+	                        A.total_arrears_in_month,A.special_cash_additions,A.residential_cost,A.uniform_costs,A.local_service_tax_cost,A.other_penalties_cost,
+	                        A.other_refunds
+	                        ORDER BY (CAST(SUBSTRING(P.guard_number,CHARINDEX('.',P.guard_number)+1,LEN(P.guard_number))
+	                        AS INT)) ASC";
+                        strSQL = string.Format(strSQL,deploy_start_date,user_id,branch_name,guard_number,deploy_end_date);
+                        cmd.CommandText = strSQL;
+
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+                        cmd.Connection = conn;
+                        rdr = cmd.ExecuteReader();
+                        dt.Load(rdr);
+                        //Adapt = new SqlDataAdapter(cmd);
+                        //Adapt.Fill(dt);
+
+                        cmd.Parameters.Clear();
+                        if (conn.State != ConnectionState.Closed)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlException)
+            {
+                throw new Exception(sqlException.ToString());
+            }
+            finally
+            {
+                if (Guard_deployment.conn.State == ConnectionState.Open)
+                {
+                    Guard_deployment.conn.Close();
+                }
+            }
+            return dt;
+        }
+
+        public static void select_deployment_date_by_deploy_id(string myQuery, int deploy_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_guard_deployment_summary", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 100);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
 
                             cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add("@user_id", SqlDbType.NVarChar, 50);
-                            cmd.Parameters["@user_id"].Value = user_id;
+                            cmd.Parameters.Add("@deploy_id", SqlDbType.Int);
+                            cmd.Parameters["@deploy_id"].Value = deploy_id;
 
                             if (conn.State == ConnectionState.Closed)
-							{
-								conn.Open();
-							}
-							cmd.Connection = conn;
-							(new SqlDataAdapter(cmd)).Fill(dt);
-							cmd.Parameters.Clear();
-							if (conn.State != ConnectionState.Closed)
-							{
-								conn.Close();
-							}
-						}
-					}
-				}
-				catch (SqlException sqlException)
-				{
-					throw new Exception(sqlException.ToString());
-				}
-			}
-			finally
-			{
-				if (Guard_deployment.conn.State == ConnectionState.Open)
-				{
-					Guard_deployment.conn.Close();
-				}
-			}
-			return dt;
-		}
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
 
-		public static void Set_active_deployment(string QueryName, int deploy_id, bool active_deployment)
+                            if (dt.Rows.Count > 0)
+                            {
+                                DataRow dtRow = dt.Rows[0];
+                                deploy_start_date = Convert.ToDateTime(dtRow["deploy_start_date"]);
+                                deploy_end_date = Convert.ToDateTime(dtRow["deploy_end_date"]);
+                            }
+
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (Guard_deployment.conn.State == ConnectionState.Open)
+                {
+                    Guard_deployment.conn.Close();
+                }
+            }
+        }
+
+        public static void Set_active_deployment(string QueryName, int deploy_id, bool active_deployment)
 		{
 			try
 			{

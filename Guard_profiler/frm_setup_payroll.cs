@@ -1412,6 +1412,7 @@ namespace Guard_profiler
             this.txt_lst_amt.Location = new System.Drawing.Point(855, 27);
             this.txt_lst_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lst_amt.Name = "txt_lst_amt";
+            this.txt_lst_amt.ReadOnly = true;
             this.txt_lst_amt.Size = new System.Drawing.Size(132, 26);
             this.txt_lst_amt.TabIndex = 82;
             this.txt_lst_amt.Text = "0";
@@ -1439,6 +1440,7 @@ namespace Guard_profiler
             this.txt_penalty_amt.Location = new System.Drawing.Point(720, 85);
             this.txt_penalty_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_penalty_amt.Name = "txt_penalty_amt";
+            this.txt_penalty_amt.ReadOnly = true;
             this.txt_penalty_amt.Size = new System.Drawing.Size(121, 26);
             this.txt_penalty_amt.TabIndex = 80;
             this.txt_penalty_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1465,6 +1467,7 @@ namespace Guard_profiler
             this.txt_uniform_amt.Location = new System.Drawing.Point(720, 27);
             this.txt_uniform_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_uniform_amt.Name = "txt_uniform_amt";
+            this.txt_uniform_amt.ReadOnly = true;
             this.txt_uniform_amt.Size = new System.Drawing.Size(121, 26);
             this.txt_uniform_amt.TabIndex = 78;
             this.txt_uniform_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1543,6 +1546,7 @@ namespace Guard_profiler
             this.txt_arrears_amt.Location = new System.Drawing.Point(461, 85);
             this.txt_arrears_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_arrears_amt.Name = "txt_arrears_amt";
+            this.txt_arrears_amt.ReadOnly = true;
             this.txt_arrears_amt.Size = new System.Drawing.Size(121, 26);
             this.txt_arrears_amt.TabIndex = 72;
             this.txt_arrears_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
