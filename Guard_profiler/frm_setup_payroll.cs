@@ -779,7 +779,7 @@ namespace Guard_profiler
             this.dt_end_date.Margin = new System.Windows.Forms.Padding(4);
             this.dt_end_date.Name = "dt_end_date";
             this.dt_end_date.ShowCheckBox = true;
-            this.dt_end_date.Size = new System.Drawing.Size(94, 24);
+            this.dt_end_date.Size = new System.Drawing.Size(123, 24);
             this.dt_end_date.TabIndex = 12;
             this.dt_end_date.Visible = false;
             // 
@@ -1385,7 +1385,6 @@ namespace Guard_profiler
             this.txt_absentism_amt.Location = new System.Drawing.Point(855, 85);
             this.txt_absentism_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_absentism_amt.Name = "txt_absentism_amt";
-            this.txt_absentism_amt.ReadOnly = true;
             this.txt_absentism_amt.Size = new System.Drawing.Size(132, 30);
             this.txt_absentism_amt.TabIndex = 84;
             this.txt_absentism_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1412,7 +1411,6 @@ namespace Guard_profiler
             this.txt_lst_amt.Location = new System.Drawing.Point(855, 27);
             this.txt_lst_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_lst_amt.Name = "txt_lst_amt";
-            this.txt_lst_amt.ReadOnly = true;
             this.txt_lst_amt.Size = new System.Drawing.Size(132, 30);
             this.txt_lst_amt.TabIndex = 82;
             this.txt_lst_amt.Text = "0";
@@ -1440,7 +1438,6 @@ namespace Guard_profiler
             this.txt_penalty_amt.Location = new System.Drawing.Point(720, 85);
             this.txt_penalty_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_penalty_amt.Name = "txt_penalty_amt";
-            this.txt_penalty_amt.ReadOnly = true;
             this.txt_penalty_amt.Size = new System.Drawing.Size(121, 30);
             this.txt_penalty_amt.TabIndex = 80;
             this.txt_penalty_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1467,7 +1464,6 @@ namespace Guard_profiler
             this.txt_uniform_amt.Location = new System.Drawing.Point(720, 27);
             this.txt_uniform_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_uniform_amt.Name = "txt_uniform_amt";
-            this.txt_uniform_amt.ReadOnly = true;
             this.txt_uniform_amt.Size = new System.Drawing.Size(121, 30);
             this.txt_uniform_amt.TabIndex = 78;
             this.txt_uniform_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

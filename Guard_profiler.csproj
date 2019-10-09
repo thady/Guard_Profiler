@@ -57,11 +57,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Guard_profiler\App_code\InventoryManager.cs" />
     <Compile Include="Guard_profiler\frmDialogTest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Guard_profiler\frmDialogTest.Designer.cs">
       <DependentUpon>frmDialogTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryMissingItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryMissingItem.Designer.cs">
+      <DependentUpon>frmInventoryMissingItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryPanel.Designer.cs">
+      <DependentUpon>frmInventoryPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryStockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryStockOut.Designer.cs">
+      <DependentUpon>frmInventoryStockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryStockOutItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmInventoryStockOutItemDetails.Designer.cs">
+      <DependentUpon>frmInventoryStockOutItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemCategories.Designer.cs">
+      <DependentUpon>frmItemCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemCategoryItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemCategoryItem.Designer.cs">
+      <DependentUpon>frmItemCategoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frmItemStockIn.Designer.cs">
+      <DependentUpon>frmItemStockIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Guard_profiler\frmWaitForm.cs">
       <SubType>Form</SubType>
@@ -126,6 +169,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frmDialogTest.resx">
       <DependentUpon>frmDialogTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmInventoryMissingItem.resx">
+      <DependentUpon>frmInventoryMissingItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmInventoryPanel.resx">
+      <DependentUpon>frmInventoryPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmInventoryStockOut.resx">
+      <DependentUpon>frmInventoryStockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmInventoryStockOutItemDetails.resx">
+      <DependentUpon>frmInventoryStockOutItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmItemCategories.resx">
+      <DependentUpon>frmItemCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmItemCategoryItem.resx">
+      <DependentUpon>frmItemCategoryItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frmItemStockIn.resx">
+      <DependentUpon>frmItemStockIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frmWaitForm.resx">
       <DependentUpon>frmWaitForm.cs</DependentUpon>
