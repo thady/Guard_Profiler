@@ -109,6 +109,13 @@ namespace Guard_profiler
         private Timer timer1;
         private Panel panel5;
         private Button btnInventory;
+        private Button btnCanine;
+        private Button btnCommunication;
+        private Button button4;
+        private Button btnProcurement;
+        private Button button5;
+        private Button btnVip;
+        private Button btnCashTransit;
         public string mode = "Left-to-Right";
 
         public frmMain()
@@ -237,8 +244,11 @@ namespace Guard_profiler
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnInventory = new System.Windows.Forms.Button();
+            this.btnhr = new System.Windows.Forms.Button();
             this.btnwages = new System.Windows.Forms.Button();
             this.btnFinance = new System.Windows.Forms.Button();
+            this.btnaccounts = new System.Windows.Forms.Button();
             this.panelLicence = new System.Windows.Forms.Panel();
             this.lblClient = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -287,14 +297,18 @@ namespace Guard_profiler
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnInventory = new System.Windows.Forms.Button();
-            this.btnhr = new System.Windows.Forms.Button();
-            this.btnaccounts = new System.Windows.Forms.Button();
             this.toolstrip_hr = new System.Windows.Forms.ToolStripMenuItem();
             this.toolstrip_wages = new System.Windows.Forms.ToolStripMenuItem();
             this.toolstrip_accounts = new System.Windows.Forms.ToolStripMenuItem();
             this.toolstripreports = new System.Windows.Forms.ToolStripMenuItem();
             this.toolstrip_admin = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCanine = new System.Windows.Forms.Button();
+            this.btnCommunication = new System.Windows.Forms.Button();
+            this.btnProcurement = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btnVip = new System.Windows.Forms.Button();
+            this.btnCashTransit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panelLicence.SuspendLayout();
@@ -322,6 +336,13 @@ namespace Guard_profiler
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.btnCashTransit);
+            this.panel5.Controls.Add(this.btnVip);
+            this.panel5.Controls.Add(this.button5);
+            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.btnProcurement);
+            this.panel5.Controls.Add(this.btnCommunication);
+            this.panel5.Controls.Add(this.btnCanine);
             this.panel5.Controls.Add(this.btnInventory);
             this.panel5.Controls.Add(this.btnhr);
             this.panel5.Controls.Add(this.btnwages);
@@ -331,6 +352,30 @@ namespace Guard_profiler
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1335, 148);
             this.panel5.TabIndex = 12;
+            // 
+            // btnInventory
+            // 
+            this.btnInventory.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventory.Location = new System.Drawing.Point(477, 3);
+            this.btnInventory.Name = "btnInventory";
+            this.btnInventory.Size = new System.Drawing.Size(238, 70);
+            this.btnInventory.TabIndex = 11;
+            this.btnInventory.Text = "Inventory Management";
+            this.btnInventory.UseVisualStyleBackColor = true;
+            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            // 
+            // btnhr
+            // 
+            this.btnhr.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnhr.Image = ((System.Drawing.Image)(resources.GetObject("btnhr.Image")));
+            this.btnhr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnhr.Location = new System.Drawing.Point(3, 1);
+            this.btnhr.Name = "btnhr";
+            this.btnhr.Size = new System.Drawing.Size(238, 70);
+            this.btnhr.TabIndex = 5;
+            this.btnhr.Text = "Human Resources";
+            this.btnhr.UseVisualStyleBackColor = true;
+            this.btnhr.Click += new System.EventHandler(this.btnhr_Click);
             // 
             // btnwages
             // 
@@ -347,13 +392,26 @@ namespace Guard_profiler
             // 
             this.btnFinance.Enabled = false;
             this.btnFinance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinance.Location = new System.Drawing.Point(247, 71);
+            this.btnFinance.Location = new System.Drawing.Point(240, 71);
             this.btnFinance.Name = "btnFinance";
             this.btnFinance.Size = new System.Drawing.Size(238, 70);
             this.btnFinance.TabIndex = 10;
             this.btnFinance.Text = "Customer Management";
             this.btnFinance.UseVisualStyleBackColor = true;
             this.btnFinance.Click += new System.EventHandler(this.btnFinance_Click);
+            // 
+            // btnaccounts
+            // 
+            this.btnaccounts.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnaccounts.Image")));
+            this.btnaccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnaccounts.Location = new System.Drawing.Point(240, 1);
+            this.btnaccounts.Name = "btnaccounts";
+            this.btnaccounts.Size = new System.Drawing.Size(238, 70);
+            this.btnaccounts.TabIndex = 7;
+            this.btnaccounts.Text = "Accounts Management";
+            this.btnaccounts.UseVisualStyleBackColor = true;
+            this.btnaccounts.Click += new System.EventHandler(this.btnaccounts_Click);
             // 
             // panelLicence
             // 
@@ -374,7 +432,7 @@ namespace Guard_profiler
             this.lblClient.ForeColor = System.Drawing.Color.White;
             this.lblClient.Location = new System.Drawing.Point(378, 11);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(51, 19);
+            this.lblClient.Size = new System.Drawing.Size(38, 15);
             this.lblClient.TabIndex = 12;
             this.lblClient.Text = "label2";
             // 
@@ -422,7 +480,7 @@ namespace Guard_profiler
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(6, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 25);
+            this.label1.Size = new System.Drawing.Size(138, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "You are logged in";
             // 
@@ -433,7 +491,7 @@ namespace Guard_profiler
             this.lbl_name_message.ForeColor = System.Drawing.Color.White;
             this.lbl_name_message.Location = new System.Drawing.Point(6, 3);
             this.lbl_name_message.Name = "lbl_name_message";
-            this.lbl_name_message.Size = new System.Drawing.Size(182, 25);
+            this.lbl_name_message.Size = new System.Drawing.Size(144, 20);
             this.lbl_name_message.TabIndex = 0;
             this.lbl_name_message.Text = "lbl_name_message";
             // 
@@ -453,7 +511,7 @@ namespace Guard_profiler
             this.lbl_clock.ForeColor = System.Drawing.Color.White;
             this.lbl_clock.Location = new System.Drawing.Point(9, 30);
             this.lbl_clock.Name = "lbl_clock";
-            this.lbl_clock.Size = new System.Drawing.Size(70, 16);
+            this.lbl_clock.Size = new System.Drawing.Size(58, 14);
             this.lbl_clock.TabIndex = 1;
             this.lbl_clock.Text = "Waiting.....";
             // 
@@ -463,7 +521,7 @@ namespace Guard_profiler
             this.lbl_user_session_name.ForeColor = System.Drawing.Color.White;
             this.lbl_user_session_name.Location = new System.Drawing.Point(9, 10);
             this.lbl_user_session_name.Name = "lbl_user_session_name";
-            this.lbl_user_session_name.Size = new System.Drawing.Size(84, 16);
+            this.lbl_user_session_name.Size = new System.Drawing.Size(67, 14);
             this.lbl_user_session_name.TabIndex = 0;
             this.lbl_user_session_name.Text = "User Session:";
             // 
@@ -610,33 +668,33 @@ namespace Guard_profiler
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.ToolstripHumanResource.Name = "ToolstripHumanResource";
-            this.ToolstripHumanResource.Size = new System.Drawing.Size(178, 57);
+            this.ToolstripHumanResource.Size = new System.Drawing.Size(148, 57);
             this.ToolstripHumanResource.Text = "Human Resources";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(253, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 26);
             this.toolStripMenuItem1.Text = "Guard Profiles";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(253, 32);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 26);
             this.toolStripMenuItem2.Text = "Other Staff Profiles";
             // 
             // ToolstripWages
             // 
             this.ToolstripWages.Name = "ToolstripWages";
-            this.ToolstripWages.Size = new System.Drawing.Size(82, 57);
+            this.ToolstripWages.Size = new System.Drawing.Size(68, 57);
             this.ToolstripWages.Text = "Wages";
             this.ToolstripWages.Click += new System.EventHandler(this.toolStripMenuItem4_Click_1);
             // 
             // ToolstripAccounts
             // 
             this.ToolstripAccounts.Name = "ToolstripAccounts";
-            this.ToolstripAccounts.Size = new System.Drawing.Size(104, 57);
+            this.ToolstripAccounts.Size = new System.Drawing.Size(85, 57);
             this.ToolstripAccounts.Text = "Accounts";
             this.ToolstripAccounts.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
@@ -651,49 +709,49 @@ namespace Guard_profiler
             this.toolStripSeparator3,
             this.toolStripMenuItem10});
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(163, 57);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(134, 57);
             this.toolStripMenuItem6.Text = "General Reports";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem7.Text = "Active Guards by Branch Reports";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem8.Text = "Kampala Guards Reports";
             this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem9.Text = "All Guards Report";
             this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(371, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(374, 32);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(307, 26);
             this.toolStripMenuItem10.Text = "Archieved Guards Reports";
             this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
@@ -706,77 +764,40 @@ namespace Guard_profiler
             this.toolStripSeparator5,
             this.toolStripMenuItem13});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(82, 57);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(68, 57);
             this.adminToolStripMenuItem.Text = "Admin";
             // 
             // toolstripManageUsers
             // 
             this.toolstripManageUsers.Enabled = false;
             this.toolstripManageUsers.Name = "toolstripManageUsers";
-            this.toolstripManageUsers.Size = new System.Drawing.Size(448, 32);
+            this.toolstripManageUsers.Size = new System.Drawing.Size(366, 26);
             this.toolstripManageUsers.Text = "Manage users";
             this.toolstripManageUsers.Click += new System.EventHandler(this.toolStripMenuItem11_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(445, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(363, 6);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(448, 32);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(366, 26);
             this.toolStripMenuItem12.Text = "Manage Departments,Branches & Positions";
             this.toolStripMenuItem12.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(445, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(363, 6);
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(448, 32);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(366, 26);
             this.toolStripMenuItem13.Text = "Update Position Codes";
             this.toolStripMenuItem13.Click += new System.EventHandler(this.toolStripMenuItem13_Click);
-            // 
-            // btnInventory
-            // 
-            this.btnInventory.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventory.Location = new System.Drawing.Point(491, 3);
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(238, 70);
-            this.btnInventory.TabIndex = 11;
-            this.btnInventory.Text = "Inventory Management";
-            this.btnInventory.UseVisualStyleBackColor = true;
-            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
-            // 
-            // btnhr
-            // 
-            this.btnhr.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnhr.Image = ((System.Drawing.Image)(resources.GetObject("btnhr.Image")));
-            this.btnhr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnhr.Location = new System.Drawing.Point(3, 1);
-            this.btnhr.Name = "btnhr";
-            this.btnhr.Size = new System.Drawing.Size(238, 70);
-            this.btnhr.TabIndex = 5;
-            this.btnhr.Text = "Human Resources";
-            this.btnhr.UseVisualStyleBackColor = true;
-            this.btnhr.Click += new System.EventHandler(this.btnhr_Click);
-            // 
-            // btnaccounts
-            // 
-            this.btnaccounts.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaccounts.Image = ((System.Drawing.Image)(resources.GetObject("btnaccounts.Image")));
-            this.btnaccounts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnaccounts.Location = new System.Drawing.Point(247, 1);
-            this.btnaccounts.Name = "btnaccounts";
-            this.btnaccounts.Size = new System.Drawing.Size(238, 70);
-            this.btnaccounts.TabIndex = 7;
-            this.btnaccounts.Text = "Accounts Management";
-            this.btnaccounts.UseVisualStyleBackColor = true;
-            this.btnaccounts.Click += new System.EventHandler(this.btnaccounts_Click);
             // 
             // toolstrip_hr
             // 
@@ -816,9 +837,79 @@ namespace Guard_profiler
             this.toolstrip_admin.Size = new System.Drawing.Size(84, 62);
             this.toolstrip_admin.Text = "Admin";
             // 
+            // btnCanine
+            // 
+            this.btnCanine.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCanine.Location = new System.Drawing.Point(477, 71);
+            this.btnCanine.Name = "btnCanine";
+            this.btnCanine.Size = new System.Drawing.Size(238, 70);
+            this.btnCanine.TabIndex = 12;
+            this.btnCanine.Text = "Canine Management";
+            this.btnCanine.UseVisualStyleBackColor = true;
+            // 
+            // btnCommunication
+            // 
+            this.btnCommunication.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCommunication.Location = new System.Drawing.Point(714, 3);
+            this.btnCommunication.Name = "btnCommunication";
+            this.btnCommunication.Size = new System.Drawing.Size(238, 70);
+            this.btnCommunication.TabIndex = 13;
+            this.btnCommunication.Text = "Communication Department";
+            this.btnCommunication.UseVisualStyleBackColor = true;
+            // 
+            // btnProcurement
+            // 
+            this.btnProcurement.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcurement.Location = new System.Drawing.Point(714, 71);
+            this.btnProcurement.Name = "btnProcurement";
+            this.btnProcurement.Size = new System.Drawing.Size(238, 70);
+            this.btnProcurement.TabIndex = 14;
+            this.btnProcurement.Text = "Procurement and Asset Registry";
+            this.btnProcurement.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(951, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(238, 70);
+            this.button4.TabIndex = 15;
+            this.button4.Text = "Fleet Management";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(951, 71);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(238, 70);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Inspection and Standard Unit";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // btnVip
+            // 
+            this.btnVip.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVip.Location = new System.Drawing.Point(1188, 3);
+            this.btnVip.Name = "btnVip";
+            this.btnVip.Size = new System.Drawing.Size(141, 70);
+            this.btnVip.TabIndex = 17;
+            this.btnVip.Text = "VIP Protection Management";
+            this.btnVip.UseVisualStyleBackColor = true;
+            // 
+            // btnCashTransit
+            // 
+            this.btnCashTransit.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCashTransit.Location = new System.Drawing.Point(1188, 71);
+            this.btnCashTransit.Name = "btnCashTransit";
+            this.btnCashTransit.Size = new System.Drawing.Size(140, 70);
+            this.btnCashTransit.TabIndex = 18;
+            this.btnCashTransit.Text = "Cash in Transit Management";
+            this.btnCashTransit.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1348, 741);

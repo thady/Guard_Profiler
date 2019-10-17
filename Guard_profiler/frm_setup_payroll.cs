@@ -505,6 +505,7 @@ namespace Guard_profiler
                     decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
                     txt_leave_amt.Text = leave_amt.ToString();
                     txt_lst_amt.Text = decimal.Parse(dtrow["local_service_tax_amt"].ToString()).ToString(); 
+                    txt_bonus_amt.Text = decimal.Parse(dtrow["bonus_amt"].ToString()).ToString();
                     #region Bank details
                     DataTable dt_bank_details = Salary_scales.return_bank_and_nssf_details_by_guard_number("return_bank_and_nssf_details_by_guard_number", guard_auto_id);
                     if (dt_bank_details.Rows.Count > 0)
