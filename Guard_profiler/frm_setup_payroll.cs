@@ -242,6 +242,7 @@ namespace Guard_profiler
         private ComboBox cbo_deploy_period;
         private CheckBox chk_print_payroll;
         private Button btnpreview;
+        private CheckBox chk_print_nssf;
         private TextBox txt_record_guid;
 
         static frm_setup_payroll()
@@ -337,6 +338,7 @@ namespace Guard_profiler
             }
             chkPayAdvance.Checked = flag;
             this.chk_pay_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
+            this.chk_print_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
             this.chk_pay_paye.Checked = (PAYE_amt > new decimal(0) ? true : false);
         }
 
@@ -410,6 +412,8 @@ namespace Guard_profiler
             this.txt_penalty_days.Clear();
             this.txt_absentism_amt.Clear();
             chk_print_bank_schedule.Checked = true;
+            chk_print_nssf.Checked = false;
+            
         }
 
         protected override void Dispose(bool disposing)
@@ -502,6 +506,7 @@ namespace Guard_profiler
                     txtAbsentismAmt.Text = num13.ToString();
                     chk_print_bank_schedule.Checked = Convert.ToBoolean(dtrow["print_bank_schedule"]);
                     chk_print_payroll.Checked = Convert.ToBoolean(dtrow["print_pay_roll"]);
+                    chk_print_nssf.Checked = Convert.ToBoolean(dtrow["print_nssf"]);
                     decimal leave_amt = decimal.Parse(dtrow["leave_amt"].ToString());
                     txt_leave_amt.Text = leave_amt.ToString();
                     txt_lst_amt.Text = decimal.Parse(dtrow["local_service_tax_amt"].ToString()).ToString(); 
@@ -583,6 +588,7 @@ namespace Guard_profiler
             this.txt_record_guid = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.chk_print_nssf = new System.Windows.Forms.CheckBox();
             this.chk_print_payroll = new System.Windows.Forms.CheckBox();
             this.chk_print_bank_schedule = new System.Windows.Forms.CheckBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -857,13 +863,28 @@ namespace Guard_profiler
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.panel12.Controls.Add(this.chk_print_nssf);
             this.panel12.Controls.Add(this.chk_print_payroll);
             this.panel12.Controls.Add(this.chk_print_bank_schedule);
             this.panel12.Location = new System.Drawing.Point(456, 374);
             this.panel12.Margin = new System.Windows.Forms.Padding(4);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(161, 54);
+            this.panel12.Size = new System.Drawing.Size(249, 54);
             this.panel12.TabIndex = 48;
+            // 
+            // chk_print_nssf
+            // 
+            this.chk_print_nssf.AutoSize = true;
+            this.chk_print_nssf.BackColor = System.Drawing.Color.Gray;
+            this.chk_print_nssf.Checked = true;
+            this.chk_print_nssf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_print_nssf.Location = new System.Drawing.Point(127, 29);
+            this.chk_print_nssf.Margin = new System.Windows.Forms.Padding(4);
+            this.chk_print_nssf.Name = "chk_print_nssf";
+            this.chk_print_nssf.Size = new System.Drawing.Size(99, 21);
+            this.chk_print_nssf.TabIndex = 2;
+            this.chk_print_nssf.Text = "Print NSSF";
+            this.chk_print_nssf.UseVisualStyleBackColor = false;
             // 
             // chk_print_payroll
             // 
@@ -971,10 +992,10 @@ namespace Guard_profiler
             this.panel9.Controls.Add(this.label43);
             this.panel9.Controls.Add(this.txt_gross_amt);
             this.panel9.Controls.Add(this.label42);
-            this.panel9.Location = new System.Drawing.Point(625, 341);
+            this.panel9.Location = new System.Drawing.Point(713, 338);
             this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(693, 86);
+            this.panel9.Size = new System.Drawing.Size(609, 86);
             this.panel9.TabIndex = 45;
             // 
             // txt_net_pay
@@ -982,10 +1003,10 @@ namespace Guard_profiler
             this.txt_net_pay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.txt_net_pay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_net_pay.ForeColor = System.Drawing.Color.White;
-            this.txt_net_pay.Location = new System.Drawing.Point(567, 30);
+            this.txt_net_pay.Location = new System.Drawing.Point(464, 27);
             this.txt_net_pay.Margin = new System.Windows.Forms.Padding(4);
             this.txt_net_pay.Name = "txt_net_pay";
-            this.txt_net_pay.Size = new System.Drawing.Size(124, 37);
+            this.txt_net_pay.Size = new System.Drawing.Size(113, 37);
             this.txt_net_pay.TabIndex = 95;
             this.txt_net_pay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -994,7 +1015,7 @@ namespace Guard_profiler
             this.label47.AutoSize = true;
             this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(585, 7);
+            this.label47.Location = new System.Drawing.Point(464, 5);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(70, 18);
@@ -1006,11 +1027,11 @@ namespace Guard_profiler
             this.txt_total_deductions.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_total_deductions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_total_deductions.ForeColor = System.Drawing.Color.White;
-            this.txt_total_deductions.Location = new System.Drawing.Point(439, 30);
+            this.txt_total_deductions.Location = new System.Drawing.Point(343, 27);
             this.txt_total_deductions.Margin = new System.Windows.Forms.Padding(4);
             this.txt_total_deductions.Name = "txt_total_deductions";
             this.txt_total_deductions.ReadOnly = true;
-            this.txt_total_deductions.Size = new System.Drawing.Size(127, 37);
+            this.txt_total_deductions.Size = new System.Drawing.Size(113, 37);
             this.txt_total_deductions.TabIndex = 93;
             this.txt_total_deductions.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1019,7 +1040,7 @@ namespace Guard_profiler
             this.label46.AutoSize = true;
             this.label46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(435, 7);
+            this.label46.Location = new System.Drawing.Point(340, 5);
             this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(97, 18);
@@ -1031,20 +1052,21 @@ namespace Guard_profiler
             this.txt_nssf_amt.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_nssf_amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nssf_amt.ForeColor = System.Drawing.Color.White;
-            this.txt_nssf_amt.Location = new System.Drawing.Point(307, 30);
+            this.txt_nssf_amt.Location = new System.Drawing.Point(228, 27);
             this.txt_nssf_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nssf_amt.Name = "txt_nssf_amt";
             this.txt_nssf_amt.ReadOnly = true;
-            this.txt_nssf_amt.Size = new System.Drawing.Size(131, 37);
+            this.txt_nssf_amt.Size = new System.Drawing.Size(113, 37);
             this.txt_nssf_amt.TabIndex = 89;
             this.txt_nssf_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_nssf_amt.TextChanged += new System.EventHandler(this.txt_nssf_amt_TextChanged);
             // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(303, 7);
+            this.label44.Location = new System.Drawing.Point(225, 3);
             this.label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(48, 18);
@@ -1056,11 +1078,11 @@ namespace Guard_profiler
             this.txt_paye_amt.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_paye_amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_paye_amt.ForeColor = System.Drawing.Color.White;
-            this.txt_paye_amt.Location = new System.Drawing.Point(160, 30);
+            this.txt_paye_amt.Location = new System.Drawing.Point(113, 28);
             this.txt_paye_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_paye_amt.Name = "txt_paye_amt";
             this.txt_paye_amt.ReadOnly = true;
-            this.txt_paye_amt.Size = new System.Drawing.Size(137, 37);
+            this.txt_paye_amt.Size = new System.Drawing.Size(113, 37);
             this.txt_paye_amt.TabIndex = 87;
             this.txt_paye_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1069,7 +1091,7 @@ namespace Guard_profiler
             this.label43.AutoSize = true;
             this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(156, 6);
+            this.label43.Location = new System.Drawing.Point(111, 5);
             this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(46, 18);
@@ -1081,11 +1103,11 @@ namespace Guard_profiler
             this.txt_gross_amt.BackColor = System.Drawing.SystemColors.MenuText;
             this.txt_gross_amt.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_gross_amt.ForeColor = System.Drawing.Color.White;
-            this.txt_gross_amt.Location = new System.Drawing.Point(4, 30);
+            this.txt_gross_amt.Location = new System.Drawing.Point(0, 28);
             this.txt_gross_amt.Margin = new System.Windows.Forms.Padding(4);
             this.txt_gross_amt.Name = "txt_gross_amt";
             this.txt_gross_amt.ReadOnly = true;
-            this.txt_gross_amt.Size = new System.Drawing.Size(147, 37);
+            this.txt_gross_amt.Size = new System.Drawing.Size(113, 37);
             this.txt_gross_amt.TabIndex = 85;
             this.txt_gross_amt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1094,7 +1116,7 @@ namespace Guard_profiler
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(13, 6);
+            this.label42.Location = new System.Drawing.Point(0, 5);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(80, 18);
@@ -2385,14 +2407,14 @@ namespace Guard_profiler
 
             if (this.txt_record_guid.Text == string.Empty)
             {
-                Payroll_Engine.save_guard_payroll_details("save_guard_payroll_details", (this.txt_record_guid.Text != string.Empty ? this.txt_record_guid.Text : string.Empty), SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
+                Payroll_Engine.save_guard_payroll_details("save_guard_payroll_details", (this.txt_record_guid.Text != string.Empty ? this.txt_record_guid.Text : string.Empty), SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false,chk_print_nssf.Checked == true?true:false);
                 MessageBox.Show(string.Concat("Successfully saved payroll details for ", this.txt_guard_name.Text), "Payroll setup", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.clear_fields();
                 return;
             }
             else
             {
-                Payroll_Engine.update_guard_payroll_details("update_guard_payroll_details", this.txt_record_guid.Text, SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false);
+                Payroll_Engine.update_guard_payroll_details("update_guard_payroll_details", this.txt_record_guid.Text, SystemConst._username, this.txt_station_code.Text, Convert.ToInt32(cbo_deploy_period.SelectedValue.ToString()), this.txt_station_name.Text, this.txt_guard_num.Text, this.txt_guard_name.Text, this.txt_salary_scale_code.Text, this.txt_bank_code.Text, this.txt_bank_name.Text, this.txt_bank_branch.Text, this.txt_account_number.Text, this.txt_grade.Text, this.txt_nssf.Text, decimal.Parse(this.txt_basic_amt.Text), decimal.Parse(this.txt_transport_amt.Text), decimal.Parse(this.txt_housing_amt.Text), decimal.Parse(this.txt_resident_amt.Text), (this.txt_bonus_amt.Text != string.Empty ? decimal.Parse(this.txt_bonus_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_uniform_amt.Text != string.Empty ? decimal.Parse(this.txt_uniform_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_arrears_amt.Text != string.Empty ? decimal.Parse(this.txt_arrears_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_advance_amt.Text != string.Empty ? decimal.Parse(this.txt_advance_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1)), Convert.ToInt32(this.txt_days_worked.Text), Convert.ToInt32(this.txt_overtime_days.Text), (this.txt_days_resident.Text != string.Empty ? Convert.ToInt32(this.txt_days_resident.Text) : 0), Convert.ToInt32(this.txt_penalty_days.Text), (this.txt_tax_relief.Text != string.Empty ? decimal.Parse(this.txt_tax_relief.Text) : new decimal(0, 0, 0, false, 1)), decimal.Parse(this.txt_gross_amt.Text), (this.txt_paye_amt.Text != string.Empty ? decimal.Parse(this.txt_paye_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_nssf_amt.Text != string.Empty ? decimal.Parse(this.txt_nssf_amt.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_total_deductions.Text != string.Empty ? decimal.Parse(this.txt_total_deductions.Text) : new decimal(0, 0, 0, false, 1)), (this.txt_net_pay.Text != string.Empty ? decimal.Parse(this.txt_net_pay.Text) : new decimal(0, 0, 0, false, 1)), (this.chk_pay_salary.Checked ? true : false), (this.chk_pay_paye.Checked ? true : false), (this.chk_pay_nssf.Checked ? true : false), (this.chk_pay_advance.Checked ? true : false), chk_print_bank_schedule.Checked == true ? true : false, chk_print_payroll.Checked == true ? true : false,chk_print_nssf.Checked == true?true:false);
                 MessageBox.Show(string.Concat("Successfully updated payroll details for ", this.txt_guard_name.Text), "Payroll setup", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.clear_fields();
             }
@@ -2685,6 +2707,16 @@ namespace Guard_profiler
 
             frm_finance_reports_parameter_selector param = new frm_finance_reports_parameter_selector();
             param.ShowDialog();
+        }
+
+        private void txt_nssf_amt_TextChanged(object sender, EventArgs e)
+        {
+            //if (decimal.Parse(txt_nssf_amt.Text) != 0)
+            //{
+            //    chk_print_nssf.Checked = true;
+            //}
+            //else
+            //    chk_print_nssf.Checked = false;
         }
     }
 }
