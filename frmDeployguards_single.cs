@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Guard_profiler
 {
     public partial class frmDeployguards_single : Form
@@ -23,6 +24,11 @@ namespace Guard_profiler
         }
 
         private void btn_update_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

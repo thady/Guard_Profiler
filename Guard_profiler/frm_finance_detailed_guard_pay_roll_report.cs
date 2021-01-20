@@ -127,6 +127,64 @@ namespace Guard_profiler
                     MessageBox.Show(exception1.ToString());
                 }
             }
+
+            else if (SystemConst._finance_crystal_report_type == "Payroll_Archive")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_detailed_guard_pay_roll_report_archive report = new finance_detailed_guard_pay_roll_report_archive();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField1 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue1 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Nss_archive.select_payroll_report());
+                    report.SetParameterValue("QueryName", "select_payroll_report");
+                    report.SetParameterValue("branch_name", Nss_archive.Rbranch_name);
+                    report.SetParameterValue("payment_year", Nss_archive.Rpayment_year);
+                    report.SetParameterValue("payment_month", Nss_archive.Rpayment_month);
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    //Set_current_deployment_periods();
+                }
+                catch (Exception exception1)
+                {
+                    MessageBox.Show(exception1.ToString());
+                }
+            }
+
+            else if (SystemConst._finance_crystal_report_type == "NSSF_Archive")
+            {
+                try
+                {
+                    base.WindowState = FormWindowState.Maximized;
+                    finance_employee_nssf_report_archive report = new finance_employee_nssf_report_archive();
+                    ParameterFields paramFields = new ParameterFields();
+                    ParameterField parameterField1 = new ParameterField();
+                    ParameterDiscreteValue parameterDiscreteValue1 = new ParameterDiscreteValue();
+                    foreach (Table tbCurrent in report.Database.Tables)
+                    {
+                        Set_Report_logons.SetTableLogin(tbCurrent);
+                    }
+                    report.SetDataSource(Nss_archive.select_nssf_report());
+                    report.SetParameterValue("QueryName", "select_nssf_report");
+                    report.SetParameterValue("branch_name", Nss_archive.Rbranch_name);
+                    report.SetParameterValue("payment_year", Nss_archive.Rpayment_year);
+                    report.SetParameterValue("payment_month", Nss_archive.Rpayment_month);
+                    this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                    this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+
+                    //Set_current_deployment_periods();
+                }
+                catch (Exception exception1)
+                {
+                    MessageBox.Show(exception1.ToString());
+                }
+            }
             else if (SystemConst._finance_crystal_report_type == "LST")
             {
                 try

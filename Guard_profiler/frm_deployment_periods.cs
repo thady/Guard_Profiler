@@ -312,6 +312,7 @@ namespace Guard_profiler
 				this.gdv_deployment_periods.Columns["deploy_end_date"].HeaderText = "Deployment end date";
 				this.gdv_deployment_periods.Columns["created_by"].HeaderText = "Created by";
 				this.gdv_deployment_periods.Columns["active_deployment"].HeaderText = "Active Deployment";
+
 				this.gdv_deployment_periods.RowsDefaultCellStyle.BackColor = Color.LightGray;
 				this.gdv_deployment_periods.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
 				this.gdv_deployment_periods.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;

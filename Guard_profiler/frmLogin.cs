@@ -305,7 +305,10 @@ namespace Guard_profiler
             SystemConst._user_id = user_id;
             SystemConst.is_admin = is_admin;
 
-            Set_current_deployment_periods();
+            if (user_department != "NSSF")
+            {
+                Set_current_deployment_periods();
+            }
 
         }
 	}

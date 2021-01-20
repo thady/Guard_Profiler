@@ -57,7 +57,88 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsBackEnd\Branches.cs" />
+    <Compile Include="AccountsBackEnd\InvoiceManager.cs" />
+    <Compile Include="AccountsBackEnd\JournalEntry.cs" />
+    <Compile Include="AccountsBackEnd\ChartofAccounts.cs" />
+    <Compile Include="AccountsBackEnd\Globals.cs" />
+    <Compile Include="AccountsBackEnd\Lookups.cs" />
+    <Compile Include="AccountsBackEnd\SubcidiaryAccount.cs" />
+    <Compile Include="AccountsBackEnd\SubLedgerCategory.cs" />
+    <Compile Include="Accounts\frmAccountCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmAccountCategory.Designer.cs">
+      <DependentUpon>frmAccountCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmBranches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmBranches.Designer.cs">
+      <DependentUpon>frmBranches.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmChartofAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmChartofAccounts.Designer.cs">
+      <DependentUpon>frmChartofAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmInvoice.Designer.cs">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmJournalEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmJournalEntry.Designer.cs">
+      <DependentUpon>frmJournalEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmSubLedgerCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmSubLedgerCategory.Designer.cs">
+      <DependentUpon>frmSubLedgerCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\fromsubsidiaryAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\fromsubsidiaryAccount.Designer.cs">
+      <DependentUpon>fromsubsidiaryAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="guard_archive_payroll_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>guard_archive_payroll_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="finance_detailed_guard_pay_roll_report_archive.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>finance_detailed_guard_pay_roll_report_archive.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler.finance_employee_nssf_report.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Guard_profiler.finance_employee_nssf_report.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Guard_profiler\App_code\InventoryManager.cs" />
+    <Compile Include="Guard_profiler\App_code\Nss_archive.cs" />
+    <Compile Include="Guard_profiler\finance_employee_nssf_report_archive.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>finance_employee_nssf_report_archive.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Guard_profiler\frmDialogTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,11 +199,59 @@
     <Compile Include="Guard_profiler\frmWaitScreen.Designer.cs">
       <DependentUpon>frmWaitScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Guard_profiler\frm_accounts_menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guard_profiler\frm_accounts_menu.Designer.cs">
+      <DependentUpon>frm_accounts_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nssf_payroll_temp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nssf_payroll_temp.Designer.cs">
+      <DependentUpon>nssf_payroll_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nssf_payroll_temp_paymentPeriodSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nssf_payroll_temp_paymentPeriodSelector.Designer.cs">
+      <DependentUpon>nssf_payroll_temp_paymentPeriodSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nssf_payroll_temp_report_selector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nssf_payroll_temp_report_selector.Designer.cs">
+      <DependentUpon>nssf_payroll_temp_report_selector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accounts\frmAccountCategory.resx">
+      <DependentUpon>frmAccountCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmBranches.resx">
+      <DependentUpon>frmBranches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmChartofAccounts.resx">
+      <DependentUpon>frmChartofAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmInvoice.resx">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmJournalEntry.resx">
+      <DependentUpon>frmJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmSubLedgerCategory.resx">
+      <DependentUpon>frmSubLedgerCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\fromsubsidiaryAccount.resx">
+      <DependentUpon>fromsubsidiaryAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cr_client_billing.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cr_client_billing.cs</LastGenOutput>
@@ -167,6 +296,22 @@
     <EmbeddedResource Include="frmFingerPrintCapture.resx">
       <DependentUpon>frmFingerPrintCapture.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="guard_archive_payroll_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>guard_archive_payroll_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="finance_detailed_guard_pay_roll_report_archive.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>finance_detailed_guard_pay_roll_report_archive.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler.finance_employee_nssf_report.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Guard_profiler.finance_employee_nssf_report.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\finance_employee_nssf_report_archive.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>finance_employee_nssf_report_archive.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frmDialogTest.resx">
       <DependentUpon>frmDialogTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +345,9 @@
     <EmbeddedResource Include="Guard_profiler\frmWaitScreen.resx">
       <DependentUpon>frmWaitScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Guard_profiler\frm_accounts_menu.resx">
+      <DependentUpon>frm_accounts_menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frm_guard_payroll_summary.resx">
       <DependentUpon>frm_guard_payroll_summary.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +374,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Guard_profiler\frm_staff_payroll_summary_view.resx">
       <DependentUpon>frm_staff_payroll_summary_view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nssf_payroll_temp.resx">
+      <DependentUpon>nssf_payroll_temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nssf_payroll_temp_paymentPeriodSelector.resx">
+      <DependentUpon>nssf_payroll_temp_paymentPeriodSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nssf_payroll_temp_report_selector.resx">
+      <DependentUpon>nssf_payroll_temp_report_selector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -1164,7 +1321,6 @@
     <EmbeddedResource Include="Guard_profiler.cr_kampala_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.finance_bank_salary_payment_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.finance_detailed_guard_pay_roll_report.rpt" />
-    <EmbeddedResource Include="Guard_profiler.finance_employee_nssf_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.finance_employee_paye_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.finance_local_service_tax_report.rpt" />
     <EmbeddedResource Include="Guard_profiler.guard_employment_record_report.rpt" />
