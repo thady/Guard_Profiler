@@ -118,7 +118,7 @@ namespace Accounts
             ChartofAccounts.acc_type_id = cboAccountType.SelectedValue.ToString();
             ChartofAccounts.acc_number = txtAccountNumber.Text;
             ChartofAccounts.bank = cboBank.SelectedValue.ToString();
-            ChartofAccounts.acc_name = txtAccountTitle.Text;
+            ChartofAccounts.acc_name = txtAccountTitle.Text + "-" + cboBranch.Text;
             ChartofAccounts.opening_bal = decimal.Parse(txtOpeningBal.Text);
             ChartofAccounts.debit_credit = cboCreditDebit.Text;
             ChartofAccounts.branch_id = cboBranch.SelectedValue.ToString();

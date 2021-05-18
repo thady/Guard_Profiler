@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using AccountsBackEnd;
+
 namespace Accounts
 {
     public partial class frmDashboard : Form
@@ -56,12 +58,25 @@ namespace Accounts
         {
             frmsubsidiaryAccount frmNew = new frmsubsidiaryAccount();
             frmNew.ShowDialog();
+
         }
 
         private void btnvoice_Click(object sender, EventArgs e)
         {
             frmInvoice inv = new frmInvoice();
             inv.ShowDialog();
+        }
+
+        private void btnReceipts_Click(object sender, EventArgs e)
+        {
+            frmReceipts frmReceipt = new frmReceipts();
+            frmReceipt.ShowDialog();
+        }
+
+        private void btnLeagacyApp_Click(object sender, EventArgs e)
+        {
+            frmLeagacyReports frmLegacy = new frmLeagacyReports();
+            frmLegacy.ShowDialog();
         }
     }
 }

@@ -18,7 +18,33 @@ namespace Accounts
         public frmsubsidiaryAccount()
         {
             InitializeComponent();
+            setFont();
         }
+
+        #region setFont
+        private List<Control> GetAllControls(Control container, List<Control> list)
+        {
+            foreach (Control c in container.Controls)
+            {
+                if (c.Controls.Count > 0)
+                    list = GetAllControls(c, list);
+                else
+                    list.Add(c);
+            }
+
+            return list;
+        }
+        private List<Control> GetAllControls(Control container)
+        {
+            return GetAllControls(container, new List<Control>());
+        }
+
+        protected void setFont()
+        {
+            List<Control> allControls = GetAllControls(this);
+            allControls.ForEach(k => k.Font = new System.Drawing.Font("Microsoft Sans Serif", 14));
+        }
+        #endregion
 
         private void fromsubsidiaryAccount_Load(object sender, EventArgs e)
         {
@@ -26,6 +52,7 @@ namespace Accounts
             base.WindowState = FormWindowState.Maximized;
         }
 
+      
         protected void LoadNorminalAccountList()
         {
             dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing");
@@ -193,7 +220,7 @@ namespace Accounts
 
         protected void LoadGridviewListing()
         {
-            dt = SubcidiaryAccount.LoadList("select_record_listing",string.Empty,string.Empty,string.Empty);
+            dt = SubcidiaryAccount.LoadList("select_record_listing",string.Empty,string.Empty,string.Empty,string.Empty);
             if(dt != null)
             {
                 gdvList.DataSource = dt;
@@ -230,7 +257,7 @@ namespace Accounts
 
         protected void SearchGridviewListing()
         {
-            dt = SubcidiaryAccount.LoadList("select_record_listing",txtCodeSearch.Text.Trim(),cboSubLedgerSearch.SelectedValue.ToString(),cboControlAccSearch.SelectedValue.ToString());
+            dt = SubcidiaryAccount.LoadList("select_record_listing",txtCodeSearch.Text.Trim(),cboSubLedgerSearch.SelectedValue.ToString(),cboControlAccSearch.SelectedValue.ToString(),txtAccountTitle.Text.Trim());
             if (dt != null)
             {
                 gdvList.DataSource = dt;
@@ -341,6 +368,11 @@ namespace Accounts
         }
 
         private void btnsearch_Click(object sender, EventArgs e)
+        {
+            SearchGridviewListing();
+        }
+
+        private void txtAccountTitle_TextChanged(object sender, EventArgs e)
         {
             SearchGridviewListing();
         }

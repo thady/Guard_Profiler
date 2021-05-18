@@ -40,6 +40,7 @@ namespace AccountsBackEnd
         public static string branch_id = string.Empty;
         public static bool is_on_hold = false;
         public static bool is_posted = false;
+        public static bool is_deleted = false; 
         public static string usr_id_create = string.Empty;
         public static string usr_id_update = string.Empty;
         public static DateTime usr_date_create = DateTime.Now;
@@ -156,6 +157,10 @@ namespace AccountsBackEnd
                             cmd.Parameters["@is_posted"].Value = is_posted;
 
                             cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@isdeleted", SqlDbType.Bit);
+                            cmd.Parameters["@isdeleted"].Value = is_deleted;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@usr_id_create", SqlDbType.VarChar, 50);
                             cmd.Parameters["@usr_id_create"].Value = usr_id_create;
 
@@ -170,6 +175,54 @@ namespace AccountsBackEnd
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@usr_date_update", SqlDbType.Date);
                             cmd.Parameters["@usr_date_update"].Value = usr_date_update;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public static void ApplySoftDelete(string myQuery,string journal_entry_id)
+        {
+
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@journal_entry_id", SqlDbType.VarChar, 50);
+                            cmd.Parameters["@journal_entry_id"].Value = journal_entry_id;
 
                             if (conn.State == ConnectionState.Closed)
                             {

@@ -13,12 +13,11 @@ using Guard_profiler.App_code;
 
 namespace Accounts
 {
-    public partial class frmInvoice : Form
+    public partial class frmReceipts : Form
     {
         DataTable dt = new DataTable();
-        public frmInvoice()
+        public frmReceipts()
         {
-           
             InitializeComponent();
             setFont();
         }
@@ -48,10 +47,8 @@ namespace Accounts
         }
         #endregion
 
-        private void frmInvoice_Load(object sender, EventArgs e)
+        private void frmReceipts_Load(object sender, EventArgs e)
         {
-            
-
             LoadListings();
 
             base.WindowState = FormWindowState.Maximized;
@@ -62,7 +59,7 @@ namespace Accounts
             LoadSubLedgerCategoryListing();
             LoadDebitCreditListing();
             LoadChartofAccountsListings();
-            LoadInvoiceListingSearch("select_invoice_listing");
+            LoadListingSearch("select_receipt_listing");
         }
 
         protected void LoadSubLedgerCategoryListing()
@@ -148,8 +145,9 @@ namespace Accounts
         {
             #region Variables
             InvoiceManager.date = dtPickerDate.Value.Date;
-            InvoiceManager.cat_id = Globals.Einvoice;
+            InvoiceManager.cat_id = Globals.Ereceipt;
             InvoiceManager.reference_number = txt_refference_number.Text;
+            InvoiceManager.cheque_number = txt_cheque_number.Text;
             InvoiceManager.entry_desc = txt_description.Text;
             InvoiceManager.transaction_amt = decimal.Parse(txtAmount.Text);
             InvoiceManager.dr_account = cboDebitAccount.SelectedValue.ToString();
@@ -158,8 +156,6 @@ namespace Accounts
             InvoiceManager.sub_ledger_item_id = cboPayee.SelectedValue.ToString();
             InvoiceManager.sub_ledger_dr_cr = cboDrCr.SelectedValue.ToString();
             InvoiceManager.transaction_month = dtPickerDate.Value.Month.ToString();
-            InvoiceManager.guard_count = txtGuardCount.Text != string.Empty ? Convert.ToInt32(txtGuardCount.Text) : 0;
-            InvoiceManager.guard_days_worked = txtDaysCount.Text != string.Empty ? Convert.ToInt32(txtDaysCount.Text) : 0;
             InvoiceManager.client_rate = txtrate.Text != string.Empty ? decimal.Parse(txtrate.Text) : 0;
             InvoiceManager.record_audited = chkAudited.Checked == true ? true : false;
             InvoiceManager.audit_comment = string.Empty;
@@ -181,7 +177,7 @@ namespace Accounts
                 MessageBox.Show("Succefully saved new invoice details", "save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtPickersearchfrom.Checked = false;
                 dtPickersearchTo.Checked = false;
-                LoadInvoiceListingSearch("select_invoice_listing");
+                LoadListingSearch("select_receipt_listing");
 
 
             }
@@ -190,17 +186,11 @@ namespace Accounts
                 InvoiceManager.journal_entry_id = lblID.Text;
                 InvoiceManager.save("update_journal_details");
                 MessageBox.Show("Succefully updated invoice details", "update", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadInvoiceListingSearch("select_invoice_listing");
+                LoadListingSearch("select_receipt_listing");
             }
             #endregion
         }
 
-        protected void ComputeAmount()
-        {
-            txtAmount.Text = ((txtGuardCount.Text.Trim() != string.Empty ? decimal.Parse(txtGuardCount.Text) : 0) *
-                (txtDaysCount.Text.Trim() != string.Empty ? decimal.Parse(txtDaysCount.Text) : 0) *
-                (txtrate.Text.Trim() != string.Empty ? decimal.Parse(txtrate.Text) : 0)).ToString();
-        }
         #endregion
 
         #region ValidateInput
@@ -209,8 +199,7 @@ namespace Accounts
             string message = string.Empty;
 
             if (!dtPickerDate.Checked || cboPayee.SelectedValue.ToString() == Globals.EmptySelection || txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() == string.Empty ||
-                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection || txtGuardCount.Text.Trim() == string.Empty || 
-                txtDaysCount.Text.Trim() == string.Empty || txtrate.Text.Trim() == string.Empty)
+                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection)
             {
                 message = "Please fill in all required fields labelled in red,save failed";
             }
@@ -244,49 +233,7 @@ namespace Accounts
             }
         }
 
-        private void txtGuardCount_TextChanged(object sender, EventArgs e)
-        {
-            ComputeAmount();
-        }
-
-        private void txtDaysCount_TextChanged(object sender, EventArgs e)
-        {
-            ComputeAmount();
-        }
-
-        private void txtGuardCount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtDaysCount_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-       (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
-        protected void LoadInvoiceListing(string query)
+        protected void LoadListing(string query)
         {
 
             dt = InvoiceManager.LoadListing(query);
@@ -319,7 +266,7 @@ namespace Accounts
         }
 
 
-        protected void LoadInvoiceListingSearch(string query)
+        protected void LoadListingSearch(string query)
         {
             DateTime? date_from = null;
             DateTime? date_to = null;
@@ -388,7 +335,7 @@ namespace Accounts
 
 
         }
-        protected void LoadInvoiceDetails(string journal_entry_id)
+        protected void LoadDetails(string journal_entry_id)
         {
             dt = JournalEntry.LoadRecordDetails("select_journal_entry_details", journal_entry_id);
             if (dt.Rows.Count > 0)
@@ -398,11 +345,10 @@ namespace Accounts
                 dtPickerDate.Value = Convert.ToDateTime(dtRow["date"]);
                 dtPickerDate.Checked = true;
                 txt_refference_number.Text = dtRow["reference_number"].ToString();
+                txt_cheque_number.Text = dtRow["cheque_number"].ToString();
                 cboSubAccount.SelectedValue = dtRow["sub_ledger_id"].ToString();
                 cboDrCr.SelectedValue = dtRow["sub_ledger_dr_cr"].ToString();
                 cboPayee.SelectedValue = dtRow["sub_ledger_item_id"].ToString();
-                txtGuardCount.Text = Convert.ToInt32(dtRow["guard_count"].ToString()).ToString();
-                txtDaysCount.Text = Convert.ToInt32(dtRow["guard_days_worked"].ToString()).ToString();
                 txt_description.Text = dtRow["entry_desc"].ToString();
                 txtAmount.Text = decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
                 cboDebitAccount.SelectedValue = dtRow["dr_account"].ToString();
@@ -420,10 +366,9 @@ namespace Accounts
             dtPickerDate.Value = DateTime.Today;
             dtPickerDate.Checked = false;
             txt_refference_number.Clear();
+            txt_cheque_number.Clear();
             cboSubAccount.SelectedValue = Globals.EmptySelection;
             cboDrCr.SelectedValue = Globals.EmptySelection;
-            txtGuardCount.Clear();
-            txtDaysCount.Clear();
             cboPayee.SelectedValue = Globals.EmptySelection;
             txt_description.Clear();
             txtAmount.Clear();
@@ -447,25 +392,47 @@ namespace Accounts
 
         private void gdvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (gdvList.Rows.Count > 0)
             {
-                LoadInvoiceDetails(gdvList.CurrentRow.Cells[0].Value.ToString());
+                LoadDetails(gdvList.CurrentRow.Cells[0].Value.ToString());
             }
         }
 
         private void btnsearch_Click(object sender, EventArgs e)
         {
-            LoadInvoiceListingSearch("select_invoice_listing");
-        }
-
-        private void txtrefsearch_TextChanged(object sender, EventArgs e)
-        {
-            LoadInvoiceListingSearch("select_invoice_listing");
+            LoadListingSearch("select_receipt_listing");
         }
 
         private void txtchequesearch_TextChanged(object sender, EventArgs e)
         {
-            LoadInvoiceListingSearch("select_invoice_listing");
+            LoadListingSearch("select_receipt_listing");
+        }
+
+        private void txtrefsearch_TextChanged(object sender, EventArgs e)
+        {
+            LoadListingSearch("select_receipt_listing");
+        }
+
+        private void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -481,7 +448,7 @@ namespace Accounts
                 if (dialogResult == DialogResult.Yes)
                 {
                     JournalEntry.ApplySoftDelete("update_apply_soft_delete", lblID.Text);
-                    LoadInvoiceListingSearch("select_invoice_listing");
+                    LoadListingSearch("select_receipt_listing");
                     MessageBox.Show("Record successfully deleted", "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (dialogResult == DialogResult.No)

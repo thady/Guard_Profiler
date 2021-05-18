@@ -19,7 +19,33 @@ namespace Accounts
         public frmJournalEntry()
         {
             InitializeComponent();
+            //setFont();
         }
+
+        #region setFont
+        private List<Control> GetAllControls(Control container, List<Control> list)
+        {
+            foreach (Control c in container.Controls)
+            {
+                if (c.Controls.Count > 0)
+                    list = GetAllControls(c, list);
+                else
+                    list.Add(c);
+            }
+
+            return list;
+        }
+        private List<Control> GetAllControls(Control container)
+        {
+            return GetAllControls(container, new List<Control>());
+        }
+
+        protected void setFont()
+        {
+            List<Control> allControls = GetAllControls(this);
+            allControls.ForEach(k => k.Font = new System.Drawing.Font("Microsoft Sans Serif", 14));
+        }
+        #endregion
 
         private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -78,7 +104,6 @@ namespace Accounts
             JournalEntry.cat_id = Globals.EJiurnalEntry;
             JournalEntry.reference_number = txt_refference_number.Text;
             JournalEntry.cheque_number = txt_cheque_number.Text;
-            JournalEntry.batch_id = txt_batch.Text;
             JournalEntry.payee_desc = txtPayee.Text;
             JournalEntry.entry_desc = txt_description.Text;
             JournalEntry.transaction_amt = decimal.Parse(txtAmount.Text);
@@ -107,6 +132,7 @@ namespace Accounts
             {
                 JournalEntry.journal_entry_id = Guid.NewGuid().ToString();
                 lblID.Text = JournalEntry.journal_entry_id;
+                JournalEntry.is_deleted = false;
                 JournalEntry.save("save_journal_details");
                 MessageBox.Show("Succefully saved new journal entry details", "save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dtPickersearchfrom.Checked = false;
@@ -279,7 +305,6 @@ namespace Accounts
                 dtPickerDate.Value = Convert.ToDateTime(dtRow["date"]);
                 txt_refference_number.Text = dtRow["reference_number"].ToString();
                 txt_cheque_number.Text = dtRow["cheque_number"].ToString();
-                txt_batch.Text = dtRow["batch_id"].ToString();
                 txtPayee.Text = dtRow["payee_desc"].ToString();
                 txt_description.Text = dtRow["entry_desc"].ToString();
                txtAmount.Text =  decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
@@ -299,7 +324,6 @@ namespace Accounts
             dtPickerDate.Checked = false;
             txt_refference_number.Clear();
             txt_cheque_number.Clear();
-            txt_batch.Clear();
             txtPayee.Clear();
             txt_description.Clear();
             txtAmount.Clear();
@@ -343,6 +367,30 @@ namespace Accounts
         private void txtchequesearch_TextChanged(object sender, EventArgs e)
         {
             LoadJournalEntryListingSearch("select_journal_entry_listing");
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(lblID.Text == "--")
+            {
+                MessageBox.Show("Please select a record from the list to delete", "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete these record?This cannot be undone but it will still be tracked as deleted.", "Delete Record", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    JournalEntry.ApplySoftDelete("update_apply_soft_delete", lblID.Text);
+                    LoadJournalEntryListingSearch("select_journal_entry_listing");
+                    MessageBox.Show("Record successfully deleted", "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+
+               
+            }
         }
     }
 }

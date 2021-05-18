@@ -143,7 +143,7 @@ namespace AccountsBackEnd
             }
         }
 
-        public static DataTable LoadList(string myQuery,string sub_code,string sub_category_id, string nominal_acc_id)
+        public static DataTable LoadList(string myQuery,string sub_code,string sub_category_id, string nominal_acc_id,string sub_title)
         {
             DataTable dt = new DataTable();
             try
@@ -170,6 +170,10 @@ namespace AccountsBackEnd
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@nominal_acc_id", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@nominal_acc_id"].Value = nominal_acc_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@sub_title", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@sub_title"].Value = sub_title;
 
                             if (conn.State == ConnectionState.Closed)
                             {

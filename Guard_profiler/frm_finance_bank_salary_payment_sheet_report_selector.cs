@@ -336,7 +336,7 @@ namespace Guard_profiler
             // 
             // btnextract
             // 
-            this.btnextract.Location = new System.Drawing.Point(347, 298);
+            this.btnextract.Location = new System.Drawing.Point(867, 265);
             this.btnextract.Margin = new System.Windows.Forms.Padding(4);
             this.btnextract.Name = "btnextract";
             this.btnextract.Size = new System.Drawing.Size(131, 56);

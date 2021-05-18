@@ -51,8 +51,7 @@
             this.grpboxJournalEntryListing = new System.Windows.Forms.GroupBox();
             this.gdvList = new System.Windows.Forms.DataGridView();
             this.grpboxJournalEntry = new System.Windows.Forms.GroupBox();
-            this.txt_batch = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.chkAudited = new System.Windows.Forms.CheckBox();
             this.txtPayee = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cboCreditAccount = new System.Windows.Forms.ComboBox();
@@ -72,7 +71,7 @@
             this.dtPickerDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.chkAudited = new System.Windows.Forms.CheckBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlOuterContainer.SuspendLayout();
             this.grpboxJournalEntrySearch.SuspendLayout();
             this.xDatesearch.SuspendLayout();
@@ -100,7 +99,7 @@
             // btnNew
             // 
             this.btnNew.ForeColor = System.Drawing.Color.Red;
-            this.btnNew.Location = new System.Drawing.Point(49, 463);
+            this.btnNew.Location = new System.Drawing.Point(49, 424);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(140, 28);
             this.btnNew.TabIndex = 5;
@@ -111,7 +110,7 @@
             // btnEdit
             // 
             this.btnEdit.ForeColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Location = new System.Drawing.Point(195, 463);
+            this.btnEdit.Location = new System.Drawing.Point(195, 424);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(95, 28);
             this.btnEdit.TabIndex = 4;
@@ -122,7 +121,7 @@
             // btnsave
             // 
             this.btnsave.ForeColor = System.Drawing.Color.Blue;
-            this.btnsave.Location = new System.Drawing.Point(296, 463);
+            this.btnsave.Location = new System.Drawing.Point(296, 424);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(102, 28);
             this.btnsave.TabIndex = 3;
@@ -165,9 +164,9 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(375, 30);
+            this.label13.Location = new System.Drawing.Point(372, 20);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(84, 13);
+            this.label13.Size = new System.Drawing.Size(111, 17);
             this.label13.TabIndex = 29;
             this.label13.Text = "Cheque Number";
             // 
@@ -176,7 +175,7 @@
             this.txtchequesearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtchequesearch.Location = new System.Drawing.Point(375, 46);
             this.txtchequesearch.Name = "txtchequesearch";
-            this.txtchequesearch.Size = new System.Drawing.Size(102, 21);
+            this.txtchequesearch.Size = new System.Drawing.Size(102, 24);
             this.txtchequesearch.TabIndex = 28;
             this.txtchequesearch.TextChanged += new System.EventHandler(this.txtchequesearch_TextChanged);
             // 
@@ -185,9 +184,9 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(272, 30);
+            this.label12.Location = new System.Drawing.Point(272, 20);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 13);
+            this.label12.Size = new System.Drawing.Size(128, 17);
             this.label12.TabIndex = 27;
             this.label12.Text = "Reference Number";
             // 
@@ -196,7 +195,7 @@
             this.txtrefsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtrefsearch.Location = new System.Drawing.Point(272, 46);
             this.txtrefsearch.Name = "txtrefsearch";
-            this.txtrefsearch.Size = new System.Drawing.Size(97, 21);
+            this.txtrefsearch.Size = new System.Drawing.Size(97, 24);
             this.txtrefsearch.TabIndex = 24;
             this.txtrefsearch.TextChanged += new System.EventHandler(this.txtrefsearch_TextChanged);
             // 
@@ -219,9 +218,9 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(119, 16);
+            this.label11.Location = new System.Drawing.Point(116, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(20, 13);
+            this.label11.Size = new System.Drawing.Size(25, 17);
             this.label11.TabIndex = 26;
             this.label11.Text = "To";
             // 
@@ -230,9 +229,9 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Location = new System.Drawing.Point(6, 12);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.Size = new System.Drawing.Size(40, 17);
             this.label10.TabIndex = 24;
             this.label10.Text = "From";
             // 
@@ -244,7 +243,7 @@
             this.dtPickersearchTo.Location = new System.Drawing.Point(119, 29);
             this.dtPickersearchTo.Name = "dtPickersearchTo";
             this.dtPickersearchTo.ShowCheckBox = true;
-            this.dtPickersearchTo.Size = new System.Drawing.Size(107, 21);
+            this.dtPickersearchTo.Size = new System.Drawing.Size(107, 24);
             this.dtPickersearchTo.TabIndex = 25;
             // 
             // dtPickersearchfrom
@@ -255,7 +254,7 @@
             this.dtPickersearchfrom.Location = new System.Drawing.Point(6, 29);
             this.dtPickersearchfrom.Name = "dtPickersearchfrom";
             this.dtPickersearchfrom.ShowCheckBox = true;
-            this.dtPickersearchfrom.Size = new System.Drawing.Size(107, 21);
+            this.dtPickersearchfrom.Size = new System.Drawing.Size(107, 24);
             this.dtPickersearchfrom.TabIndex = 24;
             // 
             // grpboxQuickActions
@@ -276,7 +275,7 @@
             this.lblID.AutoSize = true;
             this.lblID.Location = new System.Drawing.Point(3, 111);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.Size = new System.Drawing.Size(18, 17);
             this.lblID.TabIndex = 0;
             this.lblID.Text = "--";
             // 
@@ -295,6 +294,7 @@
             // grpboxJournalEntryListing
             // 
             this.grpboxJournalEntryListing.BackColor = System.Drawing.SystemColors.Info;
+            this.grpboxJournalEntryListing.Controls.Add(this.btnDelete);
             this.grpboxJournalEntryListing.Controls.Add(this.gdvList);
             this.grpboxJournalEntryListing.ForeColor = System.Drawing.SystemColors.ControlText;
             this.grpboxJournalEntryListing.Location = new System.Drawing.Point(404, 81);
@@ -315,7 +315,8 @@
             this.gdvList.Location = new System.Drawing.Point(6, 19);
             this.gdvList.Name = "gdvList";
             this.gdvList.ReadOnly = true;
-            this.gdvList.Size = new System.Drawing.Size(570, 518);
+            this.gdvList.RowHeadersWidth = 62;
+            this.gdvList.Size = new System.Drawing.Size(570, 487);
             this.gdvList.TabIndex = 0;
             this.gdvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvList_CellDoubleClick);
             // 
@@ -323,8 +324,6 @@
             // 
             this.grpboxJournalEntry.BackColor = System.Drawing.Color.Azure;
             this.grpboxJournalEntry.Controls.Add(this.chkAudited);
-            this.grpboxJournalEntry.Controls.Add(this.txt_batch);
-            this.grpboxJournalEntry.Controls.Add(this.label9);
             this.grpboxJournalEntry.Controls.Add(this.txtPayee);
             this.grpboxJournalEntry.Controls.Add(this.label1);
             this.grpboxJournalEntry.Controls.Add(this.cboCreditAccount);
@@ -346,36 +345,30 @@
             this.grpboxJournalEntry.ForeColor = System.Drawing.Color.Blue;
             this.grpboxJournalEntry.Location = new System.Drawing.Point(10, 3);
             this.grpboxJournalEntry.Name = "grpboxJournalEntry";
-            this.grpboxJournalEntry.Size = new System.Drawing.Size(388, 454);
+            this.grpboxJournalEntry.Size = new System.Drawing.Size(388, 414);
             this.grpboxJournalEntry.TabIndex = 0;
             this.grpboxJournalEntry.TabStop = false;
             this.grpboxJournalEntry.Text = "Journal Entry Panel";
             // 
-            // txt_batch
+            // chkAudited
             // 
-            this.txt_batch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_batch.Location = new System.Drawing.Point(6, 161);
-            this.txt_batch.Name = "txt_batch";
-            this.txt_batch.Size = new System.Drawing.Size(251, 21);
-            this.txt_batch.TabIndex = 23;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(3, 146);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 16);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Batch";
+            this.chkAudited.AutoSize = true;
+            this.chkAudited.BackColor = System.Drawing.Color.Khaki;
+            this.chkAudited.Enabled = false;
+            this.chkAudited.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkAudited.Location = new System.Drawing.Point(304, 387);
+            this.chkAudited.Name = "chkAudited";
+            this.chkAudited.Size = new System.Drawing.Size(78, 21);
+            this.chkAudited.TabIndex = 36;
+            this.chkAudited.Text = "Audited";
+            this.chkAudited.UseVisualStyleBackColor = false;
             // 
             // txtPayee
             // 
             this.txtPayee.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPayee.Location = new System.Drawing.Point(6, 200);
+            this.txtPayee.Location = new System.Drawing.Point(6, 163);
             this.txtPayee.Name = "txtPayee";
-            this.txtPayee.Size = new System.Drawing.Size(251, 21);
+            this.txtPayee.Size = new System.Drawing.Size(251, 24);
             this.txtPayee.TabIndex = 21;
             // 
             // label1
@@ -383,9 +376,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(3, 181);
+            this.label1.Location = new System.Drawing.Point(3, 144);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 20;
             this.label1.Text = "Payee";
             // 
@@ -393,18 +386,18 @@
             // 
             this.cboCreditAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCreditAccount.FormattingEnabled = true;
-            this.cboCreditAccount.Location = new System.Drawing.Point(6, 400);
+            this.cboCreditAccount.Location = new System.Drawing.Point(6, 360);
             this.cboCreditAccount.Name = "cboCreditAccount";
-            this.cboCreditAccount.Size = new System.Drawing.Size(251, 23);
+            this.cboCreditAccount.Size = new System.Drawing.Size(251, 26);
             this.cboCreditAccount.TabIndex = 19;
             // 
             // cboDebitAccount
             // 
             this.cboDebitAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDebitAccount.FormattingEnabled = true;
-            this.cboDebitAccount.Location = new System.Drawing.Point(6, 357);
+            this.cboDebitAccount.Location = new System.Drawing.Point(6, 317);
             this.cboDebitAccount.Name = "cboDebitAccount";
-            this.cboDebitAccount.Size = new System.Drawing.Size(251, 23);
+            this.cboDebitAccount.Size = new System.Drawing.Size(251, 26);
             this.cboDebitAccount.TabIndex = 18;
             // 
             // chkOnHold
@@ -412,9 +405,9 @@
             this.chkOnHold.AutoSize = true;
             this.chkOnHold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.chkOnHold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkOnHold.Location = new System.Drawing.Point(128, 429);
+            this.chkOnHold.Location = new System.Drawing.Point(151, 389);
             this.chkOnHold.Name = "chkOnHold";
-            this.chkOnHold.Size = new System.Drawing.Size(120, 17);
+            this.chkOnHold.Size = new System.Drawing.Size(156, 21);
             this.chkOnHold.TabIndex = 17;
             this.chkOnHold.Text = "Transaction on hold";
             this.chkOnHold.UseVisualStyleBackColor = false;
@@ -424,9 +417,9 @@
             this.chkPosted.AutoSize = true;
             this.chkPosted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.chkPosted.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkPosted.Location = new System.Drawing.Point(6, 429);
+            this.chkPosted.Location = new System.Drawing.Point(6, 389);
             this.chkPosted.Name = "chkPosted";
-            this.chkPosted.Size = new System.Drawing.Size(116, 17);
+            this.chkPosted.Size = new System.Drawing.Size(150, 21);
             this.chkPosted.TabIndex = 16;
             this.chkPosted.Text = "Transacton Posted";
             this.chkPosted.UseVisualStyleBackColor = false;
@@ -434,9 +427,9 @@
             // txtAmount
             // 
             this.txtAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAmount.Location = new System.Drawing.Point(6, 316);
+            this.txtAmount.Location = new System.Drawing.Point(6, 279);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(251, 21);
+            this.txtAmount.Size = new System.Drawing.Size(251, 24);
             this.txtAmount.TabIndex = 15;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
@@ -445,9 +438,9 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(3, 302);
+            this.label8.Location = new System.Drawing.Point(3, 265);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 16);
+            this.label8.Size = new System.Drawing.Size(66, 20);
             this.label8.TabIndex = 14;
             this.label8.Text = "Amount";
             // 
@@ -456,9 +449,9 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(3, 383);
+            this.label7.Location = new System.Drawing.Point(3, 343);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 16);
+            this.label7.Size = new System.Drawing.Size(120, 20);
             this.label7.TabIndex = 12;
             this.label7.Text = "Credit Account";
             // 
@@ -467,15 +460,15 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(3, 340);
+            this.label6.Location = new System.Drawing.Point(3, 300);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 16);
+            this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "Debit Account";
             // 
             // txt_description
             // 
-            this.txt_description.Location = new System.Drawing.Point(6, 244);
+            this.txt_description.Location = new System.Drawing.Point(6, 207);
             this.txt_description.Name = "txt_description";
             this.txt_description.Size = new System.Drawing.Size(251, 54);
             this.txt_description.TabIndex = 9;
@@ -486,9 +479,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(3, 225);
+            this.label5.Location = new System.Drawing.Point(3, 188);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 16);
+            this.label5.Size = new System.Drawing.Size(90, 20);
             this.label5.TabIndex = 8;
             this.label5.Text = "Particulars";
             // 
@@ -497,7 +490,7 @@
             this.txt_cheque_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cheque_number.Location = new System.Drawing.Point(6, 122);
             this.txt_cheque_number.Name = "txt_cheque_number";
-            this.txt_cheque_number.Size = new System.Drawing.Size(251, 21);
+            this.txt_cheque_number.Size = new System.Drawing.Size(251, 24);
             this.txt_cheque_number.TabIndex = 7;
             // 
             // label4
@@ -507,7 +500,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(3, 103);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 16);
+            this.label4.Size = new System.Drawing.Size(130, 20);
             this.label4.TabIndex = 6;
             this.label4.Text = "Cheque Number";
             // 
@@ -516,7 +509,7 @@
             this.txt_refference_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_refference_number.Location = new System.Drawing.Point(6, 79);
             this.txt_refference_number.Name = "txt_refference_number";
-            this.txt_refference_number.Size = new System.Drawing.Size(251, 21);
+            this.txt_refference_number.Size = new System.Drawing.Size(251, 24);
             this.txt_refference_number.TabIndex = 5;
             // 
             // label3
@@ -526,7 +519,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(3, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 16);
+            this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Refference Number";
             // 
@@ -538,7 +531,7 @@
             this.dtPickerDate.Location = new System.Drawing.Point(6, 36);
             this.dtPickerDate.Name = "dtPickerDate";
             this.dtPickerDate.ShowCheckBox = true;
-            this.dtPickerDate.Size = new System.Drawing.Size(251, 21);
+            this.dtPickerDate.Size = new System.Drawing.Size(251, 24);
             this.dtPickerDate.TabIndex = 3;
             // 
             // label2
@@ -548,7 +541,7 @@
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(3, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 16);
+            this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Date";
             // 
@@ -562,23 +555,20 @@
             this.reSize1.InitialHostContainerWidth = 986D;
             this.reSize1.Tag = null;
             // 
-            // chkAudited
+            // btnDelete
             // 
-            this.chkAudited.AutoSize = true;
-            this.chkAudited.BackColor = System.Drawing.Color.Khaki;
-            this.chkAudited.Enabled = false;
-            this.chkAudited.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkAudited.Location = new System.Drawing.Point(254, 429);
-            this.chkAudited.Name = "chkAudited";
-            this.chkAudited.Size = new System.Drawing.Size(62, 17);
-            this.chkAudited.TabIndex = 36;
-            this.chkAudited.Text = "Audited";
-            this.chkAudited.UseVisualStyleBackColor = false;
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(417, 507);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(159, 28);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete Record";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmJournalEntry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(986, 629);
             this.Controls.Add(this.pnlOuterContainer);
@@ -634,8 +624,6 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_batch;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.GroupBox xDatesearch;
         private System.Windows.Forms.DateTimePicker dtPickersearchfrom;
@@ -648,5 +636,6 @@
         private System.Windows.Forms.TextBox txtchequesearch;
         private System.Windows.Forms.Button btnsearch;
         private System.Windows.Forms.CheckBox chkAudited;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
