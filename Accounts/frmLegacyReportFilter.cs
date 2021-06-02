@@ -42,7 +42,7 @@ namespace Accounts
                         Legacy_DebtorsList_export.ShowDialog();
                         break;
                     case "Legacy_income_and_expenditure_statement":
-                        LegacyReports.station_code = cboBranch.SelectedValue.ToString().Remove(cboBranch.SelectedValue.ToString().Length - 1, 1);
+                        LegacyReports.station_code = cboBranch.SelectedValue.ToString() != "-1"? cboBranch.SelectedValue.ToString().Remove(cboBranch.SelectedValue.ToString().Length - 1, 1):"-1";
                         LegacyReports.begin_date = dtPickerStart.Value;
                         LegacyReports.end_date = dtPickerEnd.Value;
                         StaffPayrollReports.reportType = "Legacy_income_and_expenditure_statement";

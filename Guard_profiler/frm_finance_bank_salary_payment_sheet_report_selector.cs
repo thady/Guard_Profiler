@@ -40,6 +40,7 @@ namespace Guard_profiler
 
 		private ComboBox cbo_bank_name;
         private Label lblreportType;
+        private Button btnGenerateReport;
         private ComboBox cbo_bank_branch;
 
 		static frm_finance_bank_salary_payment_sheet_report_selector()
@@ -258,6 +259,7 @@ namespace Guard_profiler
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chklist_branches = new System.Windows.Forms.CheckedListBox();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -265,6 +267,7 @@ namespace Guard_profiler
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Azure;
+            this.panel1.Controls.Add(this.btnGenerateReport);
             this.panel1.Controls.Add(this.lblreportType);
             this.panel1.Controls.Add(this.cbo_bank_branch);
             this.panel1.Controls.Add(this.label4);
@@ -279,7 +282,7 @@ namespace Guard_profiler
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 437);
+            this.panel1.Size = new System.Drawing.Size(758, 434);
             this.panel1.TabIndex = 0;
             // 
             // lblreportType
@@ -409,15 +412,27 @@ namespace Guard_profiler
             this.chklist_branches.Location = new System.Drawing.Point(4, 4);
             this.chklist_branches.Margin = new System.Windows.Forms.Padding(4);
             this.chklist_branches.Name = "chklist_branches";
-            this.chklist_branches.Size = new System.Drawing.Size(257, 378);
+            this.chklist_branches.Size = new System.Drawing.Size(257, 395);
             this.chklist_branches.TabIndex = 1;
+            // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.ForeColor = System.Drawing.Color.Blue;
+            this.btnGenerateReport.Location = new System.Drawing.Point(391, 296);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(217, 43);
+            this.btnGenerateReport.TabIndex = 12;
+            this.btnGenerateReport.Text = "Generate Report";
+            this.btnGenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // frm_finance_bank_salary_payment_sheet_report_selector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(766, 443);
+            this.ClientSize = new System.Drawing.Size(766, 440);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -462,5 +477,35 @@ namespace Guard_profiler
 				SystemConst._deployment_end_date = Convert.ToDateTime(dtRow["deploy_end_date"]);
 			}
 		}
-	}
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+
+            if (SystemConst.finance_report_type == "bank_payment")
+            {
+
+                if (!(this.cbo_bank_branch.Text == string.Empty) && !(this.cbo_bank_name.Text == string.Empty) && !(this.cbo_deploy_period.Text == string.Empty))
+                {
+                    this.generate_report();
+                    return;
+                }
+                MessageBox.Show("All values are required", "Generate report", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+            else if (SystemConst.finance_report_type == "paye_payment")
+            {
+                this.generate_report();
+                return;
+            }
+            else if (SystemConst.finance_report_type == "NSSF_Report")
+            {
+                this.generate_report();
+                return;
+            }
+            else if (SystemConst.finance_report_type == "Local Service Tax Report")
+            {
+                this.generate_report();
+                return;
+            }
+        }
+    }
 }

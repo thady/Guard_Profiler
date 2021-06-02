@@ -34,6 +34,7 @@
             this.cboDebitAccount = new System.Windows.Forms.ComboBox();
             this.chkOnHold = new System.Windows.Forms.CheckBox();
             this.grpboxJournalEntryListing = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.gdvList = new System.Windows.Forms.DataGridView();
             this.chkPosted = new System.Windows.Forms.CheckBox();
             this.txtAmount = new System.Windows.Forms.TextBox();
@@ -80,7 +81,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pnlOuterContainer = new System.Windows.Forms.Panel();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboFy = new System.Windows.Forms.ComboBox();
+            this.grpboxPostTransactions = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.dtPickerPost = new System.Windows.Forms.DateTimePicker();
             this.grpboxJournalEntryListing.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).BeginInit();
             this.grpboxQuickActions.SuspendLayout();
@@ -88,6 +94,7 @@
             this.xDatesearch.SuspendLayout();
             this.grpboxEntry.SuspendLayout();
             this.pnlOuterContainer.SuspendLayout();
+            this.grpboxPostTransactions.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -128,6 +135,7 @@
             // grpboxJournalEntryListing
             // 
             this.grpboxJournalEntryListing.BackColor = System.Drawing.SystemColors.Info;
+            this.grpboxJournalEntryListing.Controls.Add(this.grpboxPostTransactions);
             this.grpboxJournalEntryListing.Controls.Add(this.btnDelete);
             this.grpboxJournalEntryListing.Controls.Add(this.gdvList);
             this.grpboxJournalEntryListing.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -139,6 +147,17 @@
             this.grpboxJournalEntryListing.TabIndex = 1;
             this.grpboxJournalEntryListing.TabStop = false;
             this.grpboxJournalEntryListing.Text = "Invoice Entry Listing";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(1146, 849);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(159, 44);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Delete Record";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gdvList
             // 
@@ -153,7 +172,7 @@
             this.gdvList.Name = "gdvList";
             this.gdvList.ReadOnly = true;
             this.gdvList.RowHeadersWidth = 62;
-            this.gdvList.Size = new System.Drawing.Size(1297, 838);
+            this.gdvList.Size = new System.Drawing.Size(1297, 762);
             this.gdvList.TabIndex = 0;
             this.gdvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvList_CellDoubleClick);
             // 
@@ -512,6 +531,8 @@
             // grpboxEntry
             // 
             this.grpboxEntry.BackColor = System.Drawing.Color.Azure;
+            this.grpboxEntry.Controls.Add(this.label9);
+            this.grpboxEntry.Controls.Add(this.cboFy);
             this.grpboxEntry.Controls.Add(this.chkAudited);
             this.grpboxEntry.Controls.Add(this.txtrate);
             this.grpboxEntry.Controls.Add(this.label18);
@@ -725,16 +746,75 @@
             this.reSize1.InitialHostContainerWidth = 1924D;
             this.reSize1.Tag = null;
             // 
-            // btnDelete
+            // label9
             // 
-            this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(706, 865);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(159, 28);
-            this.btnDelete.TabIndex = 7;
-            this.btnDelete.Text = "Delete Record";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(403, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(115, 20);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "Financial Year";
+            // 
+            // cboFy
+            // 
+            this.cboFy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboFy.FormattingEnabled = true;
+            this.cboFy.Location = new System.Drawing.Point(407, 53);
+            this.cboFy.Name = "cboFy";
+            this.cboFy.Size = new System.Drawing.Size(145, 26);
+            this.cboFy.TabIndex = 38;
+            // 
+            // grpboxPostTransactions
+            // 
+            this.grpboxPostTransactions.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.grpboxPostTransactions.Controls.Add(this.label19);
+            this.grpboxPostTransactions.Controls.Add(this.btnPost);
+            this.grpboxPostTransactions.Controls.Add(this.dtPickerPost);
+            this.grpboxPostTransactions.Location = new System.Drawing.Point(10, 793);
+            this.grpboxPostTransactions.Name = "grpboxPostTransactions";
+            this.grpboxPostTransactions.Size = new System.Drawing.Size(506, 100);
+            this.grpboxPostTransactions.TabIndex = 10;
+            this.grpboxPostTransactions.TabStop = false;
+            this.grpboxPostTransactions.Text = "Select a Date and click the button to post all transactions for the selected date" +
+    "";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Blue;
+            this.label19.Location = new System.Drawing.Point(174, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(133, 17);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Transaction Date";
+            // 
+            // btnPost
+            // 
+            this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPost.ForeColor = System.Drawing.Color.Blue;
+            this.btnPost.Location = new System.Drawing.Point(9, 56);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(233, 38);
+            this.btnPost.TabIndex = 7;
+            this.btnPost.Text = "Post Transactions";
+            this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
+            // 
+            // dtPickerPost
+            // 
+            this.dtPickerPost.Checked = false;
+            this.dtPickerPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPickerPost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPickerPost.Location = new System.Drawing.Point(248, 60);
+            this.dtPickerPost.Name = "dtPickerPost";
+            this.dtPickerPost.ShowCheckBox = true;
+            this.dtPickerPost.Size = new System.Drawing.Size(174, 24);
+            this.dtPickerPost.TabIndex = 8;
+            this.dtPickerPost.ValueChanged += new System.EventHandler(this.dtPickerPost_ValueChanged);
             // 
             // frmInvoice
             // 
@@ -760,6 +840,8 @@
             this.grpboxEntry.ResumeLayout(false);
             this.grpboxEntry.PerformLayout();
             this.pnlOuterContainer.ResumeLayout(false);
+            this.grpboxPostTransactions.ResumeLayout(false);
+            this.grpboxPostTransactions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -817,5 +899,11 @@
         private System.Windows.Forms.Button btnPrintInv;
         private LarcomAndYoung.Windows.Forms.ReSize reSize1;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cboFy;
+        private System.Windows.Forms.GroupBox grpboxPostTransactions;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.DateTimePicker dtPickerPost;
     }
 }

@@ -318,8 +318,8 @@ namespace Guard_profiler
             decimal penalty_amt = (this.txt_penalty_amt.Text != string.Empty ? decimal.Parse(this.txt_penalty_amt.Text) : new decimal(0, 0, 0, false, 1));
             decimal absentism_amt = (this.txt_absentism_amt.Text != string.Empty ? decimal.Parse(this.txt_absentism_amt.Text) : new decimal(0, 0, 0, false, 1));
             frm_setup_payroll._Total_cash_deductions = ((((uniform_amt + lst_amt)) + advance_amt) + penalty_amt) + absentism_amt;
-            decimal PAYE_amt = this.Calculate_PAYE(_Gross_amount);
-            decimal Nssf_amt = this.Calculate_NSSF(_Gross_amount);
+            decimal PAYE_amt = chk_pay_paye.Checked? this.Calculate_PAYE(_Gross_amount):0;
+            decimal Nssf_amt = chk_pay_nssf.Checked ? this.Calculate_NSSF(_Gross_amount) : 0;
             frm_setup_payroll._Total_cash_deductions = (frm_setup_payroll._Total_cash_deductions + PAYE_amt) + Nssf_amt;
             decimal _Net_Pay = _Gross_amount - frm_setup_payroll._Total_cash_deductions;
             this.txt_gross_amt.Text = _Gross_amount.ToString();
@@ -337,9 +337,9 @@ namespace Guard_profiler
                 flag = false;
             }
             chkPayAdvance.Checked = flag;
-            this.chk_pay_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
+            //this.chk_pay_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
             this.chk_print_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
-            this.chk_pay_paye.Checked = (PAYE_amt > new decimal(0) ? true : false);
+            //this.chk_pay_paye.Checked = (PAYE_amt > new decimal(0) ? true : false);
         }
 
         protected decimal Calculate_NSSF(decimal gross_amt)
@@ -1177,7 +1177,6 @@ namespace Guard_profiler
             // 
             this.chk_pay_nssf.AutoSize = true;
             this.chk_pay_nssf.BackColor = System.Drawing.Color.Gray;
-            this.chk_pay_nssf.Enabled = false;
             this.chk_pay_nssf.Location = new System.Drawing.Point(251, 4);
             this.chk_pay_nssf.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_nssf.Name = "chk_pay_nssf";
@@ -1185,12 +1184,12 @@ namespace Guard_profiler
             this.chk_pay_nssf.TabIndex = 2;
             this.chk_pay_nssf.Text = "Pay NSSF";
             this.chk_pay_nssf.UseVisualStyleBackColor = false;
+            this.chk_pay_nssf.CheckedChanged += new System.EventHandler(this.chk_pay_nssf_CheckedChanged);
             // 
             // chk_pay_paye
             // 
             this.chk_pay_paye.AutoSize = true;
             this.chk_pay_paye.BackColor = System.Drawing.Color.Gray;
-            this.chk_pay_paye.Enabled = false;
             this.chk_pay_paye.Location = new System.Drawing.Point(135, 4);
             this.chk_pay_paye.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_paye.Name = "chk_pay_paye";
@@ -1198,6 +1197,7 @@ namespace Guard_profiler
             this.chk_pay_paye.TabIndex = 1;
             this.chk_pay_paye.Text = "Pay PAYE";
             this.chk_pay_paye.UseVisualStyleBackColor = false;
+            this.chk_pay_paye.CheckedChanged += new System.EventHandler(this.chk_pay_paye_CheckedChanged);
             // 
             // chk_pay_salary
             // 
@@ -2156,6 +2156,7 @@ namespace Guard_profiler
             this.gdv_guards.Margin = new System.Windows.Forms.Padding(4);
             this.gdv_guards.Name = "gdv_guards";
             this.gdv_guards.ReadOnly = true;
+            this.gdv_guards.RowHeadersWidth = 51;
             this.gdv_guards.Size = new System.Drawing.Size(1319, 276);
             this.gdv_guards.TabIndex = 0;
             this.gdv_guards.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_guards_CellClick);
@@ -2717,6 +2718,16 @@ namespace Guard_profiler
             //}
             //else
             //    chk_print_nssf.Checked = false;
+        }
+
+        private void chk_pay_paye_CheckedChanged(object sender, EventArgs e)
+        {
+            Calculate_guard_salary_amounts();
+        }
+
+        private void chk_pay_nssf_CheckedChanged(object sender, EventArgs e)
+        {
+            Calculate_guard_salary_amounts();
         }
     }
 }

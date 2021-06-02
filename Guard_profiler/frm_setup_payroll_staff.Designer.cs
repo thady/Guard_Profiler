@@ -667,6 +667,7 @@
             this.gdv_staff.Margin = new System.Windows.Forms.Padding(4);
             this.gdv_staff.Name = "gdv_staff";
             this.gdv_staff.ReadOnly = true;
+            this.gdv_staff.RowHeadersWidth = 51;
             this.gdv_staff.Size = new System.Drawing.Size(1326, 257);
             this.gdv_staff.TabIndex = 0;
             this.gdv_staff.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_staff_CellClick);
@@ -741,7 +742,6 @@
             // 
             this.chk_pay_paye.AutoSize = true;
             this.chk_pay_paye.BackColor = System.Drawing.Color.Gray;
-            this.chk_pay_paye.Enabled = false;
             this.chk_pay_paye.Location = new System.Drawing.Point(135, 4);
             this.chk_pay_paye.Margin = new System.Windows.Forms.Padding(4);
             this.chk_pay_paye.Name = "chk_pay_paye";
@@ -749,6 +749,7 @@
             this.chk_pay_paye.TabIndex = 1;
             this.chk_pay_paye.Text = "Pay PAYE";
             this.chk_pay_paye.UseVisualStyleBackColor = false;
+            this.chk_pay_paye.CheckedChanged += new System.EventHandler(this.chk_pay_paye_CheckedChanged);
             // 
             // chk_pay_salary
             // 

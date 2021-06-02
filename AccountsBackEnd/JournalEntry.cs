@@ -40,7 +40,8 @@ namespace AccountsBackEnd
         public static string branch_id = string.Empty;
         public static bool is_on_hold = false;
         public static bool is_posted = false;
-        public static bool is_deleted = false; 
+        public static bool is_deleted = false;
+        public static string fy_id = string.Empty;
         public static string usr_id_create = string.Empty;
         public static string usr_id_update = string.Empty;
         public static DateTime usr_date_create = DateTime.Now;
@@ -161,6 +162,10 @@ namespace AccountsBackEnd
                             cmd.Parameters["@isdeleted"].Value = is_deleted;
 
                             cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@fy_id", SqlDbType.VarChar,10);
+                            cmd.Parameters["@fy_id"].Value = fy_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@usr_id_create", SqlDbType.VarChar, 50);
                             cmd.Parameters["@usr_id_create"].Value = usr_id_create;
 
@@ -251,10 +256,111 @@ namespace AccountsBackEnd
                 }
             }
         }
+
+
+        public static int ValidateJournalEntryDate(string myQuery, DateTime date,string fy_id)
+        {
+            int Rowcount = 0;
+
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@date", SqlDbType.Date);
+                            cmd.Parameters["@date"].Value = date;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@fy_id", SqlDbType.VarChar, 10);
+                            cmd.Parameters["@fy_id"].Value = fy_id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            Rowcount = Convert.ToInt32(cmd.ExecuteScalar());
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return Rowcount;
+        }
         #endregion
 
         #region LoadListing
         public static DataTable LoadListing(string myQuery)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+
+        public static DataTable LoadDebitCreditTotals(string myQuery)
         {
             DataTable dt = new DataTable();
             try
@@ -408,6 +514,54 @@ namespace AccountsBackEnd
                 }
             }
             return dt;
+        }
+
+        public static void PostJournalEntry(string myQuery, string id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@journal_entry_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@journal_entry_id"].Value = id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }

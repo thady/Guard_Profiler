@@ -40,6 +40,7 @@ namespace AccountsBackEnd
         public static string branch_id = string.Empty;
         public static bool is_on_hold = false;
         public static bool is_posted = false;
+        public static string fy_id = string.Empty;
         public static string usr_id_create = string.Empty;
         public static string usr_id_update = string.Empty;
         public static DateTime usr_date_create = DateTime.Now;
@@ -146,6 +147,10 @@ namespace AccountsBackEnd
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@branch_id", SqlDbType.VarChar, 50);
                             cmd.Parameters["@branch_id"].Value = branch_id;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@fy_id", SqlDbType.VarChar, 50);
+                            cmd.Parameters["@fy_id"].Value = fy_id;
 
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@is_on_hold", SqlDbType.Bit);

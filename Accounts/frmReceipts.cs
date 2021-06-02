@@ -59,6 +59,7 @@ namespace Accounts
             LoadSubLedgerCategoryListing();
             LoadDebitCreditListing();
             LoadChartofAccountsListings();
+            LoadFinancialYear();
             LoadListingSearch("select_receipt_listing");
         }
 
@@ -75,6 +76,20 @@ namespace Accounts
             cboSubAccount.DisplayMember = "sub_ledger_category_name";
             cboSubAccount.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboSubAccount.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
+
+        protected void LoadFinancialYear()
+        {
+            dt = Lookups.LoadLookup("select_financial_year_listing");
+            DataRow fydtRow = dt.NewRow();
+            fydtRow["fy_id"] = string.Empty;
+            fydtRow["fy_name"] = "select one";
+            dt.Rows.InsertAt(fydtRow, 0);
+
+            cboFy.DataSource = dt;
+            cboFy.ValueMember = "fy_id";
+            cboFy.DisplayMember = "fy_name";
         }
 
         protected void LoadDebitCreditListing()
@@ -158,6 +173,7 @@ namespace Accounts
             InvoiceManager.transaction_month = dtPickerDate.Value.Month.ToString();
             InvoiceManager.client_rate = txtrate.Text != string.Empty ? decimal.Parse(txtrate.Text) : 0;
             InvoiceManager.record_audited = chkAudited.Checked == true ? true : false;
+            InvoiceManager.fy_id = cboFy.SelectedValue.ToString();
             InvoiceManager.audit_comment = string.Empty;
             InvoiceManager.branch_id = InvoiceManager.LoadSubsidiaryAccountBranchID("select_subsidiary_account_branch_id", cboPayee.SelectedValue.ToString());
             InvoiceManager.is_on_hold = chkOnHold.Checked ? true : false;
@@ -199,7 +215,7 @@ namespace Accounts
             string message = string.Empty;
 
             if (!dtPickerDate.Checked || cboPayee.SelectedValue.ToString() == Globals.EmptySelection || txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() == string.Empty ||
-                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection)
+                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection || cboFy.SelectedValue.ToString() == Globals.EmptySelection)
             {
                 message = "Please fill in all required fields labelled in red,save failed";
             }
@@ -210,6 +226,10 @@ namespace Accounts
             else if (cboCreditAccount.SelectedValue.ToString() == cboDebitAccount.SelectedValue.ToString())
             {
                 message = "Credit & Debit Accounts cannot be the same";
+            }
+            else if (JournalEntry.ValidateJournalEntryDate("validate_journal_date_range", dtPickerDate.Value, cboFy.SelectedValue.ToString()) == 0)
+            {
+                message = "The selected receipt date does not fall in the range of the selected financial year";
             }
             else
             {
@@ -335,6 +355,39 @@ namespace Accounts
 
 
         }
+
+
+        protected void LoadListing_for_posting(string query)
+        {
+
+            dt = JournalEntry.LoadListingSearch(query, dtPickerPost.Value, dtPickerPost.Value, txtrefsearch.Text, txtchequesearch.Text);
+
+            gdvList.DataSource = dt;
+            gdvList.Columns["journal_entry_id"].Visible = false;
+            gdvList.Columns["date"].HeaderText = "Date";
+            gdvList.Columns["reference_number"].HeaderText = "Ref";
+            gdvList.Columns["cheque_number"].HeaderText = "Cheque";
+            gdvList.Columns["batch_id"].HeaderText = "Batch";
+            gdvList.Columns["transaction_amt"].HeaderText = "Amount";
+            gdvList.Columns["dr_account"].HeaderText = "Dr Acc";
+            gdvList.Columns["cr_account"].HeaderText = "Cr Acc";
+            gdvList.Columns["is_on_hold"].HeaderText = "On Hold";
+            gdvList.Columns["is_posted"].HeaderText = "Posted";
+
+            gdvList.RowsDefaultCellStyle.BackColor = Color.LightGray;
+            gdvList.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+            gdvList.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            gdvList.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            gdvList.RowHeadersDefaultCellStyle.BackColor = Color.Black;
+            gdvList.DefaultCellStyle.SelectionBackColor = Color.Cyan;
+            gdvList.DefaultCellStyle.SelectionForeColor = Color.Black;
+            foreach (DataGridViewColumn c in this.gdvList.Columns)
+            {
+                c.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12f, GraphicsUnit.Pixel);
+            }
+            this.gdvList.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue;
+            this.gdvList.EnableHeadersVisualStyles = false;
+        }
         protected void LoadDetails(string journal_entry_id)
         {
             dt = JournalEntry.LoadRecordDetails("select_journal_entry_details", journal_entry_id);
@@ -353,6 +406,7 @@ namespace Accounts
                 txtAmount.Text = decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
                 cboDebitAccount.SelectedValue = dtRow["dr_account"].ToString();
                 cboCreditAccount.SelectedValue = dtRow["cr_account"].ToString();
+                cboFy.SelectedValue = dtRow["fy_id"].ToString();
                 chkOnHold.Checked = Convert.ToBoolean(dtRow["is_on_hold"]);
                 chkPosted.Checked = Convert.ToBoolean(dtRow["is_posted"]);
                 chkAudited.Checked = Convert.ToBoolean(dtRow["record_audited"]);
@@ -374,6 +428,7 @@ namespace Accounts
             txtAmount.Clear();
             cboDebitAccount.SelectedValue = Globals.EmptySelection;
             cboCreditAccount.SelectedValue = Globals.EmptySelection;
+            cboFy.SelectedValue = Globals.EmptySelection;
             chkOnHold.Checked = false;
             chkPosted.Checked = false;
             lblID.Text = Globals.EmptyID;
@@ -458,6 +513,46 @@ namespace Accounts
 
 
             }
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+
+            if (!dtPickerPost.Checked)
+            {
+                MessageBox.Show("Please select a date before posting", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (gdvList.Rows.Count > 0)
+                {
+
+                    DialogResult dialogResult = MessageBox.Show("You are about to run a batch post for your receipt entries.Are you sure you want to post these transactions for Date:" + dtPickerPost.Value.ToShortDateString() + " ? Please make sure to have reviewed and confirmed that all transactions are correct.Transactions still in non-simultaneous mode will not be posted.", "Post Journal Entries", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        for (int x = 0; x < gdvList.Rows.Count; x++)
+                        {
+                            string id = gdvList.Rows[x].Cells[0].Value.ToString();
+                            JournalEntry.PostJournalEntry("post_journal_entry", id);
+                        }
+                        MessageBox.Show("All receipt entries for Date:" + dtPickerPost.Value.ToShortDateString() + " have been posted.", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadListing_for_posting("select_receipt_listing");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No receipt entries available to post for the selected date", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void dtPickerPost_ValueChanged(object sender, EventArgs e)
+        {
+            LoadListing_for_posting("select_receipt_listing");
         }
     }
 }

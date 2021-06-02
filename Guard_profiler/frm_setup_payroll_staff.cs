@@ -245,8 +245,8 @@ namespace Guard_profiler
             decimal loan_amt = (this.txt_loan_amt.Text != string.Empty ? decimal.Parse(this.txt_loan_amt.Text) : new decimal(0, 0, 0, false, 1));
 
             _Total_cash_deductions = ((((loan_amt + lst_amt)) + advance_amt)); 
-            decimal PAYE_amt = this.Calculate_PAYE(_Gross_amount);
-            decimal Nssf_amt = this.Calculate_NSSF(_Gross_amount);
+            decimal PAYE_amt = chk_pay_paye.Checked? this.Calculate_PAYE(_Gross_amount):0;
+            decimal Nssf_amt = chk_pay_nssf.Checked ? this.Calculate_NSSF(_Gross_amount) : 0;
             _Total_cash_deductions = (_Total_cash_deductions + PAYE_amt) + Nssf_amt;
             decimal _Net_Pay = _Gross_amount - _Total_cash_deductions;
             this.txt_gross_amt.Text = _Gross_amount.ToString();
@@ -287,6 +287,47 @@ namespace Guard_profiler
 
             _Total_cash_deductions = ((((loan_amt + lst_amt)) + advance_amt));
             decimal PAYE_amt = this.Calculate_PAYE(_Gross_amount);
+            decimal Nssf_amt = 0;
+            _Total_cash_deductions = (_Total_cash_deductions + PAYE_amt) + Nssf_amt;
+            decimal _Net_Pay = _Gross_amount - _Total_cash_deductions;
+            this.txt_gross_amt.Text = _Gross_amount.ToString();
+            this.txt_paye_amt.Text = PAYE_amt.ToString();
+            this.txt_nssf_amt.Text = Nssf_amt.ToString();
+            this.txt_total_deductions.Text = _Total_cash_deductions.ToString();
+            this.txt_net_pay.Text = _Net_Pay.ToString();
+            CheckBox chkPayAdvance = this.chk_pay_advance;
+            if (this.txt_advance_amt_paid.Text != string.Empty)
+            {
+                flag = (float.Parse(this.txt_advance_amt_paid.Text) > 0f ? true : false);
+            }
+            else
+            {
+                flag = false;
+            }
+            chkPayAdvance.Checked = flag;
+            this.chk_pay_nssf.Checked = (Nssf_amt > new decimal(0) ? true : false);
+            this.chk_pay_paye.Checked = (PAYE_amt > new decimal(0) ? true : false);
+        }
+
+        protected void Calculate_guard_salary_amounts_exclude_payee()
+        {
+            bool flag;
+            decimal basic_amt = (this.txt_basic_amt.Text != string.Empty ? decimal.Parse(this.txt_basic_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal transport_amt = (this.txt_transport_amt.Text != string.Empty ? decimal.Parse(this.txt_transport_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal bonus_amt = (this.txt_housing_amt.Text != string.Empty ? decimal.Parse(this.txt_housing_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal leave_amt = (this.txt_leave_amt.Text != string.Empty ? decimal.Parse(this.txt_leave_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal over_time_amt = (this.txt_over_time_amt.Text != string.Empty ? decimal.Parse(this.txt_over_time_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal special_amt = (this.txt_special_amt.Text != string.Empty ? decimal.Parse(this.txt_special_amt.Text) : new decimal(0, 0, 0, false, 1));
+
+            decimal _Gross_amount = ((((((basic_amt + transport_amt)) + bonus_amt) + leave_amt) + over_time_amt)) + special_amt;
+
+
+            decimal lst_amt = (this.txt_lst_amt.Text != string.Empty ? decimal.Parse(this.txt_lst_amt.Text) : new decimal(0, 0, 0, false, 1));
+            decimal advance_amt = (this.txt_advance_amt_paid.Text != string.Empty ? decimal.Parse(this.txt_advance_amt_paid.Text) : new decimal(0, 0, 0, false, 1));
+            decimal loan_amt = (this.txt_loan_amt.Text != string.Empty ? decimal.Parse(this.txt_loan_amt.Text) : new decimal(0, 0, 0, false, 1));
+
+            _Total_cash_deductions = ((((loan_amt + lst_amt)) + advance_amt));
+            decimal PAYE_amt = 0;
             decimal Nssf_amt = 0;
             _Total_cash_deductions = (_Total_cash_deductions + PAYE_amt) + Nssf_amt;
             decimal _Net_Pay = _Gross_amount - _Total_cash_deductions;
@@ -764,14 +805,7 @@ namespace Guard_profiler
 
         private void chk_pay_nssf_CheckedChanged(object sender, EventArgs e)
         {
-            if (chk_pay_nssf.Checked == true)
-            {
-                Calculate_guard_salary_amounts();
-            }
-            else
-            {
-                Calculate_guard_salary_amounts_exclude_nssf();
-            }
+            Calculate_guard_salary_amounts();
         }
 
         private void btnLoadAdvance_Click(object sender, EventArgs e)
@@ -913,6 +947,11 @@ namespace Guard_profiler
                 txt_advance_amt.Text = SystemConst.advance_amt;
                 lblloanid.Text = SystemConst.lblloanid;
             }
+        }
+
+        private void chk_pay_paye_CheckedChanged(object sender, EventArgs e)
+        {
+            Calculate_guard_salary_amounts();
         }
     }
 }

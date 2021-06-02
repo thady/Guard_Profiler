@@ -65,7 +65,10 @@ namespace Accounts
         private void frmJournalEntry_Load(object sender, EventArgs e)
         {
             LoadListings();
+            LoadSubLedgerCategoryListing();
+            LoadDebitCreditListing();
             LoadJournalEntryListingSearch("select_journal_entry_listing");
+            LoadDebitCreditTotals();
             base.WindowState = FormWindowState.Maximized;
         }
 
@@ -95,6 +98,60 @@ namespace Accounts
             cboCreditAccount.DisplayMember = "acc_name";
             cboCreditAccount.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboCreditAccount.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            dt = Lookups.LoadLookup("select_financial_year_listing");
+            DataRow fydtRow = dt.NewRow();
+            fydtRow["fy_id"] = string.Empty;
+            fydtRow["fy_name"] = "select one";
+            dt.Rows.InsertAt(fydtRow, 0);
+
+            cboFy.DataSource = dt;
+            cboFy.ValueMember = "fy_id";
+            cboFy.DisplayMember = "fy_name";
+        }
+
+
+        protected void LoadSubLedgerCategoryListing()
+        {
+            dt = AccountsBackEnd.Lookups.LoadLookup("select_subLedger_accounts_listing");
+            DataRow dtRow = dt.NewRow();
+            dtRow["sub_ledger_category_id"] = string.Empty;
+            dtRow["sub_ledger_category_name"] = "select one";
+            dt.Rows.InsertAt(dtRow, 0);
+
+            cboSubAccount.DataSource = dt;
+            cboSubAccount.ValueMember = "sub_ledger_category_id";
+            cboSubAccount.DisplayMember = "sub_ledger_category_name";
+            cboSubAccount.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboSubAccount.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+
+        protected void LoadDebitCreditListing()
+        {
+            dt = AccountsBackEnd.Lookups.LoadLookup("select_debit_credit_listing");
+            DataRow dtRow = dt.NewRow();
+            dtRow["ent_id"] = string.Empty;
+            dtRow["ent_name"] = "select one";
+            dt.Rows.InsertAt(dtRow, 0);
+
+            cboDrCr.DataSource = dt;
+            cboDrCr.ValueMember = "ent_id";
+            cboDrCr.DisplayMember = "ent_name";
+        }
+
+        protected void LoadSubsidiaryAccountListing(string sub_category_id)
+        {
+            dt = AccountsBackEnd.Lookups.LoadSubsidiaryAccountByCategory("select_subcidiary_account_by_category", sub_category_id);
+            DataRow dtRow = dt.NewRow();
+            dtRow["sub_id"] = string.Empty;
+            dtRow["sub_title"] = "select one";
+            dt.Rows.InsertAt(dtRow, 0);
+
+            cboPayee.DataSource = dt;
+            cboPayee.ValueMember = "sub_id";
+            cboPayee.DisplayMember = "sub_title";
+            cboPayee.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboPayee.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         protected void save()
@@ -109,10 +166,10 @@ namespace Accounts
             JournalEntry.transaction_amt = decimal.Parse(txtAmount.Text);
             JournalEntry.dr_account = cboDebitAccount.SelectedValue.ToString();
             JournalEntry.cr_account = cboCreditAccount.SelectedValue.ToString();
-            JournalEntry.sub_ledger_id = string.Empty;
-            JournalEntry.sub_ledger_item_id = string.Empty;
-            JournalEntry.sub_ledger_dr_cr = string.Empty;
-            JournalEntry.transaction_month = string.Empty;
+            JournalEntry.sub_ledger_id = cboSubAccount.SelectedValue.ToString() != Globals.EmptySelection ? cboSubAccount.SelectedValue.ToString() : string.Empty;
+            JournalEntry.sub_ledger_item_id = cboPayee.SelectedValue.ToString() != Globals.EmptySelection ? cboPayee.SelectedValue.ToString() : string.Empty;
+            JournalEntry.sub_ledger_dr_cr = cboDrCr.SelectedValue.ToString() != Globals.EmptySelection ? cboDrCr.SelectedValue.ToString() : string.Empty;
+            JournalEntry.transaction_month = dtPickerDate.Value.Month.ToString();
             JournalEntry.guard_count = 0;
             JournalEntry.guard_days_worked = 0;
             JournalEntry.client_rate = 0;
@@ -121,6 +178,7 @@ namespace Accounts
             JournalEntry.branch_id = string.Empty;
             JournalEntry.is_on_hold = chkOnHold.Checked ? true : false;
             JournalEntry.is_posted = chkPosted.Checked ? true : false;
+            JournalEntry.fy_id = cboFy.SelectedValue.ToString();
             JournalEntry.usr_id_create = SystemConst._user_id;
             JournalEntry.usr_id_update = SystemConst._user_id;
             JournalEntry.usr_date_create = DateTime.Now;
@@ -138,6 +196,7 @@ namespace Accounts
                 dtPickersearchfrom.Checked = false;
                 dtPickersearchTo.Checked = false;
                 LoadJournalEntryListingSearch("select_journal_entry_listing");
+                LoadDebitCreditTotals();
 
 
             }
@@ -147,6 +206,7 @@ namespace Accounts
                 JournalEntry.save("update_journal_details");
                 MessageBox.Show("Succefully updated journal entry details", "update", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadJournalEntryListingSearch("select_journal_entry_listing");
+                LoadDebitCreditTotals();
             }
             #endregion
         }
@@ -155,10 +215,14 @@ namespace Accounts
         {
             string message = string.Empty;
 
-            if (!dtPickerDate.Checked || txtPayee.Text.Trim() == string.Empty || txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() ==string.Empty ||
-                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            if (!dtPickerDate.Checked ||  txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() ==string.Empty ||
+                (!chksimultaneousoffOn.Checked && (cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection))  || cboFy.SelectedValue.ToString() == Globals.EmptySelection)
             {
                 message = "Please fill in all required fields labelled in red,save failed";
+            }
+            else if(chksimultaneousoffOn.Checked & cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            {
+                message = "Debit account is required for non simultaneous journal entry";
             }
             else if(dtPickerDate.Value > DateTime.Today)
             {
@@ -167,6 +231,28 @@ namespace Accounts
             else if (cboCreditAccount.SelectedValue.ToString() == cboDebitAccount.SelectedValue.ToString())
             {
                 message = "Credit & Debit Accounts cannot be the same";
+            }
+            else if(JournalEntry.ValidateJournalEntryDate("validate_journal_date_range",dtPickerDate.Value, cboFy.SelectedValue.ToString()) == 0)
+            {
+                message = "The selected journal date does not fall in the range of the selected financial year";
+            }
+            else if (cboSubAccount.SelectedValue.ToString() != Globals.EmptySelection)
+            {
+                if(cboPayee.SelectedValue.ToString() == Globals.EmptySelection)
+                {
+                    message = "Please select a payee";
+                }
+                else if(cboDrCr.SelectedValue.ToString() == Globals.EmptySelection)
+                {
+                    message = "Please select either debit or credit";
+                }
+            }
+            else if(cboSubAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            {
+                if(txtPayee.Text.Trim() == string.Empty)
+                {
+                    message = "Please enter payee name in the textbox";
+                }
             }
             else
             {
@@ -190,12 +276,12 @@ namespace Accounts
 
         private void btnsave_Click_1(object sender, EventArgs e)
         {
-            btnsave_Click(btnsave,null);
+            btnsave_Click(btnsave,null); 
         }
 
         protected void LoadJournalEntryListing(string query)
         {
-
+             
                 dt = JournalEntry.LoadListing(query);
 
                 gdvList.DataSource = dt;
@@ -223,6 +309,14 @@ namespace Accounts
                 }
                 this.gdvList.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue;
                 this.gdvList.EnableHeadersVisualStyles = false;
+        }
+
+        protected void LoadDebitCreditTotals()
+        {
+            dt = JournalEntry.LoadDebitCreditTotals("select_debit_credit_totals");
+            DataRow dtRow = dt.Rows[0];
+            txtTotalDebit.Text = float.Parse(dtRow["Debit"].ToString()).ToString();
+            txtTotalCredit.Text = float.Parse(dtRow["Credit"].ToString()).ToString();
         }
 
 
@@ -295,6 +389,39 @@ namespace Accounts
 
 
         }
+
+
+        protected void LoadJournalEntryListing_for_posting(string query)
+        {
+            
+                dt = JournalEntry.LoadListingSearch(query, dtPickerPost.Value, dtPickerPost.Value, txtrefsearch.Text, txtchequesearch.Text);
+
+                gdvList.DataSource = dt;
+                gdvList.Columns["journal_entry_id"].Visible = false;
+                gdvList.Columns["date"].HeaderText = "Date";
+                gdvList.Columns["reference_number"].HeaderText = "Ref";
+                gdvList.Columns["cheque_number"].HeaderText = "Cheque";
+                gdvList.Columns["batch_id"].HeaderText = "Batch";
+                gdvList.Columns["transaction_amt"].HeaderText = "Amount";
+                gdvList.Columns["dr_account"].HeaderText = "Dr Acc";
+                gdvList.Columns["cr_account"].HeaderText = "Cr Acc";
+                gdvList.Columns["is_on_hold"].HeaderText = "On Hold";
+                gdvList.Columns["is_posted"].HeaderText = "Posted";
+
+                gdvList.RowsDefaultCellStyle.BackColor = Color.LightGray;
+                gdvList.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+                gdvList.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                gdvList.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                gdvList.RowHeadersDefaultCellStyle.BackColor = Color.Black;
+                gdvList.DefaultCellStyle.SelectionBackColor = Color.Cyan;
+                gdvList.DefaultCellStyle.SelectionForeColor = Color.Black;
+                foreach (DataGridViewColumn c in this.gdvList.Columns)
+                {
+                    c.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12f, GraphicsUnit.Pixel);
+                }
+                this.gdvList.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue;
+                this.gdvList.EnableHeadersVisualStyles = false;
+        }
         protected void LoadJournalEntryDetails(string journal_entry_id)
         {
             dt = JournalEntry.LoadRecordDetails("select_journal_entry_details", journal_entry_id);
@@ -307,14 +434,23 @@ namespace Accounts
                 txt_cheque_number.Text = dtRow["cheque_number"].ToString();
                 txtPayee.Text = dtRow["payee_desc"].ToString();
                 txt_description.Text = dtRow["entry_desc"].ToString();
-               txtAmount.Text =  decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
+                txtAmount.Text = decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
                 cboDebitAccount.SelectedValue = dtRow["dr_account"].ToString();
                 cboCreditAccount.SelectedValue = dtRow["cr_account"].ToString();
                 chkOnHold.Checked = Convert.ToBoolean(dtRow["is_on_hold"]);
                 chkPosted.Checked = Convert.ToBoolean(dtRow["is_posted"]);
                 chkAudited.Checked = Convert.ToBoolean(dtRow["record_audited"]);
+
+                cboSubAccount.SelectedValue = dtRow["sub_ledger_id"].ToString();
+                cboPayee.SelectedValue = dtRow["sub_ledger_item_id"].ToString();
+                cboDrCr.SelectedValue = dtRow["sub_ledger_dr_cr"].ToString();
+                cboFy.SelectedValue = dtRow["fy_id"].ToString();
+
                 lblID.Text = journal_entry_id;
                 grpboxJournalEntry.Enabled = false;
+
+                chksimultaneousoffOn.Enabled = false;
+                chksimultaneousoffOn.Checked = false;
             }
         }
 
@@ -329,9 +465,15 @@ namespace Accounts
             txtAmount.Clear();
             cboDebitAccount.SelectedValue = Globals.EmptySelection;
             cboCreditAccount.SelectedValue = Globals.EmptySelection;
+            cboDrCr.SelectedValue = Globals.EmptySelection;
+            cboSubAccount.SelectedValue = Globals.EmptySelection;
+            cboPayee.SelectedValue = Globals.EmptySelection;
+            cboDrCr.SelectedValue = Globals.EmptySelection;
+            cboFy.SelectedValue = Globals.EmptySelection;
             chkOnHold.Checked = false;
             chkPosted.Checked = false;
-
+            chksimultaneousoffOn.Enabled = true;
+            chksimultaneousoffOn.Checked = false;
             lblID.Text = Globals.EmptyID;
             grpboxJournalEntry.Enabled = true;
         }
@@ -391,6 +533,84 @@ namespace Accounts
 
                
             }
+        }
+
+        private void cboSubAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubsidiaryAccountListing(cboSubAccount.SelectedValue.ToString());
+
+            if(cboSubAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            {
+                cboPayee.SelectedValue = Globals.EmptySelection;
+                cboPayee.Enabled = false;
+                cboDrCr.SelectedValue = Globals.EmptySelection;
+                cboDrCr.Enabled = false;
+
+                txtPayee.Enabled = true;
+            }
+            else
+            {
+                cboPayee.SelectedValue = Globals.EmptySelection;
+                cboPayee.Enabled = true;
+                cboDrCr.SelectedValue = Globals.EmptySelection;
+                cboDrCr.Enabled = true;
+
+                txtPayee.Enabled = false;
+                txtPayee.Clear();
+            }
+        }
+
+        private void chksimultaneousoffOn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chksimultaneousoffOn.Checked)
+            {
+                cboCreditAccount.Enabled = false;
+                cboCreditAccount.SelectedIndex = 0;
+            }
+            else
+            {
+                cboCreditAccount.Enabled = true;
+            }
+        }
+
+        private void dtPickerPost_ValueChanged(object sender, EventArgs e)
+        {
+            LoadJournalEntryListing_for_posting("select_journal_entry_listing");
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            if (!dtPickerPost.Checked)
+            {
+                MessageBox.Show("Please select a date before posting", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (gdvList.Rows.Count > 0)
+                {
+
+                    DialogResult dialogResult = MessageBox.Show("You are about to run a batch post for your journal entries.Are you sure you want to post these transactions for Date:" + dtPickerPost.Value.ToShortDateString() + " ? Please make sure to have reviewed and confirmed that all transactions are correct.Transactions still in non-simultaneous mode will not be posted.", "Post Journal Entries", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        for (int x = 0; x < gdvList.Rows.Count; x++)
+                        {
+                            string id = gdvList.Rows[x].Cells[0].Value.ToString();
+                            JournalEntry.PostJournalEntry("post_journal_entry", id);
+                        }
+                        MessageBox.Show("All journal entries for Date:" + dtPickerPost.Value.ToShortDateString() + " have been posted.", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadJournalEntryListing_for_posting("select_journal_entry_listing");
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No journal entries available to post for the selected date", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+           
         }
     }
 }

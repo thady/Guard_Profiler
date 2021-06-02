@@ -62,8 +62,8 @@ namespace Accounts
             gdvList.Columns["chq"].HeaderText = "Cheque Number";
             gdvList.Columns["payee"].HeaderText = "Payee";
             gdvList.Columns["dcode"].HeaderText = "Debit Account code";
+            gdvList.Columns["dtitle"].HeaderText = "Debit Account Title";
             gdvList.Columns["ccode"].HeaderText = "Credit Account code";
-            gdvList.Columns["dtitle"].HeaderText = "Credit Account Title";
             gdvList.Columns["ctitle"].HeaderText = "Credit Account Title";
             gdvList.Columns["sub"].HeaderText = "Sub-Ledger";
             gdvList.Columns["amt"].HeaderText = "Amount";
