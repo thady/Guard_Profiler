@@ -90,6 +90,8 @@
             this.dtPickerDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
+            this.chkLockFields = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlOuterContainer.SuspendLayout();
             this.pnlsave.SuspendLayout();
             this.grpboxJournalEntrySearch.SuspendLayout();
@@ -99,13 +101,14 @@
             this.grpboxPostTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).BeginInit();
             this.grpboxJournalEntry.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlOuterContainer
             // 
             this.pnlOuterContainer.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.pnlOuterContainer.Controls.Add(this.panel1);
             this.pnlOuterContainer.Controls.Add(this.pnlsave);
-            this.pnlOuterContainer.Controls.Add(this.chksimultaneousoffOn);
             this.pnlOuterContainer.Controls.Add(this.chkAudited);
             this.pnlOuterContainer.Controls.Add(this.label14);
             this.pnlOuterContainer.Controls.Add(this.label9);
@@ -119,7 +122,7 @@
             this.pnlOuterContainer.Controls.Add(this.grpboxJournalEntry);
             this.pnlOuterContainer.Location = new System.Drawing.Point(2, 4);
             this.pnlOuterContainer.Name = "pnlOuterContainer";
-            this.pnlOuterContainer.Size = new System.Drawing.Size(1075, 875);
+            this.pnlOuterContainer.Size = new System.Drawing.Size(1256, 875);
             this.pnlOuterContainer.TabIndex = 0;
             // 
             // pnlsave
@@ -175,7 +178,7 @@
             this.chksimultaneousoffOn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.chksimultaneousoffOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chksimultaneousoffOn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chksimultaneousoffOn.Location = new System.Drawing.Point(13, 7);
+            this.chksimultaneousoffOn.Location = new System.Drawing.Point(3, 3);
             this.chksimultaneousoffOn.Name = "chksimultaneousoffOn";
             this.chksimultaneousoffOn.Size = new System.Drawing.Size(298, 21);
             this.chksimultaneousoffOn.TabIndex = 40;
@@ -276,9 +279,9 @@
             this.grpboxJournalEntrySearch.Controls.Add(this.txtrefsearch);
             this.grpboxJournalEntrySearch.Controls.Add(this.xDatesearch);
             this.grpboxJournalEntrySearch.ForeColor = System.Drawing.Color.Blue;
-            this.grpboxJournalEntrySearch.Location = new System.Drawing.Point(433, 8);
+            this.grpboxJournalEntrySearch.Location = new System.Drawing.Point(545, 8);
             this.grpboxJournalEntrySearch.Name = "grpboxJournalEntrySearch";
-            this.grpboxJournalEntrySearch.Size = new System.Drawing.Size(639, 117);
+            this.grpboxJournalEntrySearch.Size = new System.Drawing.Size(707, 117);
             this.grpboxJournalEntrySearch.TabIndex = 2;
             this.grpboxJournalEntrySearch.TabStop = false;
             this.grpboxJournalEntrySearch.Text = "Journal Entry Search Panel";
@@ -435,9 +438,9 @@
             this.grpboxJournalEntryListing.Controls.Add(this.btnDelete);
             this.grpboxJournalEntryListing.Controls.Add(this.gdvList);
             this.grpboxJournalEntryListing.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.grpboxJournalEntryListing.Location = new System.Drawing.Point(433, 128);
+            this.grpboxJournalEntryListing.Location = new System.Drawing.Point(545, 128);
             this.grpboxJournalEntryListing.Name = "grpboxJournalEntryListing";
-            this.grpboxJournalEntryListing.Size = new System.Drawing.Size(639, 739);
+            this.grpboxJournalEntryListing.Size = new System.Drawing.Size(708, 739);
             this.grpboxJournalEntryListing.TabIndex = 1;
             this.grpboxJournalEntryListing.TabStop = false;
             this.grpboxJournalEntryListing.Text = "Journal Entry Listing";
@@ -515,7 +518,7 @@
             this.gdvList.Name = "gdvList";
             this.gdvList.ReadOnly = true;
             this.gdvList.RowHeadersWidth = 62;
-            this.gdvList.Size = new System.Drawing.Size(633, 630);
+            this.gdvList.Size = new System.Drawing.Size(814, 630);
             this.gdvList.TabIndex = 0;
             this.gdvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvList_CellDoubleClick);
             // 
@@ -549,7 +552,7 @@
             this.grpboxJournalEntry.ForeColor = System.Drawing.Color.Blue;
             this.grpboxJournalEntry.Location = new System.Drawing.Point(10, 34);
             this.grpboxJournalEntry.Name = "grpboxJournalEntry";
-            this.grpboxJournalEntry.Size = new System.Drawing.Size(417, 599);
+            this.grpboxJournalEntry.Size = new System.Drawing.Size(517, 599);
             this.grpboxJournalEntry.TabIndex = 0;
             this.grpboxJournalEntry.TabStop = false;
             this.grpboxJournalEntry.Text = "Journal Entry Panel";
@@ -804,14 +807,37 @@
             this.reSize1.Enabled = true;
             this.reSize1.HostContainer = this;
             this.reSize1.InitialHostContainerHeight = 883D;
-            this.reSize1.InitialHostContainerWidth = 1081D;
+            this.reSize1.InitialHostContainerWidth = 1262D;
             this.reSize1.Tag = null;
+            // 
+            // chkLockFields
+            // 
+            this.chkLockFields.AutoSize = true;
+            this.chkLockFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chkLockFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLockFields.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkLockFields.Location = new System.Drawing.Point(305, 3);
+            this.chkLockFields.Name = "chkLockFields";
+            this.chkLockFields.Size = new System.Drawing.Size(210, 21);
+            this.chkLockFields.TabIndex = 42;
+            this.chkLockFields.Text = "Lock Key Fields on Entry";
+            this.chkLockFields.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Blue;
+            this.panel1.Controls.Add(this.chkLockFields);
+            this.panel1.Controls.Add(this.chksimultaneousoffOn);
+            this.panel1.Location = new System.Drawing.Point(9, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(518, 28);
+            this.panel1.TabIndex = 42;
             // 
             // frmJournalEntry
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1081, 883);
+            this.ClientSize = new System.Drawing.Size(1262, 883);
             this.Controls.Add(this.pnlOuterContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -834,6 +860,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).EndInit();
             this.grpboxJournalEntry.ResumeLayout(false);
             this.grpboxJournalEntry.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -900,5 +928,7 @@
         private System.Windows.Forms.GroupBox grpboxPostTransactions;
         private System.Windows.Forms.DateTimePicker dtPickerPost;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox chkLockFields;
+        private System.Windows.Forms.Panel panel1;
     }
 }

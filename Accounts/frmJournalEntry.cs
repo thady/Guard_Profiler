@@ -267,6 +267,7 @@ namespace Accounts
             if (ValidateInput().Length == 0)
             {
                 save();
+                ClearPartialContent();
             }
             else
             {
@@ -315,8 +316,8 @@ namespace Accounts
         {
             dt = JournalEntry.LoadDebitCreditTotals("select_debit_credit_totals");
             DataRow dtRow = dt.Rows[0];
-            txtTotalDebit.Text = float.Parse(dtRow["Debit"].ToString()).ToString();
-            txtTotalCredit.Text = float.Parse(dtRow["Credit"].ToString()).ToString();
+            txtTotalDebit.Text = float.Parse(dtRow["Debit"].ToString()) > 0? float.Parse(dtRow["Debit"].ToString()).ToString():string.Empty;
+            txtTotalCredit.Text = float.Parse(dtRow["Credit"].ToString()) > 0? float.Parse(dtRow["Credit"].ToString()).ToString():string.Empty;
         }
 
 
@@ -344,7 +345,7 @@ namespace Accounts
             }
             #endregion
 
-            if (dtPickersearchfrom.Value > dtPickersearchTo.Value)
+            if (dtPickersearchfrom.Value.Date > dtPickersearchTo.Value.Date )
             {
                 MessageBox.Show("Start date cannot be greater than end date", "Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -474,6 +475,33 @@ namespace Accounts
             chkPosted.Checked = false;
             chksimultaneousoffOn.Enabled = true;
             chksimultaneousoffOn.Checked = false;
+            chkLockFields.Checked = false;
+            lblID.Text = Globals.EmptyID;
+            grpboxJournalEntry.Enabled = true;
+        }
+
+        protected void ClearPartialContent()
+        {
+            if (!chkLockFields.Checked)
+            {
+                dtPickerDate.Value = DateTime.Today;
+                dtPickerDate.Checked = false;
+                txt_refference_number.Clear();
+                txt_cheque_number.Clear();
+                txtPayee.Clear();
+            }
+
+            txt_description.Clear();
+            txtAmount.Clear();
+            cboDebitAccount.SelectedValue = Globals.EmptySelection;
+            cboCreditAccount.SelectedValue = Globals.EmptySelection;
+            cboDrCr.SelectedValue = Globals.EmptySelection;
+            cboSubAccount.SelectedValue = Globals.EmptySelection;
+            cboPayee.SelectedValue = Globals.EmptySelection;
+            cboDrCr.SelectedValue = Globals.EmptySelection;
+            cboFy.SelectedValue = Globals.EmptySelection;
+            chkOnHold.Checked = false;
+            chkPosted.Checked = false;
             lblID.Text = Globals.EmptyID;
             grpboxJournalEntry.Enabled = true;
         }
@@ -599,6 +627,7 @@ namespace Accounts
                         }
                         MessageBox.Show("All journal entries for Date:" + dtPickerPost.Value.ToShortDateString() + " have been posted.", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadJournalEntryListing_for_posting("select_journal_entry_listing");
+                        LoadDebitCreditTotals();
                     }
                     else if (dialogResult == DialogResult.No)
                     {
