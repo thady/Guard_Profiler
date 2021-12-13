@@ -78,5 +78,11 @@ namespace Accounts
             frmLeagacyReports frmLegacy = new frmLeagacyReports();
             frmLegacy.ShowDialog();
         }
+
+        private void btnAccountsReports_Click(object sender, EventArgs e)
+        {
+            frmAccountsReportFilter frmNew = new frmAccountsReportFilter();
+            frmNew.ShowDialog();
+        }
     }
 }

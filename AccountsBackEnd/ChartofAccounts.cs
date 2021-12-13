@@ -126,7 +126,7 @@ namespace AccountsBackEnd
         }
         #endregion
         #region LoadListing
-        public static DataTable LoadListing(string myQuery) 
+        public static DataTable LoadListing(string myQuery,string acc_name,string acc_number) 
         {
             DataTable dt = new DataTable();
             try
@@ -141,6 +141,14 @@ namespace AccountsBackEnd
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@acc_name", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@acc_name"].Value = acc_name;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@acc_number", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@acc_number"].Value = acc_number;
 
                             if (conn.State == ConnectionState.Closed)
                             {
@@ -169,6 +177,56 @@ namespace AccountsBackEnd
                 }
             }
             return dt;
+        }
+        #endregion
+
+        #region DeleteAccount
+        public static void DeleteAccount(string myQuery, string acc_id)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_Chart_of_accounts", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@acc_id", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@acc_id"].Value = acc_id;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
         #endregion
     }

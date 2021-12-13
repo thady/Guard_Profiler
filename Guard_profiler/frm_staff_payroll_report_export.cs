@@ -16,6 +16,7 @@ using CrystalDecisions.Windows.Forms;
 using Accounts;
 using Accounts.Legacy_Reports;
 using AccountsBackEnd;
+using Accounts.AccountReports;
 
 
 namespace Guard_profiler
@@ -269,6 +270,59 @@ namespace Guard_profiler
                         report.SetParameterValue("subpcode", LegacyReports.station_code);
                         report.SetParameterValue("begin_date", LegacyReports.begin_date);
                         report.SetParameterValue("end_date", LegacyReports.end_date);
+                        this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                        this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.ToString());
+                    }
+                    break;
+                #endregion
+
+                #region AccountsReports
+                case "Accounts_Invoice":
+                    try
+                    {
+                        base.WindowState = FormWindowState.Maximized;
+                        CrClientInvoice report = new CrClientInvoice();
+                        ParameterFields paramFields = new ParameterFields();
+                        ParameterField parameterField = new ParameterField();
+                        ParameterDiscreteValue parameterDiscreteValue = new ParameterDiscreteValue();
+                        foreach (Table tbCurrent in report.Database.Tables)
+                        {
+                            Set_Report_logons.SetTableLogin(tbCurrent);
+                        }
+                        report.SetDataSource(AccountsBackEnd.AccountsReportsEngine.LoadInvoiceReport("Invoice", AccountsReportsEngine.client_id, AccountsReportsEngine.report_date));
+                        report.SetParameterValue("reportName", "Invoice");
+                        report.SetParameterValue("report_date", AccountsReportsEngine.report_date);
+                        report.SetParameterValue("client_id", AccountsReportsEngine.client_id);
+                        this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
+                        this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.ToString());
+                    }
+                    break;
+
+                case "Accounts_Aged_Debtors":
+                    try
+                    {
+                        base.WindowState = FormWindowState.Maximized;
+                        crAgedDedbtorsReport report = new crAgedDedbtorsReport();
+                        ParameterFields paramFields = new ParameterFields();
+                        ParameterField parameterField = new ParameterField();
+                        ParameterDiscreteValue parameterDiscreteValue = new ParameterDiscreteValue();
+                        foreach (Table tbCurrent in report.Database.Tables)
+                        {
+                            Set_Report_logons.SetTableLogin(tbCurrent);
+                        }
+                        report.SetDataSource(AccountsBackEnd.AccountsReportsEngine.LoadAgedDebtorsReport("debtors_aged_report", AccountsReportsEngine.begin_date,AccountsReportsEngine.end_date, AccountsReportsEngine.branch));
+                        report.SetParameterValue("reportName", "debtors_aged_report");
+                        report.SetParameterValue("start_date", AccountsReportsEngine.begin_date);
+                        report.SetParameterValue("end_date", AccountsReportsEngine.end_date);
+                        report.SetParameterValue("branch_id", AccountsReportsEngine.branch);
                         this.cr_finance_detailed_guard_pay_roll_report.ParameterFieldInfo = paramFields;
                         this.cr_finance_detailed_guard_pay_roll_report.ReportSource = report;
                     }

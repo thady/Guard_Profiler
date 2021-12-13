@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBranches));
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.lblID = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             this.chk_branch_active = new System.Windows.Forms.CheckBox();
             this.txt_branch_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
             this.pnlContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_branches)).BeginInit();
             this.pnlEntry.SuspendLayout();
@@ -60,9 +58,9 @@
             this.pnlContainer.Controls.Add(this.gdv_branches);
             this.pnlContainer.Controls.Add(this.pnlEntry);
             this.pnlContainer.Location = new System.Drawing.Point(3, 1);
-            this.pnlContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(903, 657);
+            this.pnlContainer.Size = new System.Drawing.Size(981, 734);
             this.pnlContainer.TabIndex = 1;
             // 
             // lblID
@@ -79,7 +77,7 @@
             // btnedit
             // 
             this.btnedit.Location = new System.Drawing.Point(344, 149);
-            this.btnedit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnedit.Margin = new System.Windows.Forms.Padding(4);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(105, 38);
             this.btnedit.TabIndex = 4;
@@ -90,7 +88,7 @@
             // btnnew
             // 
             this.btnnew.Location = new System.Drawing.Point(231, 149);
-            this.btnnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnnew.Margin = new System.Windows.Forms.Padding(4);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(105, 38);
             this.btnnew.TabIndex = 3;
@@ -101,7 +99,7 @@
             // btnsave
             // 
             this.btnsave.Location = new System.Drawing.Point(457, 149);
-            this.btnsave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsave.Margin = new System.Windows.Forms.Padding(4);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(105, 38);
             this.btnsave.TabIndex = 2;
@@ -118,11 +116,11 @@
             this.gdv_branches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdv_branches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdv_branches.Location = new System.Drawing.Point(4, 194);
-            this.gdv_branches.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gdv_branches.Margin = new System.Windows.Forms.Padding(4);
             this.gdv_branches.Name = "gdv_branches";
             this.gdv_branches.ReadOnly = true;
             this.gdv_branches.RowHeadersWidth = 51;
-            this.gdv_branches.Size = new System.Drawing.Size(888, 453);
+            this.gdv_branches.Size = new System.Drawing.Size(973, 536);
             this.gdv_branches.TabIndex = 1;
             this.gdv_branches.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdv_branches_CellDoubleClick);
             // 
@@ -137,9 +135,9 @@
             this.pnlEntry.Controls.Add(this.txt_branch_name);
             this.pnlEntry.Controls.Add(this.label1);
             this.pnlEntry.Location = new System.Drawing.Point(4, 4);
-            this.pnlEntry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlEntry.Margin = new System.Windows.Forms.Padding(4);
             this.pnlEntry.Name = "pnlEntry";
-            this.pnlEntry.Size = new System.Drawing.Size(563, 138);
+            this.pnlEntry.Size = new System.Drawing.Size(973, 138);
             this.pnlEntry.TabIndex = 0;
             // 
             // label10
@@ -157,7 +155,7 @@
             // 
             this.txt_branch_code.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_branch_code.Location = new System.Drawing.Point(8, 96);
-            this.txt_branch_code.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_branch_code.Margin = new System.Windows.Forms.Padding(4);
             this.txt_branch_code.Name = "txt_branch_code";
             this.txt_branch_code.Size = new System.Drawing.Size(207, 29);
             this.txt_branch_code.TabIndex = 5;
@@ -166,7 +164,7 @@
             // 
             this.txt_branch_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_branch_id.Location = new System.Drawing.Point(224, 96);
-            this.txt_branch_id.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_branch_id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_branch_id.Name = "txt_branch_id";
             this.txt_branch_id.ReadOnly = true;
             this.txt_branch_id.Size = new System.Drawing.Size(127, 29);
@@ -187,7 +185,7 @@
             this.chk_branch_active.AutoSize = true;
             this.chk_branch_active.ForeColor = System.Drawing.Color.Black;
             this.chk_branch_active.Location = new System.Drawing.Point(8, 52);
-            this.chk_branch_active.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chk_branch_active.Margin = new System.Windows.Forms.Padding(4);
             this.chk_branch_active.Name = "chk_branch_active";
             this.chk_branch_active.Size = new System.Drawing.Size(131, 21);
             this.chk_branch_active.TabIndex = 2;
@@ -198,7 +196,7 @@
             // 
             this.txt_branch_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_branch_name.Location = new System.Drawing.Point(8, 20);
-            this.txt_branch_name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_branch_name.Margin = new System.Windows.Forms.Padding(4);
             this.txt_branch_name.Name = "txt_branch_name";
             this.txt_branch_name.Size = new System.Drawing.Size(343, 29);
             this.txt_branch_name.TabIndex = 1;
@@ -214,25 +212,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Branch Name";
             // 
-            // reSize1
-            // 
-            this.reSize1.About = null;
-            this.reSize1.AutoCenterFormOnLoad = false;
-            this.reSize1.Enabled = true;
-            this.reSize1.HostContainer = this;
-            this.reSize1.InitialHostContainerHeight = 660D;
-            this.reSize1.InitialHostContainerWidth = 907D;
-            this.reSize1.Tag = null;
-            // 
             // frmBranches
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(907, 660);
+            this.ClientSize = new System.Drawing.Size(987, 738);
             this.Controls.Add(this.pnlContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmBranches";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage Branch Codes";
@@ -261,7 +251,6 @@
         private System.Windows.Forms.CheckBox chk_branch_active;
         private System.Windows.Forms.TextBox txt_branch_name;
         private System.Windows.Forms.Label label1;
-        private LarcomAndYoung.Windows.Forms.ReSize reSize1;
         private System.Windows.Forms.Label lblID;
     }
 }

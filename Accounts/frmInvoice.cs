@@ -52,7 +52,7 @@ namespace Accounts
         {
             
 
-            LoadListings();
+           LoadListings();
 
             base.WindowState = FormWindowState.Maximized;
         }
@@ -63,7 +63,7 @@ namespace Accounts
             LoadDebitCreditListing();
             LoadChartofAccountsListings();
             LoadFinancialYear();
-            LoadInvoiceListingSearch("select_invoice_listing");
+            //LoadInvoiceListingSearch("select_invoice_listing");
         }
 
         protected void LoadSubLedgerCategoryListing()
@@ -174,7 +174,7 @@ namespace Accounts
             InvoiceManager.transaction_month = dtPickerDate.Value.Month.ToString();
             InvoiceManager.guard_count = txtGuardCount.Text != string.Empty ? Convert.ToInt32(txtGuardCount.Text) : 0;
             InvoiceManager.guard_days_worked = txtDaysCount.Text != string.Empty ? Convert.ToInt32(txtDaysCount.Text) : 0;
-            InvoiceManager.client_rate = txtrate.Text != string.Empty ? decimal.Parse(txtrate.Text) : 0;
+            InvoiceManager.client_rate = cboRate.Text != string.Empty ? decimal.Parse(cboRate.Text) : 0;
             InvoiceManager.record_audited = chkAudited.Checked == true ? true : false;
             InvoiceManager.audit_comment = string.Empty;
             InvoiceManager.branch_id = InvoiceManager.LoadSubsidiaryAccountBranchID("select_subsidiary_account_branch_id", cboPayee.SelectedValue.ToString());
@@ -214,7 +214,7 @@ namespace Accounts
         {
             txtAmount.Text = ((txtGuardCount.Text.Trim() != string.Empty ? decimal.Parse(txtGuardCount.Text) : 0) *
                 (txtDaysCount.Text.Trim() != string.Empty ? decimal.Parse(txtDaysCount.Text) : 0) *
-                (txtrate.Text.Trim() != string.Empty ? decimal.Parse(txtrate.Text) : 0)).ToString();
+                (cboRate.Text.Trim() != string.Empty ? decimal.Parse(cboRate.Text) : 0)).ToString();
         }
         #endregion
 
@@ -225,7 +225,7 @@ namespace Accounts
 
             if (!dtPickerDate.Checked || cboPayee.SelectedValue.ToString() == Globals.EmptySelection || txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() == string.Empty ||
                 cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection || txtGuardCount.Text.Trim() == string.Empty || 
-                txtDaysCount.Text.Trim() == string.Empty || txtrate.Text.Trim() == string.Empty)
+                txtDaysCount.Text.Trim() == string.Empty || cboRate.Text.Trim() == string.Empty)
             {
                 message = "Please fill in all required fields labelled in red,save failed";
             }
@@ -454,6 +454,7 @@ namespace Accounts
                 cboPayee.SelectedValue = dtRow["sub_ledger_item_id"].ToString();
                 txtGuardCount.Text = Convert.ToInt32(dtRow["guard_count"].ToString()).ToString();
                 txtDaysCount.Text = Convert.ToInt32(dtRow["guard_days_worked"].ToString()).ToString();
+                cboRate.Text = Convert.ToInt32(dtRow["client_rate"].ToString()).ToString();
                 txt_description.Text = dtRow["entry_desc"].ToString();
                 txtAmount.Text = decimal.Parse(dtRow["transaction_amt"].ToString()).ToString();
                 cboDebitAccount.SelectedValue = dtRow["dr_account"].ToString();
@@ -486,6 +487,7 @@ namespace Accounts
             chkPosted.Checked = false;
             lblID.Text = Globals.EmptyID;
             grpboxEntry.Enabled = true;
+            cboRate.Text = string.Empty;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -583,6 +585,11 @@ namespace Accounts
                     MessageBox.Show("No journal entries available to post for the selected date", "Post Journal Entries", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+        }
+
+        private void cboRate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComputeAmount();
         }
     }
 }

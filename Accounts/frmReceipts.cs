@@ -215,7 +215,7 @@ namespace Accounts
             string message = string.Empty;
 
             if (!dtPickerDate.Checked || cboPayee.SelectedValue.ToString() == Globals.EmptySelection || txt_description.Text.Trim() == string.Empty || txtAmount.Text.Trim() == string.Empty ||
-                cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection || cboFy.SelectedValue.ToString() == Globals.EmptySelection)
+                  (!chksimultaneousoffOnDebit.Checked && !chksimultaneousoffOnCredit.Checked && (cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection || cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection))  || cboFy.SelectedValue.ToString() == Globals.EmptySelection)
             {
                 message = "Please fill in all required fields labelled in red,save failed";
             }
@@ -230,6 +230,14 @@ namespace Accounts
             else if (JournalEntry.ValidateJournalEntryDate("validate_journal_date_range", dtPickerDate.Value, cboFy.SelectedValue.ToString()) == 0)
             {
                 message = "The selected receipt date does not fall in the range of the selected financial year";
+            }
+            else if (chksimultaneousoffOnDebit.Checked & cboDebitAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            {
+                message = "Debit account is required Debit non simultaneous journal entry";
+            }
+            else if (chksimultaneousoffOnCredit.Checked & cboCreditAccount.SelectedValue.ToString() == Globals.EmptySelection)
+            {
+                message = "Credit account is required Credit non simultaneous journal entry";
             }
             else
             {
@@ -412,6 +420,16 @@ namespace Accounts
                 chkAudited.Checked = Convert.ToBoolean(dtRow["record_audited"]);
                 lblID.Text = journal_entry_id;
                 grpboxEntry.Enabled = false;
+
+                if (dtRow["dr_account"].ToString() == string.Empty)
+                {
+                    chksimultaneousoffOnCredit.Checked = true;
+                }
+
+                if (dtRow["cr_account"].ToString() == string.Empty)
+                {
+                    chksimultaneousoffOnDebit.Checked = true;
+                }
             }
         }
 
@@ -553,6 +571,39 @@ namespace Accounts
         private void dtPickerPost_ValueChanged(object sender, EventArgs e)
         {
             LoadListing_for_posting("select_receipt_listing");
+        }
+
+        private void chksimultaneousoffOnDebit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chksimultaneousoffOnDebit.Checked)
+            {
+                chksimultaneousoffOnCredit.Checked = false;
+                cboCreditAccount.Enabled = false;
+                cboCreditAccount.SelectedIndex = 0;
+                cboDebitAccount.Enabled = true;
+            }
+            else
+            {
+                cboDebitAccount.Enabled = false;
+                cboDebitAccount.SelectedIndex = 0;
+                cboCreditAccount.Enabled = true;
+            }
+
+            if (!chksimultaneousoffOnDebit.Checked & !chksimultaneousoffOnCredit.Checked)
+            {
+                cboDebitAccount.Enabled = true;
+                cboCreditAccount.Enabled = true;
+            }
+        }
+
+        private void chksimultaneousoffOnCredit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chksimultaneousoffOnCredit.Checked)
+            {
+                chksimultaneousoffOnDebit.Checked = false;
+            }
+
+            chksimultaneousoffOnDebit_CheckedChanged(chksimultaneousoffOnDebit, null);
         }
     }
 }

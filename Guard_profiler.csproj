@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsBackEnd\AccountsReportsEngine.cs" />
     <Compile Include="AccountsBackEnd\Branches.cs" />
     <Compile Include="AccountsBackEnd\InvoiceManager.cs" />
     <Compile Include="AccountsBackEnd\JournalEntry.cs" />
@@ -97,11 +98,68 @@
     <Compile Include="AccountsBackEnd\Lookups.cs" />
     <Compile Include="AccountsBackEnd\SubcidiaryAccount.cs" />
     <Compile Include="AccountsBackEnd\SubLedgerCategory.cs" />
+    <Compile Include="Accounts\AccountReports\crAgedDedbtorsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crAgedDedbtorsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\CrClientInvoice1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrClientInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\crClientInvoiceSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crClientInvoiceSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\crClientInvoiceSubReportQty.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crClientInvoiceSubReportQty.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\crClientStatement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crClientStatement.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\crDebtorsListing.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crDebtorsListing.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\CrIClientInvoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Accounts\AccountReports\CrIClientInvoice1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrIClientInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Accounts\frmAccountCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Accounts\frmAccountCategory.Designer.cs">
       <DependentUpon>frmAccountCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmAccountsReportFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmAccountsReportFilter.Designer.cs">
+      <DependentUpon>frmAccountsReportFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmAgedDebtorsReportFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmAgedDebtorsReportFilter.Designer.cs">
+      <DependentUpon>frmAgedDebtorsReportFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounts\frmBranches.cs">
       <SubType>Form</SubType>
@@ -126,6 +184,12 @@
     </Compile>
     <Compile Include="Accounts\frmInvoice.Designer.cs">
       <DependentUpon>frmInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmInvoiceReportFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmInvoiceReportFilter.Designer.cs">
+      <DependentUpon>frmInvoiceReportFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounts\frmJournalEntry.cs">
       <SubType>Form</SubType>
@@ -314,8 +378,42 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accounts\AccountReports\crAgedDedbtorsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crAgedDedbtorsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\CrClientInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrClientInvoice1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\crClientInvoiceSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crClientInvoiceSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\crClientInvoiceSubReportQty.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crClientInvoiceSubReportQty.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\crClientStatement.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crClientStatement.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\crDebtorsListing.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDebtorsListing.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\AccountReports\CrIClientInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrIClientInvoice1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmAccountCategory.resx">
       <DependentUpon>frmAccountCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmAccountsReportFilter.resx">
+      <DependentUpon>frmAccountsReportFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmAgedDebtorsReportFilter.resx">
+      <DependentUpon>frmAgedDebtorsReportFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmBranches.resx">
       <DependentUpon>frmBranches.cs</DependentUpon>
@@ -328,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmInvoice.resx">
       <DependentUpon>frmInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\frmInvoiceReportFilter.resx">
+      <DependentUpon>frmInvoiceReportFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounts\frmJournalEntry.resx">
       <DependentUpon>frmJournalEntry.cs</DependentUpon>

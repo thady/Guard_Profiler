@@ -31,11 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJournalEntry));
             this.pnlOuterContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkLockFields = new System.Windows.Forms.CheckBox();
+            this.chksimultaneousoffOnDebit = new System.Windows.Forms.CheckBox();
             this.pnlsave = new System.Windows.Forms.Panel();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
-            this.chksimultaneousoffOn = new System.Windows.Forms.CheckBox();
             this.chkAudited = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,9 +61,7 @@
             this.btnGeneralLedger = new System.Windows.Forms.Button();
             this.grpboxJournalEntryListing = new System.Windows.Forms.GroupBox();
             this.grpboxPostTransactions = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.btnPost = new System.Windows.Forms.Button();
-            this.dtPickerPost = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new System.Windows.Forms.Button();
             this.gdvList = new System.Windows.Forms.DataGridView();
             this.grpboxJournalEntry = new System.Windows.Forms.GroupBox();
@@ -90,9 +90,13 @@
             this.dtPickerDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.chkLockFields = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.chksimultaneousoffOnCredit = new System.Windows.Forms.CheckBox();
+            this.cboYearPost = new System.Windows.Forms.ComboBox();
+            this.cboMonthPost = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.pnlOuterContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnlsave.SuspendLayout();
             this.grpboxJournalEntrySearch.SuspendLayout();
             this.xDatesearch.SuspendLayout();
@@ -101,7 +105,6 @@
             this.grpboxPostTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).BeginInit();
             this.grpboxJournalEntry.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlOuterContainer
@@ -122,8 +125,46 @@
             this.pnlOuterContainer.Controls.Add(this.grpboxJournalEntry);
             this.pnlOuterContainer.Location = new System.Drawing.Point(2, 4);
             this.pnlOuterContainer.Name = "pnlOuterContainer";
-            this.pnlOuterContainer.Size = new System.Drawing.Size(1256, 875);
+            this.pnlOuterContainer.Size = new System.Drawing.Size(1256, 920);
             this.pnlOuterContainer.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel1.Controls.Add(this.chkLockFields);
+            this.panel1.Controls.Add(this.chksimultaneousoffOnDebit);
+            this.panel1.Controls.Add(this.chksimultaneousoffOnCredit);
+            this.panel1.Location = new System.Drawing.Point(9, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(518, 57);
+            this.panel1.TabIndex = 42;
+            // 
+            // chkLockFields
+            // 
+            this.chkLockFields.AutoSize = true;
+            this.chkLockFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chkLockFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLockFields.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkLockFields.Location = new System.Drawing.Point(3, 30);
+            this.chkLockFields.Name = "chkLockFields";
+            this.chkLockFields.Size = new System.Drawing.Size(149, 21);
+            this.chkLockFields.TabIndex = 42;
+            this.chkLockFields.Text = "Lock Key Fields ";
+            this.chkLockFields.UseVisualStyleBackColor = false;
+            // 
+            // chksimultaneousoffOnDebit
+            // 
+            this.chksimultaneousoffOnDebit.AutoSize = true;
+            this.chksimultaneousoffOnDebit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chksimultaneousoffOnDebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chksimultaneousoffOnDebit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chksimultaneousoffOnDebit.Location = new System.Drawing.Point(3, 3);
+            this.chksimultaneousoffOnDebit.Name = "chksimultaneousoffOnDebit";
+            this.chksimultaneousoffOnDebit.Size = new System.Drawing.Size(203, 21);
+            this.chksimultaneousoffOnDebit.TabIndex = 40;
+            this.chksimultaneousoffOnDebit.Text = "Non simultaneous-Debit";
+            this.chksimultaneousoffOnDebit.UseVisualStyleBackColor = false;
+            this.chksimultaneousoffOnDebit.CheckedChanged += new System.EventHandler(this.chksimultaneousoffOn_CheckedChanged);
             // 
             // pnlsave
             // 
@@ -131,7 +172,7 @@
             this.pnlsave.Controls.Add(this.btnNew);
             this.pnlsave.Controls.Add(this.btnEdit);
             this.pnlsave.Controls.Add(this.btnsave);
-            this.pnlsave.Location = new System.Drawing.Point(9, 727);
+            this.pnlsave.Location = new System.Drawing.Point(9, 764);
             this.pnlsave.Name = "pnlsave";
             this.pnlsave.Size = new System.Drawing.Size(418, 57);
             this.pnlsave.TabIndex = 41;
@@ -172,27 +213,13 @@
             this.btnsave.UseVisualStyleBackColor = true;
             this.btnsave.Click += new System.EventHandler(this.btnsave_Click_1);
             // 
-            // chksimultaneousoffOn
-            // 
-            this.chksimultaneousoffOn.AutoSize = true;
-            this.chksimultaneousoffOn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.chksimultaneousoffOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chksimultaneousoffOn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chksimultaneousoffOn.Location = new System.Drawing.Point(3, 3);
-            this.chksimultaneousoffOn.Name = "chksimultaneousoffOn";
-            this.chksimultaneousoffOn.Size = new System.Drawing.Size(298, 21);
-            this.chksimultaneousoffOn.TabIndex = 40;
-            this.chksimultaneousoffOn.Text = "Allow Non simultaneous journal entry";
-            this.chksimultaneousoffOn.UseVisualStyleBackColor = false;
-            this.chksimultaneousoffOn.CheckedChanged += new System.EventHandler(this.chksimultaneousoffOn_CheckedChanged);
-            // 
             // chkAudited
             // 
             this.chkAudited.AutoSize = true;
             this.chkAudited.BackColor = System.Drawing.Color.Khaki;
             this.chkAudited.Enabled = false;
             this.chkAudited.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkAudited.Location = new System.Drawing.Point(309, 637);
+            this.chkAudited.Location = new System.Drawing.Point(309, 672);
             this.chkAudited.Name = "chkAudited";
             this.chkAudited.Size = new System.Drawing.Size(78, 21);
             this.chkAudited.TabIndex = 36;
@@ -204,7 +231,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Blue;
-            this.label14.Location = new System.Drawing.Point(209, 664);
+            this.label14.Location = new System.Drawing.Point(209, 701);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(118, 20);
             this.label14.TabIndex = 39;
@@ -215,7 +242,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(10, 664);
+            this.label9.Location = new System.Drawing.Point(10, 701);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(112, 20);
             this.label9.TabIndex = 37;
@@ -226,7 +253,7 @@
             this.txtTotalCredit.BackColor = System.Drawing.SystemColors.InfoText;
             this.txtTotalCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalCredit.ForeColor = System.Drawing.Color.White;
-            this.txtTotalCredit.Location = new System.Drawing.Point(213, 687);
+            this.txtTotalCredit.Location = new System.Drawing.Point(213, 724);
             this.txtTotalCredit.Name = "txtTotalCredit";
             this.txtTotalCredit.ReadOnly = true;
             this.txtTotalCredit.Size = new System.Drawing.Size(207, 34);
@@ -238,7 +265,7 @@
             this.txtTotalDebit.BackColor = System.Drawing.SystemColors.InfoText;
             this.txtTotalDebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalDebit.ForeColor = System.Drawing.Color.White;
-            this.txtTotalDebit.Location = new System.Drawing.Point(9, 687);
+            this.txtTotalDebit.Location = new System.Drawing.Point(9, 724);
             this.txtTotalDebit.Name = "txtTotalDebit";
             this.txtTotalDebit.ReadOnly = true;
             this.txtTotalDebit.Size = new System.Drawing.Size(178, 34);
@@ -250,7 +277,7 @@
             this.chkOnHold.AutoSize = true;
             this.chkOnHold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.chkOnHold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkOnHold.Location = new System.Drawing.Point(156, 639);
+            this.chkOnHold.Location = new System.Drawing.Point(156, 674);
             this.chkOnHold.Name = "chkOnHold";
             this.chkOnHold.Size = new System.Drawing.Size(156, 21);
             this.chkOnHold.TabIndex = 17;
@@ -262,7 +289,7 @@
             this.chkPosted.AutoSize = true;
             this.chkPosted.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.chkPosted.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkPosted.Location = new System.Drawing.Point(11, 639);
+            this.chkPosted.Location = new System.Drawing.Point(11, 674);
             this.chkPosted.Name = "chkPosted";
             this.chkPosted.Size = new System.Drawing.Size(150, 21);
             this.chkPosted.TabIndex = 16;
@@ -293,7 +320,7 @@
             this.btnsearch.ForeColor = System.Drawing.Color.Blue;
             this.btnsearch.Location = new System.Drawing.Point(538, 26);
             this.btnsearch.Name = "btnsearch";
-            this.btnsearch.Size = new System.Drawing.Size(95, 84);
+            this.btnsearch.Size = new System.Drawing.Size(163, 84);
             this.btnsearch.TabIndex = 6;
             this.btnsearch.Text = "SEARCH";
             this.btnsearch.UseVisualStyleBackColor = false;
@@ -403,7 +430,7 @@
             this.grpboxQuickActions.Controls.Add(this.lblID);
             this.grpboxQuickActions.Controls.Add(this.btnGeneralLedger);
             this.grpboxQuickActions.ForeColor = System.Drawing.Color.Blue;
-            this.grpboxQuickActions.Location = new System.Drawing.Point(3, 782);
+            this.grpboxQuickActions.Location = new System.Drawing.Point(11, 825);
             this.grpboxQuickActions.Name = "grpboxQuickActions";
             this.grpboxQuickActions.Size = new System.Drawing.Size(424, 85);
             this.grpboxQuickActions.TabIndex = 1;
@@ -448,33 +475,24 @@
             // grpboxPostTransactions
             // 
             this.grpboxPostTransactions.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.grpboxPostTransactions.Controls.Add(this.label20);
             this.grpboxPostTransactions.Controls.Add(this.label19);
+            this.grpboxPostTransactions.Controls.Add(this.cboMonthPost);
+            this.grpboxPostTransactions.Controls.Add(this.cboYearPost);
             this.grpboxPostTransactions.Controls.Add(this.btnPost);
-            this.grpboxPostTransactions.Controls.Add(this.dtPickerPost);
             this.grpboxPostTransactions.Location = new System.Drawing.Point(6, 655);
             this.grpboxPostTransactions.Name = "grpboxPostTransactions";
-            this.grpboxPostTransactions.Size = new System.Drawing.Size(381, 78);
+            this.grpboxPostTransactions.Size = new System.Drawing.Size(521, 78);
             this.grpboxPostTransactions.TabIndex = 9;
             this.grpboxPostTransactions.TabStop = false;
             this.grpboxPostTransactions.Text = "Select a Date and click the button to post all transactions for the selected date" +
     "";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(174, 22);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(133, 17);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Transaction Date";
-            // 
             // btnPost
             // 
             this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPost.ForeColor = System.Drawing.Color.Blue;
-            this.btnPost.Location = new System.Drawing.Point(9, 38);
+            this.btnPost.Location = new System.Drawing.Point(311, 45);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(159, 28);
             this.btnPost.TabIndex = 7;
@@ -482,23 +500,11 @@
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
-            // dtPickerPost
-            // 
-            this.dtPickerPost.Checked = false;
-            this.dtPickerPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPickerPost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPickerPost.Location = new System.Drawing.Point(174, 42);
-            this.dtPickerPost.Name = "dtPickerPost";
-            this.dtPickerPost.ShowCheckBox = true;
-            this.dtPickerPost.Size = new System.Drawing.Size(174, 24);
-            this.dtPickerPost.TabIndex = 8;
-            this.dtPickerPost.ValueChanged += new System.EventHandler(this.dtPickerPost_ValueChanged);
-            // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(474, 693);
+            this.btnDelete.Location = new System.Drawing.Point(548, 693);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(159, 28);
             this.btnDelete.TabIndex = 6;
@@ -510,6 +516,7 @@
             // 
             this.gdvList.AllowUserToAddRows = false;
             this.gdvList.AllowUserToDeleteRows = false;
+            this.gdvList.AllowUserToResizeColumns = false;
             this.gdvList.AllowUserToResizeRows = false;
             this.gdvList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -518,7 +525,7 @@
             this.gdvList.Name = "gdvList";
             this.gdvList.ReadOnly = true;
             this.gdvList.RowHeadersWidth = 62;
-            this.gdvList.Size = new System.Drawing.Size(814, 630);
+            this.gdvList.Size = new System.Drawing.Size(701, 629);
             this.gdvList.TabIndex = 0;
             this.gdvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvList_CellDoubleClick);
             // 
@@ -550,9 +557,9 @@
             this.grpboxJournalEntry.Controls.Add(this.dtPickerDate);
             this.grpboxJournalEntry.Controls.Add(this.label2);
             this.grpboxJournalEntry.ForeColor = System.Drawing.Color.Blue;
-            this.grpboxJournalEntry.Location = new System.Drawing.Point(10, 34);
+            this.grpboxJournalEntry.Location = new System.Drawing.Point(10, 66);
             this.grpboxJournalEntry.Name = "grpboxJournalEntry";
-            this.grpboxJournalEntry.Size = new System.Drawing.Size(517, 599);
+            this.grpboxJournalEntry.Size = new System.Drawing.Size(517, 602);
             this.grpboxJournalEntry.TabIndex = 0;
             this.grpboxJournalEntry.TabStop = false;
             this.grpboxJournalEntry.Text = "Journal Entry Panel";
@@ -806,38 +813,75 @@
             this.reSize1.AutoCenterFormOnLoad = false;
             this.reSize1.Enabled = true;
             this.reSize1.HostContainer = this;
-            this.reSize1.InitialHostContainerHeight = 883D;
+            this.reSize1.InitialHostContainerHeight = 925D;
             this.reSize1.InitialHostContainerWidth = 1262D;
             this.reSize1.Tag = null;
             // 
-            // chkLockFields
+            // chksimultaneousoffOnCredit
             // 
-            this.chkLockFields.AutoSize = true;
-            this.chkLockFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.chkLockFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkLockFields.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.chkLockFields.Location = new System.Drawing.Point(305, 3);
-            this.chkLockFields.Name = "chkLockFields";
-            this.chkLockFields.Size = new System.Drawing.Size(210, 21);
-            this.chkLockFields.TabIndex = 42;
-            this.chkLockFields.Text = "Lock Key Fields on Entry";
-            this.chkLockFields.UseVisualStyleBackColor = false;
+            this.chksimultaneousoffOnCredit.AutoSize = true;
+            this.chksimultaneousoffOnCredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chksimultaneousoffOnCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chksimultaneousoffOnCredit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chksimultaneousoffOnCredit.Location = new System.Drawing.Point(210, 3);
+            this.chksimultaneousoffOnCredit.Name = "chksimultaneousoffOnCredit";
+            this.chksimultaneousoffOnCredit.Size = new System.Drawing.Size(208, 21);
+            this.chksimultaneousoffOnCredit.TabIndex = 43;
+            this.chksimultaneousoffOnCredit.Text = "Non simultaneous-Credit";
+            this.chksimultaneousoffOnCredit.UseVisualStyleBackColor = false;
+            this.chksimultaneousoffOnCredit.CheckedChanged += new System.EventHandler(this.chksimultaneousoffOnCredit_CheckedChanged);
             // 
-            // panel1
+            // cboYearPost
             // 
-            this.panel1.BackColor = System.Drawing.Color.Blue;
-            this.panel1.Controls.Add(this.chkLockFields);
-            this.panel1.Controls.Add(this.chksimultaneousoffOn);
-            this.panel1.Location = new System.Drawing.Point(9, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 28);
-            this.panel1.TabIndex = 42;
+            this.cboYearPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboYearPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboYearPost.FormattingEnabled = true;
+            this.cboYearPost.Location = new System.Drawing.Point(9, 46);
+            this.cboYearPost.Name = "cboYearPost";
+            this.cboYearPost.Size = new System.Drawing.Size(145, 26);
+            this.cboYearPost.TabIndex = 32;
+            this.cboYearPost.SelectedIndexChanged += new System.EventHandler(this.cboYearPost_SelectedIndexChanged);
+            this.cboYearPost.SelectionChangeCommitted += new System.EventHandler(this.cboYearPost_SelectionChangeCommitted);
+            // 
+            // cboMonthPost
+            // 
+            this.cboMonthPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMonthPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMonthPost.FormattingEnabled = true;
+            this.cboMonthPost.Location = new System.Drawing.Point(160, 46);
+            this.cboMonthPost.Name = "cboMonthPost";
+            this.cboMonthPost.Size = new System.Drawing.Size(145, 26);
+            this.cboMonthPost.TabIndex = 33;
+            this.cboMonthPost.SelectedIndexChanged += new System.EventHandler(this.cboMonthPost_SelectedIndexChanged);
+            this.cboMonthPost.SelectionChangeCommitted += new System.EventHandler(this.cboMonthPost_SelectionChangeCommitted);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(6, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 20);
+            this.label19.TabIndex = 32;
+            this.label19.Text = "Year";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(160, 23);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(55, 20);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Month";
             // 
             // frmJournalEntry
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1262, 883);
+            this.ClientSize = new System.Drawing.Size(1262, 925);
             this.Controls.Add(this.pnlOuterContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -847,6 +891,8 @@
             this.Load += new System.EventHandler(this.frmJournalEntry_Load);
             this.pnlOuterContainer.ResumeLayout(false);
             this.pnlOuterContainer.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.pnlsave.ResumeLayout(false);
             this.grpboxJournalEntrySearch.ResumeLayout(false);
             this.grpboxJournalEntrySearch.PerformLayout();
@@ -860,8 +906,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).EndInit();
             this.grpboxJournalEntry.ResumeLayout(false);
             this.grpboxJournalEntry.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -923,12 +967,15 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cboDrCr;
         private System.Windows.Forms.Button btnPost;
-        private System.Windows.Forms.CheckBox chksimultaneousoffOn;
+        private System.Windows.Forms.CheckBox chksimultaneousoffOnDebit;
         private System.Windows.Forms.Panel pnlsave;
         private System.Windows.Forms.GroupBox grpboxPostTransactions;
-        private System.Windows.Forms.DateTimePicker dtPickerPost;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox chkLockFields;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chksimultaneousoffOnCredit;
+        private System.Windows.Forms.ComboBox cboMonthPost;
+        private System.Windows.Forms.ComboBox cboYearPost;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
     }
 }

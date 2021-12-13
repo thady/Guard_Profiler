@@ -405,6 +405,60 @@ namespace AccountsBackEnd
             return dt;
         }
 
+
+        public static DataTable LoadDebitCreditTotalsByMonth(string myQuery,int year,int month)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@fy_id", SqlDbType.Int);
+                            cmd.Parameters["@fy_id"].Value = year;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@Month", SqlDbType.Int);
+                            cmd.Parameters["@Month"].Value = month;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+
         public static DataTable LoadListingSearch(string myQuery, DateTime? date_from, DateTime? date_to, string reference_number, string cheque_number)
         {
             DataTable dt = new DataTable();
@@ -436,6 +490,60 @@ namespace AccountsBackEnd
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@cheque_number", SqlDbType.NVarChar, 50);
                             cmd.Parameters["@cheque_number"].Value = cheque_number;
+
+                            if (conn.State == ConnectionState.Closed)
+                            {
+                                conn.Open();
+                            }
+                            cmd.Connection = conn;
+                            (new SqlDataAdapter(cmd)).Fill(dt);
+                            cmd.Parameters.Clear();
+                            if (conn.State != ConnectionState.Closed)
+                            {
+                                conn.Close();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    throw new Exception(sqlException.ToString());
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+
+
+        public static DataTable LoadListingPost(string myQuery, int year,int month)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sg_conn_str"].ToString()))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("sp_Accounts_journal_Entry", conn))
+                        {
+                            cmd.CommandTimeout = 3600;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@QueryName", SqlDbType.NVarChar, 50);
+                            cmd.Parameters["@QueryName"].Value = myQuery;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@fy_id", SqlDbType.Int);
+                            cmd.Parameters["@fy_id"].Value = year;
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@Month", SqlDbType.Int);
+                            cmd.Parameters["@Month"].Value = month;
 
                             if (conn.State == ConnectionState.Closed)
                             {

@@ -42,9 +42,12 @@
             this.btnReceipts = new System.Windows.Forms.Button();
             this.btnvoice = new System.Windows.Forms.Button();
             this.btnLeagacyApp = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAccountsReports = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.formMenuestrp.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -55,9 +58,9 @@
             this.groupBox1.Controls.Add(this.btnAccountCategory);
             this.groupBox1.Controls.Add(this.btnAccountsChart);
             this.groupBox1.Location = new System.Drawing.Point(12, 155);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(936, 101);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -69,7 +72,7 @@
             this.btnBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBranch.ForeColor = System.Drawing.Color.White;
             this.btnBranch.Location = new System.Drawing.Point(711, 23);
-            this.btnBranch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBranch.Margin = new System.Windows.Forms.Padding(4);
             this.btnBranch.Name = "btnBranch";
             this.btnBranch.Size = new System.Drawing.Size(179, 70);
             this.btnBranch.TabIndex = 4;
@@ -83,7 +86,7 @@
             this.btnsubsidiaryAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsubsidiaryAcc.ForeColor = System.Drawing.Color.White;
             this.btnsubsidiaryAcc.Location = new System.Drawing.Point(536, 23);
-            this.btnsubsidiaryAcc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsubsidiaryAcc.Margin = new System.Windows.Forms.Padding(4);
             this.btnsubsidiaryAcc.Name = "btnsubsidiaryAcc";
             this.btnsubsidiaryAcc.Size = new System.Drawing.Size(179, 70);
             this.btnsubsidiaryAcc.TabIndex = 3;
@@ -97,7 +100,7 @@
             this.btnsubLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsubLedger.ForeColor = System.Drawing.Color.White;
             this.btnsubLedger.Location = new System.Drawing.Point(361, 23);
-            this.btnsubLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnsubLedger.Margin = new System.Windows.Forms.Padding(4);
             this.btnsubLedger.Name = "btnsubLedger";
             this.btnsubLedger.Size = new System.Drawing.Size(179, 70);
             this.btnsubLedger.TabIndex = 2;
@@ -111,7 +114,7 @@
             this.btnAccountCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccountCategory.ForeColor = System.Drawing.Color.White;
             this.btnAccountCategory.Location = new System.Drawing.Point(8, 23);
-            this.btnAccountCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccountCategory.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccountCategory.Name = "btnAccountCategory";
             this.btnAccountCategory.Size = new System.Drawing.Size(179, 70);
             this.btnAccountCategory.TabIndex = 1;
@@ -125,7 +128,7 @@
             this.btnAccountsChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccountsChart.ForeColor = System.Drawing.Color.White;
             this.btnAccountsChart.Location = new System.Drawing.Point(187, 23);
-            this.btnAccountsChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccountsChart.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccountsChart.Name = "btnAccountsChart";
             this.btnAccountsChart.Size = new System.Drawing.Size(179, 70);
             this.btnAccountsChart.TabIndex = 0;
@@ -139,7 +142,7 @@
             this.btnJournalEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJournalEntry.ForeColor = System.Drawing.Color.White;
             this.btnJournalEntry.Location = new System.Drawing.Point(8, 23);
-            this.btnJournalEntry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnJournalEntry.Margin = new System.Windows.Forms.Padding(4);
             this.btnJournalEntry.Name = "btnJournalEntry";
             this.btnJournalEntry.Size = new System.Drawing.Size(179, 70);
             this.btnJournalEntry.TabIndex = 2;
@@ -155,14 +158,14 @@
             this.helpToolStripMenuItem});
             this.formMenuestrp.Location = new System.Drawing.Point(0, 0);
             this.formMenuestrp.Name = "formMenuestrp";
-            this.formMenuestrp.Size = new System.Drawing.Size(956, 30);
+            this.formMenuestrp.Size = new System.Drawing.Size(956, 28);
             this.formMenuestrp.TabIndex = 1;
             this.formMenuestrp.Text = "menuStrip1";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // groupBox2
@@ -171,9 +174,9 @@
             this.groupBox2.Controls.Add(this.btnJournalEntry);
             this.groupBox2.Controls.Add(this.btnvoice);
             this.groupBox2.Location = new System.Drawing.Point(4, 47);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(548, 101);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -185,7 +188,7 @@
             this.btnReceipts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReceipts.ForeColor = System.Drawing.Color.White;
             this.btnReceipts.Location = new System.Drawing.Point(357, 23);
-            this.btnReceipts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReceipts.Margin = new System.Windows.Forms.Padding(4);
             this.btnReceipts.Name = "btnReceipts";
             this.btnReceipts.Size = new System.Drawing.Size(179, 70);
             this.btnReceipts.TabIndex = 3;
@@ -199,7 +202,7 @@
             this.btnvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnvoice.ForeColor = System.Drawing.Color.White;
             this.btnvoice.Location = new System.Drawing.Point(183, 23);
-            this.btnvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnvoice.Margin = new System.Windows.Forms.Padding(4);
             this.btnvoice.Name = "btnvoice";
             this.btnvoice.Size = new System.Drawing.Size(179, 70);
             this.btnvoice.TabIndex = 1;
@@ -211,27 +214,54 @@
             // 
             this.btnLeagacyApp.BackColor = System.Drawing.Color.LightPink;
             this.btnLeagacyApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeagacyApp.Location = new System.Drawing.Point(560, 47);
+            this.btnLeagacyApp.Location = new System.Drawing.Point(195, 23);
             this.btnLeagacyApp.Margin = new System.Windows.Forms.Padding(4);
             this.btnLeagacyApp.Name = "btnLeagacyApp";
-            this.btnLeagacyApp.Size = new System.Drawing.Size(388, 101);
+            this.btnLeagacyApp.Size = new System.Drawing.Size(226, 70);
             this.btnLeagacyApp.TabIndex = 20;
             this.btnLeagacyApp.Text = "LEGACY ACCOUNTS DATA";
             this.btnLeagacyApp.UseVisualStyleBackColor = false;
             this.btnLeagacyApp.Click += new System.EventHandler(this.btnLeagacyApp_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnAccountsReports);
+            this.groupBox3.Controls.Add(this.btnLeagacyApp);
+            this.groupBox3.Location = new System.Drawing.Point(12, 264);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(936, 101);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Reporting";
+            // 
+            // btnAccountsReports
+            // 
+            this.btnAccountsReports.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAccountsReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccountsReports.ForeColor = System.Drawing.Color.White;
+            this.btnAccountsReports.Location = new System.Drawing.Point(8, 23);
+            this.btnAccountsReports.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAccountsReports.Name = "btnAccountsReports";
+            this.btnAccountsReports.Size = new System.Drawing.Size(179, 70);
+            this.btnAccountsReports.TabIndex = 1;
+            this.btnAccountsReports.Text = "Accounts Reports";
+            this.btnAccountsReports.UseVisualStyleBackColor = false;
+            this.btnAccountsReports.Click += new System.EventHandler(this.btnAccountsReports_Click);
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(956, 667);
-            this.Controls.Add(this.btnLeagacyApp);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.formMenuestrp);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.formMenuestrp;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDashboard";
@@ -242,6 +272,7 @@
             this.formMenuestrp.ResumeLayout(false);
             this.formMenuestrp.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +293,7 @@
         private System.Windows.Forms.Button btnsubsidiaryAcc;
         private System.Windows.Forms.Button btnBranch;
         private System.Windows.Forms.Button btnLeagacyApp;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAccountsReports;
     }
 }

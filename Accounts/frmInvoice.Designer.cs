@@ -34,6 +34,10 @@
             this.cboDebitAccount = new System.Windows.Forms.ComboBox();
             this.chkOnHold = new System.Windows.Forms.CheckBox();
             this.grpboxJournalEntryListing = new System.Windows.Forms.GroupBox();
+            this.grpboxPostTransactions = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.dtPickerPost = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new System.Windows.Forms.Button();
             this.gdvList = new System.Windows.Forms.DataGridView();
             this.chkPosted = new System.Windows.Forms.CheckBox();
@@ -66,8 +70,10 @@
             this.dtPickersearchfrom = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.grpboxEntry = new System.Windows.Forms.GroupBox();
+            this.cboRate = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboFy = new System.Windows.Forms.ComboBox();
             this.chkAudited = new System.Windows.Forms.CheckBox();
-            this.txtrate = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtDaysCount = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -81,20 +87,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pnlOuterContainer = new System.Windows.Forms.Panel();
             this.reSize1 = new LarcomAndYoung.Windows.Forms.ReSize(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.cboFy = new System.Windows.Forms.ComboBox();
-            this.grpboxPostTransactions = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btnPost = new System.Windows.Forms.Button();
-            this.dtPickerPost = new System.Windows.Forms.DateTimePicker();
             this.grpboxJournalEntryListing.SuspendLayout();
+            this.grpboxPostTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).BeginInit();
             this.grpboxQuickActions.SuspendLayout();
             this.grpboxJournalEntrySearch.SuspendLayout();
             this.xDatesearch.SuspendLayout();
             this.grpboxEntry.SuspendLayout();
             this.pnlOuterContainer.SuspendLayout();
-            this.grpboxPostTransactions.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -105,7 +105,7 @@
             this.label1.Location = new System.Drawing.Point(3, 288);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Client";
             // 
@@ -116,7 +116,7 @@
             this.cboDebitAccount.Location = new System.Drawing.Point(14, 688);
             this.cboDebitAccount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboDebitAccount.Name = "cboDebitAccount";
-            this.cboDebitAccount.Size = new System.Drawing.Size(370, 26);
+            this.cboDebitAccount.Size = new System.Drawing.Size(370, 23);
             this.cboDebitAccount.TabIndex = 18;
             // 
             // chkOnHold
@@ -127,7 +127,7 @@
             this.chkOnHold.Location = new System.Drawing.Point(194, 790);
             this.chkOnHold.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkOnHold.Name = "chkOnHold";
-            this.chkOnHold.Size = new System.Drawing.Size(161, 22);
+            this.chkOnHold.Size = new System.Drawing.Size(134, 19);
             this.chkOnHold.TabIndex = 17;
             this.chkOnHold.Text = "Transaction on hold";
             this.chkOnHold.UseVisualStyleBackColor = false;
@@ -147,6 +147,55 @@
             this.grpboxJournalEntryListing.TabIndex = 1;
             this.grpboxJournalEntryListing.TabStop = false;
             this.grpboxJournalEntryListing.Text = "Invoice Entry Listing";
+            // 
+            // grpboxPostTransactions
+            // 
+            this.grpboxPostTransactions.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.grpboxPostTransactions.Controls.Add(this.label19);
+            this.grpboxPostTransactions.Controls.Add(this.btnPost);
+            this.grpboxPostTransactions.Controls.Add(this.dtPickerPost);
+            this.grpboxPostTransactions.Location = new System.Drawing.Point(10, 793);
+            this.grpboxPostTransactions.Name = "grpboxPostTransactions";
+            this.grpboxPostTransactions.Size = new System.Drawing.Size(506, 100);
+            this.grpboxPostTransactions.TabIndex = 10;
+            this.grpboxPostTransactions.TabStop = false;
+            this.grpboxPostTransactions.Text = "Select a Date and click the button to post all transactions for the selected date" +
+    "";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Blue;
+            this.label19.Location = new System.Drawing.Point(174, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(105, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Transaction Date";
+            // 
+            // btnPost
+            // 
+            this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPost.ForeColor = System.Drawing.Color.Blue;
+            this.btnPost.Location = new System.Drawing.Point(9, 56);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(233, 38);
+            this.btnPost.TabIndex = 7;
+            this.btnPost.Text = "Post Transactions";
+            this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
+            // 
+            // dtPickerPost
+            // 
+            this.dtPickerPost.Checked = false;
+            this.dtPickerPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPickerPost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPickerPost.Location = new System.Drawing.Point(248, 60);
+            this.dtPickerPost.Name = "dtPickerPost";
+            this.dtPickerPost.ShowCheckBox = true;
+            this.dtPickerPost.Size = new System.Drawing.Size(174, 21);
+            this.dtPickerPost.TabIndex = 8;
+            this.dtPickerPost.ValueChanged += new System.EventHandler(this.dtPickerPost_ValueChanged);
             // 
             // btnDelete
             // 
@@ -184,7 +233,7 @@
             this.chkPosted.Location = new System.Drawing.Point(12, 790);
             this.chkPosted.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkPosted.Name = "chkPosted";
-            this.chkPosted.Size = new System.Drawing.Size(156, 22);
+            this.chkPosted.Size = new System.Drawing.Size(128, 19);
             this.chkPosted.TabIndex = 16;
             this.chkPosted.Text = "Transacton Posted";
             this.chkPosted.UseVisualStyleBackColor = false;
@@ -196,7 +245,7 @@
             this.txtAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.ReadOnly = true;
-            this.txtAmount.Size = new System.Drawing.Size(370, 24);
+            this.txtAmount.Size = new System.Drawing.Size(370, 21);
             this.txtAmount.TabIndex = 15;
             // 
             // grpboxQuickActions
@@ -234,7 +283,7 @@
             this.lblID.Location = new System.Drawing.Point(0, 129);
             this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(18, 18);
+            this.lblID.Size = new System.Drawing.Size(15, 15);
             this.lblID.TabIndex = 0;
             this.lblID.Text = "--";
             // 
@@ -258,7 +307,7 @@
             this.cboCreditAccount.Location = new System.Drawing.Point(22, 752);
             this.cboCreditAccount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboCreditAccount.Name = "cboCreditAccount";
-            this.cboCreditAccount.Size = new System.Drawing.Size(366, 26);
+            this.cboCreditAccount.Size = new System.Drawing.Size(366, 23);
             this.cboCreditAccount.TabIndex = 19;
             // 
             // label8
@@ -269,7 +318,7 @@
             this.label8.Location = new System.Drawing.Point(4, 603);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 20);
+            this.label8.Size = new System.Drawing.Size(53, 16);
             this.label8.TabIndex = 14;
             this.label8.Text = "Amount";
             // 
@@ -281,7 +330,7 @@
             this.label7.Location = new System.Drawing.Point(8, 723);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(120, 20);
+            this.label7.Size = new System.Drawing.Size(94, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "Credit Account";
             // 
@@ -293,7 +342,7 @@
             this.label6.Location = new System.Drawing.Point(4, 661);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 20);
+            this.label6.Size = new System.Drawing.Size(91, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "Debit Account";
             // 
@@ -312,7 +361,7 @@
             this.txt_refference_number.Location = new System.Drawing.Point(9, 122);
             this.txt_refference_number.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_refference_number.Name = "txt_refference_number";
-            this.txt_refference_number.Size = new System.Drawing.Size(374, 24);
+            this.txt_refference_number.Size = new System.Drawing.Size(374, 21);
             this.txt_refference_number.TabIndex = 5;
             // 
             // label3
@@ -323,7 +372,7 @@
             this.label3.Location = new System.Drawing.Point(4, 92);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 20);
+            this.label3.Size = new System.Drawing.Size(125, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Refference Number";
             // 
@@ -336,7 +385,7 @@
             this.dtPickerDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtPickerDate.Name = "dtPickerDate";
             this.dtPickerDate.ShowCheckBox = true;
-            this.dtPickerDate.Size = new System.Drawing.Size(374, 24);
+            this.dtPickerDate.Size = new System.Drawing.Size(374, 21);
             this.dtPickerDate.TabIndex = 3;
             // 
             // btnNew
@@ -416,7 +465,7 @@
             this.label13.Location = new System.Drawing.Point(562, 46);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(111, 17);
+            this.label13.Size = new System.Drawing.Size(84, 13);
             this.label13.TabIndex = 29;
             this.label13.Text = "Cheque Number";
             // 
@@ -426,7 +475,7 @@
             this.txtchequesearch.Location = new System.Drawing.Point(562, 71);
             this.txtchequesearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtchequesearch.Name = "txtchequesearch";
-            this.txtchequesearch.Size = new System.Drawing.Size(151, 24);
+            this.txtchequesearch.Size = new System.Drawing.Size(151, 21);
             this.txtchequesearch.TabIndex = 28;
             this.txtchequesearch.TextChanged += new System.EventHandler(this.txtchequesearch_TextChanged);
             // 
@@ -438,7 +487,7 @@
             this.label12.Location = new System.Drawing.Point(408, 46);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 17);
+            this.label12.Size = new System.Drawing.Size(97, 13);
             this.label12.TabIndex = 27;
             this.label12.Text = "Reference Number";
             // 
@@ -448,7 +497,7 @@
             this.txtrefsearch.Location = new System.Drawing.Point(408, 71);
             this.txtrefsearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtrefsearch.Name = "txtrefsearch";
-            this.txtrefsearch.Size = new System.Drawing.Size(144, 24);
+            this.txtrefsearch.Size = new System.Drawing.Size(144, 21);
             this.txtrefsearch.TabIndex = 24;
             this.txtrefsearch.TextChanged += new System.EventHandler(this.txtrefsearch_TextChanged);
             // 
@@ -476,7 +525,7 @@
             this.label11.Location = new System.Drawing.Point(178, 25);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(25, 17);
+            this.label11.Size = new System.Drawing.Size(20, 13);
             this.label11.TabIndex = 26;
             this.label11.Text = "To";
             // 
@@ -488,7 +537,7 @@
             this.label10.Location = new System.Drawing.Point(9, 25);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 17);
+            this.label10.Size = new System.Drawing.Size(30, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "From";
             // 
@@ -501,7 +550,7 @@
             this.dtPickersearchTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtPickersearchTo.Name = "dtPickersearchTo";
             this.dtPickersearchTo.ShowCheckBox = true;
-            this.dtPickersearchTo.Size = new System.Drawing.Size(158, 24);
+            this.dtPickersearchTo.Size = new System.Drawing.Size(158, 21);
             this.dtPickersearchTo.TabIndex = 25;
             // 
             // dtPickersearchfrom
@@ -513,7 +562,7 @@
             this.dtPickersearchfrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtPickersearchfrom.Name = "dtPickersearchfrom";
             this.dtPickersearchfrom.ShowCheckBox = true;
-            this.dtPickersearchfrom.Size = new System.Drawing.Size(158, 24);
+            this.dtPickersearchfrom.Size = new System.Drawing.Size(158, 21);
             this.dtPickersearchfrom.TabIndex = 24;
             // 
             // label5
@@ -524,17 +573,17 @@
             this.label5.Location = new System.Drawing.Point(4, 486);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 20);
+            this.label5.Size = new System.Drawing.Size(71, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "Particulars";
             // 
             // grpboxEntry
             // 
             this.grpboxEntry.BackColor = System.Drawing.Color.Azure;
+            this.grpboxEntry.Controls.Add(this.cboRate);
             this.grpboxEntry.Controls.Add(this.label9);
             this.grpboxEntry.Controls.Add(this.cboFy);
             this.grpboxEntry.Controls.Add(this.chkAudited);
-            this.grpboxEntry.Controls.Add(this.txtrate);
             this.grpboxEntry.Controls.Add(this.label18);
             this.grpboxEntry.Controls.Add(this.txtDaysCount);
             this.grpboxEntry.Controls.Add(this.label17);
@@ -570,6 +619,42 @@
             this.grpboxEntry.TabStop = false;
             this.grpboxEntry.Text = "Invoice Entry Panel";
             // 
+            // cboRate
+            // 
+            this.cboRate.FormattingEnabled = true;
+            this.cboRate.Items.AddRange(new object[] {
+            "",
+            "35000",
+            "20000",
+            "17700",
+            "15000"});
+            this.cboRate.Location = new System.Drawing.Point(9, 443);
+            this.cboRate.Name = "cboRate";
+            this.cboRate.Size = new System.Drawing.Size(175, 23);
+            this.cboRate.TabIndex = 40;
+            this.cboRate.SelectedIndexChanged += new System.EventHandler(this.cboRate_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(403, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 16);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "Financial Year";
+            // 
+            // cboFy
+            // 
+            this.cboFy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboFy.FormattingEnabled = true;
+            this.cboFy.Location = new System.Drawing.Point(407, 53);
+            this.cboFy.Name = "cboFy";
+            this.cboFy.Size = new System.Drawing.Size(145, 23);
+            this.cboFy.TabIndex = 38;
+            // 
             // chkAudited
             // 
             this.chkAudited.AutoSize = true;
@@ -579,21 +664,10 @@
             this.chkAudited.Location = new System.Drawing.Point(384, 790);
             this.chkAudited.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAudited.Name = "chkAudited";
-            this.chkAudited.Size = new System.Drawing.Size(78, 22);
+            this.chkAudited.Size = new System.Drawing.Size(67, 19);
             this.chkAudited.TabIndex = 35;
             this.chkAudited.Text = "Audited";
             this.chkAudited.UseVisualStyleBackColor = false;
-            // 
-            // txtrate
-            // 
-            this.txtrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtrate.Location = new System.Drawing.Point(9, 449);
-            this.txtrate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtrate.Name = "txtrate";
-            this.txtrate.ReadOnly = true;
-            this.txtrate.Size = new System.Drawing.Size(374, 24);
-            this.txtrate.TabIndex = 34;
-            this.txtrate.Text = "17700.00";
             // 
             // label18
             // 
@@ -603,7 +677,7 @@
             this.label18.Location = new System.Drawing.Point(4, 420);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 20);
+            this.label18.Size = new System.Drawing.Size(37, 16);
             this.label18.TabIndex = 33;
             this.label18.Text = "Rate";
             // 
@@ -613,7 +687,7 @@
             this.txtDaysCount.Location = new System.Drawing.Point(200, 387);
             this.txtDaysCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDaysCount.Name = "txtDaysCount";
-            this.txtDaysCount.Size = new System.Drawing.Size(182, 24);
+            this.txtDaysCount.Size = new System.Drawing.Size(182, 21);
             this.txtDaysCount.TabIndex = 32;
             this.txtDaysCount.TextChanged += new System.EventHandler(this.txtDaysCount_TextChanged);
             this.txtDaysCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDaysCount_KeyPress);
@@ -626,7 +700,7 @@
             this.label17.Location = new System.Drawing.Point(205, 358);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(57, 20);
+            this.label17.Size = new System.Drawing.Size(47, 16);
             this.label17.TabIndex = 31;
             this.label17.Text = "#Days";
             // 
@@ -636,7 +710,7 @@
             this.txtGuardCount.Location = new System.Drawing.Point(8, 387);
             this.txtGuardCount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtGuardCount.Name = "txtGuardCount";
-            this.txtGuardCount.Size = new System.Drawing.Size(176, 24);
+            this.txtGuardCount.Size = new System.Drawing.Size(176, 21);
             this.txtGuardCount.TabIndex = 30;
             this.txtGuardCount.TextChanged += new System.EventHandler(this.txtGuardCount_TextChanged);
             this.txtGuardCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGuardCount_KeyPress);
@@ -649,7 +723,7 @@
             this.label16.Location = new System.Drawing.Point(3, 358);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(78, 20);
+            this.label16.Size = new System.Drawing.Size(62, 16);
             this.label16.TabIndex = 29;
             this.label16.Text = "# Guards";
             // 
@@ -660,7 +734,7 @@
             this.cboPayee.Location = new System.Drawing.Point(8, 318);
             this.cboPayee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboPayee.Name = "cboPayee";
-            this.cboPayee.Size = new System.Drawing.Size(374, 26);
+            this.cboPayee.Size = new System.Drawing.Size(374, 23);
             this.cboPayee.TabIndex = 28;
             // 
             // cboDrCr
@@ -670,7 +744,7 @@
             this.cboDrCr.Location = new System.Drawing.Point(8, 248);
             this.cboDrCr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboDrCr.Name = "cboDrCr";
-            this.cboDrCr.Size = new System.Drawing.Size(374, 26);
+            this.cboDrCr.Size = new System.Drawing.Size(374, 23);
             this.cboDrCr.TabIndex = 27;
             // 
             // label15
@@ -681,7 +755,7 @@
             this.label15.Location = new System.Drawing.Point(3, 219);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(128, 20);
+            this.label15.Size = new System.Drawing.Size(100, 16);
             this.label15.TabIndex = 26;
             this.label15.Text = "Debit or Credit?";
             // 
@@ -692,7 +766,7 @@
             this.cboSubAccount.Location = new System.Drawing.Point(8, 179);
             this.cboSubAccount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboSubAccount.Name = "cboSubAccount";
-            this.cboSubAccount.Size = new System.Drawing.Size(374, 26);
+            this.cboSubAccount.Size = new System.Drawing.Size(374, 23);
             this.cboSubAccount.TabIndex = 25;
             this.cboSubAccount.SelectedIndexChanged += new System.EventHandler(this.cboSubAccount_SelectedIndexChanged);
             // 
@@ -704,7 +778,7 @@
             this.label14.Location = new System.Drawing.Point(3, 155);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 20);
+            this.label14.Size = new System.Drawing.Size(84, 16);
             this.label14.TabIndex = 24;
             this.label14.Text = "Sub-Account";
             // 
@@ -716,7 +790,7 @@
             this.label2.Location = new System.Drawing.Point(4, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 20);
+            this.label2.Size = new System.Drawing.Size(37, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Date";
             // 
@@ -746,76 +820,6 @@
             this.reSize1.InitialHostContainerWidth = 1924D;
             this.reSize1.Tag = null;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(403, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(115, 20);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "Financial Year";
-            // 
-            // cboFy
-            // 
-            this.cboFy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboFy.FormattingEnabled = true;
-            this.cboFy.Location = new System.Drawing.Point(407, 53);
-            this.cboFy.Name = "cboFy";
-            this.cboFy.Size = new System.Drawing.Size(145, 26);
-            this.cboFy.TabIndex = 38;
-            // 
-            // grpboxPostTransactions
-            // 
-            this.grpboxPostTransactions.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.grpboxPostTransactions.Controls.Add(this.label19);
-            this.grpboxPostTransactions.Controls.Add(this.btnPost);
-            this.grpboxPostTransactions.Controls.Add(this.dtPickerPost);
-            this.grpboxPostTransactions.Location = new System.Drawing.Point(10, 793);
-            this.grpboxPostTransactions.Name = "grpboxPostTransactions";
-            this.grpboxPostTransactions.Size = new System.Drawing.Size(506, 100);
-            this.grpboxPostTransactions.TabIndex = 10;
-            this.grpboxPostTransactions.TabStop = false;
-            this.grpboxPostTransactions.Text = "Select a Date and click the button to post all transactions for the selected date" +
-    "";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(174, 22);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(133, 17);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Transaction Date";
-            // 
-            // btnPost
-            // 
-            this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPost.ForeColor = System.Drawing.Color.Blue;
-            this.btnPost.Location = new System.Drawing.Point(9, 56);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(233, 38);
-            this.btnPost.TabIndex = 7;
-            this.btnPost.Text = "Post Transactions";
-            this.btnPost.UseVisualStyleBackColor = true;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
-            // dtPickerPost
-            // 
-            this.dtPickerPost.Checked = false;
-            this.dtPickerPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPickerPost.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPickerPost.Location = new System.Drawing.Point(248, 60);
-            this.dtPickerPost.Name = "dtPickerPost";
-            this.dtPickerPost.ShowCheckBox = true;
-            this.dtPickerPost.Size = new System.Drawing.Size(174, 24);
-            this.dtPickerPost.TabIndex = 8;
-            this.dtPickerPost.ValueChanged += new System.EventHandler(this.dtPickerPost_ValueChanged);
-            // 
             // frmInvoice
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -830,6 +834,8 @@
             this.Text = "Invoice Manager";
             this.Load += new System.EventHandler(this.frmInvoice_Load);
             this.grpboxJournalEntryListing.ResumeLayout(false);
+            this.grpboxPostTransactions.ResumeLayout(false);
+            this.grpboxPostTransactions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).EndInit();
             this.grpboxQuickActions.ResumeLayout(false);
             this.grpboxQuickActions.PerformLayout();
@@ -840,8 +846,6 @@
             this.grpboxEntry.ResumeLayout(false);
             this.grpboxEntry.PerformLayout();
             this.pnlOuterContainer.ResumeLayout(false);
-            this.grpboxPostTransactions.ResumeLayout(false);
-            this.grpboxPostTransactions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -894,7 +898,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtDaysCount;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtrate;
         private System.Windows.Forms.CheckBox chkAudited;
         private System.Windows.Forms.Button btnPrintInv;
         private LarcomAndYoung.Windows.Forms.ReSize reSize1;
@@ -905,5 +908,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.DateTimePicker dtPickerPost;
+        private System.Windows.Forms.ComboBox cboRate;
     }
 }

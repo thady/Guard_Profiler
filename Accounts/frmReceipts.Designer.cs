@@ -85,6 +85,10 @@
             this.dtPickerPost = new System.Windows.Forms.DateTimePicker();
             this.btnDelete = new System.Windows.Forms.Button();
             this.gdvList = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chksimultaneousoffOnDebit = new System.Windows.Forms.CheckBox();
+            this.chksimultaneousoffOnCredit = new System.Windows.Forms.CheckBox();
+            this.chkLockFields = new System.Windows.Forms.CheckBox();
             this.grpboxEntry.SuspendLayout();
             this.pnlOuterContainer.SuspendLayout();
             this.grpboxJournalEntrySearch.SuspendLayout();
@@ -93,6 +97,7 @@
             this.grpboxJournalEntryListing.SuspendLayout();
             this.grpboxPostTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnsearch
@@ -163,7 +168,7 @@
             this.reSize1.AutoCenterFormOnLoad = false;
             this.reSize1.Enabled = true;
             this.reSize1.HostContainer = this;
-            this.reSize1.InitialHostContainerHeight = 1040D;
+            this.reSize1.InitialHostContainerHeight = 1055D;
             this.reSize1.InitialHostContainerWidth = 1478D;
             this.reSize1.Tag = null;
             // 
@@ -198,11 +203,11 @@
             this.grpboxEntry.Controls.Add(this.dtPickerDate);
             this.grpboxEntry.Controls.Add(this.label2);
             this.grpboxEntry.ForeColor = System.Drawing.Color.Blue;
-            this.grpboxEntry.Location = new System.Drawing.Point(15, 5);
+            this.grpboxEntry.Location = new System.Drawing.Point(15, 76);
             this.grpboxEntry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpboxEntry.Name = "grpboxEntry";
             this.grpboxEntry.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpboxEntry.Size = new System.Drawing.Size(582, 827);
+            this.grpboxEntry.Size = new System.Drawing.Size(582, 829);
             this.grpboxEntry.TabIndex = 0;
             this.grpboxEntry.TabStop = false;
             this.grpboxEntry.Text = "Receipt Entry Panel";
@@ -515,6 +520,7 @@
             // pnlOuterContainer
             // 
             this.pnlOuterContainer.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.pnlOuterContainer.Controls.Add(this.panel1);
             this.pnlOuterContainer.Controls.Add(this.btnNew);
             this.pnlOuterContainer.Controls.Add(this.btnEdit);
             this.pnlOuterContainer.Controls.Add(this.btnsave);
@@ -531,7 +537,7 @@
             // btnNew
             // 
             this.btnNew.ForeColor = System.Drawing.Color.Red;
-            this.btnNew.Location = new System.Drawing.Point(76, 842);
+            this.btnNew.Location = new System.Drawing.Point(75, 907);
             this.btnNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(210, 43);
@@ -543,7 +549,7 @@
             // btnEdit
             // 
             this.btnEdit.ForeColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Location = new System.Drawing.Point(295, 842);
+            this.btnEdit.Location = new System.Drawing.Point(294, 907);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(142, 43);
@@ -555,7 +561,7 @@
             // btnsave
             // 
             this.btnsave.ForeColor = System.Drawing.Color.Blue;
-            this.btnsave.Location = new System.Drawing.Point(447, 842);
+            this.btnsave.Location = new System.Drawing.Point(446, 907);
             this.btnsave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(153, 43);
@@ -650,11 +656,11 @@
             this.grpboxQuickActions.Controls.Add(this.lblID);
             this.grpboxQuickActions.Controls.Add(this.btnGeneralLedger);
             this.grpboxQuickActions.ForeColor = System.Drawing.Color.Blue;
-            this.grpboxQuickActions.Location = new System.Drawing.Point(15, 895);
+            this.grpboxQuickActions.Location = new System.Drawing.Point(15, 952);
             this.grpboxQuickActions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpboxQuickActions.Name = "grpboxQuickActions";
             this.grpboxQuickActions.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpboxQuickActions.Size = new System.Drawing.Size(582, 104);
+            this.grpboxQuickActions.Size = new System.Drawing.Size(582, 94);
             this.grpboxQuickActions.TabIndex = 1;
             this.grpboxQuickActions.TabStop = false;
             this.grpboxQuickActions.Text = "Quick Actions";
@@ -675,7 +681,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(8, 77);
+            this.lblID.Location = new System.Drawing.Point(8, 75);
             this.lblID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(18, 17);
@@ -788,11 +794,64 @@
             this.gdvList.TabIndex = 0;
             this.gdvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvList_CellDoubleClick);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.panel1.Controls.Add(this.chkLockFields);
+            this.panel1.Controls.Add(this.chksimultaneousoffOnDebit);
+            this.panel1.Controls.Add(this.chksimultaneousoffOnCredit);
+            this.panel1.Location = new System.Drawing.Point(9, 11);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(588, 57);
+            this.panel1.TabIndex = 43;
+            // 
+            // chksimultaneousoffOnDebit
+            // 
+            this.chksimultaneousoffOnDebit.AutoSize = true;
+            this.chksimultaneousoffOnDebit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chksimultaneousoffOnDebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chksimultaneousoffOnDebit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chksimultaneousoffOnDebit.Location = new System.Drawing.Point(3, 3);
+            this.chksimultaneousoffOnDebit.Name = "chksimultaneousoffOnDebit";
+            this.chksimultaneousoffOnDebit.Size = new System.Drawing.Size(203, 21);
+            this.chksimultaneousoffOnDebit.TabIndex = 40;
+            this.chksimultaneousoffOnDebit.Text = "Non simultaneous-Debit";
+            this.chksimultaneousoffOnDebit.UseVisualStyleBackColor = false;
+            this.chksimultaneousoffOnDebit.CheckedChanged += new System.EventHandler(this.chksimultaneousoffOnDebit_CheckedChanged);
+            // 
+            // chksimultaneousoffOnCredit
+            // 
+            this.chksimultaneousoffOnCredit.AutoSize = true;
+            this.chksimultaneousoffOnCredit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chksimultaneousoffOnCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chksimultaneousoffOnCredit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chksimultaneousoffOnCredit.Location = new System.Drawing.Point(210, 3);
+            this.chksimultaneousoffOnCredit.Name = "chksimultaneousoffOnCredit";
+            this.chksimultaneousoffOnCredit.Size = new System.Drawing.Size(208, 21);
+            this.chksimultaneousoffOnCredit.TabIndex = 43;
+            this.chksimultaneousoffOnCredit.Text = "Non simultaneous-Credit";
+            this.chksimultaneousoffOnCredit.UseVisualStyleBackColor = false;
+            this.chksimultaneousoffOnCredit.CheckedChanged += new System.EventHandler(this.chksimultaneousoffOnCredit_CheckedChanged);
+            // 
+            // chkLockFields
+            // 
+            this.chkLockFields.AutoSize = true;
+            this.chkLockFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.chkLockFields.Enabled = false;
+            this.chkLockFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLockFields.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkLockFields.Location = new System.Drawing.Point(3, 30);
+            this.chkLockFields.Name = "chkLockFields";
+            this.chkLockFields.Size = new System.Drawing.Size(149, 21);
+            this.chkLockFields.TabIndex = 42;
+            this.chkLockFields.Text = "Lock Key Fields ";
+            this.chkLockFields.UseVisualStyleBackColor = false;
+            // 
             // frmReceipts
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1478, 1040);
+            this.ClientSize = new System.Drawing.Size(1478, 1055);
             this.Controls.Add(this.pnlOuterContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -813,6 +872,8 @@
             this.grpboxPostTransactions.ResumeLayout(false);
             this.grpboxPostTransactions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -874,5 +935,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.DateTimePicker dtPickerPost;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox chksimultaneousoffOnDebit;
+        private System.Windows.Forms.CheckBox chksimultaneousoffOnCredit;
+        private System.Windows.Forms.CheckBox chkLockFields;
     }
 }

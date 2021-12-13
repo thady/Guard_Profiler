@@ -55,7 +55,7 @@ namespace Accounts
       
         protected void LoadNorminalAccountList()
         {
-            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing");
+            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing",string.Empty,string.Empty);
             DataRow dtRow = dt.NewRow();
             dtRow["acc_id"] = string.Empty;
             dtRow["acc_name"] = "select one";
@@ -69,7 +69,7 @@ namespace Accounts
             cboNorminalAcc.AutoCompleteSource = AutoCompleteSource.ListItems;
 
 
-            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing");
+            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing",string.Empty,string.Empty);
             DataRow _dtRow = dt.NewRow();
             _dtRow["acc_id"] = string.Empty;
             _dtRow["acc_name"] = "select one";

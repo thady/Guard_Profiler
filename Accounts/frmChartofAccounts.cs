@@ -74,7 +74,7 @@ namespace Accounts
 
         protected void LoadChartofAccountsListing()
         {
-            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing");
+            dt = ChartofAccounts.LoadListing("select_chart_of_acounts_listing",txtAccountTitleSearch.Text.Trim(),txtAccountNumberSearch.Text.Trim());
             gdvList.DataSource = dt;
 
             gdvList.Columns["acc_id"].Visible = false;
@@ -212,6 +212,34 @@ namespace Accounts
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            LoadChartofAccountsListing();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(lblID.Text == Globals.EmptyID)
+            {
+                MessageBox.Show("Please select an account from the list to perform this action", "Remove Account", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete these account?This action cannot be undone", "Delete Record", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    ChartofAccounts.DeleteAccount("delete_account", lblID.Text);
+                    LoadChartofAccountsListing();
+                    MessageBox.Show("Account successfully deleted", "Delete Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+
             }
         }
     }
